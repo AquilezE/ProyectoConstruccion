@@ -30,7 +30,9 @@ public class FXMLDashboardController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         if(Sesion.getInstancia().getRol()=="profesor"){
+            //quita Solicitud de constancias
             tabPane.getTabs().remove(3);
+            //quita Solicitud de
             tabPane.getTabs().remove(2);
         }
     }
