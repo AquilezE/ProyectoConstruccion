@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.dashboard.FXMLDashboardController">
+   <children>
+      <TabPane fx:id="tabPane" prefHeight="413.0" prefWidth="606.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Colaboraciones">
+               <content>
+                  <BorderPane fx:id="bdPaneColaboraciones" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Button fx:id="btnVerColabs" onAction="#btnVerColabs" text="Colabs" BorderPane.alignment="CENTER" />
+                     </top></BorderPane>
+               </content></Tab>
+          <Tab text="Ofertas de Colaboracion">
+               <content>
+                  <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+            <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
+               <content>
+                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabNumeralia" closable="false" text="Numeralia">
+               <content>
+                  <BorderPane fx:id="bdPaneNumerialia" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</StackPane>
