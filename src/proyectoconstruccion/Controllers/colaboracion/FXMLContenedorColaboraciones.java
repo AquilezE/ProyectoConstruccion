@@ -98,10 +98,10 @@ public class FXMLContenedorColaboraciones {
 
     private void añadirComponente(Colaboracion colaboracion) {
         try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLColaboracionComponente.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLColaboracionItem.fxml");
             HBox colaboracionComponente = loader.load();
 
-            FXMLColaboracionComponente controler = loader.getController();
+            FXMLColaboracionItem controler = loader.getController();
             controler.InicializarComponentes(colaboracion);
 
             vBoxBucket.getChildren().add(colaboracionComponente);

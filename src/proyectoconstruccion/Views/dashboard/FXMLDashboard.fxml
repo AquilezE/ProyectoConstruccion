@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.dashboard.FXMLDashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.dashboard.FXMLDashboardController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="413.0" prefWidth="606.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -11,7 +16,30 @@
                <content>
                   <BorderPane fx:id="bdPaneColaboraciones" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <Button fx:id="btnVerColabs" onAction="#btnVerColabs" text="Colabs" BorderPane.alignment="CENTER" />
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="btnEliminarrFiltros" alignment="CENTER" onAction="#btnVerColabs" text="Eliminar Filtros">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnOrdenarAlfabeticamente" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar Alfabeticamente">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnOrdenarRegionAdmin" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar Por Region">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnVerColabs21" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar por Profesor UV">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </top></BorderPane>
                </content></Tab>
           <Tab text="Ofertas de Colaboracion">
@@ -19,14 +47,14 @@
                   <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0" />
                </content>
           </Tab>
-            <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
-               <content>
-                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
-               </content>
-            </Tab>
             <Tab fx:id="tabNumeralia" closable="false" text="Numeralia">
                <content>
                   <BorderPane fx:id="bdPaneNumerialia" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
+               <content>
+                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
                </content>
             </Tab>
         </tabs>

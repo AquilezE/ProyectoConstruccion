@@ -3,11 +3,10 @@ package proyectoconstruccion.Controllers.colaboracion;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
-import proyectoconstruccion.modelo.POJO.profesor.Profesor;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-public class FXMLColaboracionComponente {
+public class FXMLColaboracionItem {
 
     ProfesorUV profesorUV = new ProfesorUV();
     ProfesorExterno profesorExterno = new ProfesorExterno();
