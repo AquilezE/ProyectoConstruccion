@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.dashboard.FXMLDashboardController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.dashboard.FXMLDashboardController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="413.0" prefWidth="606.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -40,11 +36,24 @@
                               </Button>
                            </children>
                         </HBox>
-                     </top></BorderPane>
+                     </top>
+                     <left>
+                        <Pane prefHeight="661.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+                     </left></BorderPane>
                </content></Tab>
           <Tab text="Ofertas de Colaboracion">
                <content>
-                  <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0" />
+                  <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#btnVerOfertas" text="Ver Ofertas" />
+                           </children></HBox>
+                     </top>
+                      <left>
+                          <Pane prefHeight="661.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+                      </left></BorderPane>
+
                </content>
           </Tab>
             <Tab fx:id="tabNumeralia" closable="false" text="Numeralia">

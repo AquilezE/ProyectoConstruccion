@@ -1,7 +1,7 @@
 package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
@@ -11,9 +11,8 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
 import java.io.IOException;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class FXMLContenedorColaboraciones {
 
@@ -40,10 +39,10 @@ public class FXMLContenedorColaboraciones {
     Colaboracion colaboracion1 = new Colaboracion(1,
             "1semana",
             "Agosto2023-Octubre2024",
-            "Agape",
+            "Monogamia en la Juventud",
             "Tamil",
-            Date.from(Instant.now()),
-             Date.from(Instant.now()),
+            LocalDate.of(2019,1,10),
+             LocalDate.of(2020,1,10),
              "Corridita",
              "abierta",
              profesorUV1,
@@ -54,10 +53,10 @@ public class FXMLContenedorColaboraciones {
     Colaboracion colaboracion2 = new Colaboracion(2,
             "2 semanas",
             "Septiembre2023-Noviembre2024",
-            "Betico",
+            "Corridos Belicos",
             "Sánscrito",
-            Date.from(Instant.now()),
-            Date.from(Instant.now()),
+            LocalDate.of(2019,1,10),
+            LocalDate.of(2020,1,10),
             "Cerrada",
             "en curso",
             profesorUV2,
@@ -69,10 +68,10 @@ public class FXMLContenedorColaboraciones {
     Colaboracion colaboracion3 = new Colaboracion(3,
             "3 semanas",
             "Octubre2023-Diciembre2024",
-            "Charlie",
+            "Mi pequeño angelito",
             "Chino",
-            Date.from(Instant.now()),
-            Date.from(Instant.now()),
+            LocalDate.of(2019,1,10),
+            LocalDate.of(2020,1,10),
             "Corridita",
             "terminada",
             profesorUV3,
@@ -85,26 +84,26 @@ public class FXMLContenedorColaboraciones {
 
 
 
-    public void IniciarComponentes(){
+    public void InicializarComponentes(){
         colaboraciones.add(colaboracion1);
         colaboraciones.add(colaboracion2);
         colaboraciones.add(colaboracion3);
 
         for (Colaboracion colaboracion:colaboraciones){
-            añadirComponente(colaboracion);
+            añadirItem(colaboracion);
         }
 
     }
 
-    private void añadirComponente(Colaboracion colaboracion) {
+    private void añadirItem(Colaboracion colaboracion) {
         try {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLColaboracionItem.fxml");
-            HBox colaboracionComponente = loader.load();
+            AnchorPane colaboracionItem = loader.load();
 
             FXMLColaboracionItem controler = loader.getController();
             controler.InicializarComponentes(colaboracion);
 
-            vBoxBucket.getChildren().add(colaboracionComponente);
+            vBoxBucket.getChildren().add(colaboracionItem);
         }catch (IOException e){
             e.printStackTrace();
         }

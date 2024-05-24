@@ -8,30 +8,32 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
 public class FXMLColaboracionItem {
 
-    ProfesorUV profesorUV = new ProfesorUV();
-    ProfesorExterno profesorExterno = new ProfesorExterno();
-
-
-    public Label lbDatosProfesorUV;
-    public Label lbDatosProfesorExt;
-    public Label lbTituloColaboracion;
+    public Label lbTitulo;
+    public Label lbNombreProfesorExt;
+    public Label lbNombreProfesorUV;
     public Label lbFechaInicio;
+    public Label lbFechaCierre;
     public Label lbIdiomaColaboracion;
-    public Label lbStatusColaboracion;
+    public Label lbExperienciaEducativa;
+
+    ProfesorUV profesorUV;
+    ProfesorExterno profesorExterno;
     Colaboracion colaboracion;
+
 
 
     //Aqui se van a meter los datos de las colabs que saquemos si es el admin ova el profesor, aparte de todas las consultas putas
     public void InicializarComponentes(Colaboracion colaboracion){
         this.colaboracion=colaboracion;
-        lbTituloColaboracion.setText(colaboracion.getTitulo());
+        lbTitulo.setText(colaboracion.getTitulo());
         lbFechaInicio.setText(colaboracion.getFechaInicio().toString());
+        lbFechaCierre.setText(colaboracion.getFechaCierre().toString());
         lbIdiomaColaboracion.setText(colaboracion.getIdioma());
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
 
-        lbDatosProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());
-        lbDatosProfesorUV.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno());
+        lbNombreProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());
+        lbNombreProfesorUV.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno());
     }
 
     public void btnDetalles(ActionEvent actionEvent) {
