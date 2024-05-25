@@ -8,15 +8,24 @@ public abstract class OfertaColaboracion {
     private String periodo;
     private String titulo;
     private String duracion;
+    private Integer tipo;
     private Profesor profesor;
 
-    public OfertaColaboracion(Integer ofertaColaboracionId, Integer idiomaID, String periodo, String titulo, String duracion,Profesor profesor) {
+    public OfertaColaboracion(Integer ofertaColaboracionId, Integer idiomaID, String periodo, String titulo,Integer tipo, String duracion,Profesor profesor) {
         this.ofertaColaboracionId = ofertaColaboracionId;
         this.idiomaID = idiomaID;
         this.periodo = periodo;
         this.titulo = titulo;
         this.duracion = duracion;
+        this.tipo = tipo;
         this.profesor = profesor;
+    }
+
+    public Integer getTipo(){
+        return tipo;
+    }
+    public void setTipo(Integer tipo){
+        this.tipo = tipo;
     }
 
     public Integer getOfertaColaboracionId() {

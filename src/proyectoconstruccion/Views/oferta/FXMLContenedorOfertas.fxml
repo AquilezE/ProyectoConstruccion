@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertas">
+<AnchorPane prefHeight="880.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertas">
     <children>
-        <ScrollPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1070.0">
+        <ScrollPane layoutY="-1.0" prefHeight="890.0" prefWidth="950.0">
             <content>
-                <VBox fx:id="vBoxBucket" prefHeight="703.0" prefWidth="976.0" />
+                <VBox fx:id="vBoxBucket" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" />
             </content>
         </ScrollPane>
     </children>

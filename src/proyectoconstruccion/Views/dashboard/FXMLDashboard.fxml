@@ -14,26 +14,33 @@
                      <top>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
                            <children>
+                              <DatePicker promptText="Fecha Inicio">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                              <DatePicker promptText="Fecha Conclusion" />
+                              <TextField promptText="Titulo Colaboracion">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <ComboBox prefWidth="150.0" promptText="Seleccionar Periodo">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <ComboBox prefHeight="26.0" prefWidth="174.0" promptText="Experiencia Educativa">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
                               <Button fx:id="btnEliminarrFiltros" alignment="CENTER" onAction="#btnVerColabs" text="Eliminar Filtros">
                                  <HBox.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnOrdenarAlfabeticamente" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar Alfabeticamente">
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="btnOrdenarRegionAdmin" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar Por Region">
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="btnVerColabs21" alignment="CENTER" onAction="#btnVerColabs" text="Ordenar por Profesor UV">
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </HBox.margin>
-                              </Button>
+                              <Button mnemonicParsing="false" text="Button" />
                            </children>
                         </HBox>
                      </top>

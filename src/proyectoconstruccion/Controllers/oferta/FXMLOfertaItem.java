@@ -3,9 +3,12 @@ package proyectoconstruccion.Controllers.oferta;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import proyectoconstruccion.modelo.DAO.ProfesorDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.Profesor;
+import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
+import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
 public class FXMLOfertaItem {
 
@@ -35,10 +38,12 @@ public class FXMLOfertaItem {
         }else{
             paneColor.setStyle("-fx-background-color: #28AD56; -fx-background-radius: 15;");
         }
-
     }
 
     public void btnDetalles(ActionEvent actionEvent) {
         System.out.println("Se muestran los detalles");
+
+        System.out.println(ProfesorDAO.getTipoProfesor(profesor.getProfesorId()));
+
     }
 }

@@ -5,9 +5,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboraciones">
    <children>
-      <ScrollPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1070.0">
+      <ScrollPane layoutY="-1.0" fitToHeight="true" fitToWidth="true">
          <content>
-            <VBox fx:id="vBoxBucket" prefHeight="703.0" prefWidth="976.0" />
+            <VBox fx:id="vBoxBucket"/>
          </content>
       </ScrollPane>
    </children>

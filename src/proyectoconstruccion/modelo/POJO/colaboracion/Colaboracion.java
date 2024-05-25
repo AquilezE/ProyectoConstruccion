@@ -15,7 +15,7 @@ public class Colaboracion {
     private String Duracion;
     private String Periodo;
     private String Titulo;
-    private String Idioma;
+   // private String Idioma;
     private LocalDate fechaInicio;
     private LocalDate fechaCierre;
     private String tipo;
@@ -31,7 +31,7 @@ public class Colaboracion {
         Duracion = duracion;
         Periodo = periodo;
         Titulo = titulo;
-        Idioma = idioma;
+        //Idioma = idioma;
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.tipo = tipo;
@@ -95,6 +95,7 @@ public class Colaboracion {
         Titulo = titulo;
     }
 
+    /*
     public String getIdioma() {
         return Idioma;
     }
@@ -102,6 +103,7 @@ public class Colaboracion {
     public void setIdioma(String idioma) {
         Idioma = idioma;
     }
+     */
 
     public LocalDate getFechaInicio() {
         return fechaInicio;

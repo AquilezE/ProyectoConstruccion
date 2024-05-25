@@ -18,6 +18,8 @@ public class FXMLColaboracionItem {
 
     ProfesorUV profesorUV;
     ProfesorExterno profesorExterno;
+
+
     Colaboracion colaboracion;
 
 
@@ -28,7 +30,7 @@ public class FXMLColaboracionItem {
         lbTitulo.setText(colaboracion.getTitulo());
         lbFechaInicio.setText(colaboracion.getFechaInicio().toString());
         lbFechaCierre.setText(colaboracion.getFechaCierre().toString());
-        lbIdiomaColaboracion.setText(colaboracion.getIdioma());
+       // lbIdiomaColaboracion.setText(colaboracion.getIdioma());
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
 
