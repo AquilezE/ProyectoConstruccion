@@ -21,7 +21,7 @@ public class FXMLContenedorColaboraciones {
 
 
 
-
+    
 
 
     public void InicializarComponentes(){
