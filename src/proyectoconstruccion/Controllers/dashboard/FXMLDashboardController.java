@@ -8,6 +8,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboraciones;
+import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertas;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 
@@ -30,7 +31,9 @@ public class FXMLDashboardController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
         if(Sesion.getInstancia().getRol()=="profesor"){
+            //quita Solicitud de constancias
             tabPane.getTabs().remove(3);
+            //quita Solicitud de
             tabPane.getTabs().remove(2);
         }
     }
@@ -46,12 +49,27 @@ public class FXMLDashboardController implements Initializable {
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorColaboraciones controller = loader.getController();
 
-            controller.IniciarComponentes();
+            controller.InicializarComponentes();
 
             bdPaneColaboraciones.setCenter(contenedorColaboraciones);
 
         }catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+
+    public void btnVerOfertas(ActionEvent actionEvent) {
+        try{
+            FXMLLoader loader= Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
+            AnchorPane contenedorColaboraciones = loader.load();
+            FXMLContenedorOfertas controller = loader.getController();
+
+            controller.InicializarComponentes();
+            bdPaneOfertasColab.setCenter(contenedorColaboraciones);
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

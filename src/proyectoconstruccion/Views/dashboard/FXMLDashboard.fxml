@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -11,22 +12,65 @@
                <content>
                   <BorderPane fx:id="bdPaneColaboraciones" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <Button fx:id="btnVerColabs" onAction="#btnVerColabs" text="Colabs" BorderPane.alignment="CENTER" />
-                     </top></BorderPane>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <DatePicker promptText="Fecha Inicio">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                              <DatePicker promptText="Fecha Conclusion" />
+                              <TextField promptText="Titulo Colaboracion">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <ComboBox prefWidth="150.0" promptText="Seleccionar Periodo">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <ComboBox prefHeight="26.0" prefWidth="174.0" promptText="Experiencia Educativa">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <Button fx:id="btnEliminarrFiltros" alignment="CENTER" onAction="#btnVerColabs" text="Eliminar Filtros">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" text="Button" />
+                           </children>
+                        </HBox>
+                     </top>
+                     <left>
+                        <Pane prefHeight="661.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+                     </left></BorderPane>
                </content></Tab>
           <Tab text="Ofertas de Colaboracion">
                <content>
-                  <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0" />
+                  <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#btnVerOfertas" text="Ver Ofertas" />
+                           </children></HBox>
+                     </top>
+                      <left>
+                          <Pane prefHeight="661.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+                      </left></BorderPane>
+
                </content>
           </Tab>
-            <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
-               <content>
-                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
-               </content>
-            </Tab>
             <Tab fx:id="tabNumeralia" closable="false" text="Numeralia">
                <content>
                   <BorderPane fx:id="bdPaneNumerialia" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
+               <content>
+                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
                </content>
             </Tab>
         </tabs>

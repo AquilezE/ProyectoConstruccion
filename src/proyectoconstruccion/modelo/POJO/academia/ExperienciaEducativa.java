@@ -9,11 +9,12 @@ public class ExperienciaEducativa {
 
     private Integer programaEducativoId;
 
-    public ExperienciaEducativa(Integer experienciaEducativaId, Integer creditos, String descripcion, String nombreExperienciaEducativa) {
+    public ExperienciaEducativa(Integer experienciaEducativaId, Integer creditos, String descripcion, String nombreExperienciaEducativa,Integer programaEducativoId) {
         this.experienciaEducativaId = experienciaEducativaId;
         this.creditos = creditos;
         this.descripcion = descripcion;
         this.nombreExperienciaEducativa = nombreExperienciaEducativa;
+        this.programaEducativoId = programaEducativoId;
     }
 
     public ExperienciaEducativa() {}
@@ -50,5 +51,8 @@ public class ExperienciaEducativa {
         this.nombreExperienciaEducativa = nombreExperienciaEducativa;
     }
 
+    public void setProgramaEducativoId(Integer programaEducativoId) {this.programaEducativoId = programaEducativoId;}
+
+    public Integer getProgramaEducativoId() {return programaEducativoId;}
 
 }

@@ -5,6 +5,7 @@ import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Colaboracion {
@@ -14,9 +15,9 @@ public class Colaboracion {
     private String Duracion;
     private String Periodo;
     private String Titulo;
-    private String Idioma;
-    private Date fechaInicio;
-    private Date fechaCierre;
+   // private String Idioma;
+    private LocalDate fechaInicio;
+    private LocalDate fechaCierre;
     private String tipo;
     private String estado;
 
@@ -25,12 +26,12 @@ public class Colaboracion {
     private ExperienciaEducativa experienciaEducativa;
     private Evidencia evidencia;
 
-    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, String idioma, Date fechaInicio, Date fechaCierre, String tipo, String estado, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
+    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, String idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
         this.colaboracionId = colaboracionId;
         Duracion = duracion;
         Periodo = periodo;
         Titulo = titulo;
-        Idioma = idioma;
+        //Idioma = idioma;
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.tipo = tipo;
@@ -94,6 +95,7 @@ public class Colaboracion {
         Titulo = titulo;
     }
 
+    /*
     public String getIdioma() {
         return Idioma;
     }
@@ -101,20 +103,21 @@ public class Colaboracion {
     public void setIdioma(String idioma) {
         Idioma = idioma;
     }
+     */
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public Date getFechaCierre() {
+    public LocalDate getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(Date fechaCierre) {
+    public void setFechaCierre(LocalDate fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 

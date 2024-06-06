@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLColaboracionItem">
+   <children>
+      <HBox layoutX="9.0" layoutY="11.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white; -fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: grey;">
+         <children>
+            <Pane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="203.0" prefWidth="20.0" style="-fx-background-color: #800000; -fx-background-radius: 15;" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.8" minWidth="10.0" prefWidth="429.5999755859375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.5999877929687" minWidth="10.0" prefWidth="296.20002441406245" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label />
+                        <Label fx:id="lbTitulo" text="TituloColaboracion">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox GridPane.rowIndex="1">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Profesor UV:        " />
+                              <Label fx:id="lbNombreProfesorUV" text="NombreApellidoPat">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Profesor Externo: " />
+                              <Label fx:id="lbNombreProfesorExt" text="NombreApellidoPat">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <VBox>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Fecha Inicio: " />
+                                    <Label fx:id="lbFechaInicio" text="DIA/MES/ANIO" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Fecha Cierre: " />
+                                    <Label fx:id="lbFechaCierre" text="DIA/MES/ANIO" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Idioma: " />
+                        <Label fx:id="lbIdiomaColaboracion" text="IdiomaNom" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Experiencia Educativa: " />
+                        <Label fx:id="lbExperienciaEducativa" text="NoSeWe" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </GridPane>
+            <VBox alignment="CENTER" prefHeight="198.0" prefWidth="135.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btnDetalles" text="Detalles" />
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>
