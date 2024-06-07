@@ -19,6 +19,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
@@ -35,6 +37,12 @@ public class FXMLDashboardController implements Initializable {
     public BorderPane bdPaneNumerialia;
     @FXML
     private Button btnEliminarrFiltros;
+    @FXML
+    private TableView<?> tvNumeralia;
+    @FXML
+    private TableColumn<?, ?> colNumProfesores;
+    @FXML
+    private TableColumn<?, ?> colNumAlumnos;
 
 
 
@@ -44,11 +52,13 @@ public class FXMLDashboardController implements Initializable {
             tabPane.getTabs().remove(3);
             //quita Solicitud de
             tabPane.getTabs().remove(2);
+        }else{
+            //cargarPeriodosNumeralia();
         }
     }
 
     public void IniciarComponentes(){
-
+        
     }
 
     @FXML
@@ -101,8 +111,12 @@ public class FXMLDashboardController implements Initializable {
             ex.printStackTrace();
         }
     }
-
+    public void cargarPeriodosNumeralia(){
+        //TODO
+    }
+    
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
+        
     }
 }

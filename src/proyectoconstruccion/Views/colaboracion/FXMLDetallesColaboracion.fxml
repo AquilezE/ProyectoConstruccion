@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionController">
+   <children>
+      <Label fx:id="lbIdColaboracion" layoutX="47.0" layoutY="67.0" text="ID de Colaboración: ">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTitulo" layoutX="344.0" layoutY="168.0" text="Título de la colaboración:">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNombreProfesorUV" layoutX="194.0" layoutY="260.0" text="Nombre profesor UV:" />
+      <Label fx:id="lbNombreProfesorExterno" layoutX="163.0" layoutY="333.0" text="Nombre profesor externo:" />
+      <Label fx:id="lbIdioma" layoutX="286.0" layoutY="412.0" text="Idioma:" />
+      <Label fx:id="lbPeriodo" layoutX="769.0" layoutY="260.0" text="Periodo:" />
+      <Label fx:id="lbFechas" layoutX="684.0" layoutY="323.0" text="Fecha inicio/fecha fin:" />
+      <Label fx:id="lbExperienciaEdcativa" layoutX="682.0" layoutY="412.0" text="Experiencia educativa:" />
+      <Button layoutX="1013.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" text="Cancelar colaboracion" />
+      <Button fx:id="btnClicSyllabus" layoutX="209.0" layoutY="582.0" mnemonicParsing="false" text="Subir Syllabus" />
+      <Button fx:id="btnClicEvidencias" layoutX="413.0" layoutY="582.0" mnemonicParsing="false" text="Subir evidencias" />
+      <Button fx:id="btnClicListaEstudiantes" layoutX="640.0" layoutY="582.0" mnemonicParsing="false" text="Subir lista de estudiantes" />
+      <Button fx:id="btnClicRegresar" layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" text="Regresar" />
+   </children>
+</AnchorPane>
