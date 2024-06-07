@@ -15,6 +15,13 @@ import proyectoconstruccion.Utils.Utils;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 
 public class FXMLDashboardController implements Initializable {
 
@@ -26,6 +33,8 @@ public class FXMLDashboardController implements Initializable {
     public BorderPane bdPaneOfertasColab;
     public BorderPane bdPaneSolicitudesConstancias;
     public BorderPane bdPaneNumerialia;
+    @FXML
+    private Button btnEliminarrFiltros;
 
 
 
@@ -42,6 +51,7 @@ public class FXMLDashboardController implements Initializable {
 
     }
 
+    @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
         try{
 
@@ -59,6 +69,7 @@ public class FXMLDashboardController implements Initializable {
     }
 
 
+    @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
         try{
             FXMLLoader loader= Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
@@ -70,6 +81,24 @@ public class FXMLDashboardController implements Initializable {
         }catch(IOException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    private void btnClicRegistrarOfertaExterna(ActionEvent event) {
+        try {
+            Stage escenario = new Stage();
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaExterna.fxml");
+            Parent root = loader.load();
+            FXMLRegistrarOfertaExternaController controlador = loader.getController();
+            controlador.inicializarValores();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Registrar oferta de colaboración externa");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController">
+   <children>
+      <Label layoutX="365.0" layoutY="155.0" text="Nombre completo" />
+      <Label layoutX="365.0" layoutY="241.0" text="Correo electrónico" />
+      <Label layoutX="409.0" layoutY="324.0" text="Universidad" />
+      <Label layoutX="427.0" layoutY="407.0" text="Teléfono" />
+      <Label layoutX="433.0" layoutY="486.0" text="Idioma" />
+      <ComboBox fx:id="cbIdioma" layoutX="518.0" layoutY="481.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfNombre" layoutX="518.0" layoutY="150.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfCorreo" layoutX="518.0" layoutY="236.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfUniversidad" layoutX="518.0" layoutY="319.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfTelefono" layoutX="518.0" layoutY="402.0" prefHeight="31.0" prefWidth="344.0" />
+      <Button layoutX="1162.0" layoutY="651.0" mnemonicParsing="false" text="Registrar" />
+      <Button layoutX="51.0" layoutY="651.0" mnemonicParsing="false" text="Regresar" />
+   </children>
+</AnchorPane>
