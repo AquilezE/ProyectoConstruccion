@@ -8,10 +8,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import proyectoconstruccion.modelo.POJO.Idioma;
 
 /**
@@ -44,5 +46,15 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
         idiomas = FXCollections.observableArrayList();
         //idiomas.addAll((ArrayList<String>) CatalogoDAO.obtenerIdiomas().get("idiomas"));
         //cbIdioma.setItems(idiomas);
+    }
+
+    @FXML
+    private void btnClicRegresar(ActionEvent event) {
+        Stage escenarioRegistrarProfesorExterno = (Stage) tfNombre.getScene().getWindow();
+        escenarioRegistrarProfesorExterno.close();
+    }
+
+    @FXML
+    private void btnClicRegistrar(ActionEvent event) {
     }
 }

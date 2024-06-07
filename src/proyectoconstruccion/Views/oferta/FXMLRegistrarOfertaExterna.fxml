@@ -14,13 +14,13 @@
       <TextField fx:id="tfIdioma" layoutX="702.0" layoutY="158.0" prefHeight="31.0" prefWidth="295.0" />
       <ComboBox fx:id="cbPeriodo" layoutX="702.0" layoutY="248.0" prefHeight="31.0" prefWidth="295.0" />
       <ComboBox fx:id="cbProfesorExterno" layoutX="255.0" layoutY="357.0" prefHeight="31.0" prefWidth="278.0" />
-      <ComboBox fx:id="cbAreaAcademica" layoutX="702.0" layoutY="353.0" prefHeight="31.0" prefWidth="295.0" />
+      <ComboBox fx:id="cbExperienciaEducativa" layoutX="702.0" layoutY="353.0" prefHeight="31.0" prefWidth="295.0" />
       <Label layoutX="255.0" layoutY="125.0" text="Título de la oferta de colaboración" />
       <Label layoutX="702.0" layoutY="121.0" text="Idioma" />
       <Label layoutX="255.0" layoutY="224.0" text="Duración de la colaboración" />
       <Label layoutX="702.0" layoutY="220.0" text="Periodo" />
       <Label layoutX="255.0" layoutY="329.0" text="Profesor externo" />
-      <Label layoutX="702.0" layoutY="325.0" text="Área académica" />
+      <Label layoutX="702.0" layoutY="325.0" text="Experiencia educativa" />
       <Label layoutX="255.0" layoutY="430.0" text="Datos del profesor externo">
          <font>
             <Font name="System Bold" size="15.0" />

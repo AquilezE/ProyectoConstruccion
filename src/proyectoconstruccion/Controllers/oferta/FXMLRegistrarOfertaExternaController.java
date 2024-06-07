@@ -24,7 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController;
 import proyectoconstruccion.Utils.Utils;
-import proyectoconstruccion.modelo.POJO.academia.AreaAcademica;
+import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 import proyectoconstruccion.modelo.POJO.profesor.Profesor;
 
 /**
@@ -35,7 +35,7 @@ import proyectoconstruccion.modelo.POJO.profesor.Profesor;
 public class FXMLRegistrarOfertaExternaController implements Initializable {
     private ObservableList<String> periodos;
     private ObservableList<Profesor> profesores;
-    private ObservableList<AreaAcademica> areas;
+    private ObservableList<ExperienciaEducativa> experiencias;
     @FXML
     private TextField tfTitulo;
     @FXML
@@ -47,7 +47,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     @FXML
     private ComboBox<?> cbProfesorExterno;
     @FXML
-    private ComboBox<?> cbAreaAcademica;
+    private ComboBox<?> cbExperienciaEducativa;
     @FXML
     private Label lbNombre;
     @FXML
@@ -58,7 +58,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     private Label lbPais;
     @FXML
     private Button btnRegistrarProfesorExterno;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -73,8 +73,8 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         lbUniversidad.setText("");
         lbPais.setText("");
         //cargarPeriodos();
-        //cargarProfesExternos
-        //cargarAreasAcademicas  
+        //cargarProfesExternos();
+        //cargarExperienciasEducativas();
     }
     
     private void cargarPeriodos(){
@@ -89,10 +89,10 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         //cbProfesorExterno.setItems(profesores);
     } 
     
-    private void cargarAreasAcademicas(){
-        areas = FXCollections.observableArrayList();
-        //areas.addAll((ArrayList<Estado>) CatalogoDAO.obtenerAreas().get("areas"));
-        //cbAreaAcademica.setItems(areas);
+    private void cargarExperienciasEducativas(){
+        experiencias = FXCollections.observableArrayList();
+        //experiencias.addAll((ArrayList<Estado>) CatalogoDAO.obtenerEEs().get("experiencias"));
+        //cbExperienciaEducativa.setItems(experiencias);
     } 
         
     @FXML
@@ -115,6 +115,8 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
+        Stage escenarioRegistrarOfertaExterna = (Stage) tfTitulo.getScene().getWindow();
+        escenarioRegistrarOfertaExterna.close();
     }
 
     @FXML

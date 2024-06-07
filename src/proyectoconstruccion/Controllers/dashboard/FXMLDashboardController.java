@@ -101,4 +101,8 @@ public class FXMLDashboardController implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    @FXML
+    private void btnClicVerNumeralia(ActionEvent event) {
+    }
 }
