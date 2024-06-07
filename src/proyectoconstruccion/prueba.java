@@ -6,6 +6,7 @@ public class prueba {
 
     }
     public void hooa(){
-
+        System.out.println("");
     }
+
 }
