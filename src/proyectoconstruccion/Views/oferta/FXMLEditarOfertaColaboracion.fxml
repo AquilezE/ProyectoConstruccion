@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLEditarOfertaColaboracionController">
+   <children>
+      <Label layoutX="78.0" layoutY="161.0" prefHeight="65.0" prefWidth="154.0" text="Titulo">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="92.0" layoutY="410.0" text="Idioma">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="81.0" layoutY="294.0" text="Periodo">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="81.0" layoutY="540.0" text="Duración">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Pane layoutX="3.0" layoutY="-1.0" prefHeight="174.0" prefWidth="1276.0">
+         <children>
+            <Label layoutX="497.0" layoutY="41.0" text="EDITAR OFERTA COLABORACION">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextField fx:id="lbTitulo" layoutX="475.0" layoutY="180.0" />
+      <TextField fx:id="idIdioma" layoutX="481.0" layoutY="427.0" />
+      <TextField fx:id="IdDuracion" layoutX="475.0" layoutY="549.0" />
+      <ComboBox fx:id="idCBPeriodo" layoutX="487.0" layoutY="311.0" prefWidth="150.0" />
+      <Button layoutX="454.0" layoutY="633.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="50.0" prefWidth="106.0" text="Cancelar" />
+      <Button layoutX="629.0" layoutY="633.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="43.0" prefWidth="126.0" text="Editar" />
+   </children>
+</AnchorPane>
