@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLCancelarColaboracionController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="341.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLCancelarColaboracionController">
+   <children>
+      <Label layoutX="41.0" layoutY="60.0" text="Si está seguro de cancelar la colaboración, debe dar un motivo para cancelarla" />
+      <TextField fx:id="tfMotivo" alignment="TOP_LEFT" layoutX="41.0" layoutY="111.0" prefHeight="146.0" prefWidth="518.0" promptText="Escriba aqui el motivo" />
+      <Button layoutX="22.0" layoutY="286.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
+      <Button layoutX="411.0" layoutY="286.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" text="Cancelar colaboración" />
+   </children>
 </AnchorPane>

@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyectoconstruccion.Controllers.colaboracion;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author unaay
- */
 public class FXMLCancelarColaboracionController implements Initializable {
+
+    @FXML
+    private TextField tfMotivo;
 
     /**
      * Initializes the controller class.
@@ -22,5 +20,15 @@ public class FXMLCancelarColaboracionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void btnClicRegresar(ActionEvent event) {
+        Stage escenarioCancelarColaboracion = (Stage) tfMotivo.getScene().getWindow();
+        escenarioCancelarColaboracion.close();
+    }
+
+    @FXML
+    private void btnClicCancelarColaboracion(ActionEvent event) {
+    }
     
 }

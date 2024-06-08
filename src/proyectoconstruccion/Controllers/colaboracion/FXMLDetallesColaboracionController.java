@@ -42,14 +42,6 @@ public class FXMLDetallesColaboracionController implements Initializable {
     private Label lbFechas;
     @FXML
     private Label lbExperienciaEdcativa;
-    @FXML
-    private Button btnClicSyllabus;
-    @FXML
-    private Button btnClicEvidencias;
-    @FXML
-    private Button btnClicListaEstudiantes;
-    @FXML
-    private Button btnClicRegresar;
 
     /**
      * Initializes the controller class.
@@ -66,16 +58,34 @@ public class FXMLDetallesColaboracionController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLCancelarColaboracion.fxml");
             Parent root = loader.load();
             FXMLCancelarColaboracionController controlador = loader.getController();
-            //TODO pasarle como valor una colaboracion, que son los detalles que se veran en la otra ventana
+            //TODO pasarle como valor una colaboracion
             //controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
-            escenario.setTitle("Detalles colaboración");
+            escenario.setTitle("Cancelar colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicSyllabus(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicEvidencias(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicListaEstudiantes(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicRegresar(ActionEvent event) {
+        Stage escenarioDetallesColaboracion = (Stage) lbTitulo.getScene().getWindow();
+        escenarioDetallesColaboracion.close();
     }
     
 }
