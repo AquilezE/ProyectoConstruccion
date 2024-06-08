@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRechazarAceptarColaboracion">
+   <children>
+      <Label layoutX="121.0" layoutY="202.0" prefHeight="39.0" prefWidth="233.0" text="Nombre profesor:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNumeroColaboracion" layoutX="76.0" layoutY="98.0" text="Colaboración numero">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="113.0" layoutY="291.0" prefHeight="23.0" prefWidth="169.0" text="Nombre colaborador:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="396.0" text="Idioma:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="736.0" layoutY="209.0" text="Perido:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="727.0" layoutY="399.0" text="Experiencia Educativa:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="729.0" layoutY="298.0" text="Fechas:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTitulo" layoutX="493.0" layoutY="54.0" text="Nombre Experiencia Educactiva">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="365.0" layoutY="579.0" mnemonicParsing="false" onAction="#btnAutorizar" text="Autorizar">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="684.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnDenegar" text="Denegar">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Label fx:id="lbNombreProfesor" layoutX="299.0" layoutY="212.0" prefHeight="3.0" prefWidth="334.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNombreColaborador" layoutX="339.0" layoutY="282.0" prefHeight="22.0" prefWidth="181.0" />
+      <Label fx:id="lbIdioma" layoutX="339.0" layoutY="402.0" prefHeight="13.0" prefWidth="181.0" />
+      <Label fx:id="lbPeriodo" layoutX="935.0" layoutY="213.0" prefHeight="16.0" prefWidth="181.0" />
+      <Label fx:id="lbFechas" layoutX="920.0" layoutY="300.0" prefHeight="22.0" prefWidth="181.0" />
+      <Label fx:id="lbExperienciaEducativa" layoutX="982.0" layoutY="410.0" prefHeight="13.0" prefWidth="132.0" />
+   </children>
+</AnchorPane>

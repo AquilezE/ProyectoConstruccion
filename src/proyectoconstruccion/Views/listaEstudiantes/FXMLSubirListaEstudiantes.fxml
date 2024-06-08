@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.listaEstudiantes.FXMLSubirListaEstudiantes">
+   <children>
+      <Label layoutX="443.0" layoutY="32.0" text="Subir documentos">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <VBox fx:id="vbPrincipal" layoutX="296.0" layoutY="212.0" prefHeight="291.0" prefWidth="565.0" />
+      <Button layoutX="316.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnAñadir" text="Añadir">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <Button layoutX="790.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

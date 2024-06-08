@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEdicionOfertaColaboracionController">
+   <children>
+      <Label layoutX="183.0" layoutY="206.0" text="Titulo">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="166.0" layoutY="332.0" text="Periodo">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="432.0" text="Idioma">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="131.0" layoutY="529.0" text="Duración">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfTiturlo" layoutX="446.0" layoutY="204.0" prefHeight="47.0" prefWidth="232.0" />
+      <TextField fx:id="tfPeriodo" layoutX="453.0" layoutY="321.0" prefHeight="47.0" prefWidth="232.0" />
+      <TextField fx:id="tfIdioma" layoutX="457.0" layoutY="426.0" prefHeight="47.0" prefWidth="232.0" />
+      <TextField fx:id="tdDuracion" layoutX="458.0" layoutY="516.0" prefHeight="47.0" prefWidth="232.0" />
+      <Label layoutX="412.0" layoutY="51.0" prefHeight="37.0" prefWidth="547.0" text="EDICION DE OFERTA">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Button layoutX="593.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnFinalizar" text="FINALIZAR">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
