@@ -87,5 +87,20 @@ public class FXMLDetallesColaboracionController implements Initializable {
         Stage escenarioDetallesColaboracion = (Stage) lbTitulo.getScene().getWindow();
         escenarioDetallesColaboracion.close();
     }
-    
+
+    public void btnAutorizar(ActionEvent actionEvent) {
+        try {
+            Stage escenario = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectoconstruccion/Views/colaboracion/FXMLRechazarAceptarColaboracion.fxml"));
+            Parent root = loader.load();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Ventana de Autorización");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
