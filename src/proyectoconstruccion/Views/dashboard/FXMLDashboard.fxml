@@ -111,7 +111,112 @@
             </Tab>
             <Tab fx:id="tabSocilicitudes" closable="false" text="Solicitudes de Constancias">
                <content>
-                  <BorderPane fx:id="bdPaneSolicitudesConstancias" prefHeight="200.0" prefWidth="200.0" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="98.0" layoutY="165.0" text="Nombre profesor">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="94.0" layoutY="235.0" text="Nombre colaborador">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbNumeroColaboracion" layoutX="104.0" layoutY="72.0" text="Numero colaboracion">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="114.0" layoutY="312.0" text="Idioma">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="93.0" layoutY="373.0" text="Experiencia educativa">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbTituloMateria" layoutX="501.0" layoutY="47.0" text="Materia">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="512.0" layoutY="180.0" text="Periodo">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="518.0" layoutY="307.0" text="Fechas">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="859.0" layoutY="73.0" mnemonicParsing="false" onAction="#btnRegresar" text="Regresar">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="851.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnAprobarConstancia" text="Aprobar constancia">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="866.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnEvidencia" text="Evidencia">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="867.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnSyllabus" text="Syllabus">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="146.0" layoutY="442.0" mnemonicParsing="false" onAction="#btnDescargarListaEstudiantes" text="Descargar lista estudiantes">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="lbNombreProfesor" layoutX="256.0" layoutY="164.0" prefHeight="27.0" prefWidth="217.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbNombreColaborador" layoutX="270.0" layoutY="237.0" prefHeight="17.0" prefWidth="214.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbIdioma" layoutX="267.0" layoutY="308.0" prefHeight="23.0" prefWidth="90.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbExperienciaEducativa" layoutX="294.0" layoutY="365.0" prefHeight="30.0" prefWidth="154.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbPeriodoSC" layoutX="658.0" layoutY="180.0" prefHeight="23.0" prefWidth="95.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbFechas" layoutX="666.0" layoutY="310.0" prefHeight="23.0" prefWidth="88.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvEstudiantes" layoutX="199.0" layoutY="487.0" prefHeight="200.0" prefWidth="644.0">
+                          <columns>
+                            <TableColumn prefWidth="144.4869384765625" text="Matricula" />
+                            <TableColumn prefWidth="197.76116943359375" text="Nombre" />
+                              <TableColumn prefWidth="155.17718505859375" text="Calificación" />
+                              <TableColumn prefWidth="143.99993896484375" text="Faltas" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
                </content>
             </Tab>
         </tabs>

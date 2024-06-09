@@ -3,8 +3,7 @@ package proyectoconstruccion.Controllers.dashboard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboraciones;
@@ -18,9 +17,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
@@ -35,6 +31,16 @@ public class FXMLDashboardController implements Initializable {
     public BorderPane bdPaneOfertasColab;
     public BorderPane bdPaneSolicitudesConstancias;
     public BorderPane bdPaneNumerialia;
+    public Label lbNumeroColaboracion;
+    public TableView tvEstudiantes;
+    public Label lbFechas;
+    public Label lbPeriodoSC;
+    public Label lbExperienciaEducativa;
+    public Label lbIdioma;
+    public Label lbNombreColaborador;
+    public Label lbNombreProfesor;
+    public Label lbPeriodo;
+    public Label lbTituloMateria;
     @FXML
     private Button btnEliminarrFiltros;
     @FXML
@@ -118,5 +124,20 @@ public class FXMLDashboardController implements Initializable {
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
         
+    }
+
+    public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
+    }
+
+    public void btnSyllabus(ActionEvent actionEvent) {
+    }
+
+    public void btnEvidencia(ActionEvent actionEvent) {
+    }
+
+    public void btnAprobarConstancia(ActionEvent actionEvent) {
+    }
+
+    public void btnRegresar(ActionEvent actionEvent) {
     }
 }
