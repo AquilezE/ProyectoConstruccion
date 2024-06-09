@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import proyectoconstruccion.Utils.Constantes;
@@ -29,14 +30,13 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
  * @author unaay
  */
 public class FXMLInicioSesionController implements Initializable {
-
-
-    public TextField tfContrasenia;
-    public TextField tfUsuario;
-
-    public Button btIniciarSesion;
-
     @FXML
+    public TextField tfUsuario;
+    @FXML
+    public Button btIniciarSesion;
+    @FXML
+    private PasswordField pfContrasenia;
+
 
 
     @Override
@@ -44,8 +44,9 @@ public class FXMLInicioSesionController implements Initializable {
 
     }
 
+    @FXML
     public void btIniciarSesion(ActionEvent actionEvent) {
-       String contrasenia = tfContrasenia.getText();
+       String contrasenia = pfContrasenia.getText();
        String usuario = tfUsuario.getText();
 
        if(validarCampos(usuario, contrasenia)){

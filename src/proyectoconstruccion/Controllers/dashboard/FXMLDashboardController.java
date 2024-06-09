@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 
 public class FXMLDashboardController implements Initializable {
@@ -126,18 +127,41 @@ public class FXMLDashboardController implements Initializable {
         
     }
 
+    @FXML
     public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void btnSyllabus(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void btnEvidencia(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void btnAprobarConstancia(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void btnRegresar(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void btnClicRegistrarColaboracion(ActionEvent event) {
+        try {
+            Stage escenario = new Stage();
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionSinOferta.fxml");
+            Parent root = loader.load();
+            FXMLRegistrarColaboracionSinOfertaController controlador = loader.getController();
+            //controlador.inicializarValores();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Registrar colaboración sin oferta");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
