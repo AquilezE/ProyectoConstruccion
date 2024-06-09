@@ -26,11 +26,11 @@ public class FXMLContenedorColaboraciones {
 
     public void InicializarComponentes(){
 
-//        ArrayList<Colaboracion> colaboraciones= ColaboracionDAO.getColaboraciones();
-//
-//        for (Colaboracion colaboracion:colaboraciones){
-//            añadirItem(colaboracion);
-//        }
+        ArrayList<Colaboracion> colaboraciones= (ArrayList<Colaboracion>    ) ColaboracionDAO.getColaboraciones(null, null,null,null,null,null,null).get("colaboraciones");
+
+        for (Colaboracion colaboracion:colaboraciones){
+            añadirItem(colaboracion);
+        }
 
     }
 
