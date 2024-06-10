@@ -49,7 +49,7 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
 
     public void btnCrearColaboracion(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOferta.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaUV.fxml");
             Parent root = loader.load();
             FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
             // Puedes pasar datos a la nueva ventana si es necesario
