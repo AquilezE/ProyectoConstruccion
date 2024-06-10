@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.Profesor;
@@ -36,13 +37,15 @@ public class FXMLOfertaItemController {
         lbTitulo.setText(ofertaColaboracion.getTitulo());
         lbNombreProfesorOfertante.setText(profesor.getNombre()+" "+profesor.getApellidoPaterno());
         lbPeriodo.setText(ofertaColaboracion.getPeriodo());
-        lbIdiomaOferta.setText(String.valueOf(ofertaColaboracion.getIdiomaID()));
+        lbIdiomaOferta.setText(IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaID()).getIdioma());
+        lbDuracion.setText(ofertaColaboracion.getDuracion());
 
         if(ofertaColaboracion instanceof OfertaColaboracionExterna){
             paneColor.setStyle("-fx-background-color: #FFBF00; -fx-background-radius: 15;");
         }else{
             paneColor.setStyle("-fx-background-color: #28AD56; -fx-background-radius: 15;");
         }
+
     }
 
     public void btnDetalles(ActionEvent actionEvent) {

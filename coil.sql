@@ -60,13 +60,16 @@ CREATE TABLE `colaboracion` (
   `profesor_externo_id` int DEFAULT NULL,
   `experiencia_educativa_id` int DEFAULT NULL,
   `evidencia_id` int DEFAULT NULL,
+  `idioma_id` int DEFAULT NULL,
   PRIMARY KEY (`colaboracion_id`),
   KEY `fk_colaboracion_profesor_uv` (`profesor_uv_id`),
   KEY `fk_colaboracion_profesor_externo` (`profesor_externo_id`),
   KEY `fk_colaboracion_experiencia_educativa` (`experiencia_educativa_id`),
   KEY `fk_colaboracion_evidencia` (`evidencia_id`),
+  KEY `fk_colaboracion_idioma` (`idioma_id`),
   CONSTRAINT `fk_colaboracion_evidencia` FOREIGN KEY (`evidencia_id`) REFERENCES `evidencia` (`evidencia_id`),
   CONSTRAINT `fk_colaboracion_experiencia_educativa` FOREIGN KEY (`experiencia_educativa_id`) REFERENCES `experienciaeducativa` (`experiencia_educativa_id`),
+  CONSTRAINT `fk_colaboracion_idioma` FOREIGN KEY (`idioma_id`) REFERENCES `idioma` (`idioma_id`),
   CONSTRAINT `fk_colaboracion_profesor_externo` FOREIGN KEY (`profesor_externo_id`) REFERENCES `profesorexterno` (`profesor_id`),
   CONSTRAINT `fk_colaboracion_profesor_uv` FOREIGN KEY (`profesor_uv_id`) REFERENCES `profesoruv` (`profesor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -78,7 +81,7 @@ CREATE TABLE `colaboracion` (
 
 LOCK TABLES `colaboracion` WRITE;
 /*!40000 ALTER TABLE `colaboracion` DISABLE KEYS */;
-INSERT INTO `colaboracion` VALUES (86,'3 weeks','Concluida','2023-02-15','2023-02-01',30,'Febrero 2023-Julio 2023','Clase espejo','Estudio de Interculturalidad',11,16,1,1),(87,'4 weeks','En progreso','2023-01-31','2023-01-01',20,'Agosto 2023-Enero 2024','Taller COIL-VIC','Conocer Otras Culturas',12,20,2,2),(88,'5 weeks','Concluida','2024-07-05','2024-02-01',15,'Febrero 2024-Julio 2024','Clase espejo','Análisis de Conocimiento del Inglés',13,17,3,3);
+INSERT INTO `colaboracion` VALUES (86,'3 weeks','Concluida','2023-02-15','2023-02-01',30,'Febrero 2023-Julio 2023','Clase espejo','Estudio de Interculturalidad',11,16,1,1,2),(87,'4 weeks','Activa','2023-01-31','2023-01-01',20,'Agosto 2023-Enero 2024','Taller COIL-VIC','Conocer Otras Culturas',12,20,2,2,3),(88,'1 week','Pendiente','2024-07-05','2024-02-01',NULL,'Febrero 2024-Julio 2024','Clase espejo','Análisis de Conocimiento del Inglés',13,17,3,4,1);
 /*!40000 ALTER TABLE `colaboracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +188,7 @@ CREATE TABLE `evidencia` (
   KEY `fk_evidencia_zip` (`evidencia_zip_id`),
   CONSTRAINT `fk_evidencia_pdf` FOREIGN KEY (`evidencia_pdf_id`) REFERENCES `evidenciapdf` (`evidencia_pdf_id`),
   CONSTRAINT `fk_evidencia_zip` FOREIGN KEY (`evidencia_zip_id`) REFERENCES `evidenciazip` (`evidencia_zip_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +197,7 @@ CREATE TABLE `evidencia` (
 
 LOCK TABLES `evidencia` WRITE;
 /*!40000 ALTER TABLE `evidencia` DISABLE KEYS */;
-INSERT INTO `evidencia` VALUES (1,'Evidencia 1','Descripción de la Evidencia 1',1,1),(2,'Evidencia 2','Descripción de la Evidencia 2',2,2),(3,'Evidencia 3','Descripción de la Evidencia 3',3,3);
+INSERT INTO `evidencia` VALUES (1,'Evidencia 1','Descripción de la Evidencia 1',1,1),(2,'Evidencia 2','Descripción de la Evidencia 2',2,2),(3,'Evidencia 3','Descripción de la Evidencia 3',3,3),(4,'Evidencia 4','Descripcion de la Evidencia',4,4);
 /*!40000 ALTER TABLE `evidencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +212,7 @@ CREATE TABLE `evidenciapdf` (
   `evidencia_pdf_id` int NOT NULL AUTO_INCREMENT,
   `archivo_pdf` blob,
   PRIMARY KEY (`evidencia_pdf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +221,7 @@ CREATE TABLE `evidenciapdf` (
 
 LOCK TABLES `evidenciapdf` WRITE;
 /*!40000 ALTER TABLE `evidenciapdf` DISABLE KEYS */;
-INSERT INTO `evidenciapdf` VALUES (1,_binary ''),(2,_binary ''),(3,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0');
+INSERT INTO `evidenciapdf` VALUES (1,_binary ''),(2,_binary ''),(3,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),(4,NULL);
 /*!40000 ALTER TABLE `evidenciapdf` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +236,7 @@ CREATE TABLE `evidenciazip` (
   `evidencia_zip_id` int NOT NULL AUTO_INCREMENT,
   `archivo_zip` blob,
   PRIMARY KEY (`evidencia_zip_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +245,7 @@ CREATE TABLE `evidenciazip` (
 
 LOCK TABLES `evidenciazip` WRITE;
 /*!40000 ALTER TABLE `evidenciazip` DISABLE KEYS */;
-INSERT INTO `evidenciazip` VALUES (1,_binary ''),(2,_binary ''),(3,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0');
+INSERT INTO `evidenciazip` VALUES (1,_binary ''),(2,_binary ''),(3,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),(4,NULL);
 /*!40000 ALTER TABLE `evidenciazip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +329,7 @@ CREATE TABLE `ofertacolaboracion` (
 
 LOCK TABLES `ofertacolaboracion` WRITE;
 /*!40000 ALTER TABLE `ofertacolaboracion` DISABLE KEYS */;
-INSERT INTO `ofertacolaboracion` VALUES (1,'3 dias',4,'Agosto 2023 - Diciembre 2023','Aleman Avanzado',11,0),(2,'3 months',2,'Julio-2023','Advanced French',12,0),(3,'1 month',3,'Diciembre-2023','Beginner German',13,0),(4,'6 months',4,'Julio-2024','Conversational Italian',14,0),(5,'4 months',5,'Diciembre-2024','Portuguese for Business',15,0),(6,'2 months',1,'Julio-2024','Intermediate Spanish',16,1),(7,'3 months',2,'Diciembre-2023','French Literature',17,1),(8,'1 month',3,'Julio-2023','German Grammar',18,1),(9,'6 months',4,'Diciembre-2024','Italian Culture',19,1),(10,'4 months',5,'Julio-2023','Brazilian Portuguese',20,1),(11,'2 weeks',1,'Agosto 2024 - Diciembre 2024','Significancia de Ser Mexicano',24,1);
+INSERT INTO `ofertacolaboracion` VALUES (1,'3 dias',4,'Agosto 2023 - Diciembre 2023','Aleman Avanzado',11,0),(2,'3 months',3,'Agosto 2023 - Diciembre 2023','Advanced French',12,0),(3,'1 month',4,'Agosto 2023 - Diciembre 2023','Beginner German',13,0),(4,'6 months',5,'Febrero 2024 - Julio 2024','Conversational Italian',14,0),(5,'4 months',2,'Febrero 2024 - Julio 2024','Impacto de Little Ceasars en la Economia de Queretaro',15,0),(6,'2 months',2,'Febrero 2024 - Julio 2024','Intermediate Spanish',16,1),(7,'3 months',3,'Febrero 2023 - Julio 2023','French Literature',17,1),(8,'1 month',4,'Agosto 2023 - Diciembre 2023','German Grammar',18,1),(9,'3 months',5,'Agosto 2024 - Diciembre 2024','Italian Culture',19,1),(10,'4 months',2,'Agosto 2023 - Diciembre 2023','Como prepara principio de Fritada',20,1),(11,'2 weeks',1,'Agosto 2024 - Diciembre 2024','Significancia de Ser Mexicano',24,1);
 /*!40000 ALTER TABLE `ofertacolaboracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,4 +548,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-10  4:32:49
+-- Dump completed on 2024-06-10 17:05:53

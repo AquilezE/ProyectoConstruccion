@@ -1,5 +1,6 @@
 package proyectoconstruccion.modelo.POJO.colaboracion;
 
+import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
@@ -15,7 +16,6 @@ public class Colaboracion {
     private String Duracion;
     private String Periodo;
     private String Titulo;
-   // private String Idioma;
     private LocalDate fechaInicio;
     private LocalDate fechaCierre;
     private String tipo;
@@ -26,13 +26,14 @@ public class Colaboracion {
     private ProfesorExterno profesorExterno;
     private ExperienciaEducativa experienciaEducativa;
     private Evidencia evidencia;
+    private Idioma Idioma;
 
-    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, String idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, Integer numeroEstudiantes, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
+    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, Idioma idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, Integer numeroEstudiantes, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
         this.colaboracionId = colaboracionId;
         Duracion = duracion;
         Periodo = periodo;
         Titulo = titulo;
-        //Idioma = idioma;
+        Idioma = idioma;
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.tipo = tipo;
@@ -97,15 +98,15 @@ public class Colaboracion {
         Titulo = titulo;
     }
 
-    /*
-    public String getIdioma() {
+
+    public Idioma getIdioma() {
         return Idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(Idioma idioma) {
         Idioma = idioma;
     }
-     */
+
 
     public LocalDate getFechaInicio() {
         return fechaInicio;

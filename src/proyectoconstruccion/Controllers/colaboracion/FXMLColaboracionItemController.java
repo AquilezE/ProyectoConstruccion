@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
+import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
@@ -37,7 +39,8 @@ public class FXMLColaboracionItemController {
         lbTitulo.setText(colaboracion.getTitulo());
         lbFechaInicio.setText(colaboracion.getFechaInicio().toString());
         lbFechaCierre.setText(colaboracion.getFechaCierre().toString());
-       // lbIdiomaColaboracion.setText(colaboracion.getIdioma());
+        lbIdiomaColaboracion.setText(colaboracion.getIdioma().getIdioma());
+        lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().toString());
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
 

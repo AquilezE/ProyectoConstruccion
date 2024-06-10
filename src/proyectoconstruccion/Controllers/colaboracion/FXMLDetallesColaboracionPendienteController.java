@@ -47,7 +47,7 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
             String nombreProfesorExterno = profesorExterno.getNombre() + " " + profesorExterno.getApellidoMaterno() + " " + profesorExterno.getApellidoPaterno();
             lbNombreColaborador.setText(nombreProfesorExterno);
         }
-        //lbIdioma.setText(colaboracion);
+        lbIdioma.setText(colaboracion.getIdioma().getIdioma());
         lbPeriodo.setText(colaboracion.getPeriodo());
 
 

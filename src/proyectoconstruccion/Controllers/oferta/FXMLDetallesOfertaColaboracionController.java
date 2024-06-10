@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaExternaController;
 import proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEdicionOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController;
+import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
+import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionUV;
 
 public class FXMLDetallesOfertaColaboracionController implements Initializable {
     public Label lbDuracion;
@@ -56,19 +59,40 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
 
 
     public void btnCrearColaboracion(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaUV.fxml");
-            Parent root = loader.load();
-            FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
-            // Puedes pasar datos a la nueva ventana si es necesario
-            //controller.inicializarValores();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+
+        if (ofertaColaboracion instanceof OfertaColaboracionUV){
+            try {
+                System.out.println("ES COLABORACION UV");
+                FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaUV.fxml");
+                Parent root = loader.load();
+                FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
+                // Puedes pasar datos a la nueva ventana si es necesario
+                //controller.inicializarValores();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if (ofertaColaboracion instanceof OfertaColaboracionExterna){
+            try {
+                System.out.println("ES COLABORACION EXTERNA");
+                FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaExterna.fxml");
+                Parent root = loader.load();
+                FXMLRegistrarColaboracionConOfertaExternaController controller = loader.getController();
+                // Puedes pasar datos a la nueva ventana si es necesario
+                //controller.inicializarValores();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     public void inicializarDetalles(OfertaColaboracion ofertaColaboracion) {
@@ -89,4 +113,6 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
     public void refreshData() {
             inicializarDetalles((OfertaColaboracion) OfertaColaboracionDAO.getOfertaColaboracionById(ofertaColaboracion.getOfertaColaboracionId()).get("oferta"));
     }
+
+
 }

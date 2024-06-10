@@ -2,6 +2,7 @@ package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.modelo.ConexionBD;
+import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
@@ -84,7 +85,7 @@ public class ColaboracionDAO {
                     String tipo= resultado.getString("TipoDeColab");
                     String periodoResultado= resultado.getString("Periodo");
                     String tipodeColab = resultado.getString("TipoDeColab");
-                    //Integer idioma = resultado.getInt("idiomaId");
+                    Integer idioma = resultado.getInt("idioma_id");
                     String tituloResultado = resultado.getString("Titulo");
                     Integer experienciaEducativaid = resultado.getInt("experiencia_educativa_id");
 
@@ -94,13 +95,13 @@ public class ColaboracionDAO {
                     ProfesorUV profesorUV = (ProfesorUV) ProfesorDAO.getProfesorById(idProfesorUV,0).get("profesor");
                     ProfesorExterno externo = (ProfesorExterno) ProfesorDAO.getProfesorById(idProfesorExterno,1).get("profesor");
 
-
+                    Idioma idioma1 = IdiomaDAO.obtenerIdioma(idioma);
                     //ESTAS AÑADIENDO EVIDENCIAS, TIENES QUE CREAR EL DAO EVIDENCIAS Y DAO EE
                     Evidencia evidencia= new Evidencia(null,null,null);
 
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
-                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,"",inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
+                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,idioma1,inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
 
                     colaboraciones.add(colaboracionResultado);
                 }
