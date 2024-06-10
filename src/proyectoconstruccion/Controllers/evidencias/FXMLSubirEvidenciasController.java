@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLSubirEvidencias implements Initializable {
+public class FXMLSubirEvidenciasController implements Initializable {
     public TextField tfEvidencias;
 
     @Override

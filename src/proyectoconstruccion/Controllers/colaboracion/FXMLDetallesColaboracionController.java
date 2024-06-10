@@ -13,10 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.evidencias.FXMLSubirEvidenciasController;
+import proyectoconstruccion.Controllers.listaEstudiantes.FXMLSubirListaEstudiantesController;
 import proyectoconstruccion.Utils.Utils;
 
 /**
@@ -75,12 +76,40 @@ public class FXMLDetallesColaboracionController implements Initializable {
     }
 
     @FXML
-    private void btnClicEvidencias(ActionEvent event) {
+    public void btnClicEvidencias(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("Views/evidencias/FXMLSubirEvidencias.fxml");
+            Parent root = loader.load();
+            FXMLSubirEvidenciasController controller = loader.getController();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Subir Evidencias");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void btnClicListaEstudiantes(ActionEvent event) {
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("ruta/al/FXMLSubirListaEstudiantes.fxml"); // Reemplaza "ruta/al/FXMLSubirListaEstudiantes.fxml" con la ruta real a tu FXML
+            Parent root = loader.load();
+            FXMLSubirListaEstudiantesController controller = loader.getController();
+            // Puedes pasar datos a la nueva ventana si es necesario
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Subir Lista de Estudiantes");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
@@ -103,4 +132,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
         }
     }
 
+    public void btnFinalizar(ActionEvent actionEvent) {
+        System.out.println("Este boton cambia el estado a finalizada");
+    }
 }

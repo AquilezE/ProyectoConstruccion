@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLSubirListaEstudiantes implements Initializable {
+public class FXMLSubirListaEstudiantesController implements Initializable {
     public VBox vbPrincipal;
 
     @Override

@@ -30,6 +30,6 @@
       <Button layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicEvidencias" text="Subir evidencias" />
       <Button layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
       <Button layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
-      <Button layoutX="938.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnAutorizar" text="Autorizar" />
+      <Button layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
    </children>
 </AnchorPane>
