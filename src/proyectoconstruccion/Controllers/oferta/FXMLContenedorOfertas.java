@@ -25,15 +25,17 @@ public class FXMLContenedorOfertas {
     la cubeta de las ofertas que si son.
      */
     public void InicializarComponentes(){
+        actualizarOfertas();
+    }
+
+    public void actualizarOfertas(){
         ArrayList<OfertaColaboracion> ofertas = (ArrayList<OfertaColaboracion>) OfertaColaboracionDAO.getAllOfertasColaboracion().get("ofertas");
 
 
         for (OfertaColaboracion oferta: ofertas) {
-                añadirItem(oferta);
+            añadirItem(oferta);
         }
-
     }
-
     public void añadirItem(OfertaColaboracion oferta){
         try{
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLOfertaItem.fxml");

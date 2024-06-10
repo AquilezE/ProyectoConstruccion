@@ -10,6 +10,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEdicionOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.IdiomaDAO;
+import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
+import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 
 import java.io.IOException;
@@ -25,6 +28,9 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
     public Label lbNombreProfesor;
     public Label lbCorreoProfesor;
 
+    OfertaColaboracion ofertaColaboracion;
+    Idioma idioma;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -35,6 +41,8 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/EditarOferta/FXMLEdicionOfertaColaboracion.fxml");
             Parent root = loader.load();
             FXMLEdicionOfertaColaboracionController controller = loader.getController();
+            controller.InicializarDatos(this,ofertaColaboracion);
+
             // Puedes pasar datos a la nueva ventana si es necesario
 
             Stage stage = new Stage();
@@ -64,5 +72,21 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
     }
 
     public void inicializarDetalles(OfertaColaboracion ofertaColaboracion) {
+            this.ofertaColaboracion = ofertaColaboracion;
+
+            lbDuracion.setText(ofertaColaboracion.getDuracion());
+            lbPeriodo.setText(ofertaColaboracion.getPeriodo());
+            lbTitulo.setText(ofertaColaboracion.getTitulo());
+
+            this.idioma=IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaID());
+
+            lbIdioma.setText(idioma.getIdioma());
+            lbNombreProfesor.setText(ofertaColaboracion.getProfesor().getNombre()+" "+ofertaColaboracion.getProfesor().getApellidoPaterno()+" "+ofertaColaboracion.getProfesor().getApellidoMaterno());
+            lbCorreoProfesor.setText(ofertaColaboracion.getProfesor().getCorreoElectronico());
+
+    }
+
+    public void refreshData() {
+            inicializarDetalles((OfertaColaboracion) OfertaColaboracionDAO.getOfertaColaboracionById(ofertaColaboracion.getOfertaColaboracionId()).get("oferta"));
     }
 }

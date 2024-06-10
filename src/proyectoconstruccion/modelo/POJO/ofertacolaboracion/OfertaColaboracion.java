@@ -21,6 +21,10 @@ public abstract class OfertaColaboracion {
         this.profesor = profesor;
     }
 
+    public OfertaColaboracion() {
+
+    }
+
     public Integer getTipo(){
         return tipo;
     }

@@ -25,13 +25,12 @@ import javafx.util.Callback;
 import javafx.util.StringConverter;
 import proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController;
 import proyectoconstruccion.Utils.Utils;
-import proyectoconstruccion.modelo.DAO.ExperienciaEducativaDAO;
-import proyectoconstruccion.modelo.DAO.PeriodoDAO;
-import proyectoconstruccion.modelo.DAO.ProfesorDAO;
-import proyectoconstruccion.modelo.DAO.UniversidadDAO;
+import proyectoconstruccion.modelo.DAO.*;
+import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.Periodo;
 import proyectoconstruccion.modelo.POJO.Universidad;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
+import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 
 /**
@@ -44,18 +43,20 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     private ObservableList<Periodo> periodos;
     private ObservableList<ProfesorExterno> profesores;
     private ObservableList<ExperienciaEducativa> experiencias;
+    private ObservableList<Idioma> idiomas;
+
     @FXML
     private TextField tfTitulo;
     @FXML
     private TextField tfDuracion;
-    @FXML
-    private TextField tfIdioma;
-    @FXML
-    private ComboBox<Periodo> cbPeriodo;
+
     @FXML
     private ComboBox<ProfesorExterno> cbProfesorExterno;
     @FXML
-    private ComboBox<ExperienciaEducativa> cbExperienciaEducativa;
+    private ComboBox<Idioma> cbIdioma;
+    @FXML
+    private ComboBox<Periodo> cbPeriodo;
+
     @FXML
     private Label lbNombre;
     @FXML
@@ -75,17 +76,38 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         // TODO
     }
     public void inicializarValores(){
+
+
+
         //btnRegistrarProfesorExterno.setVisible(false);
         lbNombre.setText("");
         lbCorreo.setText("");
         lbUniversidad.setText("");
         lbPais.setText("");
         //cargarExperienciasEducativas();
+        cargarIdiomas();
         cargarPeriodos();
         cargarProfesExternos();
 
     }
 
+    private void cargarIdiomas() {
+        idiomas = FXCollections.observableArrayList();
+        idiomas.addAll(IdiomaDAO.obtenerIdiomas());
+
+        cbIdioma.setItems(idiomas);
+        cbIdioma.setConverter(new StringConverter<Idioma>() {
+            @Override
+            public String toString(Idioma object) {
+                return object.getIdioma();
+            }
+
+            @Override
+            public Idioma fromString(String string) {
+                return idiomas.stream().filter(o -> o.getIdioma().equals(string)).findFirst().orElse(null);
+            }
+        });
+    }
     private void cargarPeriodos(){
         periodos = FXCollections.observableArrayList();
         periodos.addAll(PeriodoDAO.getPeriodos());
@@ -122,7 +144,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         });
     }
 
-    private void cargarProfesExternos(){
+    public void cargarProfesExternos(){
         profesores = FXCollections.observableArrayList();
         profesores.addAll(ProfesorDAO.obtenerTodosProfesoresExternos());
         cbProfesorExterno.setItems(profesores);
@@ -184,30 +206,30 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
 
     }
 
-    private void cargarExperienciasEducativas(){
-        experiencias = FXCollections.observableArrayList();
-        experiencias.addAll(ExperienciaEducativaDAO.obtenerTodasExperienciasEducativas());
-
-        // Configurar el renderizador de celda
-        cbExperienciaEducativa.setCellFactory(new Callback<ListView<ExperienciaEducativa>, ListCell<ExperienciaEducativa>>() {
-            @Override
-            public ListCell<ExperienciaEducativa> call(ListView<ExperienciaEducativa> l) {
-                return new ListCell<ExperienciaEducativa>() {
-                    @Override
-                    protected void updateItem(ExperienciaEducativa item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item == null || empty) {
-                            setGraphic(null);
-                        } else {
-                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
-                        }
-                    }
-                };
-            }
-        });
-
-        cbExperienciaEducativa.setItems(experiencias);
-    }
+//    private void cargarExperienciasEducativas(){
+//        experiencias = FXCollections.observableArrayList();
+//        experiencias.addAll(ExperienciaEducativaDAO.obtenerTodasExperienciasEducativas());
+//
+//        // Configurar el renderizador de celda
+//        cbExperienciaEducativa.setCellFactory(new Callback<ListView<ExperienciaEducativa>, ListCell<ExperienciaEducativa>>() {
+//            @Override
+//            public ListCell<ExperienciaEducativa> call(ListView<ExperienciaEducativa> l) {
+//                return new ListCell<ExperienciaEducativa>() {
+//                    @Override
+//                    protected void updateItem(ExperienciaEducativa item, boolean empty) {
+//                        super.updateItem(item, empty);
+//                        if (item == null || empty) {
+//                            setGraphic(null);
+//                        } else {
+//                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
+//                        }
+//                    }
+//                };
+//            }
+//        });
+//
+//        cbExperienciaEducativa.setItems(experiencias);
+//    }
         
     @FXML
     private void btnClicRegistrarProfesorExterno(ActionEvent event) {
@@ -216,7 +238,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/profesorExterno/FXMLRegistrarProfesorExterno.fxml");
             Parent root = loader.load();
             FXMLRegistrarProfesorExternoController controlador = loader.getController();
-            controlador.inicializarValores();
+            controlador.inicializarValores(this);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar profesor externo");
@@ -234,6 +256,59 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     }
 
     @FXML
-    private void btnClicRegistrarColaboracion(ActionEvent event) {
+    private void btnClicRegistrarOfertaColaboracionExterna(ActionEvent event) {
+
+        if (validateFields()) {
+// Fetch selected values from the combo boxes and text fields
+            Periodo selectedPeriodo = cbPeriodo.getSelectionModel().getSelectedItem();
+            ProfesorExterno selectedProfesorExterno = cbProfesorExterno.getSelectionModel().getSelectedItem();
+            String title = tfTitulo.getText();
+            String duration = tfDuracion.getText();
+            Integer idIdioma = cbIdioma.getValue().getIdiomaID();
+
+// Create Oferta object using those values
+            OfertaColaboracionExterna oferta = new OfertaColaboracionExterna();
+            oferta.setPeriodo(selectedPeriodo.getDescripcion());
+            oferta.setProfesor(selectedProfesorExterno);
+            oferta.setIdiomaID(idIdioma);
+            oferta.setTitulo(title);
+            oferta.setDuracion(duration);
+
+
+// Save the newly created oferta (you would need a method for this in your OfertaDAO)
+            OfertaColaboracionDAO.guardarOfertaExterna(oferta);
+            Utils.cerrarVentana(event);
+        } else {
+            System.out.println("Campos invalidos");
+        }
     }
+
+
+        private boolean validateFields () {
+            boolean valid = true;
+
+            // Check for selected values in combo boxes
+            if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
+                valid = false;
+            }
+            if (cbPeriodo.getSelectionModel().getSelectedItem() == null) {
+                valid = false;
+            }
+            if (cbProfesorExterno.getSelectionModel().getSelectedItem() == null) {
+                valid = false;
+            }
+
+
+            // Check for empty fields in text fields, disallow spaces and newlines
+            if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
+                valid = false;
+            }
+            if (tfDuracion.getText().trim().isEmpty() || tfDuracion.getText().trim().isEmpty()) {
+                valid = false;
+            }
+
+            return valid;
+        }
+
     }
+

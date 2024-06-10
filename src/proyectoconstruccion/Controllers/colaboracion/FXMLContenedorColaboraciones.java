@@ -3,6 +3,7 @@ package proyectoconstruccion.Controllers.colaboracion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
@@ -14,21 +15,23 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FXMLContenedorColaboraciones {
 
     public VBox vBoxBucket;
 
-
-
-    
-
-
     public void InicializarComponentes(){
 
-        ArrayList<Colaboracion> colaboraciones= (ArrayList<Colaboracion>    ) ColaboracionDAO.getColaboraciones(null, null,null,null,null,null,null).get("colaboraciones");
+        HashMap<String,Object> seleccion =  ColaboracionDAO.getColaboraciones(null, null,null,null,null,null,null);
+        if(seleccion==null){
+            System.out.println("da null tu pendejada");
+        }
 
+
+        ArrayList<Colaboracion> colaboraciones= (ArrayList<Colaboracion>) seleccion.get("colaboraciones");
         for (Colaboracion colaboracion:colaboraciones){
+            System.out.println("colaboracionAñadida");
             añadirItem(colaboracion);
         }
 

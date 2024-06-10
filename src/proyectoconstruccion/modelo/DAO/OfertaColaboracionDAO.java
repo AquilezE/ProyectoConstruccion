@@ -82,4 +82,95 @@ public class OfertaColaboracionDAO {
         return respuesta;
         }
 
-}
+
+        public static boolean guardarOfertaExterna (OfertaColaboracionExterna oferta){
+            boolean inserted = false;
+            Connection conexionBD = ConexionBD.getConexion();
+            if (conexionBD != null) {
+                String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
+                try {
+                    PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
+                    prepararSentencia.setInt(1, oferta.getIdiomaID());
+                    prepararSentencia.setString(2, oferta.getPeriodo());
+                    prepararSentencia.setString(3, oferta.getTitulo());
+                    prepararSentencia.setString(4, oferta.getDuracion());
+                    prepararSentencia.setInt(5, oferta.getProfesor().getProfesorId()); // assuming getProfesorExterno() gets the ProfesorExterno object with id field
+                    prepararSentencia.setInt(6, 1);
+
+                    int numOfInsertedRows = prepararSentencia.executeUpdate();
+                    inserted = numOfInsertedRows > 0;
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            return inserted;
+        }
+
+    public static boolean updateOfertaColaboracion(OfertaColaboracion oferta, String titulo, String duracion, Integer idioma, String periodo) {
+        boolean updated = false;
+        Connection conexionBD = ConexionBD.getConexion();
+        if (conexionBD != null) {
+            String updateStmt = "UPDATE ofertaColaboracion SET idioma = ?, periodo = ?, titulo = ?, duracion = ? WHERE oferta_colaboracion_id = ?";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(updateStmt);
+                prepararSentencia.setInt(1, idioma);
+                prepararSentencia.setString(2, periodo);
+                prepararSentencia.setString(3, titulo);
+                prepararSentencia.setString(4, duracion);
+                prepararSentencia.setInt(5, oferta.getOfertaColaboracionId());
+
+                int numOfUpdatedRows = prepararSentencia.executeUpdate();
+                updated = numOfUpdatedRows > 0;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return updated;
+    }
+
+
+    public static HashMap<String, Object> getOfertaColaboracionById(Integer id) {
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.getConexion();
+
+        if (conexionBD != null) {
+
+            String query = "SELECT * FROM ofertaColaboracion WHERE oferta_colaboracion_id=?";
+           OfertaColaboracion oferta = null;
+
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(query);
+                prepararSentencia.setInt(1, id);
+
+                ResultSet resultado = prepararSentencia.executeQuery();
+                while (resultado.next()) {
+
+                    int ofertaId = resultado.getInt("oferta_colaboracion_id");
+                    int idiomaId = resultado.getInt("Idioma");
+                    String period = resultado.getString("Periodo");
+                    String titulo = resultado.getString("Titulo");
+                    String duracion = resultado.getString("Duracion");
+                    int profesorId = resultado.getInt("profesor_id");
+                    int type = resultado.getInt("type");
+
+                    Profesor profesor = (Profesor) ProfesorDAO.getProfesorById(profesorId, type).get("profesor");
+                    if (profesor instanceof ProfesorUV) {
+                        oferta = new OfertaColaboracionUV(ofertaId, idiomaId, period, titulo, type, duracion, (ProfesorUV) profesor);
+                    } else if (profesor instanceof ProfesorExterno) {
+                        oferta = new OfertaColaboracionExterna(ofertaId, idiomaId, period, titulo, type, duracion, (ProfesorExterno) profesor);
+                    }
+                }
+                respuesta.put("oferta", oferta);
+
+                respuesta.put(Constantes.KEY_ERROR, false);
+            } catch (SQLException e) {
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        }
+        return respuesta;
+    }
+
+    }

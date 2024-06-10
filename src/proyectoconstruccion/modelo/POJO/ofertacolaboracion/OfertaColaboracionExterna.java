@@ -8,4 +8,8 @@ public class OfertaColaboracionExterna extends OfertaColaboracion {
         super(ofertaColaboracionId, idiomaId, periodo, titulo, tipo,duracion,profesorExterno);
 
     }
+
+    public OfertaColaboracionExterna() {
+        super();
+    }
 }

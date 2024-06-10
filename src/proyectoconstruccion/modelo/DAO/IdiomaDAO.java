@@ -13,35 +13,24 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class IdiomaDAO {
-    public static HashMap<String, Object> obtenerIdioma(Integer idiomaID){
-        HashMap <String, Object> respuesta = new LinkedHashMap<>();
-        respuesta.put(Constantes.KEY_ERROR, true);
+    public static Idioma obtenerIdioma(Integer idiomaID){
         Connection conexionBD = ConexionBD.getConexion();
         if(conexionBD != null){
-
-            String consulta = "select * from idioma where id = ?";
-
-
+            String consulta = "select * from idioma where idioma_id = ?";
             try{
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 prepararSentencia.setInt(1, idiomaID);
                 ResultSet resultado = prepararSentencia.executeQuery();
-
-                ArrayList<Idioma> lista = new ArrayList<>();
-                while(resultado.next()){
+                if(resultado.next()){
                     String idioma = resultado.getString("Idioma");
-                    lista.add(new Idioma(idiomaID,idioma));
+                    return new Idioma(idiomaID,idioma);
                 }
-                respuesta.put(Constantes.KEY_ERROR, false);
-                respuesta.put("idioma", lista);
                 conexionBD.close();
             }catch(SQLException e){
-                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+                e.printStackTrace();
             }
-        }else{
-            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
-        return respuesta;
+        return null;
     }
 
     public static ArrayList<Idioma> obtenerIdiomas() {

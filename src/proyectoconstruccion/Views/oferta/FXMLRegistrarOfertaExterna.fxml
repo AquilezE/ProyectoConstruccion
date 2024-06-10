@@ -11,7 +11,6 @@
    <children>
       <TextField fx:id="tfTitulo" layoutX="255.0" layoutY="162.0" prefHeight="31.0" prefWidth="278.0" />
       <TextField fx:id="tfDuracion" layoutX="255.0" layoutY="252.0" prefHeight="31.0" prefWidth="278.0" />
-      <TextField fx:id="tfIdioma" layoutX="702.0" layoutY="158.0" prefHeight="31.0" prefWidth="295.0" />
       <ComboBox fx:id="cbPeriodo" layoutX="702.0" layoutY="248.0" prefHeight="31.0" prefWidth="295.0" />
       <ComboBox fx:id="cbProfesorExterno" layoutX="255.0" layoutY="357.0" prefHeight="31.0" prefWidth="278.0" />
       <Label layoutX="255.0" layoutY="125.0" text="Título de la oferta de colaboración" />
@@ -51,7 +50,8 @@
       <Label fx:id="lbPais" layoutX="708.0" layoutY="563.0" text="Label" />
       <Button fx:id="btnRegistrarProfesorExterno" layoutX="250.0" layoutY="603.0" mnemonicParsing="false" onAction="#btnClicRegistrarProfesorExterno" prefHeight="31.0" prefWidth="196.0" text="Registrar profesor externo" />
       <Button layoutX="976.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="43.0" prefWidth="78.0" text="Regresar" />
-      <Button layoutX="1079.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" prefHeight="43.0" prefWidth="169.0" text="Registrar colaboración" />
+      <Button layoutX="1079.0" layoutY="645.0" mnemonicParsing="false" onAction="#btnClicRegistrarOfertaColaboracionExterna" prefHeight="43.0" prefWidth="169.0" text="Registrar colaboración" />
       <TextField fx:id="tfExperienciaEducativa" layoutX="697.0" layoutY="357.0" prefHeight="31.0" prefWidth="305.0" />
+      <ComboBox fx:id="cbIdioma" layoutX="702.0" layoutY="162.0" prefHeight="31.0" prefWidth="295.0" />
    </children>
 </AnchorPane>

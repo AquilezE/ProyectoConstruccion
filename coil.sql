@@ -1,13 +1,13 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: coil
+-- Host: 127.0.0.1    Database: coil
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.1.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS `dependencia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dependencia` (
-  `dependencia_id` int NOT NULL AUTO_INCREMENT,
+  `dependencia_id` int NOT NULL,
   `Campus` varchar(255) DEFAULT NULL,
   `Municipio` varchar(255) DEFAULT NULL,
   `NombreDependencia` varchar(255) DEFAULT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `dependencia` (
   PRIMARY KEY (`dependencia_id`),
   KEY `fk_dependencia_area_academica` (`area_academica_id`),
   CONSTRAINT `fk_dependencia_area_academica` FOREIGN KEY (`area_academica_id`) REFERENCES `areaacademica` (`area_academica_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +317,7 @@ CREATE TABLE `ofertacolaboracion` (
   PRIMARY KEY (`oferta_colaboracion_id`),
   KEY `fk_oferta_colaboracion_profesor` (`profesor_id`),
   CONSTRAINT `fk_oferta_colaboracion_profesor` FOREIGN KEY (`profesor_id`) REFERENCES `profesor` (`profesor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +326,7 @@ CREATE TABLE `ofertacolaboracion` (
 
 LOCK TABLES `ofertacolaboracion` WRITE;
 /*!40000 ALTER TABLE `ofertacolaboracion` DISABLE KEYS */;
-INSERT INTO `ofertacolaboracion` VALUES (1,'2 months',1,'Diciembre-2023','Introduction to Spanish',11,0),(2,'3 months',2,'Julio-2023','Advanced French',12,0),(3,'1 month',3,'Diciembre-2023','Beginner German',13,0),(4,'6 months',4,'Julio-2024','Conversational Italian',14,0),(5,'4 months',5,'Diciembre-2024','Portuguese for Business',15,0),(6,'2 months',1,'Julio-2024','Intermediate Spanish',16,1),(7,'3 months',2,'Diciembre-2023','French Literature',17,1),(8,'1 month',3,'Julio-2023','German Grammar',18,1),(9,'6 months',4,'Diciembre-2024','Italian Culture',19,1),(10,'4 months',5,'Julio-2023','Brazilian Portuguese',20,1);
+INSERT INTO `ofertacolaboracion` VALUES (1,'3 dias',4,'Agosto 2023 - Diciembre 2023','Aleman Avanzado',11,0),(2,'3 months',2,'Julio-2023','Advanced French',12,0),(3,'1 month',3,'Diciembre-2023','Beginner German',13,0),(4,'6 months',4,'Julio-2024','Conversational Italian',14,0),(5,'4 months',5,'Diciembre-2024','Portuguese for Business',15,0),(6,'2 months',1,'Julio-2024','Intermediate Spanish',16,1),(7,'3 months',2,'Diciembre-2023','French Literature',17,1),(8,'1 month',3,'Julio-2023','German Grammar',18,1),(9,'6 months',4,'Diciembre-2024','Italian Culture',19,1),(10,'4 months',5,'Julio-2023','Brazilian Portuguese',20,1),(11,'2 weeks',1,'Agosto 2024 - Diciembre 2024','Significancia de Ser Mexicano',24,1);
 /*!40000 ALTER TABLE `ofertacolaboracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,6 +377,30 @@ LOCK TABLES `ofertacolaboracionuv` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `periodo`
+--
+
+DROP TABLE IF EXISTS `periodo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `periodo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `periodo`
+--
+
+LOCK TABLES `periodo` WRITE;
+/*!40000 ALTER TABLE `periodo` DISABLE KEYS */;
+INSERT INTO `periodo` VALUES (1,'Febrero 2021 - Julio 2021'),(2,'Agosto 2021 - Diciembre 2021'),(3,'Febrero 2022 - Julio 2022'),(4,'Agosto 2022 - Diciembre 2022'),(5,'Febrero 2023 - Julio 2023'),(6,'Agosto 2023 - Diciembre 2023'),(7,'Febrero 2024 - Julio 2024'),(8,'Agosto 2024 - Diciembre 2024'),(9,'Febrero 2025 - Julio 2025'),(10,'Agosto 2025 - Diciembre 2025'),(11,'Febrero 2026 - Julio 2026'),(12,'Agosto 2026 - Diciembre 2026');
+/*!40000 ALTER TABLE `periodo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `profesor`
 --
 
@@ -394,7 +418,7 @@ CREATE TABLE `profesor` (
   PRIMARY KEY (`profesor_id`),
   KEY `fk_profesor_idioma` (`idioma_id`),
   CONSTRAINT `fk_profesor_idioma` FOREIGN KEY (`idioma_id`) REFERENCES `idioma` (`idioma_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,7 +427,7 @@ CREATE TABLE `profesor` (
 
 LOCK TABLES `profesor` WRITE;
 /*!40000 ALTER TABLE `profesor` DISABLE KEYS */;
-INSERT INTO `profesor` VALUES (11,'profesor1@example.com','+1234567890',1,'Juan','Pérez','García'),(12,'profesor2@example.com','+1987654321',2,'María','Rodríguez','López'),(13,'profesor3@example.com','+1122334455',3,'Carlos','Gómez','Martínez'),(14,'profesor4@example.com','+9876543210',4,'Ana','Sánchez','Fernández'),(15,'profesor5@example.com','+1357924680',5,'Javier','Ruiz','González'),(16,'profesor6@example.com','+1122334455',1,'Laura','Díaz','Pérez'),(17,'profesor7@example.com','+1234567890',2,'Sergio','Hernández','García'),(18,'profesor8@example.com','+9876543210',3,'Marta','López','Rodríguez'),(19,'profesor9@example.com','+1987654321',4,'Pablo','Martínez','Gómez'),(20,'profesor10@example.com','+1357924680',5,'Andrea','García','Sánchez');
+INSERT INTO `profesor` VALUES (11,'profesor1@example.com','+1234567890',1,'Juan','Pérez','García'),(12,'profesor2@example.com','+1987654321',2,'María','Rodríguez','López'),(13,'profesor3@example.com','+1122334455',3,'Carlos','Gómez','Martínez'),(14,'profesor4@example.com','+9876543210',4,'Ana','Sánchez','Fernández'),(15,'profesor5@example.com','+1357924680',5,'Javier','Ruiz','González'),(16,'profesor6@example.com','+1122334455',1,'Laura','Díaz','Pérez'),(17,'profesor7@example.com','+1234567890',2,'Sergio','Hernández','García'),(18,'profesor8@example.com','+9876543210',3,'Marta','López','Rodríguez'),(19,'profesor9@example.com','+1987654321',4,'Pablo','Martínez','Gómez'),(20,'profesor10@example.com','+1357924680',5,'Andrea','García','Sánchez'),(24,'joaquipho@yale.edu','+1 (203) 436-9028',1,'Joaquin','Phoenix','Zaragavia'),(25,'ChocolattDeSuis@zurich.eth.edu','+41 800 24-7-365',3,'Zenith','DeSuis','Chocolatt'),(26,'theHolyGrail@Cambridge.com',' +44 20 7123 4567',1,'Monty','Python','Smith');
 /*!40000 ALTER TABLE `profesor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +445,7 @@ CREATE TABLE `profesorexterno` (
   KEY `fk_profesorexterno_universidad` (`universidad_id`),
   CONSTRAINT `fk_profesorexterno_profesor` FOREIGN KEY (`profesor_id`) REFERENCES `profesor` (`profesor_id`),
   CONSTRAINT `fk_profesorexterno_universidad` FOREIGN KEY (`universidad_id`) REFERENCES `universidad` (`universidad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,7 +454,7 @@ CREATE TABLE `profesorexterno` (
 
 LOCK TABLES `profesorexterno` WRITE;
 /*!40000 ALTER TABLE `profesorexterno` DISABLE KEYS */;
-INSERT INTO `profesorexterno` VALUES (16,1),(20,1),(17,2),(18,3),(19,4);
+INSERT INTO `profesorexterno` VALUES (16,1),(20,1),(17,2),(18,3),(19,4),(26,6),(25,11),(24,14);
 /*!40000 ALTER TABLE `profesorexterno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -521,4 +545,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 20:12:48
+-- Dump completed on 2024-06-10  4:32:49

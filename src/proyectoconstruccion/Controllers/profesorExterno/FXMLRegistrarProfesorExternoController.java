@@ -15,6 +15,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
+import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.ProfesorDAO;
 import proyectoconstruccion.modelo.DAO.UniversidadDAO;
@@ -48,12 +50,17 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
     private TextField tfUniversidad;
     @FXML
     private TextField tfTelefono;
+
+    private FXMLRegistrarOfertaExternaController ofertaExternaController;
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
-    public void inicializarValores() {
+    public void inicializarValores(FXMLRegistrarOfertaExternaController fxmlRegistrarOfertaExternaController) {
+        this.ofertaExternaController = fxmlRegistrarOfertaExternaController;
         cargarIdiomas();
         cargarUniversidades();
     }
@@ -114,9 +121,9 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
                     tfApellidoMaterno.getText(),
                     tfApellidoPaterno.getText(),
                     tfTelefono.getText(),  // Assumes phone number is to be stored as Integer
-                    cbUniversidad.getValue().getUniversidadId(),
-                    cbIdioma.getValue().getIdiomaID()
-            );
+                    cbIdioma.getValue().getIdiomaID(),
+                    cbUniversidad.getValue().getUniversidadId()
+                    );
 
             // Assuming ProfesorExternoDAO has a method to save ProfesorExterno
             // You will need to catch or throw any exceptions that might occur here
@@ -124,6 +131,8 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
             if (isRegistered) {
                 System.out.println("Profesor Externo registrado");
+                ofertaExternaController.cargarProfesExternos();
+                Utils.cerrarVentana(event);
             } else {
                 System.out.println("Profesor Externo no registrado");
             }
@@ -135,6 +144,7 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
 
     private boolean validarCampos () {
+        System.out.println(cbIdioma.getValue().getIdiomaID());
         if (cbUniversidad.getValue() == null ||
                 cbIdioma.getValue() == null ||
                 tfNombre.getText() == null || tfNombre.getText().trim().isEmpty() ||

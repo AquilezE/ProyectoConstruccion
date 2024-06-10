@@ -1,8 +1,11 @@
 package proyectoconstruccion.Utils;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -26,5 +29,11 @@ public class Utils {
 
     public static FXMLLoader obtenerLoader(String ruta){
         return new FXMLLoader(proyectoconstruccion.AppStartup.class.getResource(ruta));
+    }
+
+    public static void cerrarVentana(ActionEvent actionEvent) {
+        Node source = (Node) actionEvent.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 }

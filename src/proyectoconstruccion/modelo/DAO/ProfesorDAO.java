@@ -174,59 +174,56 @@ public class ProfesorDAO {
     }
 
 
+
     public static boolean addProfesorExterno(ProfesorExterno profesor) {
         Connection conexionBD = ConexionBD.getConexion();
         if (conexionBD != null) {
-            String checkIdiomaQuery = "SELECT COUNT(*) FROM idioma WHERE idioma_id = ?";
-            String insertQuery1 = "INSERT INTO profesor (CorreoElectronico, Telefono, idioma_id, Nombre, ApellidoPaterno, ApellidoMaterno) VALUES (?, ?, ?, ?, ?, ?)";
-            String insertQuery2 = "INSERT INTO profesorexterno (profesor_id, universidad_id) VALUES (?, ?)";
+            String insertProfesorQuery = "INSERT INTO profesor (CorreoElectronico, Telefono, idioma_id, Nombre, ApellidoPaterno, ApellidoMaterno) VALUES (?, ?, ?, ?, ?, ?)";
+            String insertProfesorExternoQuery = "INSERT INTO profesorexterno (profesor_id, universidad_id) VALUES (?, ?)";
             try {
                 conexionBD.setAutoCommit(false); // start of the transaction block
 
-                // Verificar si el idioma_id existe
-                PreparedStatement checkIdiomaStmt = conexionBD.prepareStatement(checkIdiomaQuery);
-                checkIdiomaStmt.setInt(1, profesor.getIdiomaId());
-                ResultSet rs = checkIdiomaStmt.executeQuery();
-                if (rs.next() && rs.getInt(1) > 0) {
-                    // idioma_id existe, continuar con la inserción
-                    PreparedStatement preparedStatement1 = conexionBD.prepareStatement(insertQuery1, Statement.RETURN_GENERATED_KEYS);
-                    preparedStatement1.setString(1, profesor.getCorreoElectronico());
-                    preparedStatement1.setString(2, profesor.getTelefono());
-                    preparedStatement1.setInt(3, profesor.getIdiomaId());
-                    preparedStatement1.setString(4, profesor.getNombre());
-                    preparedStatement1.setString(5, profesor.getApellidoPaterno());
-                    preparedStatement1.setString(6, profesor.getApellidoMaterno());
-                    preparedStatement1.executeUpdate();
+                // Insertar en la tabla `profesor`
+                PreparedStatement preparedStatement1 = conexionBD.prepareStatement(insertProfesorQuery, Statement.RETURN_GENERATED_KEYS);
+                preparedStatement1.setString(1, profesor.getCorreoElectronico());
+                preparedStatement1.setString(2, profesor.getTelefono());
+                System.out.println(profesor.getIdiomaId());
+                preparedStatement1.setInt(3, profesor.getIdiomaId());
+                preparedStatement1.setString(4, profesor.getNombre());
+                preparedStatement1.setString(5, profesor.getApellidoPaterno());
+                preparedStatement1.setString(6, profesor.getApellidoMaterno());
+                preparedStatement1.executeUpdate();
 
-                    ResultSet generatedKeys = preparedStatement1.getGeneratedKeys();
-                    int generatedId = -1;
-                    if (generatedKeys.next()) {
-                        generatedId = generatedKeys.getInt(1);
-                    }
-
-                    PreparedStatement preparedStatement2 = conexionBD.prepareStatement(insertQuery2);
-                    preparedStatement2.setInt(1, generatedId);
-                    preparedStatement2.setInt(2, profesor.getUniversidadID());
-                    preparedStatement2.executeUpdate();
-
-                    conexionBD.commit(); // committing the transaction
-                    conexionBD.setAutoCommit(true);
-                    conexionBD.close();
-                    return true;
+                // Obtener el ID generado
+                ResultSet generatedKeys = preparedStatement1.getGeneratedKeys();
+                int generatedId = -1;
+                if (generatedKeys.next()) {
+                    generatedId = generatedKeys.getInt(1);
                 } else {
-                    // idioma_id no existe, lanzar excepción
-                    throw new SQLException("El idioma_id no existe en la tabla idioma.");
+                    throw new SQLException("No se pudo obtener el ID generado del profesor.");
                 }
+
+                // Insertar en la tabla `profesorexterno`
+                PreparedStatement preparedStatement2 = conexionBD.prepareStatement(insertProfesorExternoQuery);
+                preparedStatement2.setInt(1, generatedId);
+                preparedStatement2.setInt(2, profesor.getUniversidadID());
+                preparedStatement2.executeUpdate();
+
+                // Confirmar la transacción
+                conexionBD.commit();
+                conexionBD.setAutoCommit(true);
+                conexionBD.close();
+                return true;
             } catch (SQLException e) {
                 try {
-                    conexionBD.rollback(); // this line is to rollback transaction in case of an error
+                    conexionBD.rollback(); // Revertir la transacción en caso de error
                 } catch (SQLException revertExc) {
                     System.out.println("Error during rollback: " + revertExc.getMessage());
                 }
                 System.out.println("Error: " + e.getMessage());
             }
         } else {
-            System.out.println(Constantes.MSJ_ERROR_CONEXION);
+            System.out.println("Error de conexión a la base de datos.");
         }
         return false;
     }
