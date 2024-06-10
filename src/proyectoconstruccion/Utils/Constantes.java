@@ -5,8 +5,8 @@ public class Constantes {
     public static final String NOMBRE_BD="coil";
     public static final String HOSTNAME="localhost";
     public static final String PUERTO="3306";
-    public static final String USUARIO="root";
-    public static final String PASSWORD="kekistan";
+    public static final String USUARIO="unaay";
+    public static final String PASSWORD="123456";
 
     public static final String MSJ_ERROR_CONEXION="Por el momento el servicio no esta disponible, intentelo mas tarde";
     public static final String KEY_ERROR ="error";
@@ -16,14 +16,14 @@ public class Constantes {
     public static final String ADMIN="admin";
 
     //SOLO COLORES
-    private static final String rojo="#880000";
-    private static final String rojoObscuro="#480000";
-    private static final String rojoClaro="#FF0000";
+    public static final String rojo="#880000";
+    public static final String rojoObscuro="#480000";
+    public static final String rojoClaro="#FF0000";
 
-    private static final String amber="FFBF00";
-    private static final String amberObscuro="#664C00";
-    private static final String amberClaro="#FFE599";
+    public static final String amber="FFBF00";
+    public static final String amberObscuro="#664C00";
+    public static final String amberClaro="#FFE599";
 
-    private static final String verde = "#28AD56";
+    public static final String verde = "#28AD56";
 
 }
