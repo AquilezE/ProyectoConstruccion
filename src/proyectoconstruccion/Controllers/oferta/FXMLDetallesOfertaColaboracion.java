@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEditarOfertaColaboracionController;
+import proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEdicionOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 
@@ -32,9 +32,9 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
 
     public void btnEditar(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/EditarOferta/FXMLEditarOfertaColaboracion.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/EditarOferta/FXMLEdicionOfertaColaboracion.fxml");
             Parent root = loader.load();
-            FXMLEditarOfertaColaboracionController controller = loader.getController();
+            FXMLEdicionOfertaColaboracionController controller = loader.getController();
             // Puedes pasar datos a la nueva ventana si es necesario
 
             Stage stage = new Stage();
