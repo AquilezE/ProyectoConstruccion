@@ -21,6 +21,16 @@ public abstract class Profesor {
         this.idiomaId = idiomaId;
     }
 
+    public Profesor(String correoElectronico, String nombre, String apellidoPaterno, String apellidoMaterno, String telefono, Integer idiomaId) {
+        this.profesorId = null;
+        this.correoElectronico = correoElectronico;
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.telefono = telefono;
+        this.idiomaId = idiomaId;
+    }
+
     public Profesor() {
     }
 

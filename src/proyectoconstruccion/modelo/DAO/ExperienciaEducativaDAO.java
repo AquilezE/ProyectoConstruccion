@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class ExpreriencIaEducativaDAO {
+public class ExperienciaEducativaDAO {
     public static HashMap<String, Object> obtenerExperienciaEducativa(Integer idExperienciaEducativa){
         HashMap <String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
@@ -46,5 +46,39 @@ public class ExpreriencIaEducativaDAO {
             respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
         return respuesta;
+    }
+
+
+    public static ArrayList<ExperienciaEducativa> obtenerTodasExperienciasEducativas() {
+        ArrayList<ExperienciaEducativa> experienciaEducativaList = new ArrayList<>();
+
+        Connection conexionBD = ConexionBD.getConexion();
+
+        if (conexionBD != null) {
+            String consulta = "select * from experienciaeducativa";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                ResultSet resultado = prepararSentencia.executeQuery();
+
+                System.out.println("Obteniendo experiencias");
+                while (resultado.next()) {
+
+                    ExperienciaEducativa experienciaEducativa = new ExperienciaEducativa();
+                    experienciaEducativa.setExperienciaEducativaId(resultado.getInt("experiencia_educativa_id"));
+                    experienciaEducativa.setNombreExperienciaEducativa(resultado.getString("nombreExperienciaEducativa"));
+                    experienciaEducativa.setCreditos(resultado.getInt("creditos"));
+                    experienciaEducativa.setDescripcion(resultado.getString("descripcion"));
+                    experienciaEducativa.setProgramaEducativoId(resultado.getInt("programa_educativo_id"));
+
+                    experienciaEducativaList.add(experienciaEducativa);
+                    System.out.println(experienciaEducativa.getNombreExperienciaEducativa());
+                }
+                System.out.println("Done");
+                conexionBD.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return experienciaEducativaList;
     }
 }

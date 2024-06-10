@@ -98,7 +98,7 @@ public class ColaboracionDAO {
                     //ESTAS AÑADIENDO EVIDENCIAS, TIENES QUE CREAR EL DAO EVIDENCIAS Y DAO EE
                     Evidencia evidencia= new Evidencia(null,null,null);
 
-                    ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExpreriencIaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
+                    ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
 
                     Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodo,titulo,"",inicio,cierre,tipo,estado,profesorUV,externo,experienciaEducativa,evidencia);

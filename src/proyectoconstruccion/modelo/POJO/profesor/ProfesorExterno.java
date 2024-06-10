@@ -9,6 +9,11 @@ public class ProfesorExterno extends Profesor{
         this.universidadID = universidadID;
     }
 
+    public ProfesorExterno(String correoElectronico, String nombre, String apellidoMaterno,String apellidoPaterno, String telefono,Integer idiomaId,Integer universidadID) {
+        super(correoElectronico,nombre,apellidoPaterno,apellidoMaterno,telefono,idiomaId);
+        this.universidadID = universidadID;
+    }
+
     public ProfesorExterno() {
     }
 

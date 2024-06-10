@@ -14,7 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import proyectoconstruccion.modelo.DAO.IdiomaDAO;
+import proyectoconstruccion.modelo.DAO.ProfesorDAO;
+import proyectoconstruccion.modelo.DAO.UniversidadDAO;
 import proyectoconstruccion.modelo.POJO.Idioma;
+import proyectoconstruccion.modelo.POJO.Universidad;
+import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 
 /**
  * FXML Controller class
@@ -22,13 +28,22 @@ import proyectoconstruccion.modelo.POJO.Idioma;
  * @author unaay
  */
 public class FXMLRegistrarProfesorExternoController implements Initializable {
+
     private ObservableList<Idioma> idiomas;
+    private ObservableList<Universidad> universidades;
+
     @FXML
-    private ComboBox<?> cbIdioma;
+    private ComboBox<Idioma> cbIdioma;
     @FXML
     private TextField tfNombre;
     @FXML
+    public TextField tfApellidoPaterno;
+    @FXML
+    public TextField tfApellidoMaterno;
+    @FXML
     private TextField tfCorreo;
+    @FXML
+    private ComboBox<Universidad> cbUniversidad;
     @FXML
     private TextField tfUniversidad;
     @FXML
@@ -39,13 +54,47 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
     }    
 
     public void inicializarValores() {
-        //cargarIdiomas();
+        cargarIdiomas();
+        cargarUniversidades();
     }
-    
-    public void cargarIdiomas(){
+
+
+    public void cargarIdiomas() {
         idiomas = FXCollections.observableArrayList();
-        //idiomas.addAll((ArrayList<String>) CatalogoDAO.obtenerIdiomas().get("idiomas"));
-        //cbIdioma.setItems(idiomas);
+        idiomas.addAll(IdiomaDAO.obtenerIdiomas());
+
+        cbIdioma.setItems(idiomas);
+        cbIdioma.setConverter(new StringConverter<Idioma>() {
+            @Override
+            public String toString(Idioma object) {
+                return object.getIdioma();
+            }
+
+            @Override
+            public Idioma fromString(String string) {
+                return idiomas.stream().filter(o -> o.getIdioma().equals(string)).findFirst().orElse(null);
+            }
+        });
+    }
+
+
+
+    public void cargarUniversidades() {
+        universidades = FXCollections.observableArrayList();
+        universidades.addAll(UniversidadDAO.getAllUniversidades());
+
+        cbUniversidad.setItems(universidades);
+        cbUniversidad.setConverter(new StringConverter<Universidad>() {
+            @Override
+            public String toString(Universidad object) {
+                return object.getNombre();
+            }
+
+            @Override
+            public Universidad fromString(String string) {
+                return universidades.stream().filter(o -> o.getNombre().equals(string)).findFirst().orElse(null);
+            }
+        });
     }
 
     @FXML
@@ -56,5 +105,44 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
     @FXML
     private void btnClicRegistrar(ActionEvent event) {
+
+        if (validarCampos()) {
+            // Assuming ProfesorExterno has a constructor with these arguments
+            ProfesorExterno profesorExterno = new ProfesorExterno(
+                    tfCorreo.getText(),
+                    tfNombre.getText(),
+                    tfApellidoMaterno.getText(),
+                    tfApellidoPaterno.getText(),
+                    tfTelefono.getText(),  // Assumes phone number is to be stored as Integer
+                    cbUniversidad.getValue().getUniversidadId(),
+                    cbIdioma.getValue().getIdiomaID()
+            );
+
+            // Assuming ProfesorExternoDAO has a method to save ProfesorExterno
+            // You will need to catch or throw any exceptions that might occur here
+            boolean isRegistered = ProfesorDAO.addProfesorExterno(profesorExterno);
+
+            if (isRegistered) {
+                System.out.println("Profesor Externo registrado");
+            } else {
+                System.out.println("Profesor Externo no registrado");
+            }
+        } else {
+            System.out.println("Campos vacios");
+        }
     }
+
+
+
+    private boolean validarCampos () {
+        if (cbUniversidad.getValue() == null ||
+                cbIdioma.getValue() == null ||
+                tfNombre.getText() == null || tfNombre.getText().trim().isEmpty() ||
+                tfApellidoPaterno.getText() == null || tfApellidoPaterno.getText().trim().isEmpty() ||
+                tfCorreo.getText() == null || tfCorreo.getText().trim().isEmpty() ||
+                tfTelefono.getText() == null || tfTelefono.getText().trim().isEmpty()) {
+            return false;
+        }
+            return true;
+        }
 }

@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController">
    <children>
-      <Label layoutX="365.0" layoutY="155.0" text="Nombre completo" />
-      <Label layoutX="365.0" layoutY="241.0" text="Correo electrónico" />
-      <Label layoutX="409.0" layoutY="324.0" text="Universidad" />
-      <Label layoutX="427.0" layoutY="407.0" text="Teléfono" />
-      <Label layoutX="433.0" layoutY="486.0" text="Idioma" />
-      <ComboBox fx:id="cbIdioma" layoutX="518.0" layoutY="481.0" prefHeight="31.0" prefWidth="344.0" />
-      <TextField fx:id="tfNombre" layoutX="518.0" layoutY="150.0" prefHeight="31.0" prefWidth="344.0" />
-      <TextField fx:id="tfCorreo" layoutX="518.0" layoutY="236.0" prefHeight="31.0" prefWidth="344.0" />
-      <TextField fx:id="tfUniversidad" layoutX="518.0" layoutY="319.0" prefHeight="31.0" prefWidth="344.0" />
-      <TextField fx:id="tfTelefono" layoutX="518.0" layoutY="402.0" prefHeight="31.0" prefWidth="344.0" />
+      <Label layoutX="378.0" layoutY="285.0" text="Correo electrónico" />
+      <Label layoutX="409.0" layoutY="366.0" text="Universidad" />
+      <Label layoutX="427.0" layoutY="449.0" text="Teléfono" />
+      <Label layoutX="433.0" layoutY="528.0" text="Idioma" />
+      <ComboBox fx:id="cbIdioma" layoutX="518.0" layoutY="523.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfApellidoMaterno" layoutX="518.0" layoutY="201.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfCorreo" layoutX="518.0" layoutY="278.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfTelefono" layoutX="518.0" layoutY="444.0" prefHeight="31.0" prefWidth="344.0" />
       <Button layoutX="1162.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegistrar" text="Registrar" />
       <Button layoutX="51.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
+      <ComboBox fx:id="cbUniversidad" layoutX="518.0" layoutY="359.0" prefHeight="31.0" prefWidth="344.0" />
+      <Label layoutX="387.0" layoutY="208.0" text="Apellido Materno" />
+      <Label layoutX="389.0" layoutY="147.0" text="Apellido Paterno" />
+      <TextField fx:id="tfNombre" layoutX="518.0" layoutY="78.0" prefHeight="31.0" prefWidth="344.0" />
+      <TextField fx:id="tfApellidoPaterno" layoutX="518.0" layoutY="140.0" prefHeight="31.0" prefWidth="344.0" />
+      <Label layoutX="428.0" layoutY="85.0" text="Nombre" />
    </children>
 </AnchorPane>

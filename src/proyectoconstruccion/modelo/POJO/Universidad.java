@@ -11,6 +11,10 @@ public class Universidad {
         this.pais = pais;
     }
 
+    public Universidad() {
+
+    }
+
     public Integer getUniversidadId() {
         return universidadId;
     }

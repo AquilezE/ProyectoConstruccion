@@ -43,4 +43,26 @@ public class IdiomaDAO {
         }
         return respuesta;
     }
+
+    public static ArrayList<Idioma> obtenerIdiomas() {
+
+        ArrayList<Idioma> idiomas = new ArrayList<>();
+        Connection conexionBD = ConexionBD.getConexion();
+        if (conexionBD != null) {
+            String consulta = "select * from idioma";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                ResultSet resultado = prepararSentencia.executeQuery();
+                while (resultado.next()) {
+                    Integer idiomaID = resultado.getInt("idioma_id");
+                    String idioma = resultado.getString("Idioma");
+                    idiomas.add(new Idioma(idiomaID, idioma));
+                }
+                conexionBD.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return idiomas;
+    }
 }
