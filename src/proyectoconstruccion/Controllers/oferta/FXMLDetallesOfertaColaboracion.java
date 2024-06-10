@@ -15,6 +15,7 @@ import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController;
 
 public class FXMLDetallesOfertaColaboracion implements Initializable {
     public Label lbDuracion;
@@ -47,6 +48,19 @@ public class FXMLDetallesOfertaColaboracion implements Initializable {
 
 
     public void btnCrearColaboracion(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOferta.fxml");
+            Parent root = loader.load();
+            FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
+            // Puedes pasar datos a la nueva ventana si es necesario
+            //controller.inicializarValores();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void inicializarDetalles(OfertaColaboracion ofertaColaboracion) {
