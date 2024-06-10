@@ -1,14 +1,20 @@
 package proyectoconstruccion.Controllers.oferta;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.ProfesorDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.Profesor;
-import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
-import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
+
+import java.io.IOException;
 
 public class FXMLOfertaItem {
 
@@ -41,9 +47,18 @@ public class FXMLOfertaItem {
     }
 
     public void btnDetalles(ActionEvent actionEvent) {
-        System.out.println("Se muestran los detalles");
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLDetallesOfertaColaboracion.fxml");
+            Parent root = loader.load();
+            FXMLDetallesOfertaColaboracion controller = loader.getController();
+            controller.inicializarDetalles(ofertaColaboracion);
 
-        System.out.println(ProfesorDAO.getTipoProfesor(profesor.getProfesorId()));
-
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
