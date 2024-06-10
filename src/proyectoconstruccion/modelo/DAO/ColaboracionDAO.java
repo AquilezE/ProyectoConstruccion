@@ -101,7 +101,7 @@ public class ColaboracionDAO {
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
 
-                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodo,titulo,"",inicio,cierre,tipo,estado,profesorUV,externo,experienciaEducativa,evidencia);
+                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodo,titulo,"",inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
 
                     colaboraciones.add(colaboracionResultado);
                 }

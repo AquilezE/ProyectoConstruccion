@@ -20,13 +20,14 @@ public class Colaboracion {
     private LocalDate fechaCierre;
     private String tipo;
     private String estado;
+    private Integer numeroEstudiantes;
 
     private ProfesorUV profesorUv;
     private ProfesorExterno profesorExterno;
     private ExperienciaEducativa experienciaEducativa;
     private Evidencia evidencia;
 
-    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, String idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
+    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, String idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, Integer numeroEstudiantes, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
         this.colaboracionId = colaboracionId;
         Duracion = duracion;
         Periodo = periodo;
@@ -36,6 +37,7 @@ public class Colaboracion {
         this.fechaCierre = fechaCierre;
         this.tipo = tipo;
         this.estado = estado;
+        this.numeroEstudiantes=numeroEstudiantes;
         this.profesorUv = profesorUv;
         this.profesorExterno = profesorExterno;
         this.experienciaEducativa = experienciaEducativa;
@@ -135,6 +137,14 @@ public class Colaboracion {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Integer getNumeroEstudiantes() {
+        return numeroEstudiantes;
+    }
+
+    public void setNumeroEstudiantes(Integer numeroEstudiantes) {
+        this.numeroEstudiantes=numeroEstudiantes;
     }
 
     public ProfesorUV getProfesorUv() {
