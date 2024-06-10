@@ -1,11 +1,15 @@
 package proyectoconstruccion.Controllers.dashboard;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Callback;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
 import proyectoconstruccion.Utils.Sesion;
@@ -21,9 +25,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
+import proyectoconstruccion.modelo.DAO.PeriodoDAO;
+import proyectoconstruccion.modelo.POJO.Periodo;
 
 public class FXMLDashboardController implements Initializable {
 
+    private ObservableList<Periodo> periodos;
 
     public Tab tabSocilicitudes;
     public Tab tabNumeralia;
@@ -42,6 +49,7 @@ public class FXMLDashboardController implements Initializable {
     public Label lbNombreProfesor;
     public Label lbPeriodo;
     public Label lbTituloMateria;
+    public ComboBox cbSeleccionPeriodo;
     @FXML
     private Button btnEliminarrFiltros;
     @FXML
@@ -52,25 +60,36 @@ public class FXMLDashboardController implements Initializable {
     private TableColumn<?, ?> colNumAlumnos;
 
 
-
     public void initialize(URL url, ResourceBundle rb) {
-        if(Sesion.getInstancia().getRol()=="profesor"){
+
+        if (Sesion.getInstancia().getRol() == "profesor") {
             //quita Solicitud de constancias
             tabPane.getTabs().remove(3);
             //quita Solicitud de
             tabPane.getTabs().remove(2);
-        }else{
+        } else {
             //cargarPeriodosNumeralia();
         }
+        iniciarComponentes();
+
+
     }
 
-    public void IniciarComponentes(){
-        
+    public void iniciarComponentes() {
+        tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
+            if (verificarTabSeleccionado(tabNumeralia)) {
+                cargarPeriodos();
+            }
+        });
+    }
+
+    private boolean verificarTabSeleccionado(Tab tab) {
+        return tabPane.getSelectionModel().getSelectedItem().equals(tab);
     }
 
     @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
-        try{
+        try {
 
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
@@ -80,7 +99,7 @@ public class FXMLDashboardController implements Initializable {
 
             bdPaneColaboraciones.setCenter(contenedorColaboraciones);
 
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -88,14 +107,14 @@ public class FXMLDashboardController implements Initializable {
 
     @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
-        try{
-            FXMLLoader loader= Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorOfertasController controller = loader.getController();
 
             controller.InicializarComponentes();
             bdPaneOfertasColab.setCenter(contenedorColaboraciones);
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
@@ -118,13 +137,14 @@ public class FXMLDashboardController implements Initializable {
             ex.printStackTrace();
         }
     }
-    public void cargarPeriodosNumeralia(){
+
+    public void cargarPeriodosNumeralia() {
         //TODO
     }
-    
+
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -164,4 +184,42 @@ public class FXMLDashboardController implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    private void cargarPeriodos(){
+        periodos = FXCollections.observableArrayList();
+        periodos.addAll(PeriodoDAO.getPeriodos());
+        cbSeleccionPeriodo.setItems(periodos);
+
+        cbSeleccionPeriodo.setCellFactory(new Callback<ListView<Periodo>, ListCell<Periodo>>() {
+            @Override
+            public ListCell<Periodo> call(ListView<Periodo> param) {
+                return new ListCell<Periodo>() {
+                    @Override
+                    protected void updateItem(Periodo item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getDescripcion());
+                        }
+                    }
+                };
+            }
+        });
+
+        cbSeleccionPeriodo.setButtonCell(new ListCell<Periodo>() {
+            @Override
+            protected void updateItem(Periodo item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getDescripcion());
+                }
+            }
+        });
+    }
+
+
 }

@@ -79,7 +79,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <ComboBox prefHeight="31.0" prefWidth="199.0" promptText="Selecciona el periodo">
+                              <ComboBox fx:id="cbSeleccionPeriodo" prefHeight="31.0" prefWidth="199.0" promptText="Selecciona el periodo">
                                  <HBox.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
