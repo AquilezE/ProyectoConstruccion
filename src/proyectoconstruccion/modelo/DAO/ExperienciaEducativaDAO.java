@@ -19,7 +19,7 @@ public class ExperienciaEducativaDAO {
         Connection conexionBD = ConexionBD.getConexion();
         if(conexionBD != null){
 
-            String consulta = "select * from experienciaeducativa where id = ?";
+            String consulta = "select * from experienciaeducativa where experiencia_educativa_id = ?";
 
 
             try{

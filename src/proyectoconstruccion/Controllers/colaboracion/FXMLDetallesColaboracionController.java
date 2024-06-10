@@ -120,7 +120,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
     public void btnAutorizar(ActionEvent actionEvent) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectoconstruccion/Views/colaboracion/FXMLRechazarAceptarColaboracion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyectoconstruccion/Views/colaboracion/FXMLDetallesColaboracionPendiente.fxml"));
             Parent root = loader.load();
             Scene escena = new Scene(root);
             escenario.setScene(escena);

@@ -41,24 +41,68 @@ public class FXMLColaboracionItemController {
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
 
+        lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().getNombreExperienciaEducativa());
         lbNombreProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());
         lbNombreProfesorUV.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno());
     }
 
     public void btnDetalles(ActionEvent actionEvent) {
+        if (this.colaboracion.getEstado().equals("Pendiente")){
+            mostrarDetallesPendiente();
+        } else if (this.colaboracion.getEstado().equals("Activa")) {
+            mostrarDetallesActiva();
+        }else if (this.colaboracion.getEstado().equals("Concluida")){
+            mostrarDetallesConcluida();
+        }
+    }
+
+    public void mostrarDetallesPendiente(){
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracion.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionPendiente.fxml");
             Parent root = loader.load();
-            FXMLDetallesColaboracionController controlador = loader.getController();
-            //TODO pasarlecomo valor una colaboracion, que son los detalles que se veran en la otra ventana
-            //controlador.inicializarValores();
+            FXMLDetallesColaboracionPendienteController controlador = loader.getController();
+            controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Detalles colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
         } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void mostrarDetallesActiva(){
+        try{
+            Stage escenario = new Stage();
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracion.fxml");
+            Parent root = loader.load();
+            FXMLDetallesColaboracionController controlador = loader.getController();
+            //controlador.inicializarValores();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Detalles colaboración");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void mostrarDetallesConcluida(){
+        try{
+            Stage escenario = new Stage();
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionTerminado.fxml");
+            Parent root = loader.load();
+            FXMLDetallesColaboracionTerminadoController controlador = loader.getController();
+            //controlador.inicializarValores();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Detalles colaboración");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        }catch (IOException ex){
             ex.printStackTrace();
         }
     }

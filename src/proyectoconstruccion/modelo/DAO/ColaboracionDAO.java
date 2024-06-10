@@ -82,10 +82,10 @@ public class ColaboracionDAO {
                     LocalDate inicio = LocalDate.parse(resultado.getString("FechaInicio"));
                     Integer numeroEstudiantes = resultado.getInt("NumeroEstudiantes");
                     String tipo= resultado.getString("TipoDeColab");
-                    //String periodo= resultado.getString("Periodo");
+                    String periodoResultado= resultado.getString("Periodo");
                     String tipodeColab = resultado.getString("TipoDeColab");
                     //Integer idioma = resultado.getInt("idiomaId");
-                    //String titulo = resultado.getString("Titulo");
+                    String tituloResultado = resultado.getString("Titulo");
                     Integer experienciaEducativaid = resultado.getInt("experiencia_educativa_id");
 
                     Integer idProfesorUV = resultado.getInt("profesor_uv_id");
@@ -100,8 +100,7 @@ public class ColaboracionDAO {
 
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
-
-                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodo,titulo,"",inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
+                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,"",inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
 
                     colaboraciones.add(colaboracionResultado);
                 }
