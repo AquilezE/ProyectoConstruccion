@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController;
 
-public class FXMLDetallesOfertaColaboracion implements Initializable {
+public class FXMLDetallesOfertaColaboracionController implements Initializable {
     public Label lbDuracion;
     public Label lbIdioma;
     public Label lbPeriodo;

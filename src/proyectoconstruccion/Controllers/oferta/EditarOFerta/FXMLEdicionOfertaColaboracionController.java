@@ -9,10 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracion;
+import proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
@@ -37,7 +36,7 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     private ComboBox<Periodo> cbPeriodo;
 
 
-    private FXMLDetallesOfertaColaboracion detallesOfertaColaboracion;
+    private FXMLDetallesOfertaColaboracionController detallesOfertaColaboracion;
     private OfertaColaboracion ofertaColaboracion;
 
     @Override
@@ -45,7 +44,7 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
 
     }
 
-    public void InicializarDatos(FXMLDetallesOfertaColaboracion detallesOfertaColaboracion, OfertaColaboracion ofertaColaboracion){
+    public void InicializarDatos(FXMLDetallesOfertaColaboracionController detallesOfertaColaboracion, OfertaColaboracion ofertaColaboracion){
 
             this.ofertaColaboracion=ofertaColaboracion;
             this.detallesOfertaColaboracion = detallesOfertaColaboracion;

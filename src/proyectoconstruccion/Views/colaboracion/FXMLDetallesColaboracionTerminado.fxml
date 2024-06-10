@@ -9,7 +9,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminado"
+            fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminadoController"
             prefHeight="720.0" prefWidth="1280.0">
     <children>
         <Label layoutX="98.0" layoutY="165.0" text="Nombre profesor">

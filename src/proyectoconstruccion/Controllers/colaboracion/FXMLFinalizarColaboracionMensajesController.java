@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLFinalizarColaboracionMensajes implements Initializable {
+public class FXMLFinalizarColaboracionMensajesController implements Initializable {
     public Label lbMensaje;
 
     @Override

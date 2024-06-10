@@ -9,14 +9,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Utils.Utils;
-import proyectoconstruccion.modelo.DAO.ProfesorDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.Profesor;
 
 import java.io.IOException;
 
-public class FXMLOfertaItem {
+public class FXMLOfertaItemController {
 
     public Pane paneColor;
 
@@ -50,7 +49,7 @@ public class FXMLOfertaItem {
         try {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLDetallesOfertaColaboracion.fxml");
             Parent root = loader.load();
-            FXMLDetallesOfertaColaboracion controller = loader.getController();
+            FXMLDetallesOfertaColaboracionController controller = loader.getController();
             controller.inicializarDetalles(ofertaColaboracion);
 
             Stage stage = new Stage();

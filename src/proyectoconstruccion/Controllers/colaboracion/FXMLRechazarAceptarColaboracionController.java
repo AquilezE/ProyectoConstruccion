@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLRechazarAceptarColaboracion implements Initializable {
+public class FXMLRechazarAceptarColaboracionController implements Initializable {
     public Label lbNumeroColaboracion;
     public Label lbTitulo;
     public Label lbNombreProfesor;

@@ -6,8 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboraciones;
-import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertas;
+import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
+import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 
@@ -74,7 +74,7 @@ public class FXMLDashboardController implements Initializable {
 
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
-            FXMLContenedorColaboraciones controller = loader.getController();
+            FXMLContenedorColaboracionesController controller = loader.getController();
 
             controller.InicializarComponentes();
 
@@ -91,7 +91,7 @@ public class FXMLDashboardController implements Initializable {
         try{
             FXMLLoader loader= Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
-            FXMLContenedorOfertas controller = loader.getController();
+            FXMLContenedorOfertasController controller = loader.getController();
 
             controller.InicializarComponentes();
             bdPaneOfertasColab.setCenter(contenedorColaboraciones);

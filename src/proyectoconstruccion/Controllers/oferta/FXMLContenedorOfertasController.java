@@ -6,16 +6,11 @@ import javafx.scene.layout.VBox;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
-import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
-import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionUV;
-import proyectoconstruccion.modelo.POJO.profesor.Profesor;
-import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
-import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FXMLContenedorOfertas {
+public class FXMLContenedorOfertasController {
 
     public VBox vBoxBucket;
 
@@ -41,7 +36,7 @@ public class FXMLContenedorOfertas {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLOfertaItem.fxml");
             AnchorPane ofertaItem = loader.load();
 
-            FXMLOfertaItem controler = loader.getController();
+            FXMLOfertaItemController controler = loader.getController();
             controler.InicializarComponentes(oferta);
 
             vBoxBucket.getChildren().add(ofertaItem);

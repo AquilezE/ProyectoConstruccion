@@ -8,13 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-public class FXMLColaboracionItem {
+public class FXMLColaboracionItemController {
 
     public Label lbTitulo;
     public Label lbNombreProfesorExt;

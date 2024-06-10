@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLFinalizarColaboracion implements Initializable {
+public class FXMLFinalizarColaboracionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
