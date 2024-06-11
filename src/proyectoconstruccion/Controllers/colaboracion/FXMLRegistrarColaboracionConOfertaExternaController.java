@@ -37,6 +37,7 @@ public class FXMLRegistrarColaboracionConOfertaExternaController {
 
     @FXML
     private void btnClicRegistrarColaboracion(ActionEvent event) {
+        System.out.println("Colaboracion registrada exitosamente");
     }
     
 }

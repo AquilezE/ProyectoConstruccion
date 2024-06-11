@@ -47,12 +47,13 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
+        Stage escenarioRegistrarColaboracionConOfertaUV = (Stage) lbTitulo.getScene().getWindow();
+        escenarioRegistrarColaboracionConOfertaUV.close();
     }
 
     @FXML
     private void btnClicRegistrarColaboracion(ActionEvent event) {
-        Stage escenarioRegistrarColaboracionConOfertaUV = (Stage) lbTitulo.getScene().getWindow();
-        escenarioRegistrarColaboracionConOfertaUV.close();
+        System.out.println("Colaboracion registrada con exito");
     }
 
     @FXML
