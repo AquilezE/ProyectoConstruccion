@@ -6,4 +6,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaExternaController" />
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaExternaController">
+   <children>
+      <Label layoutX="134.0" layoutY="78.0" text="Título" />
+      <Label fx:id="lbNombreProfesorExterno" layoutX="707.0" layoutY="123.0" text="Juan Juan Juanes" />
+      <Label layoutX="707.0" layoutY="68.0" text="Nombre del profesor externo" />
+      <Label fx:id="lbTitulo" layoutX="134.0" layoutY="123.0" text="Colaboración para el manejo de MySQL" />
+      <Label layoutX="134.0" layoutY="191.0" text="Correo electrónico" />
+      <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="134.0" layoutY="235.0" text="juan.juan@uv.mx" />
+      <Label layoutX="707.0" layoutY="305.0" text="Idioma" />
+      <Label layoutX="134.0" layoutY="305.0" text="Periodo" />
+      <Label fx:id="lbPeriodo" layoutX="132.0" layoutY="343.0" text="Febrero 2023 - Julio 2023" />
+      <Label layoutX="707.0" layoutY="191.0" text="Experiencia educativa" />
+      <Label fx:id="lbExperienciaEducativa" layoutX="707.0" layoutY="229.0" text="Bases de datos" />
+      <Button layoutX="972.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
+      <Button layoutX="1073.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar colaboración" />
+      <Label layoutX="132.0" layoutY="398.0" text="Profesor UV" />
+      <ComboBox fx:id="cbProfesorUV" layoutX="128.0" layoutY="435.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="128.0" layoutY="498.0" text="Nombre profesor UV" />
+      <Label fx:id="lbNombreProfesorUV" layoutX="128.0" layoutY="533.0" text="David Alaba Jr" />
+      <Label layoutX="129.0" layoutY="580.0" text="Numero de personal" />
+      <Label fx:id="lbNumPersonal" layoutX="129.0" layoutY="615.0" text="23423454" />
+      <Label layoutX="381.0" layoutY="498.0" text="Correo electrónico" />
+      <Label fx:id="lbCorreoElectronicoProfeUV" layoutX="381.0" layoutY="533.0" text="ieifowef@au.com" />
+      <Label fx:id="lbIdioma" layoutX="707.0" layoutY="343.0" text="Frances" />
+   </children>
+</AnchorPane>
