@@ -48,18 +48,18 @@ public static ArrayList<NumeraliaAreaAcademica> obtenerNumeraliaAreaAcademica() 
     Connection conexionBD = ConexionBD.getConexion();
 
     if (conexionBD != null) {
-        String consulta = "SELECT NombreAreaAcademica, COUNT(DISTINCT profesor_uv_id) as NumeroProfesores, SUM(NumeroEstudiantes) as NumeroEstudiantes FROM colaboracion" +
-            "JOIN experienciaeducativa ON colaboracion.experiencia_educativa_id = experienciaeducativa.experiencia_educativa_id" +
-            "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id" +
-            "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id" +
-            "JOIN areaacademica ON dependencia.area_academica_id = areaacademica.area_academica_id" +
-            "WHERE colaboracion.Estado= 'Concluida'" +
+        String consulta = "SELECT NombreAreaAcademica, COUNT(DISTINCT profesor_uv_id) as NumeroProfesores, SUM(NumeroEstudiantes) as NumeroEstudiantes FROM colaboracion " +
+            "JOIN experienciaeducativa ON colaboracion.experiencia_educativa_id = experienciaeducativa.experiencia_educativa_id " +
+            "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id " +
+            "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id " +
+            "JOIN areaacademica ON dependencia.area_academica_id = areaacademica.area_academica_id " +
+            "WHERE colaboracion.Estado= 'Concluida' " +
             "GROUP BY NombreAreaAcademica";
         try {
             PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
             ResultSet resultado = prepararSentencia.executeQuery();
             while (resultado.next()) {
-                String areaAcademica = resultado.getString("AreaAcademica");
+                String areaAcademica = resultado.getString("NombreAreaAcademica");
                 int numeroProfesores = resultado.getInt("NumeroProfesores");
                 int numeroEstudiantes = resultado.getInt("NumeroEstudiantes");
                 numeraliaAreaAcademicaLista.add(new NumeraliaAreaAcademica(areaAcademica,numeroProfesores,numeroEstudiantes));

@@ -100,8 +100,8 @@ public class FXMLDashboardController implements Initializable {
             if (verificarTabSeleccionado(tabNumeralia)) {
                 cargarPeriodos();
                 configurarTablaCampus();
-                obtenerDatosTablaCampus();
                 configurarTablaAreaAcademica();
+                obtenerDatosTablaCampus();
                 obtenerDatosTablaAreaAcademica();
             }
         });
@@ -122,7 +122,7 @@ public class FXMLDashboardController implements Initializable {
 
     }
     public void configurarTablaAreaAcademica(){
-        colAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("campus"));
+        colAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("AreaAcademica"));
         colNumProfesoresAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
         colNumAlumnosAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
     }

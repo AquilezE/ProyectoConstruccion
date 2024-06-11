@@ -106,7 +106,7 @@
                               </TableView>
                               <TableView fx:id="tvNumeraliaAreaAcademica" prefHeight="235.0" prefWidth="1080.0">
                                 <columns>
-                                  <TableColumn fx:id="colAreaAcademica" prefWidth="204.80005490779877" text="Area Academcia" />
+                                  <TableColumn fx:id="colAreaAcademica" prefWidth="204.80005490779877" text="Area Academica" />
                                   <TableColumn fx:id="colNumAlumnosAreaAcademica" minWidth="0.0" prefWidth="124.00006103515625" text="Alumnos" />
                                     <TableColumn fx:id="colNumProfesoresAreaAcademica" prefWidth="116.800048828125" text="Profesores" />
                                 </columns>
