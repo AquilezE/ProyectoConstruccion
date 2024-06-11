@@ -31,5 +31,11 @@
       <Button layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
       <Button layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
       <Button layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
+      <Label layoutX="348.0" layoutY="260.0" text="Nacolulan Leonardo" />
+      <Label layoutX="348.0" layoutY="333.0" text="Mark Tony Barilla Olg" />
+      <Label layoutX="348.0" layoutY="412.0" text="Portugués" />
+      <Label layoutX="849.0" layoutY="412.0" text="Base de datos" />
+      <Label layoutX="849.0" layoutY="323.0" text="20/05/2023 - 20/06/2023" />
+      <Label layoutX="849.0" layoutY="260.0" text="Label" />
    </children>
 </AnchorPane>
