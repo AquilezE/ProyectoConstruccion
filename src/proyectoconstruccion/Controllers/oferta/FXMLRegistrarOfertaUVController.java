@@ -30,6 +30,8 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     @FXML
     private ComboBox<?> cbPeriodo;
     @FXML
+    private ComboBox<?> cbExperienciaEducativa;
+    @FXML
     private Label lbNombre;
     @FXML
     private Label lbCorreo;
@@ -37,8 +39,6 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     private Label lbNumPersonal;
     @FXML
     private Label lbCelular;
-    @FXML
-    private ComboBox<?> cbExperienciaEducativa;
 
     /**
      * Initializes the controller class.
@@ -46,7 +46,12 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    public void inicializarValores(){
+        //cargarPeriodo()
+        //cargarExperienciaEducativa()
+    }
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {

@@ -31,6 +31,9 @@ import proyectoconstruccion.modelo.POJO.Periodo;
 
 public class FXMLDashboardController implements Initializable {
 
+    public Button btnRegistrarOfertaExterna;
+    public Button btnRegistrarOfertaUV;
+
     private ObservableList<Periodo> periodos;
 
     public Tab tabSocilicitudes;
@@ -38,18 +41,10 @@ public class FXMLDashboardController implements Initializable {
     public TabPane tabPane;
     public BorderPane bdPaneColaboraciones;
     public BorderPane bdPaneOfertasColab;
-    public BorderPane bdPaneSolicitudesConstancias;
     public BorderPane bdPaneNumerialia;
-    public Label lbNumeroColaboracion;
-    public TableView tvEstudiantes;
-    public Label lbFechas;
-    public Label lbPeriodoSC;
-    public Label lbExperienciaEducativa;
-    public Label lbIdioma;
-    public Label lbNombreColaborador;
-    public Label lbNombreProfesor;
+
     public Label lbPeriodo;
-    public Label lbTituloMateria;
+
     public ComboBox cbSeleccionPeriodo;
     @FXML
     private Button btnEliminarrFiltros;
@@ -76,12 +71,13 @@ public class FXMLDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         if (Sesion.getInstancia().getRol() == "profesor") {
-            //quita Solicitud de constancias
             tabPane.getTabs().remove(3);
-            //quita Solicitud de
             tabPane.getTabs().remove(2);
+            btnRegistrarOfertaExterna.setVisible(false);
+            btnRegistrarOfertaUV.setVisible(true);
         } else {
-            //cargarPeriodosNumeralia();
+            btnRegistrarOfertaExterna.setVisible(true);
+            btnRegistrarOfertaUV.setVisible(false);
         }
         iniciarComponentes();
 
