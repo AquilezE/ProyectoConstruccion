@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
-import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 
@@ -34,7 +33,6 @@ public class FXMLDashboardController implements Initializable {
 
     public Button btnRegistrarOfertaExterna;
     public Button btnRegistrarOfertaUV;
-    public Button btnRegistrarNuevaColab;
 
     private ObservableList<Periodo> periodos;
 
@@ -72,12 +70,11 @@ public class FXMLDashboardController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
-        if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
+        if (Sesion.getInstancia().getRol() == "profesor") {
             tabPane.getTabs().remove(3);
             tabPane.getTabs().remove(2);
             btnRegistrarOfertaExterna.setVisible(false);
             btnRegistrarOfertaUV.setVisible(true);
-            btnRegistrarNuevaColab.setVisible(true);
         } else {
             btnRegistrarOfertaExterna.setVisible(true);
             btnRegistrarOfertaUV.setVisible(false);
@@ -235,7 +232,7 @@ public class FXMLDashboardController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaUV.fxml");
             Parent root = loader.load();
             FXMLRegistrarOfertaUVController controlador = loader.getController();
-            controlador.inicializarValores();
+            //controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar oferta de colaboración UV");
