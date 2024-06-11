@@ -7,6 +7,7 @@ package proyectoconstruccion.Controllers.colaboracion;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -24,6 +27,7 @@ import proyectoconstruccion.Controllers.listaEstudiantes.FXMLSubirListaEstudiant
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
@@ -192,6 +196,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
     }
 
     public void btnFinalizar(ActionEvent actionEvent) {
-        System.out.println("Este boton cambia el estado a finalizada");
+
+
     }
 }
