@@ -40,6 +40,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
     public Button btnSyllabus;
     public Button btnEvidencias;
     public Button btnLista;
+    public Button btnFinalizar;
 
 
     private Colaboracion colaboracion;
@@ -74,6 +75,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
             btnSyllabus.setVisible(false);
             btnEvidencias.setVisible(false);
             btnLista.setVisible(false);
+            btnFinalizar.setVisible(false);
         }
 
         this.colaboracion = colaboracion;
@@ -114,7 +116,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
             Parent root = loader.load();
             FXMLCancelarColaboracionController controlador = loader.getController();
             //TODO pasarle como valor una colaboracion
-            //controlador.inicializarValores();
+            controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Cancelar colaboración");

@@ -204,5 +204,28 @@ return respuesta;
         return borrarExitoso;
     }
 
+    public static boolean aniadirAnotaciones(Integer colaboracionId,String anotaciones){
+
+        boolean updateSuccessful = false;
+        Connection connection = ConexionBD.getConexion();
+        if (connection != null) {
+            String query = "UPDATE colaboracion SET anotaciones = ? WHERE colaboracion_id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, anotaciones);
+                preparedStatement.setInt(2, colaboracionId);
+
+                int result = preparedStatement.executeUpdate();
+                if (result != 0) {
+                    System.out.println("Anotaciones Updated Successfully!");
+                    updateSuccessful = true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return updateSuccessful;
+
+    }
 
 }

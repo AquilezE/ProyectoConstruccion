@@ -27,7 +27,7 @@
       <Button fx:id="btnEvidencias" layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicEvidencias" text="Subir evidencias" />
       <Button fx:id="btnLista" layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
       <Button layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
-      <Button layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
+      <Button fx:id="btnFinalizar" layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
       <Label layoutX="178.0" layoutY="260.0" text="Nombre profesor UV:" />
       <Label layoutX="153.0" layoutY="332.0" text="Nombre profesor externo:" />
       <Label layoutX="210.0" layoutY="403.0" text="Idioma:" />

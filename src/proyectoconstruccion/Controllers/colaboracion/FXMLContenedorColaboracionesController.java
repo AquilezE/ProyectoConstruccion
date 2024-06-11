@@ -19,7 +19,7 @@ public class FXMLContenedorColaboracionesController {
 
         HashMap<String,Object> seleccion =  ColaboracionDAO.getColaboraciones(null, null,null,null,null,null,null);
         if(seleccion==null){
-            System.out.println("da null tu pendejada");
+            System.out.println("da null");
         }
 
 
