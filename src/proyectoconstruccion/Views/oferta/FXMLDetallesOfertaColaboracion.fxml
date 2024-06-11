@@ -1,59 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracionController">
    <children>
-      <Label layoutX="408.0" layoutY="50.0" text="Detalles oferta de colaboración">
+      <Label layoutX="414.0" layoutY="31.0" text="Detalles oferta de colaboración">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="188.0" layoutY="172.0" text="Duración:">
+      <Label layoutX="106.0" layoutY="203.0" text="Duración:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="205.0" layoutY="267.0" text="Idioma">
+      <Label layoutX="122.0" layoutY="330.0" text="Idioma:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="218.0" layoutY="360.0" text="Periodo">
+      <Label layoutX="115.0" layoutY="456.0" text="Periodo:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="719.0" layoutY="173.0" text="Titulo">
+      <Label layoutX="730.0" layoutY="197.0" text="Titulo:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="704.0" layoutY="275.0" text="Nombre profesor">
+      <Label layoutX="675.0" layoutY="328.0" text="Nombre profesor:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="720.0" layoutY="361.0" text="Correo profesor">
+      <Label layoutX="696.0" layoutY="456.0" text="Correo profesor:">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbDuracion" layoutX="329.0" layoutY="170.0" prefHeight="17.0" prefWidth="175.0" />
-      <Label fx:id="lbIdioma" layoutX="329.0" layoutY="259.0" prefHeight="27.0" prefWidth="190.0" />
-      <Label fx:id="lbPeriodo" layoutX="331.0" layoutY="364.0" prefHeight="17.0" prefWidth="162.0" />
-      <Label fx:id="lbTitulo" layoutX="860.0" layoutY="183.0" prefHeight="17.0" prefWidth="185.0" />
-      <Label fx:id="lbNombreProfesor" layoutX="869.0" layoutY="269.0" prefHeight="27.0" prefWidth="252.0" />
-      <Label fx:id="lbCorreoProfesor" layoutX="872.0" layoutY="361.0" prefHeight="17.0" prefWidth="186.0" />
-      <Button layoutX="202.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnEditar" text="Editar">
+      <Label fx:id="lbDuracion" layoutX="288.0" layoutY="201.0" prefHeight="5.0" prefWidth="175.0" text="fechasDuración">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbIdioma" layoutX="295.0" layoutY="330.0" prefHeight="27.0" prefWidth="190.0" text="Ingles">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbPeriodo" layoutX="296.0" layoutY="460.0" prefHeight="17.0" prefWidth="162.0" text="Primero">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbTitulo" layoutX="911.0" layoutY="194.0" prefHeight="17.0" prefWidth="185.0" text="Culturas extranjerizadas">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbNombreProfesor" layoutX="926.0" layoutY="328.0" prefHeight="27.0" prefWidth="252.0" text="Juan hernadez">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="lbCorreoProfesor" layoutX="930.0" layoutY="457.0" prefHeight="17.0" prefWidth="186.0" text="vaommarco052@gmail.com">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Button layoutX="250.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnEditar" text="Editar">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="910.0" layoutY="569.0" mnemonicParsing="false" onAction="#btnCrearColaboracion" text="Crear colaboración">
+      <Button layoutX="906.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnCrearColaboracion" text="Crear colaboración">
          <font>
             <Font size="24.0" />
          </font>
