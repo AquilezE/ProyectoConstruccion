@@ -159,4 +159,96 @@ public class EvidenciaDAO {
         }
         return false;
     }
+
+
+    public static boolean isSyllabusNull(Integer evidenciaId) {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean resultado = true;
+        try {
+            con = ConexionBD.getConexion();
+            String sql = "SELECT 1 FROM Evidencia WHERE syllabus IS NOT NULL AND evidencia_id = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, evidenciaId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultado;
+    }
+
+    public static boolean isEvidenciaZipNull(Integer evidenciaId) {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean resultado = true;
+        try {
+            con = ConexionBD.getConexion();
+            String sql = "SELECT 1 FROM Evidencia WHERE EvidenciaZip IS NOT NULL AND evidencia_id = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, evidenciaId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultado;
+    }
+
+    public static boolean isListaEstudiantesNull(Integer evidenciaId) {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean resultado = true;
+        try {
+            con = ConexionBD.getConexion();
+            String sql = "SELECT 1 FROM Evidencia WHERE listaEstudiantes IS NOT NULL AND evidencia_id = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, evidenciaId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado = false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return resultado;
+    }
+
 }
