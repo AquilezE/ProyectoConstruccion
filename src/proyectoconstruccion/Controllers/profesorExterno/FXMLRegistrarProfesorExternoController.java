@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
@@ -52,15 +53,22 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
     private TextField tfTelefono;
 
     private FXMLRegistrarOfertaExternaController ofertaExternaController;
+    private FXMLRegistrarColaboracionConOfertaUVController colaboracionConOfertaUVController;
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     public void inicializarValores(FXMLRegistrarOfertaExternaController fxmlRegistrarOfertaExternaController) {
         this.ofertaExternaController = fxmlRegistrarOfertaExternaController;
+        cargarIdiomas();
+        cargarUniversidades();
+    }
+
+    public void inicializarValores(FXMLRegistrarColaboracionConOfertaUVController colaboracionConOfertaUVController) {
+        this.colaboracionConOfertaUVController = colaboracionConOfertaUVController;
         cargarIdiomas();
         cargarUniversidades();
     }

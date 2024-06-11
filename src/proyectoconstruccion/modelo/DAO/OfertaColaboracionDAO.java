@@ -107,6 +107,32 @@ public class OfertaColaboracionDAO {
             return inserted;
         }
 
+
+    public static boolean guardarOfertaUV(OfertaColaboracionUV oferta) {
+        boolean inserted = false;
+        Connection conexionBD = ConexionBD.getConexion();
+        if (conexionBD != null) {
+            String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
+                prepararSentencia.setInt(1, oferta.getIdiomaID());
+                prepararSentencia.setString(2, oferta.getPeriodo());
+                prepararSentencia.setString(3, oferta.getTitulo());
+                prepararSentencia.setString(4, oferta.getDuracion());
+                prepararSentencia.setInt(5, oferta.getProfesor().getProfesorId());
+                prepararSentencia.setInt(6, 0); // Assuming 0 is the type identification for OfertaColaboracionUV
+
+                int numOfInsertedRows = prepararSentencia.executeUpdate();
+                inserted = numOfInsertedRows > 0;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return inserted;
+    }
+
+
     public static boolean updateOfertaColaboracion(OfertaColaboracion oferta, String titulo, String duracion, Integer idioma, String periodo) {
         boolean updated = false;
         Connection conexionBD = ConexionBD.getConexion();
@@ -129,7 +155,6 @@ public class OfertaColaboracionDAO {
         }
         return updated;
     }
-
 
     public static HashMap<String, Object> getOfertaColaboracionById(Integer id) {
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
@@ -172,5 +197,7 @@ public class OfertaColaboracionDAO {
         }
         return respuesta;
     }
+
+
 
     }

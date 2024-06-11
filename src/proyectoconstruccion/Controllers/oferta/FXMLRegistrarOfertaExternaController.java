@@ -284,31 +284,31 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     }
 
 
-        private boolean validateFields () {
-            boolean valid = true;
+    private boolean validateFields () {
+        boolean valid = true;
 
-            // Check for selected values in combo boxes
-            if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
-                valid = false;
-            }
-            if (cbPeriodo.getSelectionModel().getSelectedItem() == null) {
-                valid = false;
-            }
-            if (cbProfesorExterno.getSelectionModel().getSelectedItem() == null) {
-                valid = false;
-            }
-
-
-            // Check for empty fields in text fields, disallow spaces and newlines
-            if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
-                valid = false;
-            }
-            if (tfDuracion.getText().trim().isEmpty() || tfDuracion.getText().trim().isEmpty()) {
-                valid = false;
-            }
-
-            return valid;
+        // Check for selected values in combo boxes
+        if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
+            valid = false;
         }
+        if (cbPeriodo.getSelectionModel().getSelectedItem() == null) {
+            valid = false;
+        }
+        if (cbProfesorExterno.getSelectionModel().getSelectedItem() == null) {
+            valid = false;
+        }
+
+
+        // Check for empty fields in text fields, disallow spaces and newlines
+        if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
+            valid = false;
+        }
+        if (tfDuracion.getText().trim().isEmpty() || tfDuracion.getText().trim().isEmpty()) {
+            valid = false;
+        }
+
+        return valid;
+    }
 
     }
 

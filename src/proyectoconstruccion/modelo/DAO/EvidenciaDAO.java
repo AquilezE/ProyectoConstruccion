@@ -1,12 +1,10 @@
 package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.modelo.ConexionBD;
+import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class EvidenciaDAO {
 
@@ -129,5 +127,22 @@ public class EvidenciaDAO {
             e.printStackTrace();
         }
         return listaEstudiantesStream;
+    }
+
+    public static Evidencia crearRegistroEvidencia() {
+        try {
+            Connection con = ConexionBD.getConexion();
+            String sql = "INSERT INTO Evidencia (Syllabus, EvidenciaZip, listaEstudiantes) VALUES (NULL, NULL, NULL)";
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                return new Evidencia(id);
+            }
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 }

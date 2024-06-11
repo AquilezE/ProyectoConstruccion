@@ -47,6 +47,11 @@ public class Colaboracion {
     }
 
 
+    public Colaboracion() {
+
+    }
+
+
     public ExperienciaEducativa getExperienciaEducativa() {
         return experienciaEducativa;
     }

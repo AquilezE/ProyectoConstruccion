@@ -8,4 +8,7 @@ public class OfertaColaboracionUV extends OfertaColaboracion {
         super(ofertaColaboracionId, idiomaId, periodo, titulo, tipo,duracion,profesorUV);
     }
 
+    public OfertaColaboracionUV() {
+
+    }
 }

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController">
     <children>
       <TextField fx:id="tfTitulo" layoutX="255.0" layoutY="162.0" prefHeight="31.0" prefWidth="278.0" />
-      <TextField fx:id="tfDuracion" layoutX="255.0" layoutY="252.0" prefHeight="31.0" prefWidth="278.0" />
-      <TextField fx:id="tfIdioma" layoutX="702.0" layoutY="158.0" prefHeight="31.0" prefWidth="295.0" />
+      <TextField fx:id="tfDuracion" layoutX="702.0" layoutY="158.0" prefHeight="31.0" prefWidth="295.0" />
       <ComboBox fx:id="cbPeriodo" layoutX="702.0" layoutY="248.0" prefHeight="31.0" prefWidth="295.0" />
       <Label layoutX="255.0" layoutY="125.0" text="Título de la oferta de colaboración" />
       <Label layoutX="702.0" layoutY="121.0" text="Duración de la colaboración" />
@@ -34,5 +30,6 @@
       <Label layoutX="708.0" layoutY="517.0" text="Celular" />
       <Label layoutX="258.0" layoutY="312.0" text="Experiencia educativa" />
       <ComboBox fx:id="cbExperienciaEducativa" layoutX="254.0" layoutY="345.0" prefHeight="31.0" prefWidth="278.0" />
+      <ComboBox fx:id="cbIdioma" layoutX="255.0" layoutY="252.0" prefHeight="31.0" prefWidth="278.0" />
    </children>
 </AnchorPane>

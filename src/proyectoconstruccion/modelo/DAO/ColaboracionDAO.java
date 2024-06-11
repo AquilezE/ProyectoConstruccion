@@ -119,4 +119,37 @@ return respuesta;
     }
 
 
+    public static boolean registrarColaboracion(Colaboracion colaboracion) {
+        Connection conexionBD = ConexionBD.getConexion();
+        boolean registroExitoso = false;
+        if (conexionBD != null) {
+            try {
+                String consulta = "INSERT INTO colaboracion (Duracion, Periodo, Titulo, idioma_id, FechaInicio, FechaCierre, TipoDeColab, Estado, NumeroEstudiantes, profesor_uv_id, profesor_externo_id, experiencia_Educativa_id, evidencia_id)" +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?, ?, ?)";
+                PreparedStatement preparedStatement = conexionBD.prepareStatement(consulta);
+                preparedStatement.setString(1, colaboracion.getDuracion());
+                preparedStatement.setString(2, colaboracion.getPeriodo());
+                preparedStatement.setString(3, colaboracion.getTitulo());
+                preparedStatement.setInt(4, colaboracion.getIdioma().getIdiomaID()); // assuming idiomaID is the field required
+                preparedStatement.setDate(5, java.sql.Date.valueOf(colaboracion.getFechaInicio()));
+                preparedStatement.setDate(6, java.sql.Date.valueOf(colaboracion.getFechaCierre()));
+                preparedStatement.setString(7, colaboracion.getTipo());
+                preparedStatement.setString(8, colaboracion.getEstado());
+                preparedStatement.setInt(9, colaboracion.getProfesorUv().getProfesorId()); // assuming getProfesorUvId() gets the appropriate id
+                preparedStatement.setInt(10, colaboracion.getProfesorExterno().getProfesorId()); // assuming getProfesorExternoId() gets the appropriate id
+                preparedStatement.setInt(11, colaboracion.getExperienciaEducativa().getExperienciaEducativaId()); // assuming getExperienciaEducativaId gets the appropriate id
+                preparedStatement.setInt(12, colaboracion.getEvidencia().getEvidenciaId()); // assuming getEvidenciaId() gets the appropriate id
+
+                int resultado = preparedStatement.executeUpdate();
+                if (resultado != 0) {
+                    System.out.println("Colaboracion Inserted Successfully!");
+                    registroExitoso = true;
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return registroExitoso;
+    }
 }

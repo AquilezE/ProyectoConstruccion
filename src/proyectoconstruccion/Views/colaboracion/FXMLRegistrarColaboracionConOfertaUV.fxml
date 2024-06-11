@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaUVController">
    <children>
       <Label layoutX="134.0" layoutY="78.0" text="Título" />
       <Label fx:id="lbNombreProfesorUV" layoutX="707.0" layoutY="123.0" text="Juan Juan Juanes" />
       <Label layoutX="707.0" layoutY="68.0" text="Nombre del profesor UV" />
       <Label fx:id="lbTitulo" layoutX="134.0" layoutY="123.0" text="Colaboración para el manejo de MySQL" />
-      <Label layoutX="134.0" layoutY="191.0" text="Correo electrónico" />
-      <Label fx:id="lbCorreoElectronicoProfeUV" layoutX="134.0" layoutY="235.0" text="juan.juan@uv.mx" />
+      <Label layoutX="130.0" layoutY="155.0" text="Correo electrónico" />
+      <Label fx:id="lbCorreoElectronicoProfeUV" layoutX="134.0" layoutY="182.0" text="juan.juan@uv.mx" />
       <Label layoutX="707.0" layoutY="191.0" text="Número de personal" />
       <Label fx:id="lbNumPersonal" layoutX="707.0" layoutY="235.0" text="123436" />
       <Label layoutX="707.0" layoutY="398.0" text="Idioma" />
@@ -31,7 +31,15 @@
       <Label fx:id="lbPais" layoutX="389.0" layoutY="533.0" text="Austria" />
       <Label layoutX="128.0" layoutY="595.0" text="Correo electrónico" />
       <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="128.0" layoutY="630.0" text="ieifowef@au.com" />
-      <ComboBox fx:id="cbExperienciaEducativa" layoutX="703.0" layoutY="338.0" prefHeight="31.0" prefWidth="238.0" />
+      <ComboBox fx:id="cbExperienciaEducativa" layoutX="707.0" layoutY="338.0" prefHeight="31.0" prefWidth="238.0" />
       <ComboBox fx:id="cbPeriodo" layoutX="128.0" layoutY="338.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="389.0" layoutY="595.0" text="Universidad" />
+      <Label fx:id="lbUniversidad" layoutX="389.0" layoutY="630.0" text="Austria" />
+      <DatePicker fx:id="dpFechaInicio" layoutX="709.0" layoutY="520.0" />
+      <DatePicker fx:id="dpFechaCierre" layoutX="709.0" layoutY="591.0" />
+      <Label layoutX="709.0" layoutY="489.0" text="Fecha Inicio:" />
+      <Label layoutX="709.0" layoutY="565.0" text="Fecha Cierre:" />
+      <ComboBox fx:id="cbTipoColab" layoutX="128.0" layoutY="253.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="134.0" layoutY="217.0" text="Tipo" />
    </children>
 </AnchorPane>
