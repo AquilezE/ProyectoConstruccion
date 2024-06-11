@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionController">
    <children>
       <Label fx:id="lbIdColaboracion" layoutX="47.0" layoutY="67.0" text="ID de Colaboración: ">
          <font>
@@ -19,23 +16,23 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbNombreProfesorUV" layoutX="194.0" layoutY="260.0" text="Nombre profesor UV:" />
-      <Label fx:id="lbNombreProfesorExterno" layoutX="163.0" layoutY="333.0" text="Nombre profesor externo:" />
-      <Label fx:id="lbIdioma" layoutX="286.0" layoutY="412.0" text="Idioma:" />
-      <Label fx:id="lbPeriodo" layoutX="769.0" layoutY="260.0" text="Periodo:" />
-      <Label fx:id="lbFechas" layoutX="684.0" layoutY="323.0" text="Fecha inicio/fecha fin:" />
-      <Label fx:id="lbExperienciaEdcativa" layoutX="682.0" layoutY="412.0" text="Experiencia educativa:" />
+      <Label fx:id="lbNombreProfesorUV" layoutX="345.0" layoutY="260.0" text="Nombre profesor UV:" />
+      <Label fx:id="lbNombreProfesorExterno" layoutX="344.0" layoutY="332.0" text="Nombre profesor externo:" />
+      <Label fx:id="lbIdioma" layoutX="382.0" layoutY="403.0" text="Idioma:" />
+      <Label fx:id="lbPeriodo" layoutX="864.0" layoutY="260.0" text="Periodo:" />
+      <Label fx:id="lbFechas" layoutX="828.0" layoutY="323.0" text="Fecha inicio/fecha fin:" />
+      <Label fx:id="lbExperienciaEdcativa" layoutX="850.0" layoutY="412.0" text="Experiencia educativa:" />
       <Button layoutX="1013.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" text="Cancelar colaboracion" />
       <Button layoutX="209.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicSyllabus" text="Subir Syllabus" />
       <Button layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicEvidencias" text="Subir evidencias" />
       <Button layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
       <Button layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
       <Button layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
-      <Label layoutX="348.0" layoutY="260.0" text="Nacolulan Leonardo" />
-      <Label layoutX="348.0" layoutY="333.0" text="Mark Tony Barilla Olg" />
-      <Label layoutX="348.0" layoutY="412.0" text="Portugués" />
-      <Label layoutX="849.0" layoutY="412.0" text="Base de datos" />
-      <Label layoutX="849.0" layoutY="323.0" text="20/05/2023 - 20/06/2023" />
-      <Label layoutX="849.0" layoutY="260.0" text="Label" />
+      <Label layoutX="178.0" layoutY="260.0" text="Nombre profesor UV:" />
+      <Label layoutX="153.0" layoutY="332.0" text="Nombre profesor externo:" />
+      <Label layoutX="210.0" layoutY="403.0" text="Idioma:" />
+      <Label layoutX="672.0" layoutY="412.0" text="Experiencia educativa:" />
+      <Label layoutX="673.0" layoutY="323.0" text="Fecha inicio/fecha fin:" />
+      <Label layoutX="720.0" layoutY="260.0" text="Periodo:" />
    </children>
 </AnchorPane>
