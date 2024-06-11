@@ -36,6 +36,7 @@ public class FXMLDashboardController implements Initializable {
     public Button btnRegistrarOfertaUV;
     public Button btnRegistrarNuevaColab;
 
+
     private ObservableList<Periodo> periodos;
 
     public Tab tabSocilicitudes;
@@ -47,25 +48,27 @@ public class FXMLDashboardController implements Initializable {
 
     public Label lbPeriodo;
 
+    @FXML
+    private TableView tvNumeraliaCampus;
+    @FXML
+    private TableColumn colCampus;
+    @FXML
+    private TableColumn colNumAlumnosCampus;
+    @FXML
+    private TableColumn colNumProfesoresCampus;
+    @FXML
+    private TableView tvNumeraliaAreaAcademica;
+    @FXML
+    private TableColumn colAreaAcademica;
+    @FXML
+    private TableColumn colNumAlumnosAreaAcademica;
+    @FXML
+    private TableColumn colNumProfesoresAreaAcademica;
+    @FXML
     public ComboBox cbSeleccionPeriodo;
     @FXML
     private Button btnEliminarrFiltros;
-    @FXML
-    private TableView<?> tvNumeralia;
-    @FXML
-    private TableColumn<?, ?> colNumProfesores;
-    @FXML
-    private TableColumn<?, ?> colNumAlumnos;
-    @FXML
-    private TableView<?> tvNumeralia1;
-    @FXML
-    private TableColumn<?, ?> colCampus;
-    @FXML
-    private TableColumn<?, ?> colNumAlumnos1;
-    @FXML
-    private TableColumn<?, ?> colNumAlumnos11;
-    @FXML
-    private TableColumn<?, ?> colNumAlumnos2;
+
     @FXML
     private AnchorPane apTodo;
 
