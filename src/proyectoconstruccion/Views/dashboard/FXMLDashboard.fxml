@@ -18,7 +18,7 @@
                               <VBox prefHeight="62.0" prefWidth="172.0">
                                  <children>
                                     <DatePicker promptText="Fecha Inicio" />
-                                    <DatePicker promptText="Fecha Conclusion" />
+                                    <DatePicker promptText="Fecha Cierre" />
                                  </children>
                               </VBox>
                               <TextField promptText="Titulo Colaboracion">
@@ -37,7 +37,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnRegistrarNuevaColab" visible="false" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" />
+                              <Button fx:id="btnRegistrarNuevaColab" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" visible="false" />
                            </children>
                         </HBox>
                      </top>
