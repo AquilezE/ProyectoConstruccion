@@ -19,7 +19,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbNumeroColaboracion" layoutX="67.0" layoutY="78.0" text="Numero colaboracion">
+        <Label fx:id="lbIdColaboracion" layoutX="67.0" layoutY="78.0" text="Numero colaboracion">
             <font>
                 <Font size="18.0" />
             </font>
@@ -34,7 +34,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbTituloMateria" layoutX="501.0" layoutY="47.0" text="Materia">
+        <Label fx:id="lbTitulo" layoutX="501.0" layoutY="47.0" text="Materia">
             <font>
                 <Font size="36.0" />
             </font>
@@ -74,12 +74,12 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Label fx:id="lbNombreProfesor" layoutX="256.0" layoutY="164.0" prefHeight="27.0" prefWidth="217.0" text="Label">
+        <Label fx:id="lbNombreProfesorExterno" layoutX="256.0" layoutY="164.0" prefHeight="27.0" prefWidth="217.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbNombreColaborador" layoutX="261.0" layoutY="234.0" prefHeight="17.0" prefWidth="214.0" text="Label">
+        <Label fx:id="lbNombreProfesorUV" layoutX="261.0" layoutY="234.0" prefHeight="17.0" prefWidth="214.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
@@ -94,7 +94,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbPeriodoSC" layoutX="658.0" layoutY="180.0" prefHeight="23.0" prefWidth="95.0" text="Label">
+        <Label fx:id="lbPeriodo" layoutX="658.0" layoutY="180.0" prefHeight="23.0" prefWidth="95.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
@@ -106,10 +106,10 @@
         </Label>
         <TableView fx:id="tvEstudiantes" layoutX="214.0" layoutY="511.0" prefHeight="200.0" prefWidth="644.0">
             <columns>
-                <TableColumn prefWidth="144.4869384765625" text="Matricula" />
-                <TableColumn prefWidth="197.76116943359375" text="Nombre" />
-                <TableColumn prefWidth="155.17718505859375" text="Calificación" />
-                <TableColumn prefWidth="143.99993896484375" text="Faltas" />
+                <TableColumn fx:id="colMatricula" prefWidth="144.4869384765625" text="Matricula" />
+                <TableColumn fx:id="colNombre" prefWidth="197.76116943359375" text="Nombre" />
+                <TableColumn fx:id= "colCalificacion" prefWidth="155.17718505859375" text="Calificación" />
+                <TableColumn fx:id="colFaltas" prefWidth= "143.99993896484375" text="Faltas" />
             </columns>
         </TableView>
     </children>
