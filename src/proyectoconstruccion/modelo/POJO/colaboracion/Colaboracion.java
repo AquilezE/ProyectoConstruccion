@@ -37,6 +37,7 @@ public class Colaboracion {
         this.fechaInicio = fechaInicio;
         this.fechaCierre = fechaCierre;
         this.tipo = tipo;
+        //Esto siempre inicia como "Pendiente"
         this.estado = estado;
         this.numeroEstudiantes=numeroEstudiantes;
         this.profesorUv = profesorUv;

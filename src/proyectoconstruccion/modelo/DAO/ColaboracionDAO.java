@@ -92,12 +92,14 @@ public class ColaboracionDAO {
                     Integer idProfesorUV = resultado.getInt("profesor_uv_id");
                     Integer idProfesorExterno = resultado.getInt("profesor_externo_id");
 
-                    ProfesorUV profesorUV = (ProfesorUV) ProfesorDAO.getProfesorById(idProfesorUV,0).get("profesor");
-                    ProfesorExterno externo = (ProfesorExterno) ProfesorDAO.getProfesorById(idProfesorExterno,1).get("profesor");
+                    Evidencia evidencia= new Evidencia(evidenciaId);
+
 
                     Idioma idioma1 = IdiomaDAO.obtenerIdioma(idioma);
 
-                    Evidencia evidencia= new Evidencia(evidenciaId);
+
+                    ProfesorUV profesorUV = (ProfesorUV) ProfesorDAO.getProfesorById(idProfesorUV,0).get("profesor");
+                    ProfesorExterno externo = (ProfesorExterno) ProfesorDAO.getProfesorById(idProfesorExterno,1).get("profesor");
 
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
