@@ -5,10 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaExternaController;
+import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
@@ -29,6 +32,9 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
     public Label lbTitulo;
     public Label lbNombreProfesor;
     public Label lbCorreoProfesor;
+
+    public Button btnEditar;
+    public Button btnCrearColab;
 
     OfertaColaboracion ofertaColaboracion;
     Idioma idioma;
@@ -94,6 +100,22 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
     }
 
     public void inicializarDetalles(OfertaColaboracion ofertaColaboracion) {
+
+            if (ofertaColaboracion instanceof OfertaColaboracionUV){
+                if(Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+                    btnEditar.setVisible(true);
+                }
+            }else if (ofertaColaboracion instanceof OfertaColaboracionExterna){
+                if(Sesion.getInstancia().getRol().equals(Constantes.ADMIN)){
+                    btnEditar.setVisible(true);
+                }
+            }
+
+            if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+                btnCrearColab.setVisible(true);
+            }
+
+
             this.ofertaColaboracion = ofertaColaboracion;
 
             lbDuracion.setText(ofertaColaboracion.getDuracion());

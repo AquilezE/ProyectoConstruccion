@@ -2,7 +2,10 @@ package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
@@ -11,6 +14,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FXMLDetallesColaboracionPendienteController implements Initializable {
+    public Button btnDenegar;
+    public Button btnAutorizar;
+
     Colaboracion colaboracion;
 
     public Label lbNumeroColaboracion;
@@ -29,6 +35,12 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
 
 
     public void inicializarValores(Colaboracion colaboracion) {
+
+        if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+            btnDenegar.setVisible(false);
+            btnAutorizar.setVisible(false);
+        }
+
         this.colaboracion = colaboracion;
         System.out.println(colaboracion.getPeriodo());
         lbNumeroColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionPendienteController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionPendienteController">
    <children>
       <Label layoutX="121.0" layoutY="202.0" prefHeight="39.0" prefWidth="233.0" text="Nombre profesor:">
          <font>
@@ -46,12 +46,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="365.0" layoutY="579.0" mnemonicParsing="false" onAction="#btnAutorizar" text="Autorizar">
+      <Button fx:id="btnAutorizar" layoutX="365.0" layoutY="579.0" mnemonicParsing="false" onAction="#btnAutorizar" text="Autorizar">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button layoutX="684.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnDenegar" text="Denegar">
+      <Button fx:id="btnDenegar" layoutX="684.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnDenegar" text="Denegar">
          <font>
             <Font size="36.0" />
          </font>

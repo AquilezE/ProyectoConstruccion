@@ -36,7 +36,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" />
+                              <Button fx:id="btnRegistrarNuevaColab" visible="false" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" />
                            </children>
                         </HBox>
                      </top>

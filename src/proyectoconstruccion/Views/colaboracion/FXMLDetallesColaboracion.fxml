@@ -23,9 +23,9 @@
       <Label fx:id="lbFechas" layoutX="828.0" layoutY="323.0" text="Fecha inicio/fecha fin:" />
       <Label fx:id="lbExperienciaEdcativa" layoutX="850.0" layoutY="412.0" text="Experiencia educativa:" />
       <Button layoutX="1013.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnClicCancelarColaboracion" text="Cancelar colaboracion" />
-      <Button layoutX="209.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicSyllabus" text="Subir Syllabus" />
-      <Button layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicEvidencias" text="Subir evidencias" />
-      <Button layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
+      <Button fx:id="btnSyllabus" layoutX="209.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicSyllabus" text="Subir Syllabus" />
+      <Button fx:id="btnEvidencias" layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicEvidencias" text="Subir evidencias" />
+      <Button fx:id="btnLista" layoutX="640.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnClicListaEstudiantes" text="Subir lista de estudiantes" />
       <Button layoutX="1168.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
       <Button layoutX="957.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnFinalizar" text="Finalizar" />
       <Label layoutX="178.0" layoutY="260.0" text="Nombre profesor UV:" />

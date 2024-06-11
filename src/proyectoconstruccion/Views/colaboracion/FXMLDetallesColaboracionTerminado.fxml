@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminadoController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminadoController">
     <children>
         <Label layoutX="73.0" layoutY="168.0" text="Nombre profesor">
             <font>
@@ -54,7 +51,7 @@
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button layoutX="861.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnAprobarConstancia" text="Aprobar constancia">
+        <Button fx:id="btnAprobarConstan" layoutX="861.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnAprobarConstancia" text="Aprobar constancia">
             <font>
                 <Font size="18.0" />
             </font>
@@ -108,8 +105,8 @@
             <columns>
                 <TableColumn fx:id="colMatricula" prefWidth="144.4869384765625" text="Matricula" />
                 <TableColumn fx:id="colNombre" prefWidth="197.76116943359375" text="Nombre" />
-                <TableColumn fx:id= "colCalificacion" prefWidth="155.17718505859375" text="Calificación" />
-                <TableColumn fx:id="colFaltas" prefWidth= "143.99993896484375" text="Faltas" />
+                <TableColumn fx:id="colCalificacion" prefWidth="155.17718505859375" text="Calificación" />
+                <TableColumn fx:id="colFaltas" prefWidth="143.99993896484375" text="Faltas" />
             </columns>
         </TableView>
     </children>

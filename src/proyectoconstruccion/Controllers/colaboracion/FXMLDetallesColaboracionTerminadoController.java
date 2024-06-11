@@ -2,10 +2,13 @@ package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
+import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
@@ -48,6 +51,8 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     public TableColumn<?,?> colCalificacion;
     public TableColumn<?,?> colFaltas;
 
+    public Button btnAprobarConstan;
+
     Colaboracion colaboracion;
 
     @Override
@@ -56,6 +61,10 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     }
 
     public void inicializarValores(Colaboracion colaboracion){
+
+        if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+            btnAprobarConstan.setVisible(false);
+        }
         this.colaboracion = colaboracion;
         lbIdColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));
         lbIdColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));

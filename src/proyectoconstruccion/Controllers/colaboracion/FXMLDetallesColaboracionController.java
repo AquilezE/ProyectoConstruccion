@@ -14,12 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.evidencias.FXMLSubirEvidenciasController;
 import proyectoconstruccion.Controllers.listaEstudiantes.FXMLSubirListaEstudiantesController;
+import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
@@ -33,6 +36,11 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
  * @author unaay
  */
 public class FXMLDetallesColaboracionController implements Initializable {
+
+    public Button btnSyllabus;
+    public Button btnEvidencias;
+    public Button btnLista;
+
 
     private Colaboracion colaboracion;
     @FXML
@@ -61,6 +69,13 @@ public class FXMLDetallesColaboracionController implements Initializable {
     }
 
     public void inicializarValores(Colaboracion colaboracion){
+
+        if (Sesion.getInstancia().getRol().equals(Constantes.ADMIN)){
+            btnSyllabus.setVisible(false);
+            btnEvidencias.setVisible(false);
+            btnLista.setVisible(false);
+        }
+
         this.colaboracion = colaboracion;
         System.out.println(colaboracion.getPeriodo());
         lbIdColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracionController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracionController">
    <children>
       <Label layoutX="414.0" layoutY="31.0" text="Detalles oferta de colaboración">
          <font>
@@ -66,12 +65,12 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Button layoutX="250.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnEditar" text="Editar">
+      <Button fx:id="btnEditar" layoutX="250.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnEditar" text="Editar" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="906.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnCrearColaboracion" text="Crear colaboración">
+      <Button fx:id="btnCrearColab" visible="false" layoutX="906.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnCrearColaboracion" text="Crear colaboración">
          <font>
             <Font size="24.0" />
          </font>
