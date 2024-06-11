@@ -197,6 +197,43 @@ public class FXMLDetallesColaboracionController implements Initializable {
 
     public void btnFinalizar(ActionEvent actionEvent) {
 
+        String documentosFaltantes="";
+
+        if (EvidenciaDAO.isEvidenciaZipNull(this.colaboracion.getEvidencia().getEvidenciaId())){
+            documentosFaltantes=documentosFaltantes+"\n Evidencia Faltante";
+        }
+        if (EvidenciaDAO.isSyllabusNull(this.colaboracion.getEvidencia().getEvidenciaId())){
+            documentosFaltantes=documentosFaltantes+"\n Syllabus Faltante";
+        }
+        if(EvidenciaDAO.isListaEstudiantesNull(this.colaboracion.getEvidencia().getEvidenciaId())){
+            documentosFaltantes=documentosFaltantes+"\n Lista Estudiantes Faltante";
+        }
+
+
+
+        if (documentosFaltantes.isEmpty()) {
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmación");
+            alert.setHeaderText("Finalizar la colaboración");
+            alert.setContentText("¿Estás seguro de que quieres finalizar la colaboración?");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(), "Concluida");
+                this.colaboracion.setEstado("Concluida");
+                Utils.cerrarVentana(actionEvent);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se puede finalizar la colaboración");
+            alert.setContentText("Faltan los siguientes documentos:" + documentosFaltantes);
+            alert.showAndWait();
+        }
+
+
+
 
     }
 }
