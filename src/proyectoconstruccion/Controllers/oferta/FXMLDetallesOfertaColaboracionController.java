@@ -44,23 +44,23 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
 
     }
 
-    public void btnEditar(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLEdicionOfertaColaboracion.fxml");
-            Parent root = loader.load();
-            FXMLEdicionOfertaColaboracionController controller = loader.getController();
-            controller.InicializarDatos(this,ofertaColaboracion);
+        public void btnEditar(ActionEvent actionEvent) {
+            try {
+                FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLEdicionOfertaColaboracion.fxml");
+                Parent root = loader.load();
+                FXMLEdicionOfertaColaboracionController controller = loader.getController();
+                controller.InicializarDatos(this,ofertaColaboracion);
 
-            // Puedes pasar datos a la nueva ventana si es necesario
+                // Puedes pasar datos a la nueva ventana si es necesario
 
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
 
     public void btnCrearColaboracion(ActionEvent actionEvent) {
