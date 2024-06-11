@@ -38,11 +38,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     @FXML
     private Label lbCelular;
     @FXML
-    private Label lbAreaAcademica;
-    @FXML
-    private Label lbCarrera;
-    @FXML
-    private Label lbExperienciaEducativa;
+    private ComboBox<?> cbExperienciaEducativa;
 
     /**
      * Initializes the controller class.
@@ -60,7 +56,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
 
     @FXML
     private void btnClicRegistrarOferta(ActionEvent event) {
-        
+        System.out.println("Oferta registrada on ecsito");
     }
     
 }

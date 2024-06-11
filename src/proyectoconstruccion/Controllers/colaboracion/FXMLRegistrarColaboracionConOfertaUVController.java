@@ -29,10 +29,6 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
     @FXML
     private ComboBox<?> cbIdioma;
     @FXML
-    private Label lbPeriodo;
-    @FXML
-    private Label lbExperienciaEducativa;
-    @FXML
     private ComboBox<?> cbProfesorExterno;
     @FXML
     private Label lbNombreProfesorExterno;
@@ -40,6 +36,10 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
     private Label lbPais;
     @FXML
     private Label lbCorreoElectronicoProfeExterno;
+    @FXML
+    private ComboBox<?> cbExperienciaEducativa;
+    @FXML
+    private ComboBox<?> cbPeriodo;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

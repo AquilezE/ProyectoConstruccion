@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -9,29 +10,39 @@
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController">
    <children>
       <Label layoutX="134.0" layoutY="78.0" text="Título" />
-      <Label fx:id="lbNombreProfesorUV" layoutX="707.0" layoutY="123.0" text="Juan Juan Juanes" />
-      <Label layoutX="707.0" layoutY="68.0" text="Nombre del profesor UV" />
-      <Label fx:id="lbTitulo" layoutX="134.0" layoutY="123.0" text="Colaboración para el manejo de MySQL" />
-      <Label layoutX="134.0" layoutY="191.0" text="Correo electrónico" />
-      <Label fx:id="lbCorreoElectronicoProfeUV" layoutX="134.0" layoutY="235.0" text="juan.juan@uv.mx" />
-      <Label layoutX="707.0" layoutY="191.0" text="Número de personal" />
-      <Label fx:id="lbNumPersonal" layoutX="707.0" layoutY="235.0" text="123436" />
-      <Label layoutX="707.0" layoutY="398.0" text="Idioma" />
-      <ComboBox fx:id="cbIdioma" layoutX="707.0" layoutY="435.0" prefHeight="31.0" prefWidth="238.0" />
-      <Label layoutX="134.0" layoutY="305.0" text="Periodo" />
-      <Label fx:id="lbPeriodo" layoutX="132.0" layoutY="343.0" text="Febrero 2023 - Julio 2023" />
-      <Label layoutX="707.0" layoutY="305.0" text="Experiencia educativa" />
-      <Label fx:id="lbExperienciaEducativa" layoutX="707.0" layoutY="343.0" text="Bases de datos" />
+      <Label fx:id="lbNombreProfesorUV" layoutX="117.0" layoutY="487.0" text="Juan Juan Juanes" />
+      <Label layoutX="118.0" layoutY="446.0" text="Nombre del profesor UV" />
+      <Label layoutX="361.0" layoutY="445.0" text="Correo electrónico" />
+      <Label fx:id="lbCorreoElectronicoProfesorUV" layoutX="361.0" layoutY="489.0" text="juan.juan@uv.mx" />
+      <Label layoutX="119.0" layoutY="565.0" text="Número de personal" />
+      <Label fx:id="lbNumPersonal" layoutX="124.0" layoutY="606.0" text="123436" />
+      <Label layoutX="674.0" layoutY="74.0" text="Idioma" />
+      <ComboBox fx:id="cbIdioma" layoutX="674.0" layoutY="111.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="135.0" layoutY="278.0" text="Periodo" />
+      <Label layoutX="128.0" layoutY="180.0" text="Experiencia educativa" />
       <Button layoutX="972.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
       <Button layoutX="1073.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar colaboración" />
-      <Label layoutX="132.0" layoutY="398.0" text="Profesor externo" />
-      <ComboBox fx:id="cbProfesorExterno" layoutX="128.0" layoutY="435.0" prefHeight="31.0" prefWidth="238.0" />
-      <Button layoutX="381.0" layoutY="435.0" mnemonicParsing="false" onAction="#btnClicRegistrarProfesorExterno" prefHeight="31.0" prefWidth="238.0" text="Registrar nuevo profesor externo" />
-      <Label layoutX="128.0" layoutY="498.0" text="Nombre profesor externo" />
-      <Label fx:id="lbNombreProfesorExterno" layoutX="128.0" layoutY="533.0" text="David Alaba Jr" />
-      <Label layoutX="389.0" layoutY="498.0" text="País" />
-      <Label fx:id="lbPais" layoutX="389.0" layoutY="533.0" text="Austria" />
-      <Label layoutX="128.0" layoutY="595.0" text="Correo electrónico" />
-      <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="128.0" layoutY="630.0" text="ieifowef@au.com" />
+      <Label layoutX="671.0" layoutY="191.0" text="Profesor externo" />
+      <ComboBox fx:id="cbProfesorExterno" layoutX="670.0" layoutY="228.0" prefHeight="31.0" prefWidth="238.0" />
+      <Button layoutX="948.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnClicRegistrarProfesorExterno" prefHeight="31.0" prefWidth="238.0" text="Registrar nuevo profesor externo" />
+      <Label layoutX="671.0" layoutY="359.0" text="Nombre profesor externo" />
+      <Label fx:id="lbNombreProfesorExterno" layoutX="671.0" layoutY="394.0" text="David Alaba Jr" />
+      <Label layoutX="932.0" layoutY="359.0" text="País" />
+      <Label fx:id="lbPais" layoutX="932.0" layoutY="394.0" text="Austria" />
+      <Label layoutX="671.0" layoutY="456.0" text="Correo electrónico" />
+      <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="671.0" layoutY="491.0" text="ieifowef@au.com" />
+      <TextField fx:id="tfTitulo" layoutX="129.0" layoutY="108.0" prefHeight="31.0" prefWidth="238.0" />
+      <ComboBox fx:id="cbExperienciaEducativa" layoutX="128.0" layoutY="213.0" prefHeight="31.0" prefWidth="238.0" />
+      <ComboBox fx:id="cbPeriodo" layoutX="128.0" layoutY="313.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="670.0" layoutY="313.0" text="Datos del profesor externo">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="128.0" layoutY="394.0" text="Datos del profesor UV">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -19,9 +19,7 @@
       <Label layoutX="707.0" layoutY="398.0" text="Idioma" />
       <ComboBox fx:id="cbIdioma" layoutX="707.0" layoutY="435.0" prefHeight="31.0" prefWidth="238.0" />
       <Label layoutX="134.0" layoutY="305.0" text="Periodo" />
-      <Label fx:id="lbPeriodo" layoutX="132.0" layoutY="343.0" text="Febrero 2023 - Julio 2023" />
       <Label layoutX="707.0" layoutY="305.0" text="Experiencia educativa" />
-      <Label fx:id="lbExperienciaEducativa" layoutX="707.0" layoutY="343.0" text="Bases de datos" />
       <Button layoutX="972.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegresar" text="Regresar" />
       <Button layoutX="1073.0" layoutY="651.0" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar colaboración" />
       <Label layoutX="132.0" layoutY="398.0" text="Profesor externo" />
@@ -33,5 +31,7 @@
       <Label fx:id="lbPais" layoutX="389.0" layoutY="533.0" text="Austria" />
       <Label layoutX="128.0" layoutY="595.0" text="Correo electrónico" />
       <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="128.0" layoutY="630.0" text="ieifowef@au.com" />
+      <ComboBox fx:id="cbExperienciaEducativa" layoutX="703.0" layoutY="338.0" prefHeight="31.0" prefWidth="238.0" />
+      <ComboBox fx:id="cbPeriodo" layoutX="128.0" layoutY="338.0" prefHeight="31.0" prefWidth="238.0" />
    </children>
 </AnchorPane>

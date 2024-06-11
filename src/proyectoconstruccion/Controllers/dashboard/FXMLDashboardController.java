@@ -25,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
+import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController;
 import proyectoconstruccion.modelo.DAO.PeriodoDAO;
 import proyectoconstruccion.modelo.POJO.Periodo;
 
@@ -58,6 +59,18 @@ public class FXMLDashboardController implements Initializable {
     private TableColumn<?, ?> colNumProfesores;
     @FXML
     private TableColumn<?, ?> colNumAlumnos;
+    @FXML
+    private TableView<?> tvNumeralia1;
+    @FXML
+    private TableColumn<?, ?> colCampus;
+    @FXML
+    private TableColumn<?, ?> colNumAlumnos1;
+    @FXML
+    private TableColumn<?, ?> colNumAlumnos11;
+    @FXML
+    private TableColumn<?, ?> colNumAlumnos2;
+    @FXML
+    private AnchorPane apTodo;
 
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -147,23 +160,18 @@ public class FXMLDashboardController implements Initializable {
 
     }
 
-    @FXML
     public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void btnSyllabus(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void btnEvidencia(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void btnAprobarConstancia(ActionEvent actionEvent) {
     }
 
-    @FXML
     public void btnRegresar(ActionEvent actionEvent) {
     }
 
@@ -219,6 +227,24 @@ public class FXMLDashboardController implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML
+    private void btnClicRegistrarOfertaUV(ActionEvent event) {
+        try {
+            Stage escenario = new Stage();
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaUV.fxml");
+            Parent root = loader.load();
+            FXMLRegistrarOfertaUVController controlador = loader.getController();
+            //controlador.inicializarValores();
+            Scene escena = new Scene(root);
+            escenario.setScene(escena);
+            escenario.setTitle("Registrar oferta de colaboración UV");
+            escenario.initModality(Modality.APPLICATION_MODAL);
+            escenario.showAndWait();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 

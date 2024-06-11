@@ -15,19 +15,17 @@ public class FXMLRegistrarColaboracionConOfertaExternaController {
     @FXML
     private Label lbCorreoElectronicoProfeExterno;
     @FXML
-    private Label lbPeriodo;
-    @FXML
-    private Label lbExperienciaEducativa;
-    @FXML
-    private ComboBox<?> cbProfesorUV;
-    @FXML
     private Label lbNombreProfesorUV;
     @FXML
     private Label lbNumPersonal;
     @FXML
     private Label lbCorreoElectronicoProfeUV;
     @FXML
-    private Label lbIdioma;
+    private ComboBox<?> cbExperienciaEducativa;
+    @FXML
+    private ComboBox<?> cbIdioma;
+    @FXML
+    private ComboBox<?> cbPeriodo;
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
