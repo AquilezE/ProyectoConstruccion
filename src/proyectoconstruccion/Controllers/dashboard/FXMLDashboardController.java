@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -18,6 +19,7 @@ import proyectoconstruccion.Utils.Utils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -27,7 +29,10 @@ import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController;
+import proyectoconstruccion.modelo.DAO.NumeraliaDAO;
 import proyectoconstruccion.modelo.DAO.PeriodoDAO;
+import proyectoconstruccion.modelo.POJO.NumeraliaAreaAcademica;
+import proyectoconstruccion.modelo.POJO.NumeraliaCampus;
 import proyectoconstruccion.modelo.POJO.Periodo;
 
 public class FXMLDashboardController implements Initializable {
@@ -49,21 +54,21 @@ public class FXMLDashboardController implements Initializable {
     public Label lbPeriodo;
 
     @FXML
-    private TableView tvNumeraliaCampus;
+    private TableView <NumeraliaCampus>tvNumeraliaCampus;
     @FXML
-    private TableColumn colCampus;
+    private TableColumn <NumeraliaCampus, String> colCampus;
     @FXML
-    private TableColumn colNumAlumnosCampus;
+    private TableColumn <NumeraliaCampus, String> colNumAlumnosCampus;
     @FXML
-    private TableColumn colNumProfesoresCampus;
+    private TableColumn <NumeraliaCampus, String> colNumProfesoresCampus;
     @FXML
-    private TableView tvNumeraliaAreaAcademica;
+    private TableView <NumeraliaAreaAcademica> tvNumeraliaAreaAcademica;
     @FXML
-    private TableColumn colAreaAcademica;
+    private TableColumn <NumeraliaAreaAcademica,String> colAreaAcademica;
     @FXML
-    private TableColumn colNumAlumnosAreaAcademica;
+    private TableColumn <NumeraliaAreaAcademica,String> colNumAlumnosAreaAcademica;
     @FXML
-    private TableColumn colNumProfesoresAreaAcademica;
+    private TableColumn <NumeraliaAreaAcademica,String> colNumProfesoresAreaAcademica;
     @FXML
     public ComboBox cbSeleccionPeriodo;
     @FXML
@@ -94,12 +99,38 @@ public class FXMLDashboardController implements Initializable {
         tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
             if (verificarTabSeleccionado(tabNumeralia)) {
                 cargarPeriodos();
+                configurarTablaCampus();
+                obtenerDatosTablaCampus();
+                configurarTablaAreaAcademica();
+                obtenerDatosTablaAreaAcademica();
             }
         });
     }
 
     private boolean verificarTabSeleccionado(Tab tab) {
         return tabPane.getSelectionModel().getSelectedItem().equals(tab);
+    }
+    public void configurarTablaCampus(){
+        colCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
+        colNumProfesoresCampus.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
+        colNumAlumnosCampus.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
+    }
+    public void obtenerDatosTablaCampus(){
+        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampus();
+        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaCampus.setItems(datos);
+
+    }
+    public void configurarTablaAreaAcademica(){
+        colAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("campus"));
+        colNumProfesoresAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
+        colNumAlumnosAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
+    }
+    public void obtenerDatosTablaAreaAcademica(){
+        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademica();
+        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaAreaAcademica.setItems(datos);
+
     }
 
     @FXML
