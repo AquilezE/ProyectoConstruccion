@@ -1,4 +1,4 @@
-package proyectoconstruccion.Controllers.oferta.EditarOFerta;
+package proyectoconstruccion.Controllers.oferta;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import proyectoconstruccion.Controllers.oferta.FXMLDetallesOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;

@@ -88,7 +88,7 @@ public class ColaboracionDAO {
                     Integer idioma = resultado.getInt("idioma_id");
                     String tituloResultado = resultado.getString("Titulo");
                     Integer experienciaEducativaid = resultado.getInt("experiencia_educativa_id");
-
+                    Integer evidenciaId = resultado.getInt("evidencia_id");
                     Integer idProfesorUV = resultado.getInt("profesor_uv_id");
                     Integer idProfesorExterno = resultado.getInt("profesor_externo_id");
 
@@ -96,8 +96,8 @@ public class ColaboracionDAO {
                     ProfesorExterno externo = (ProfesorExterno) ProfesorDAO.getProfesorById(idProfesorExterno,1).get("profesor");
 
                     Idioma idioma1 = IdiomaDAO.obtenerIdioma(idioma);
-                    //ESTAS AÑADIENDO EVIDENCIAS, TIENES QUE CREAR EL DAO EVIDENCIAS Y DAO EE
-                    Evidencia evidencia= new Evidencia(null,null,null);
+
+                    Evidencia evidencia= new Evidencia(evidenciaId);
 
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 

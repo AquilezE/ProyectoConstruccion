@@ -82,7 +82,7 @@ public class FXMLColaboracionItemController {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracion.fxml");
             Parent root = loader.load();
             FXMLDetallesColaboracionController controlador = loader.getController();
-            //controlador.inicializarValores();
+            controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Detalles colaboración");

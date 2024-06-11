@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionConOfertaExternaController;
-import proyectoconstruccion.Controllers.oferta.EditarOFerta.FXMLEdicionOfertaColaboracionController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
@@ -41,7 +40,7 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
 
     public void btnEditar(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/EditarOferta/FXMLEdicionOfertaColaboracion.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLEdicionOfertaColaboracion.fxml");
             Parent root = loader.load();
             FXMLEdicionOfertaColaboracionController controller = loader.getController();
             controller.InicializarDatos(this,ofertaColaboracion);
