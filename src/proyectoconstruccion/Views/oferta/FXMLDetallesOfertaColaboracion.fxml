@@ -12,57 +12,57 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="106.0" layoutY="203.0" text="Duración:">
+      <Label layoutX="72.0" layoutY="201.0" text="Duración:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="330.0" text="Idioma:">
+      <Label layoutX="83.0" layoutY="339.0" text="Idioma:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="115.0" layoutY="456.0" text="Periodo:">
+      <Label layoutX="87.0" layoutY="458.0" text="Periodo:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="730.0" layoutY="197.0" text="Titulo:">
+      <Label layoutX="660.0" layoutY="201.0" text="Titulo:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="675.0" layoutY="328.0" text="Nombre profesor:">
+      <Label layoutX="633.0" layoutY="326.0" text="Nombre profesor:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="696.0" layoutY="456.0" text="Correo profesor:">
+      <Label layoutX="633.0" layoutY="456.0" text="Correo profesor:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbDuracion" layoutX="288.0" layoutY="201.0" prefHeight="5.0" prefWidth="175.0" text="fechasDuración">
+      <Label fx:id="lbDuracion" layoutX="195.0" layoutY="205.0" prefHeight="29.0" prefWidth="362.0" text="fechasDuración">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lbIdioma" layoutX="295.0" layoutY="330.0" prefHeight="27.0" prefWidth="190.0" text="Ingles">
+      <Label fx:id="lbIdioma" layoutX="205.0" layoutY="335.0" prefHeight="29.0" prefWidth="296.0" text="Ingles">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lbPeriodo" layoutX="296.0" layoutY="460.0" prefHeight="17.0" prefWidth="162.0" text="Primero">
+      <Label fx:id="lbPeriodo" layoutX="198.0" layoutY="457.0" prefHeight="29.0" prefWidth="310.0" text="Primero">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lbTitulo" layoutX="911.0" layoutY="194.0" prefHeight="17.0" prefWidth="185.0" text="Culturas extranjerizadas">
+      <Label fx:id="lbTitulo" layoutX="898.0" layoutY="198.0" prefHeight="29.0" prefWidth="345.0" text="Culturas extranjerizadas">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lbNombreProfesor" layoutX="926.0" layoutY="328.0" prefHeight="27.0" prefWidth="252.0" text="Juan hernadez">
+      <Label fx:id="lbNombreProfesor" layoutX="896.0" layoutY="324.0" prefHeight="29.0" prefWidth="333.0" text="Juan hernadez">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="lbCorreoProfesor" layoutX="930.0" layoutY="457.0" prefHeight="17.0" prefWidth="186.0" text="vaommarco052@gmail.com">
+      <Label fx:id="lbCorreoProfesor" layoutX="900.0" layoutY="454.0" prefHeight="29.0" prefWidth="351.0" text="vaommarco052@gmail.com">
          <font>
             <Font size="24.0" />
          </font></Label>
