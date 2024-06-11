@@ -145,4 +145,18 @@ public class EvidenciaDAO {
         }
         return null;
     }
+
+    public static boolean borrarEvidencias(Integer colaboracionId) {
+
+        try {
+            Connection con = ConexionBD.getConexion();
+            String sql = "DELETE FROM Evidencia WHERE evidencia_id IN (SELECT evidencia_id FROM Colaboracion WHERE colaboracion_id = ?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, colaboracionId);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 }

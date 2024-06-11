@@ -21,6 +21,7 @@ public class Colaboracion {
     private String tipo;
     private String estado;
     private Integer numeroEstudiantes;
+    private String anotaciones;
 
     private ProfesorUV profesorUv;
     private ProfesorExterno profesorExterno;
@@ -28,7 +29,7 @@ public class Colaboracion {
     private Evidencia evidencia;
     private Idioma Idioma;
 
-    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, Idioma idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, Integer numeroEstudiantes, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia) {
+    public Colaboracion(Integer colaboracionId, String duracion, String periodo, String titulo, Idioma idioma, LocalDate fechaInicio, LocalDate fechaCierre, String tipo, String estado, Integer numeroEstudiantes, ProfesorUV profesorUv, ProfesorExterno profesorExterno, ExperienciaEducativa experienciaEducativa, Evidencia evidencia,String anotaciones) {
         this.colaboracionId = colaboracionId;
         Duracion = duracion;
         Periodo = periodo;
@@ -44,6 +45,7 @@ public class Colaboracion {
         this.profesorExterno = profesorExterno;
         this.experienciaEducativa = experienciaEducativa;
         this.evidencia = evidencia;
+        this.anotaciones = anotaciones;
     }
 
 
@@ -168,6 +170,14 @@ public class Colaboracion {
 
     public void setProfesorExterno(ProfesorExterno profesorExterno) {
         this.profesorExterno = profesorExterno;
+    }
+
+    public void setAnotaciones(String anotaciones) {
+        this.anotaciones = anotaciones;
+    }
+
+    public String getAnotaciones(){
+        return this.anotaciones;
     }
 
 }

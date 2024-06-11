@@ -84,13 +84,13 @@ public class ColaboracionDAO {
                     Integer numeroEstudiantes = resultado.getInt("NumeroEstudiantes");
                     String tipo= resultado.getString("TipoDeColab");
                     String periodoResultado= resultado.getString("Periodo");
-                    String tipodeColab = resultado.getString("TipoDeColab");
                     Integer idioma = resultado.getInt("idioma_id");
                     String tituloResultado = resultado.getString("Titulo");
                     Integer experienciaEducativaid = resultado.getInt("experiencia_educativa_id");
                     Integer evidenciaId = resultado.getInt("evidencia_id");
                     Integer idProfesorUV = resultado.getInt("profesor_uv_id");
                     Integer idProfesorExterno = resultado.getInt("profesor_externo_id");
+                    String anotaciones = resultado.getString("anotaciones");
 
                     Evidencia evidencia= new Evidencia(evidenciaId);
 
@@ -103,7 +103,7 @@ public class ColaboracionDAO {
 
                     ExperienciaEducativa experienciaEducativa = (ExperienciaEducativa) ExperienciaEducativaDAO.obtenerExperienciaEducativa(experienciaEducativaid).get("experienciaEducativa");
 
-                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,idioma1,inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia);
+                    Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,idioma1,inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia,anotaciones);
 
                     colaboraciones.add(colaboracionResultado);
                 }
@@ -124,8 +124,8 @@ return respuesta;
         boolean registroExitoso = false;
         if (conexionBD != null) {
             try {
-                String consulta = "INSERT INTO colaboracion (Duracion, Periodo, Titulo, idioma_id, FechaInicio, FechaCierre, TipoDeColab, Estado, NumeroEstudiantes, profesor_uv_id, profesor_externo_id, experiencia_Educativa_id, evidencia_id)" +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?, ?, ?)";
+                String consulta = "INSERT INTO colaboracion (Duracion, Periodo, Titulo, idioma_id, FechaInicio, FechaCierre, TipoDeColab, Estado, NumeroEstudiantes, profesor_uv_id, profesor_externo_id, experiencia_Educativa_id, evidencia_id,anotaciones)" +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, null, ?, ?, ?, ?,null)";
                 PreparedStatement preparedStatement = conexionBD.prepareStatement(consulta);
                 preparedStatement.setString(1, colaboracion.getDuracion());
                 preparedStatement.setString(2, colaboracion.getPeriodo());
@@ -152,4 +152,57 @@ return respuesta;
         }
         return registroExitoso;
     }
+
+
+    public static boolean actualizarEstadoColaboracion(Integer colaboracionId, String nuevoEstado) {
+        Connection conexionBD = ConexionBD.getConexion();
+        boolean actualizarExitoso = false;
+        if (conexionBD != null) {
+            try {
+                String consulta = "UPDATE colaboracion SET Estado = ? WHERE colaboracion_id = ?";
+                PreparedStatement preparedStatement = conexionBD.prepareStatement(consulta);
+                preparedStatement.setString(1, nuevoEstado);
+                preparedStatement.setInt(2, colaboracionId);
+
+                int resultado = preparedStatement.executeUpdate();
+                if (resultado != 0) {
+                    System.out.println("Colaboracion Updated Successfully!");
+                    actualizarExitoso = true;
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return actualizarExitoso;
+    }
+
+    public static boolean borrarColaboracion(Integer colaboracionId) {
+        Connection conexionBD = ConexionBD.getConexion();
+        boolean borrarExitoso = false;
+        if (conexionBD != null) {
+            try {
+                //First delete the evidencias associated with the colaboracion
+                if (EvidenciaDAO.borrarEvidencias(colaboracionId)) {
+                    String consulta = "DELETE FROM colaboracion WHERE colaboracion_id = ?";
+                    PreparedStatement preparedStatement = conexionBD.prepareStatement(consulta);
+                    preparedStatement.setInt(1, colaboracionId);
+
+                    int resultado = preparedStatement.executeUpdate();
+                    if (resultado != 0) {
+                        System.out.println("Colaboracion Deleted Successfully!");
+                        borrarExitoso = true;
+                    }
+                } else {
+                    System.out.println("Failed to delete associated evidencias.");
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        return borrarExitoso;
+    }
+
+
 }

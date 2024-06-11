@@ -2,15 +2,20 @@ package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
+import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXMLDetallesColaboracionPendienteController implements Initializable {
@@ -74,11 +79,50 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
     }
 
     public void btnAutorizar(ActionEvent actionEvent) {
-        System.out.println("Boton autorizar");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText(null);
+        alert.setContentText("¿Deseas Autorizar esta Colaboracion?");
+
+        ButtonType buttonYes = new ButtonType("Sí");
+        ButtonType buttonNo = new ButtonType("No");
+
+        alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonYes) {
+            ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Activa");
+            this.colaboracion.setEstado("Activa");
+            Utils.cerrarVentana(actionEvent);
+        } else if (result.isPresent() && result.get() == buttonNo) {
+            System.out.println("No se cambio de estado");
+        } else {
+            System.out.println("El usuario cerró el cuadro de diálogo.");
+        }
+
     }
 
     public void btnDenegar(ActionEvent actionEvent) {
-        System.out.println("Boton denegar");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText(null);
+        alert.setContentText("¿Deseas Denegar esta Colaboracion?");
+
+        ButtonType buttonYes = new ButtonType("Sí");
+        ButtonType buttonNo = new ButtonType("No");
+
+        alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonYes) {
+            ColaboracionDAO.borrarColaboracion(this.colaboracion.getColaboracionId());
+            Utils.cerrarVentana(actionEvent);
+        } else if (result.isPresent() && result.get() == buttonNo) {
+            System.out.println("No se borro la colaboracion");
+        } else {
+            System.out.println("El usuario cerró el cuadro de diálogo.");
+        }
     }
 
 }
