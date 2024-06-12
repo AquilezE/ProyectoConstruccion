@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import jdk.nashorn.internal.parser.JSONParser;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
 import proyectoconstruccion.Utils.Constantes;
@@ -29,11 +30,13 @@ import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController;
+import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.DAO.NumeraliaDAO;
 import proyectoconstruccion.modelo.DAO.PeriodoDAO;
 import proyectoconstruccion.modelo.POJO.NumeraliaAreaAcademica;
 import proyectoconstruccion.modelo.POJO.NumeraliaCampus;
 import proyectoconstruccion.modelo.POJO.Periodo;
+import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 
 public class FXMLDashboardController implements Initializable {
 
@@ -190,8 +193,21 @@ public class FXMLDashboardController implements Initializable {
 
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
-        Integer seleccion =cbSeleccionPeriodo.getSelectionModel().getSelectedIndex();
-        System.out.println(seleccion);
+        Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
+        obtenerDatosTablaCampusPorPeriodo(seleccion.getDescripcion());
+        obtenerDatosTablaAreaAcademicaPorPeriodo(seleccion.getDescripcion());
+    }
+
+    public void obtenerDatosTablaCampusPorPeriodo(String periodo){
+        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampusPorPeriodo(periodo);
+        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaCampus.setItems(datos);
+    }
+
+    public void obtenerDatosTablaAreaAcademicaPorPeriodo(String periodo){
+        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademicaPorPeriodo(periodo);
+        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaAreaAcademica.setItems(datos);
     }
 
     public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
