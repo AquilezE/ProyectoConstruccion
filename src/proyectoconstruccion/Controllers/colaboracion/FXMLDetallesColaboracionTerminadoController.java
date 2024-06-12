@@ -16,6 +16,7 @@ import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.Estudiante;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
+import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
@@ -46,10 +47,10 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
 
     public TableView<Estudiante> tvEstudiantes;
-    public TableColumn<?,?> colMatricula;
-    public TableColumn<?,?> colNombre;
-    public TableColumn<?,?> colCalificacion;
-    public TableColumn<?,?> colFaltas;
+    public TableColumn<Estudiante, String> colMatricula;
+    public TableColumn<Estudiante, String> colNombre;
+    public TableColumn<Estudiante, Integer> colCalificacion;
+    public TableColumn<Estudiante, Integer> colFaltas;
 
     public Button btnAprobarConstan;
 
@@ -57,10 +58,12 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cargarEstudiantesDesdeCSV();
+
     }
 
     public void inicializarValores(Colaboracion colaboracion){
+        this.colaboracion = colaboracion;
+        cargarEstudiantesDesdeDB();
 
         if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
             btnAprobarConstan.setVisible(false);
@@ -213,31 +216,42 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             ex.printStackTrace();
         }
     }
-    public void cargarEstudiantesDesdeCSV() {
-        CSVReader excelReader = new CSVReader();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open CSV File");
-        File file = fileChooser.showOpenDialog(null);
+    public void cargarEstudiantesDesdeDB() {
+        if (colaboracion == null) {
+            System.err.println("colaboracion es nulo");
+            return;
+        }
 
-        if (file != null) {
-            // Utilizamos el lector de Excel para obtener la lista de estudiantes desde el archivo CSV
-            List<Estudiante> estudiantes = excelReader.readCSV(file);
+        Evidencia evidencia = colaboracion.getEvidencia();
+        if (evidencia == null) {
+            System.err.println("Evidencia es nulo en colaboracion");
+            return;
+        }
 
-            // Limpiamos cualquier dato previamente existente en el TableView
+        String evidenciaId = String.valueOf(evidencia.getEvidenciaId());
+        if (evidenciaId == null) {
+            System.err.println("EvidenciaId es nulo en evidencia");
+            return;
+        }
+
+        System.out.println("EvidenciaId: " + evidenciaId);
+
+        InputStream is = EvidenciaDAO.getListaDeEstudiantes(Integer.valueOf(evidenciaId));
+        if (is != null) {
+            CSVReader csvReader = new CSVReader();
+            List<Estudiante> estudiantes = csvReader.readCSV(is);
             tvEstudiantes.getItems().clear();
-
-            // Configuramos las columnas del TableView
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
             colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
             colCalificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
             colFaltas.setCellValueFactory(new PropertyValueFactory<>("faltas"));
-
-            // Agregamos los estudiantes al TableView
             tvEstudiantes.getItems().addAll(estudiantes);
         } else {
-            System.out.println("No file selected");
+            System.out.println("No se pudo recuperar la lista de estudiantes de la base de datos.");
         }
     }
+
+
 
 
 
