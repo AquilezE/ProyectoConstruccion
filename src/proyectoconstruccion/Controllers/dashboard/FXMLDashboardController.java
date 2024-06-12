@@ -216,7 +216,7 @@ public class FXMLDashboardController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionSinOferta.fxml");
             Parent root = loader.load();
             FXMLRegistrarColaboracionSinOfertaController controlador = loader.getController();
-            //controlador.inicializarValores();
+            controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar colaboración sin oferta");
@@ -270,7 +270,7 @@ public class FXMLDashboardController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaUV.fxml");
             Parent root = loader.load();
             FXMLRegistrarOfertaUVController controlador = loader.getController();
-            //controlador.inicializarValores();
+            controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar oferta de colaboración UV");
