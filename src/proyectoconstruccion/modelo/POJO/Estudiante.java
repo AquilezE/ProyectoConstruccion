@@ -1,19 +1,21 @@
     package proyectoconstruccion.modelo.POJO;
-
     public class Estudiante {
         private Integer estudianteId;
-
         private String nombre;
         private String apellidoMaterno;
         private String apellidoPaterno;
-        private String Matricula;
+        private String matricula;
+        private Integer calificacion;
+        private Integer faltas;
 
-        public Estudiante(Integer estudianteId, String nombre, String apellidoMaterno, String apellidoPaterno, String matricula) {
+        public Estudiante(Integer estudianteId, String nombre, String apellidoMaterno, String apellidoPaterno, String matricula, Integer calificacion, Integer faltas) {
             this.estudianteId = estudianteId;
             this.nombre = nombre;
             this.apellidoMaterno = apellidoMaterno;
             this.apellidoPaterno = apellidoPaterno;
-            Matricula = matricula;
+            this.matricula = matricula;
+            this.calificacion = calificacion;
+            this.faltas = faltas;
         }
 
         public Estudiante() {}
@@ -51,10 +53,26 @@
         }
 
         public String getMatricula() {
-            return Matricula;
+            return matricula;
         }
 
         public void setMatricula(String matricula) {
-            Matricula = matricula;
+            this.matricula = matricula;
+        }
+
+        public Integer getCalificacion() {
+            return calificacion;
+        }
+
+        public void setCalificacion(Integer calificacion) {
+            this.calificacion = calificacion;
+        }
+
+        public Integer getFaltas() {
+            return faltas;
+        }
+
+        public void setFaltas(Integer faltas) {
+            this.faltas = faltas;
         }
     }

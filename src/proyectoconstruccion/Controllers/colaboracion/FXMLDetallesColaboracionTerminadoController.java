@@ -256,4 +256,5 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
 
 
+
 }
