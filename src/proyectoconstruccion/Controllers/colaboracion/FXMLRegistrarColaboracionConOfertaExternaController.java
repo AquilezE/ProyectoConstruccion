@@ -67,7 +67,7 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
     }
 
 
-    public void inicializarValores(OfertaColaboracionExterna ofertaColaboracionExterna) {
+        public void inicializarValores(OfertaColaboracionExterna ofertaColaboracionExterna) {
 
 
         ObservableList<String> tipoColabOptions = FXCollections.observableArrayList();
