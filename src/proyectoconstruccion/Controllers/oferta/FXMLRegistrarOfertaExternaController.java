@@ -205,31 +205,6 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         });
 
     }
-
-//    private void cargarExperienciasEducativas(){
-//        experiencias = FXCollections.observableArrayList();
-//        experiencias.addAll(ExperienciaEducativaDAO.obtenerTodasExperienciasEducativas());
-//
-//        // Configurar el renderizador de celda
-//        cbExperienciaEducativa.setCellFactory(new Callback<ListView<ExperienciaEducativa>, ListCell<ExperienciaEducativa>>() {
-//            @Override
-//            public ListCell<ExperienciaEducativa> call(ListView<ExperienciaEducativa> l) {
-//                return new ListCell<ExperienciaEducativa>() {
-//                    @Override
-//                    protected void updateItem(ExperienciaEducativa item, boolean empty) {
-//                        super.updateItem(item, empty);
-//                        if (item == null || empty) {
-//                            setGraphic(null);
-//                        } else {
-//                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
-//                        }
-//                    }
-//                };
-//            }
-//        });
-//
-//        cbExperienciaEducativa.setItems(experiencias);
-//    }
         
     @FXML
     private void btnClicRegistrarProfesorExterno(ActionEvent event) {

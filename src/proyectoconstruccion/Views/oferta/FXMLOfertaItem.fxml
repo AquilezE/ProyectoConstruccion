@@ -33,10 +33,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="659.0">
                             <children>
-                                <Label />
-                                <Label fx:id="lbTitulo" text="TituloOferta">
+                                <Label fx:id="lbTitulo" alignment="TOP_CENTER" prefHeight="68.0" prefWidth="587.0" text="El impacto de lirut sisar en la sociedad mexicanana" wrapText="true">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -61,10 +60,10 @@
                             <children>
                                 <VBox>
                                     <children>
-                                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="581.0">
                                             <children>
                                                 <Label prefHeight="17.0" prefWidth="142.0" text="Periodo:" />
-                                                <Label fx:id="lbPeriodo" prefHeight="17.0" prefWidth="138.0" text="DIA/MES/ANIO" />
+                                                <Label fx:id="lbPeriodo" prefHeight="21.0" prefWidth="270.0" text="DIA/MES/ANIO" />
                                             </children>
                                         </HBox>
                                     </children>
@@ -77,7 +76,7 @@
                                 <Label fx:id="lbIdiomaOferta" text="IdiomaNom" />
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="351.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <children>
                                 <Label text="Duracion: " />
                                 <Label fx:id="lbDuracion" text="NoSeWe" />
