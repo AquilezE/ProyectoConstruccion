@@ -190,7 +190,8 @@ public class FXMLDashboardController implements Initializable {
 
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
-
+        Integer seleccion =cbSeleccionPeriodo.getSelectionModel().getSelectedIndex();
+        System.out.println(seleccion);
     }
 
     public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
