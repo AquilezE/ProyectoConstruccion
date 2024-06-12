@@ -1,35 +1,35 @@
 package proyectoconstruccion.Controllers.colaboracion;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import proyectoconstruccion.Utils.CSVReader;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
+import proyectoconstruccion.modelo.POJO.Estudiante;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-import javafx.collections.FXCollections;
-import javafx.scene.control.cell.PropertyValueFactory;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-
 
 
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -45,7 +45,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     public Label lbFechas;
 
 
-    public TableView<?> tvEstudiantes;
+    public TableView<Estudiante> tvEstudiantes;
     public TableColumn<?,?> colMatricula;
     public TableColumn<?,?> colNombre;
     public TableColumn<?,?> colCalificacion;
@@ -57,7 +57,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        cargarEstudiantesDesdeCSV();
     }
 
     public void inicializarValores(Colaboracion colaboracion){
@@ -213,4 +213,33 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             ex.printStackTrace();
         }
     }
+    public void cargarEstudiantesDesdeCSV() {
+        CSVReader excelReader = new CSVReader();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open CSV File");
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            // Utilizamos el lector de Excel para obtener la lista de estudiantes desde el archivo CSV
+            List<Estudiante> estudiantes = excelReader.readCSV(file);
+
+            // Limpiamos cualquier dato previamente existente en el TableView
+            tvEstudiantes.getItems().clear();
+
+            // Configuramos las columnas del TableView
+            colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
+            colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            colCalificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
+            colFaltas.setCellValueFactory(new PropertyValueFactory<>("faltas"));
+
+            // Agregamos los estudiantes al TableView
+            tvEstudiantes.getItems().addAll(estudiantes);
+        } else {
+            System.out.println("No file selected");
+        }
+    }
+
+
+
+
 }
