@@ -156,6 +156,8 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
             if(ColaboracionDAO.registrarColaboracion(colaboracion)){
                 Utils.cerrarVentana(event);
             }
+        } else{
+            Utils.mostrarAlertaSimple("Error", "Hay campos que quedaron vacíos", Alert.AlertType.ERROR);
         }
     }
 
