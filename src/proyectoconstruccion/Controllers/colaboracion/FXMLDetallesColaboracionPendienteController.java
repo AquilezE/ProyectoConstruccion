@@ -116,7 +116,8 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonYes) {
-            ColaboracionDAO.borrarColaboracion(this.colaboracion.getColaboracionId());
+            ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Cancelada");
+            this.colaboracion.setEstado("Cancelada");
             Utils.cerrarVentana(actionEvent);
         } else if (result.isPresent() && result.get() == buttonNo) {
             System.out.println("No se borro la colaboracion");

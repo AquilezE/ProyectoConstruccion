@@ -1,6 +1,7 @@
 package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.ConexionBD;
 import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
@@ -18,14 +19,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ColaboracionDAO {
-    public static HashMap<String,Object> getColaboraciones(String titulo, String estadoP, String periodo, Integer numeroEstudiantesMax, Integer numeroEstudiantesMin, LocalDate fechaInicio,LocalDate fechaCierre){
+    public static HashMap<String,Object> getColaboraciones(String titulo, String estadoP, String periodo, LocalDate fechaInicio,LocalDate fechaCierre, Integer experienciaEducativaId, String tipoUsuario){
         HashMap<String,Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR,true);
         Connection conexionBD = ConexionBD.getConexion();
 
+
+        System.out.println("PARAM VALUES");
+        System.out.println("Parametros de búsqueda:");
+        System.out.println("Titulo: " + titulo);
+        System.out.println("Estado: " + estadoP);
+        System.out.println("Periodo: " + periodo);
+        System.out.println("FechaInicio: " + fechaInicio);
+        System.out.println("FechaFin: " + fechaCierre);
+        System.out.println("ExperienciaEducativa: " + experienciaEducativaId);
+
+
+
         if(conexionBD != null){
-            StringBuilder queryBuilder = new StringBuilder("SELECT * FROM colaboracion WHERE 1=1");
+            StringBuilder queryBuilder = new StringBuilder("SELECT * FROM colaboracion WHERE 1=1 ");
             ArrayList<Object> parametros = new ArrayList<>();
+
+            if(tipoUsuario.equals(Constantes.PROFESOR)){
+                queryBuilder.append(" AND profesor_uv_id = ?");
+                parametros.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+            }
+
             if(titulo != null){
                 queryBuilder.append(" AND Titulo = ?");
                 parametros.add(titulo);
@@ -36,6 +55,7 @@ public class ColaboracionDAO {
             }
             if(periodo != null){
                 queryBuilder.append(" AND periodo = ?");
+                parametros.add(periodo);
             }
 
             if (fechaInicio != null && fechaCierre != null) {
@@ -51,27 +71,24 @@ public class ColaboracionDAO {
                 parametros.add(fechaCierre);
             }
 
-
-            if (numeroEstudiantesMin != null && numeroEstudiantesMax != null) {
-                queryBuilder.append(" AND number_of_students BETWEEN ? AND ?");
-                parametros.add(numeroEstudiantesMin);
-                parametros.add(numeroEstudiantesMax);
-            } else if (numeroEstudiantesMin != null) {
-                queryBuilder.append(" AND number_of_students >= ?");
-                parametros.add(numeroEstudiantesMin);
-            } else if (numeroEstudiantesMax != null) {
-                queryBuilder.append(" AND number_of_students <= ?");
-                parametros.add(numeroEstudiantesMax);
+            if (experienciaEducativaId != null) {
+                queryBuilder.append(" AND experiencia_educativa_id = ?");
+                parametros.add(experienciaEducativaId);
             }
+
+
 
             String consulta = queryBuilder.toString();
             ArrayList<Colaboracion> colaboraciones = new ArrayList<>();
 
+
+            System.out.println(consulta);
             try{
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
 
                 for (int i = 0; i < parametros.size(); i++) {
                     prepararSentencia.setObject(i+1, parametros.get(i));
+                    System.out.println(prepararSentencia);
                 }
 
                 ResultSet resultado = prepararSentencia.executeQuery();
@@ -106,16 +123,18 @@ public class ColaboracionDAO {
                     Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,idioma1,inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia,anotaciones);
 
                     colaboraciones.add(colaboracionResultado);
+                    System.out.println("Colaboracion añadida");
                 }
-                respuesta.put("colaboraciones",colaboraciones);
+
             }catch(SQLException e){
                 respuesta.put(Constantes.KEY_MENSAJE,Constantes.MSJ_ERROR_CONEXION);
             }
+            respuesta.put("colaboraciones",colaboraciones);
 
 
         }
 
-return respuesta;
+        return respuesta;
     }
 
 

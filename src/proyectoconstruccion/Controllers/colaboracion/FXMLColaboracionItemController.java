@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -56,6 +57,8 @@ public class FXMLColaboracionItemController {
             mostrarDetallesActiva();
         }else if (this.colaboracion.getEstado().equals("Concluida")){
             mostrarDetallesConcluida();
+        }else if (this.colaboracion.getEstado().equals("Cancelada")){
+            Utils.mostrarAlertaSimple("Error","Esta colaboracion esta cancelada!", Alert.AlertType.ERROR);
         }
     }
 

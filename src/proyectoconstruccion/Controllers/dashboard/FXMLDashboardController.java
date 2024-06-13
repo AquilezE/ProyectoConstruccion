@@ -16,6 +16,7 @@ import jdk.nashorn.internal.parser.JSONParser;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
 import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.FilterData;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 
@@ -32,25 +33,40 @@ import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSi
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController;
 import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
+import proyectoconstruccion.modelo.DAO.ExperienciaEducativaDAO;
 import proyectoconstruccion.modelo.DAO.NumeraliaDAO;
 import proyectoconstruccion.modelo.DAO.PeriodoDAO;
 import proyectoconstruccion.modelo.POJO.NumeraliaAreaAcademica;
 import proyectoconstruccion.modelo.POJO.NumeraliaCampus;
 import proyectoconstruccion.modelo.POJO.Periodo;
+import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 
 public class FXMLDashboardController implements Initializable {
 
+    private ObservableList<ExperienciaEducativa> experienciasEducativas;
+    private ObservableList<Periodo> periodos;
+    private ObservableList<String> estados;
+
+    public HBox hBoxFiltros;
+
+    public DatePicker dpFechaCierre;
+    public DatePicker dpFechaInicio;
+
+    public TextField tfTituloColab;
+
+    public ComboBox<String> cbEstado;
+    public ComboBox<Periodo> cbPeriodo;
+    public ComboBox<ExperienciaEducativa> cbExperienciaEducativa;
+
+
+
     public Button btnRegistrarOfertaExterna;
     public Button btnRegistrarOfertaUV;
     public Button btnRegistrarNuevaColab;
-    
+
     public HBox hbSolicitudesHeader;
-    public HBox hbfiltros;
-
-
-
-    private ObservableList<Periodo> periodos;
+    public HBox hbFiltros;
 
     public Tab tabSocilicitudes;
     public Tab tabNumeralia;
@@ -81,10 +97,6 @@ public class FXMLDashboardController implements Initializable {
     @FXML
     public ComboBox cbSeleccionPeriodo;
 
-    @FXML
-    private AnchorPane apTodo;
-
-
     public void initialize(URL url, ResourceBundle rb) {
 
         if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
@@ -97,12 +109,18 @@ public class FXMLDashboardController implements Initializable {
             btnRegistrarOfertaExterna.setVisible(true);
             btnRegistrarOfertaUV.setVisible(false);
         }
-        iniciarComponentes();
+
 
 
     }
 
     public void iniciarComponentes() {
+
+                cargarExperienciaEducativa();
+                cargarEstados();
+                cargarPeriodos();
+
+
         tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
             if (verificarTabSeleccionado(tabNumeralia)) {
                 cargarPeriodos();
@@ -111,7 +129,37 @@ public class FXMLDashboardController implements Initializable {
                 obtenerDatosTablaCampus();
                 obtenerDatosTablaAreaAcademica();
             }
+
         });
+
+
+    }
+
+    public FilterData getFilterData() {
+        FilterData filterData = new FilterData();
+        filterData.setFechaCierre(dpFechaCierre.getValue());
+        filterData.setFechaInicio(dpFechaInicio.getValue());
+        filterData.setEstado(cbEstado.getValue());
+        filterData.setTituloColab(tfTituloColab.getText());
+        filterData.setPeriodo(cbPeriodo.getValue());
+        filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
+
+        if (cbPeriodo.getValue() == null){
+            System.out.println("No se arreglo");
+        }else{
+            System.out.println(cbPeriodo.getValue().getDescripcion());
+        }
+        if (cbExperienciaEducativa.getValue() == null){
+            System.out.println("No se arreglo");
+        }else{
+            System.out.println(cbExperienciaEducativa.getValue().getExperienciaEducativaId());
+        }
+        return filterData;
+    }
+
+    public void cargarEstados() {
+        this.estados = FXCollections.observableArrayList("Pendiente", "Activa", "Concluida");
+        cbEstado.setItems(this.estados);
     }
 
     private boolean verificarTabSeleccionado(Tab tab) {
@@ -140,15 +188,26 @@ public class FXMLDashboardController implements Initializable {
 
     }
 
+
     @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
         try {
+            // Obtener los datos del filtro
+            FilterData filterData = getFilterData();
+
+            // Imprimir los valores del filtro
+            System.out.println("Datos del filtro:");
+            System.out.println("Fecha Cierre: " + filterData.getFechaCierre());
+            System.out.println("Fecha Inicio: " + filterData.getFechaInicio());
+            System.out.println("Título: " + filterData.getTituloColab());
+            System.out.println("Periodo: " + (filterData.getPeriodo() != null ? filterData.getPeriodo().getDescripcion() : "null"));
+            System.out.println("Estado: " + filterData.getEstado());
+            System.out.println("Experiencia Educativa: " + (filterData.getExperienciaEducativa() != null ? filterData.getExperienciaEducativa().getNombreExperienciaEducativa() : "null"));
 
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorColaboracionesController controller = loader.getController();
-
-            //controller.InicializarComponentes();
+            controller.InicializarComponentes(filterData);
 
             bdPaneColaboraciones.setCenter(contenedorColaboraciones);
 
@@ -156,8 +215,6 @@ public class FXMLDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 
     @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
@@ -264,6 +321,40 @@ public class FXMLDashboardController implements Initializable {
                 }
             }
         });
+
+        cbPeriodo.setItems(periodos);
+
+        cbPeriodo.setCellFactory(new Callback<ListView<Periodo>, ListCell<Periodo>>() {
+            @Override
+            public ListCell<Periodo> call(ListView<Periodo> param) {
+                return new ListCell<Periodo>() {
+                    @Override
+                    protected void updateItem(Periodo item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getDescripcion());
+                        }
+                    }
+                };
+            }
+        });
+
+        cbPeriodo.setButtonCell(new ListCell<Periodo>() {
+            @Override
+            protected void updateItem(Periodo item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getDescripcion());
+                }
+            }
+        });
+
+
     }
 
     @FXML
@@ -286,18 +377,66 @@ public class FXMLDashboardController implements Initializable {
 
 
     public void btnVerColabsSolicitudes(ActionEvent actionEvent) {
-            try {
+        try {
 
-                FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
-                AnchorPane contenedorColaboraciones = loader.load();
-                FXMLContenedorColaboracionesController controller = loader.getController();
+            FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
+            AnchorPane contenedorColaboraciones = loader.load();
+            FXMLContenedorColaboracionesController controller = loader.getController();
 
-                controller.InicializarComponentesSolicitudes();
+            controller.InicializarComponentesSolicitudes();
 
-                bdPaneColaboraciones.setCenter(contenedorColaboraciones);
+            bdPaneSolicitudes.setCenter(contenedorColaboraciones);
 
-            } catch (IOException e) {
-                e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void cargarExperienciaEducativa() {
+        experienciasEducativas = FXCollections.observableArrayList();
+        experienciasEducativas.addAll(ExperienciaEducativaDAO.obtenerTodasExperienciasEducativas());
+        cbExperienciaEducativa.setItems(experienciasEducativas);
+
+        cbExperienciaEducativa.setCellFactory(new Callback<ListView<ExperienciaEducativa>, ListCell<ExperienciaEducativa>>() {
+            @Override
+            public ListCell<ExperienciaEducativa> call(ListView<ExperienciaEducativa> param) {
+                return new ListCell<ExperienciaEducativa>() {
+                    @Override
+                    protected void updateItem(ExperienciaEducativa item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getNombreExperienciaEducativa());
+                        }
+                    }
+                };
             }
+        });
+
+        cbExperienciaEducativa.setButtonCell(new ListCell<ExperienciaEducativa>() {
+            @Override
+            protected void updateItem(ExperienciaEducativa item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getDescripcion());
+                }
+            }
+        });
+    }
+
+    public void btnBorrarFiltros(ActionEvent actionEvent) {
+
+        tfTituloColab.clear();
+        dpFechaInicio.setValue(null);
+        dpFechaCierre.setValue(null);
+        cbExperienciaEducativa.getSelectionModel().clearSelection();
+        cbPeriodo.getSelectionModel().clearSelection();
+        cbEstado.getSelectionModel().clearSelection();
     }
 }
+
+
+

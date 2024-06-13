@@ -25,14 +25,13 @@ public class PeriodoDAO {
 
             // Extract data from result set
 
-            System.out.println("Obteniendo Periodos...");
+
             while (rs.next()) {
 
                 // Retrieve by column name
                 int id = rs.getInt("id");
                 String descripcion = rs.getString("descripcion");
 
-                System.out.println(descripcion);
                 // Add to the list of periodos
                 periodos.add(new Periodo(id, descripcion));
             }

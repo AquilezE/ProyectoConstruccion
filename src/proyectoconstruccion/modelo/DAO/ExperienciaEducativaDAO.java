@@ -60,7 +60,6 @@ public class ExperienciaEducativaDAO {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
                 ResultSet resultado = prepararSentencia.executeQuery();
 
-                System.out.println("Obteniendo experiencias");
                 while (resultado.next()) {
 
                     ExperienciaEducativa experienciaEducativa = new ExperienciaEducativa();
@@ -71,7 +70,6 @@ public class ExperienciaEducativaDAO {
                     experienciaEducativa.setProgramaEducativoId(resultado.getInt("programa_educativo_id"));
 
                     experienciaEducativaList.add(experienciaEducativa);
-                    System.out.println(experienciaEducativa.getNombreExperienciaEducativa());
                 }
                 System.out.println("Done");
                 conexionBD.close();

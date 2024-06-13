@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.dashboard.FXMLDashboardController;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -79,12 +80,15 @@ public class FXMLInicioSesionController implements Initializable {
             Stage stage = (Stage) btIniciarSesion.getScene().getWindow();
             FXMLLoader loader = Utils.obtenerLoader("Views/dashboard/FXMLDashboard.fxml");
             Parent root = loader.load();
+            FXMLDashboardController controller = loader.getController();
+            controller.iniciarComponentes();
 
             Scene escenaDashboard = new Scene(root);
             stage.setScene(escenaDashboard);
             stage.show();
 
         }catch (IOException e){
+            e.printStackTrace();
             System.out.println("Error"+e.getMessage());
         }
     }

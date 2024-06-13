@@ -1,6 +1,7 @@
 package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.ConexionBD;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
@@ -43,6 +44,14 @@ public class OfertaColaboracionDAO {
                 queryBuilder.append(" AND Idioma = ?");
                 parameters.add(idioma);
             }
+
+            if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+                queryBuilder.append(" AND (profesor_id = ? OR type = 1) ");
+                parameters.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+            }
+
+
+            queryBuilder.append(" ORDER BY type");
 
             String consulta = queryBuilder.toString();
             ArrayList<OfertaColaboracion> ofertas = new ArrayList<>();

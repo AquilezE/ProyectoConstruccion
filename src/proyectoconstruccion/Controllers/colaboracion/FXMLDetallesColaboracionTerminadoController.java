@@ -4,15 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import proyectoconstruccion.Utils.CSVReader;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
+import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.Estudiante;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
@@ -109,56 +109,65 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
     public void btnEvidencia(ActionEvent actionEvent) {
 
-        try {
-            // Retrieve the input stream of the "Evidencia.zip" file from EvidenciaDAO
-            InputStream is = EvidenciaDAO.getEvidencia(this.colaboracion.getEvidencia().getEvidenciaId());
+        if (!EvidenciaDAO.isEvidenciaZipNull(this.colaboracion.getEvidencia().getEvidenciaId())){
+            try {
+                // Retrieve the input stream of the "Evidencia.zip" file from EvidenciaDAO
+                InputStream is = EvidenciaDAO.getEvidencia(this.colaboracion.getEvidencia().getEvidenciaId());
 
-            // Create a FileChooser
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save Evidencia");
+                // Create a FileChooser
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Evidencia");
 
-            // Set the initial file name to "evidenciasColaboracion" + this.colaboracion.getColaboracionId()
-            fileChooser.setInitialFileName("evidenciasColaboracion" + this.colaboracion.getColaboracionId() + ".zip");
+                // Set the initial file name to "evidenciasColaboracion" + this.colaboracion.getColaboracionId()
+                fileChooser.setInitialFileName("evidenciasColaboracion" + this.colaboracion.getColaboracionId() + ".zip");
 
-            // Show the save file dialog
-            File savedFile = fileChooser.showSaveDialog(null);
+                // Show the save file dialog
+                File savedFile = fileChooser.showSaveDialog(null);
 
-            // Use the Files.copy() method to copy the content of the InputStream to the selected location
-            if (savedFile != null) {
-                Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Use the Files.copy() method to copy the content of the InputStream to the selected location
+                if (savedFile != null) {
+                    Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+
+                System.out.println("File downloaded successfully!");
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-
-            System.out.println("File downloaded successfully!");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        }else{
+            Utils.mostrarAlertaSimple("Error", "Esta colaboracion no cuenta con Evidencias", Alert.AlertType.ERROR);
         }
     }
 
     public void btnSyllabus(ActionEvent actionEvent) {
-        try {
-            File tempFile = EvidenciaDAO.getSyllabus(colaboracion.getEvidencia().getEvidenciaId());
-            if (tempFile != null) {
-                // Asigning the PDF format to the temp file.
-                File pdfFile = new File(tempFile.getAbsolutePath() + ".pdf");
 
-                if (!pdfFile.exists()) {
-                    boolean renameStatus = tempFile.renameTo(pdfFile);
+        if (!EvidenciaDAO.isSyllabusNull(this.colaboracion.getEvidencia().getEvidenciaId())) {
+            try {
+                File tempFile = EvidenciaDAO.getSyllabus(colaboracion.getEvidencia().getEvidenciaId());
+                if (tempFile != null) {
+                    // Asigning the PDF format to the temp file.
+                    File pdfFile = new File(tempFile.getAbsolutePath() + ".pdf");
 
-                    // Check status of renaming operation
-                    if(!renameStatus){
-                        System.out.println("Error: unable to rename file to PDF");
-                        return;
+                    if (!pdfFile.exists()) {
+                        boolean renameStatus = tempFile.renameTo(pdfFile);
+
+                        // Check status of renaming operation
+                        if (!renameStatus) {
+                            System.out.println("Error: unable to rename file to PDF");
+                            return;
+                        }
                     }
-                }
 
-                openFileInDefaultBrowser(pdfFile);
-                monitorAndDelete(pdfFile);
-            } else {
-                System.out.println("Documento de escritura no encontrado.");
+                    openFileInDefaultBrowser(pdfFile);
+                    monitorAndDelete(pdfFile);
+                } else {
+                    System.out.println("Documento de escritura no encontrado.");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else{
+            Utils.mostrarAlertaSimple("Error","Esta colaboracion no tiene Syllabus", Alert.AlertType.ERROR);
         }
     }
 
@@ -190,30 +199,34 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
     public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
 
-        try {
-            // Assuming there is a method in a DAO class that retrieves the list of students as an InputStream
-            InputStream is = EvidenciaDAO.getListaDeEstudiantes(this.colaboracion.getEvidencia().getEvidenciaId());
+        if(!EvidenciaDAO.isListaEstudiantesNull(this.colaboracion.getEvidencia().getEvidenciaId())){
+            try {
+                // Assuming there is a method in a DAO class that retrieves the list of students as an InputStream
+                InputStream is = EvidenciaDAO.getListaDeEstudiantes(this.colaboracion.getEvidencia().getEvidenciaId());
 
-            // Create a FileChooser
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save Student List");
+                // Create a FileChooser
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Student List");
 
-            // Set the initial file name to "listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId()
-            fileChooser.setInitialFileName("listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId() + ".csv");
+                // Set the initial file name to "listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId()
+                fileChooser.setInitialFileName("listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId() + ".csv");
 
-            // Show the save file dialog
-            File savedFile = fileChooser.showSaveDialog(null);
+                // Show the save file dialog
+                File savedFile = fileChooser.showSaveDialog(null);
 
-            // Use the Files.copy() method to copy the content of the InputStream to the selected location
-            if (savedFile != null) {
-                Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                // Use the Files.copy() method to copy the content of the InputStream to the selected location
+                if (savedFile != null) {
+                    Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+
+                System.out.println("File downloaded successfully!");
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
-
-            System.out.println("File downloaded successfully!");
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            ex.printStackTrace();
+        }else{
+            Utils.mostrarAlertaSimple("Error","Esta colaboracion no tiene Syllabus", Alert.AlertType.ERROR);
         }
     }
     public void cargarEstudiantesDesdeDB() {
@@ -248,6 +261,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             tvEstudiantes.getItems().addAll(estudiantes);
         } else {
             System.out.println("No se pudo recuperar la lista de estudiantes de la base de datos.");
+            tvEstudiantes.setPlaceholder(new Label("Sin lista de Estudiantes"));
         }
     }
 

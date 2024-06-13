@@ -23,30 +23,39 @@
                <content>
                   <BorderPane fx:id="bdPaneColaboraciones" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                        <HBox fx:id="hbFiltros" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
                            <children>
-                              <VBox prefHeight="62.0" prefWidth="172.0">
+                              <HBox fx:id="hBoxFiltros" alignment="CENTER">
                                  <children>
-                                    <DatePicker promptText="Fecha Inicio" />
-                                    <DatePicker promptText="Fecha Cierre" />
+                                    <VBox prefHeight="62.0" prefWidth="172.0">
+                                       <children>
+                                          <DatePicker fx:id="dpFechaInicio" promptText="Fecha Inicio" />
+                                          <DatePicker fx:id="dpFechaCierre" promptText="Fecha Cierre" />
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <TextField fx:id="tfTituloColab" promptText="Titulo Colaboracion" />
+                                          <ComboBox fx:id="cbEstado" maxWidth="150.0" minWidth="150.0" prefHeight="31.0" prefWidth="150.0" promptText="Estado" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="62.0" prefWidth="287.0">
+                                       <children>
+                                          <ComboBox fx:id="cbPeriodo" prefHeight="31.0" prefWidth="277.0" promptText="Seleccionar Periodo" />
+                                          <ComboBox fx:id="cbExperienciaEducativa" prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia Educativa" />
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                              <TextField promptText="Titulo Colaboracion">
+                              </HBox>
+                              <VBox>
                                  <HBox.margin>
                                     <Insets left="10.0" right="10.0" />
                                  </HBox.margin>
-                              </TextField>
-                              <VBox prefHeight="62.0" prefWidth="287.0">
                                  <children>
-                                    <ComboBox prefHeight="31.0" prefWidth="277.0" promptText="Seleccionar Periodo" />
-                                    <ComboBox prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia Educativa" />
+                                    <Button fx:id="btnBuscarColaboracion" alignment="CENTER" onAction="#btnVerColabs" prefHeight="26.0" prefWidth="125.0" text="Buscar Colaboracion" />
+                                    <Button alignment="CENTER" onAction="#btnBorrarFiltros" prefHeight="26.0" prefWidth="125.0" text="Borrar Filtros" />
                                  </children>
                               </VBox>
-                              <Button fx:id="btnEliminarrFiltros" alignment="CENTER" onAction="#btnVerColabs" text="Eliminar Filtros">
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </HBox.margin>
-                              </Button>
                               <Button fx:id="btnRegistrarNuevaColab" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" visible="false" />
                            </children>
                         </HBox>
