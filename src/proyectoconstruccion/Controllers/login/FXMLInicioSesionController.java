@@ -90,30 +90,15 @@ public class FXMLInicioSesionController implements Initializable {
     }
 
     public boolean validarCampos(String usuario,String contrasenia) {
-
         if (contrasenia == null || usuario == null) {
             return false;
         }
-
-        // Longitud minima y maxima
         if (usuario.trim().length() < 3 || usuario.trim().length() > 50) {
             return false;
         }
         if (contrasenia.trim().length() < 5 || contrasenia.trim().length() > 50) {
             return false;
         }
-
-        /*
-        //verifica que no tenga caracteres especiales
-        if (!usuario.matches("^[a-zA-Z0-9._-]+$")) {
-            return false;
-        }
-        //ve que tenga un numero y una letra
-        if (!contrasenia.matches(".*[a-zA-Z].*") || !contrasenia.matches(".*[0-9].*")) {
-            return false;
-        }
-         */
-
         return true;
     }
 

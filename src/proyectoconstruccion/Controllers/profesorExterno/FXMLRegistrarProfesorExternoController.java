@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -145,7 +146,7 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
                 System.out.println("Profesor Externo no registrado");
             }
         } else {
-            System.out.println("Campos vacios");
+            Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
         }
     }
 
@@ -153,6 +154,9 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
     private boolean validarCampos () {
         System.out.println(cbIdioma.getValue().getIdiomaID());
+        if (!validarFormatoCorreo(tfCorreo.getText())) {
+            Utils.mostrarAlertaSimple("Error","El correo electrónico no es válido.",Alert.AlertType.ERROR );
+        }
         if (cbUniversidad.getValue() == null ||
                 cbIdioma.getValue() == null ||
                 tfNombre.getText() == null || tfNombre.getText().trim().isEmpty() ||
@@ -162,5 +166,24 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
             return false;
         }
             return true;
-        }
+    }
+    
+    private boolean validarFormatoCorreo(String correo) {
+            if (!correo.contains("@")) {
+                return false;
+            }
+            int ultimoArrobaIndex = correo.lastIndexOf("@");
+            String localPart = correo.substring(0, ultimoArrobaIndex);
+            String domainPart = correo.substring(ultimoArrobaIndex + 1);
+
+            if (localPart.isEmpty()) {
+                return false;
+            }
+
+            if (!domainPart.contains(".")) {
+                return false;
+            }
+
+            return true;
+    }
 }

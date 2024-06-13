@@ -116,7 +116,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             OfertaColaboracionDAO.guardarOfertaUV(oferta);
             Utils.cerrarVentana(event);
         }else{
-            System.out.println("Campos invalidos");
+            Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
         }
 
 
@@ -222,6 +222,9 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             valid = false;
         }
         if (cbPeriodo.getSelectionModel().getSelectedItem() == null) {
+            valid = false;
+        }
+        if (cbExperienciaEducativa.getSelectionModel().getSelectedItem() == null) {
             valid = false;
         }
 

@@ -39,7 +39,6 @@ import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
  * @author unaay
  */
 public class FXMLRegistrarOfertaExternaController implements Initializable {
-    public TextField tfExperienciaEducativa;
     private ObservableList<Periodo> periodos;
     private ObservableList<ProfesorExterno> profesores;
     private ObservableList<ExperienciaEducativa> experiencias;
@@ -49,7 +48,8 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     private TextField tfTitulo;
     @FXML
     private TextField tfDuracion;
-
+    @FXML
+    private TextField tfExperienciaEducativa;
     @FXML
     private ComboBox<ProfesorExterno> cbProfesorExterno;
     @FXML
@@ -254,7 +254,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             OfertaColaboracionDAO.guardarOfertaExterna(oferta);
             Utils.cerrarVentana(event);
         } else {
-            System.out.println("Campos invalidos");
+            Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
         }
     }
 
@@ -262,7 +262,6 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     private boolean validateFields () {
         boolean valid = true;
 
-        // Check for selected values in combo boxes
         if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
             valid = false;
         }
@@ -272,18 +271,17 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         if (cbProfesorExterno.getSelectionModel().getSelectedItem() == null) {
             valid = false;
         }
-
-
-        // Check for empty fields in text fields, disallow spaces and newlines
         if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
             valid = false;
         }
         if (tfDuracion.getText().trim().isEmpty() || tfDuracion.getText().trim().isEmpty()) {
             valid = false;
         }
+        if (tfExperienciaEducativa.getText().trim().isEmpty() || tfExperienciaEducativa.getText().trim().isEmpty()) {
+            valid = false;
+        }
 
         return valid;
     }
 
-    }
-
+}
