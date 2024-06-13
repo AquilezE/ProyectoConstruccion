@@ -226,8 +226,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        Stage escenarioRegistrarOfertaExterna = (Stage) tfTitulo.getScene().getWindow();
-        escenarioRegistrarOfertaExterna.close();
+        Utils.cerrarVentana(event);
     }
 
     @FXML

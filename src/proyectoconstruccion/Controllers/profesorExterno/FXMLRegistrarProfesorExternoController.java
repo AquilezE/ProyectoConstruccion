@@ -115,8 +115,7 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        Stage escenarioRegistrarProfesorExterno = (Stage) tfNombre.getScene().getWindow();
-        escenarioRegistrarProfesorExterno.close();
+        Utils.cerrarVentana(event);
     }
 
     @FXML
@@ -153,7 +152,6 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
 
 
     private boolean validarCampos () {
-        System.out.println(cbIdioma.getValue().getIdiomaID());
         if (!validarFormatoCorreo(tfCorreo.getText())) {
             Utils.mostrarAlertaSimple("Error","El correo electrónico no es válido.",Alert.AlertType.ERROR );
         }

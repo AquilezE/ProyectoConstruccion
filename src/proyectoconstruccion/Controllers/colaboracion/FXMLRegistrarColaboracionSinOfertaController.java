@@ -101,8 +101,7 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        Stage escenarioRegistrarColaboracionSinOferta = (Stage) tfTitulo.getScene().getWindow();
-        escenarioRegistrarColaboracionSinOferta.close();
+        Utils.cerrarVentana(event);
     }
 
     @FXML

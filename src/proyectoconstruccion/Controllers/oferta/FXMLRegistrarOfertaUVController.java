@@ -92,8 +92,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        Stage escenarioRegistrarOfertaUV = (Stage) tfTitulo.getScene().getWindow();
-        escenarioRegistrarOfertaUV.close();
+        Utils.cerrarVentana(event);
     }
 
     @FXML

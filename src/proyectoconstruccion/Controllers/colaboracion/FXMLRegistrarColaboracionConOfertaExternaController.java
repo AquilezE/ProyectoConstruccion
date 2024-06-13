@@ -96,60 +96,69 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        Stage escenarioRegistrarColaboracionConOfertaExterna = (Stage) lbTitulo.getScene().getWindow();
-        escenarioRegistrarColaboracionConOfertaExterna.close();
+        Utils.cerrarVentana(event);
     }
 
     @FXML
     private void btnClicRegistrarColaboracion(ActionEvent event) {
-        Colaboracion colaboracion = new Colaboracion();
+        if(validarCampos()){
+            Colaboracion colaboracion = new Colaboracion();
+        
+            String duracion = ofertaColaboracionExterna.getDuracion();
 
-        String duracion = ofertaColaboracionExterna.getDuracion();
+            String titulo = ofertaColaboracionExterna.getTitulo();
 
-        String periodo = cbPeriodo.getSelectionModel().getSelectedItem().getDescripcion();
+            String periodo = cbPeriodo.getSelectionModel().getSelectedItem().getDescripcion();
 
-        String titulo = ofertaColaboracionExterna.getTitulo();
+            Idioma idioma = cbIdioma.getSelectionModel().getSelectedItem();
 
-        Idioma idioma = cbIdioma.getSelectionModel().getSelectedItem();
+            LocalDate fechaInicio = dpFechaInicio.getValue();
 
-        LocalDate fechaInicio = dpFechaInicio.getValue();
+            LocalDate fechaCierre = dpFechaCierre.getValue();
 
-        LocalDate fechaCierre = dpFechaCierre.getValue();
+            String tipo = cbTipoColab.getSelectionModel().getSelectedItem();
 
-        String tipo = cbTipoColab.getSelectionModel().getSelectedItem();
+            String estado = "Pendiente";
 
-        String estado = "Pendiente";
+            Integer numeroEstudiantes = null;
+            ProfesorUV profesorUv = Sesion.getInstancia().getProfesorUsuario();
+            ProfesorExterno profesorExterno = (ProfesorExterno) ofertaColaboracionExterna.getProfesor();
+            ExperienciaEducativa experienciaEducativa = cbExperienciaEducativa.getSelectionModel().getSelectedItem();
+            Evidencia evidencia = EvidenciaDAO.crearRegistroEvidencia();
 
-        Integer numeroEstudiantes = null;
-        ProfesorUV profesorUv = Sesion.getInstancia().getProfesorUsuario();
-        ProfesorExterno profesorExterno = (ProfesorExterno) ofertaColaboracionExterna.getProfesor();
-        ExperienciaEducativa experienciaEducativa = cbExperienciaEducativa.getSelectionModel().getSelectedItem();
-        Evidencia evidencia = EvidenciaDAO.crearRegistroEvidencia();
+            colaboracion.setIdioma(idioma);
+            colaboracion.setFechaInicio(fechaInicio);
+            colaboracion.setFechaCierre(fechaCierre);
+            colaboracion.setTipo(tipo);
+            colaboracion.setEstado(estado);
+            colaboracion.setNumeroEstudiantes(numeroEstudiantes);
+            colaboracion.setDuracion(duracion);
+            colaboracion.setPeriodo(periodo);
+            colaboracion.setTitulo(titulo);
+            colaboracion.setProfesorExterno(profesorExterno);
+            colaboracion.setProfesorUv(profesorUv);
+            colaboracion.setExperienciaEducativa(experienciaEducativa);
+            colaboracion.setEvidencia(evidencia);
+            colaboracion.setIdioma(idioma);
 
-        colaboracion.setIdioma(idioma);
-        colaboracion.setFechaInicio(fechaInicio);
-        colaboracion.setFechaCierre(fechaCierre);
-        colaboracion.setTipo(tipo);
-        colaboracion.setEstado(estado);
-        colaboracion.setNumeroEstudiantes(numeroEstudiantes);
-        colaboracion.setDuracion(duracion);
-        colaboracion.setPeriodo(periodo);
-        colaboracion.setTitulo(titulo);
-        colaboracion.setProfesorExterno(profesorExterno);
-        colaboracion.setProfesorUv(profesorUv);
-        colaboracion.setExperienciaEducativa(experienciaEducativa);
-        colaboracion.setEvidencia(evidencia);
-        colaboracion.setIdioma(idioma);
-
-        if(ColaboracionDAO.registrarColaboracion(colaboracion)){
-            System.out.println("EXITO");
-            Utils.cerrarVentana(event);
-        }else{
-            System.out.println("NOOOO");
+            if(ColaboracionDAO.registrarColaboracion(colaboracion)){
+                Utils.cerrarVentana(event);
+            }
+        } else {
+            Utils.mostrarAlertaSimple("Error", "Hay campos que no han sido completados", Alert.AlertType.ERROR);
         }
-
     }
 
+    public boolean validarCampos(){
+        if (cbPeriodo.getSelectionModel().getSelectedItem() == null ||
+                cbIdioma.getSelectionModel().getSelectedItem() == null ||
+                cbExperienciaEducativa.getSelectionModel().getSelectedItem() == null ||
+                cbTipoColab.getSelectionModel().getSelectedItem() == null ||
+                dpFechaInicio.getValue() == null || dpFechaCierre.getValue() == null) {
+            return false;
+        }
+            return true;
+    }
     private void cargarPeriodos(){
         periodos = FXCollections.observableArrayList();
         periodos.addAll(PeriodoDAO.getPeriodos());
