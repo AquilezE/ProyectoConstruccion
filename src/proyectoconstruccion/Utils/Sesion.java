@@ -2,7 +2,6 @@ package proyectoconstruccion.Utils;
 
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-//tal vez se pueda crear un paquete llamado sesion, por si las moscas
 public class Sesion {
 
     private static Sesion instancia;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyectoconstruccion.Controllers.oferta;
 
 import java.io.IOException;
@@ -33,11 +29,6 @@ import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionExterna;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 
-/**
- * FXML Controller class
- *
- * @author unaay
- */
 public class FXMLRegistrarOfertaExternaController implements Initializable {
     private ObservableList<Periodo> periodos;
     private ObservableList<ProfesorExterno> profesores;

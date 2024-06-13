@@ -25,11 +25,6 @@ import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracionUV;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-/**
- * FXML Controller class
- *
- * @author unaay
- */
 public class FXMLRegistrarOfertaUVController implements Initializable {
 
     Integer idProfesor;

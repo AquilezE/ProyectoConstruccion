@@ -159,6 +159,7 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
         }
             return true;
     }
+    
     private void cargarPeriodos(){
         periodos = FXCollections.observableArrayList();
         periodos.addAll(PeriodoDAO.getPeriodos());

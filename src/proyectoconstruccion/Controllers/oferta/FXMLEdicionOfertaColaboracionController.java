@@ -57,7 +57,7 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     public void cargarInformacionOfertaExternaEdicion(){
         this.tfTitulo.setText(ofertaColaboracion.getTitulo());
         this.cbIdioma.getSelectionModel().select(buscarIdIdioma(ofertaColaboracion.getIdiomaId()));
-        //this.cbPeriodo.getSelectionModel().select(buscarIdPeriodo(ofertaColaboracion.getIdPeriodo()));
+        //this.cbPeriodo.getSelectionModel().select(buscarIdPeriodo(ofertaColaboracion.getPeriodoId()));
         this.tfDuracion.setText(ofertaColaboracion.getDuracion());
     }
     

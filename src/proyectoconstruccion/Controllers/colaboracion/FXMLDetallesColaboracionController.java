@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyectoconstruccion.Controllers.colaboracion;
 
 import java.io.File;
@@ -34,11 +30,6 @@ import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-/**
- * FXML Controller class
- *
- * @author unaay
- */
 public class FXMLDetallesColaboracionController implements Initializable {
 
     public Button btnSyllabus;

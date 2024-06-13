@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyectoconstruccion.Controllers.profesorExterno;
 
 import java.net.URL;
@@ -26,11 +22,6 @@ import proyectoconstruccion.modelo.POJO.Idioma;
 import proyectoconstruccion.modelo.POJO.Universidad;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 
-/**
- * FXML Controller class
- *
- * @author unaay
- */
 public class FXMLRegistrarProfesorExternoController implements Initializable {
 
     private ObservableList<Idioma> idiomas;

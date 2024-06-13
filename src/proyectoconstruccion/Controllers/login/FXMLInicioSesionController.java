@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package proyectoconstruccion.Controllers.login;
 
 import java.io.IOException;
@@ -26,10 +22,6 @@ import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.AutenticacionDAO;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
-/**
- *
- * @author unaay
- */
 public class FXMLInicioSesionController implements Initializable {
     @FXML
     public TextField tfUsuario;
