@@ -12,11 +12,11 @@ public class Periodo {
         this.descripcion = descripcion;
     }
 
-    public Integer getId() {
+    public Integer getPeriodoId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setPeriodoId(Integer id) {
         this.id = id;
     }
 

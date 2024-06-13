@@ -99,7 +99,7 @@ public class OfertaColaboracionDAO {
                 String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
                 try {
                     PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
-                    prepararSentencia.setInt(1, oferta.getIdiomaID());
+                    prepararSentencia.setInt(1, oferta.getIdiomaId());
                     prepararSentencia.setString(2, oferta.getPeriodo());
                     prepararSentencia.setString(3, oferta.getTitulo());
                     prepararSentencia.setString(4, oferta.getDuracion());
@@ -124,7 +124,7 @@ public class OfertaColaboracionDAO {
             String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
-                prepararSentencia.setInt(1, oferta.getIdiomaID());
+                prepararSentencia.setInt(1, oferta.getIdiomaId());
                 prepararSentencia.setString(2, oferta.getPeriodo());
                 prepararSentencia.setString(3, oferta.getTitulo());
                 prepararSentencia.setString(4, oferta.getDuracion());

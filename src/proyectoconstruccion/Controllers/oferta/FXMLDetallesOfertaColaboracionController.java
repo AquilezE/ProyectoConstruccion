@@ -122,7 +122,7 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
             lbPeriodo.setText(ofertaColaboracion.getPeriodo());
             lbTitulo.setText(ofertaColaboracion.getTitulo());
 
-            this.idioma=IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaID());
+            this.idioma=IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaId());
 
             lbIdioma.setText(idioma.getIdioma());
             lbNombreProfesor.setText(ofertaColaboracion.getProfesor().getNombre()+" "+ofertaColaboracion.getProfesor().getApellidoPaterno()+" "+ofertaColaboracion.getProfesor().getApellidoMaterno());

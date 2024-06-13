@@ -4,16 +4,16 @@ import proyectoconstruccion.modelo.POJO.profesor.Profesor;
 
 public abstract class OfertaColaboracion {
     private Integer ofertaColaboracionId;
-    private Integer idiomaID;
+    private Integer idIdioma;
     private String periodo;
     private String titulo;
     private String duracion;
     private Integer tipo;
     private Profesor profesor;
 
-    public OfertaColaboracion(Integer ofertaColaboracionId, Integer idiomaID, String periodo, String titulo,Integer tipo, String duracion,Profesor profesor) {
+    public OfertaColaboracion(Integer ofertaColaboracionId, Integer idIdioma, String periodo, String titulo,Integer tipo, String duracion,Profesor profesor) {
         this.ofertaColaboracionId = ofertaColaboracionId;
-        this.idiomaID = idiomaID;
+        this.idIdioma = idIdioma;
         this.periodo = periodo;
         this.titulo = titulo;
         this.duracion = duracion;
@@ -40,9 +40,9 @@ public abstract class OfertaColaboracion {
         this.ofertaColaboracionId = ofertaColaboracionId;
     }
 
-    public Integer getIdiomaID() {return idiomaID;}
+    public Integer getIdiomaId() {return idIdioma;}
 
-    public void setIdiomaID(Integer idiomaID) {this.idiomaID = idiomaID;}
+    public void setIdiomaId(Integer idIdioma) {this.idIdioma = idIdioma;}
 
     public String getPeriodo() {
         return periodo;

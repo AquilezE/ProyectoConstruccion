@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyectoconstruccion.Controllers.oferta;
 
 import java.net.URL;
@@ -108,7 +104,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             OfertaColaboracionUV oferta = new OfertaColaboracionUV();
             oferta.setPeriodo(selectedPeriodo.getDescripcion());
             oferta.setProfesor(profesorUV);
-            oferta.setIdiomaID(idIdioma);
+            oferta.setIdiomaId(idIdioma);
             oferta.setTitulo(title);
             oferta.setDuracion(duration);
 

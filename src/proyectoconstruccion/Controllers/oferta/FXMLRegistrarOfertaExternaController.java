@@ -244,7 +244,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             OfertaColaboracionExterna oferta = new OfertaColaboracionExterna();
             oferta.setPeriodo(selectedPeriodo.getDescripcion());
             oferta.setProfesor(selectedProfesorExterno);
-            oferta.setIdiomaID(idIdioma);
+            oferta.setIdiomaId(idIdioma);
             oferta.setTitulo(title);
             oferta.setDuracion(duration);
 

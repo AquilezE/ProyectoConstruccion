@@ -21,6 +21,7 @@ import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
 
 public class FXMLEdicionOfertaColaboracionController implements Initializable {
     private ObservableList<Periodo> periodos;
@@ -44,16 +45,40 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     }
 
     public void InicializarDatos(FXMLDetallesOfertaColaboracionController detallesOfertaColaboracion, OfertaColaboracion ofertaColaboracion){
-
-            this.ofertaColaboracion=ofertaColaboracion;
-            this.detallesOfertaColaboracion = detallesOfertaColaboracion;
-            this.tfTitulo.setText(ofertaColaboracion.getTitulo());
-            this.tfDuracion.setText(ofertaColaboracion.getDuracion());
-            cargarIdiomas();
-            cargarPeriodos();
-
+        this.ofertaColaboracion=ofertaColaboracion;
+        this.detallesOfertaColaboracion = detallesOfertaColaboracion;
+        cargarIdiomas();
+        cargarPeriodos();
+        if(ofertaColaboracion != null){
+            cargarInformacionOfertaExternaEdicion();
+        }
     }
-
+    
+    public void cargarInformacionOfertaExternaEdicion(){
+        this.tfTitulo.setText(ofertaColaboracion.getTitulo());
+        this.cbIdioma.getSelectionModel().select(buscarIdIdioma(ofertaColaboracion.getIdiomaId()));
+        //this.cbPeriodo.getSelectionModel().select(buscarIdPeriodo(ofertaColaboracion.getIdPeriodo()));
+        this.tfDuracion.setText(ofertaColaboracion.getDuracion());
+    }
+    
+    private int buscarIdIdioma(int idIdioma){
+        for (int i = 0; i < idiomas.size(); i++) {
+            if(idiomas.get(i).getIdiomaID() == idIdioma){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    private int buscarIdPeriodo(int idPeriodo){
+        for (int i = 0; i < periodos.size(); i++) {
+            if(periodos.get(i).getPeriodoId() == idPeriodo){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
     public void btnFinalizar(ActionEvent actionEvent) {
 
         if (validateFields()){
@@ -66,10 +91,9 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
                 System.out.println("Oferta No Editada");
             }
             Utils.cerrarVentana(actionEvent);
+        }else{
+            Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
         }
-
-
-
     }
 
     private void cargarIdiomas() {

@@ -37,7 +37,7 @@ public class FXMLOfertaItemController {
         lbTitulo.setText(ofertaColaboracion.getTitulo());
         lbNombreProfesorOfertante.setText(profesor.getNombre()+" "+profesor.getApellidoPaterno());
         lbPeriodo.setText(ofertaColaboracion.getPeriodo());
-        lbIdiomaOferta.setText(IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaID()).getIdioma());
+        lbIdiomaOferta.setText(IdiomaDAO.obtenerIdioma(ofertaColaboracion.getIdiomaId()).getIdioma());
         lbDuracion.setText(ofertaColaboracion.getDuracion());
 
         if(ofertaColaboracion instanceof OfertaColaboracionExterna){
