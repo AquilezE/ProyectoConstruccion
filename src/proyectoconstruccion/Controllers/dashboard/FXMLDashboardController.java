@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import jdk.nashorn.internal.parser.JSONParser;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
@@ -43,6 +44,10 @@ public class FXMLDashboardController implements Initializable {
     public Button btnRegistrarOfertaExterna;
     public Button btnRegistrarOfertaUV;
     public Button btnRegistrarNuevaColab;
+    
+    public HBox hbSolicitudesHeader;
+    public HBox hbfiltros;
+
 
 
     private ObservableList<Periodo> periodos;
@@ -53,6 +58,7 @@ public class FXMLDashboardController implements Initializable {
     public BorderPane bdPaneColaboraciones;
     public BorderPane bdPaneOfertasColab;
     public BorderPane bdPaneNumerialia;
+    public BorderPane bdPaneSolicitudes;
 
     public Label lbPeriodo;
 
@@ -74,8 +80,6 @@ public class FXMLDashboardController implements Initializable {
     private TableColumn <NumeraliaAreaAcademica,String> colNumProfesoresAreaAcademica;
     @FXML
     public ComboBox cbSeleccionPeriodo;
-    @FXML
-    private Button btnEliminarrFiltros;
 
     @FXML
     private AnchorPane apTodo;
@@ -144,7 +148,7 @@ public class FXMLDashboardController implements Initializable {
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorColaboracionesController controller = loader.getController();
 
-            controller.InicializarComponentes();
+            //controller.InicializarComponentes();
 
             bdPaneColaboraciones.setCenter(contenedorColaboraciones);
 
@@ -152,6 +156,7 @@ public class FXMLDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML
@@ -187,10 +192,6 @@ public class FXMLDashboardController implements Initializable {
         }
     }
 
-    public void cargarPeriodosNumeralia() {
-        //TODO
-    }
-
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
         Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
@@ -210,20 +211,6 @@ public class FXMLDashboardController implements Initializable {
         tvNumeraliaAreaAcademica.setItems(datos);
     }
 
-    public void btnDescargarListaEstudiantes(ActionEvent actionEvent) {
-    }
-
-    public void btnSyllabus(ActionEvent actionEvent) {
-    }
-
-    public void btnEvidencia(ActionEvent actionEvent) {
-    }
-
-    public void btnAprobarConstancia(ActionEvent actionEvent) {
-    }
-
-    public void btnRegresar(ActionEvent actionEvent) {
-    }
 
     @FXML
     private void btnClicRegistrarColaboracion(ActionEvent event) {
@@ -298,4 +285,19 @@ public class FXMLDashboardController implements Initializable {
     }
 
 
+    public void btnVerColabsSolicitudes(ActionEvent actionEvent) {
+            try {
+
+                FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
+                AnchorPane contenedorColaboraciones = loader.load();
+                FXMLContenedorColaboracionesController controller = loader.getController();
+
+                controller.InicializarComponentesSolicitudes();
+
+                bdPaneColaboraciones.setCenter(contenedorColaboraciones);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 }

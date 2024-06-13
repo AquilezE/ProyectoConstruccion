@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ColaboracionDAO {
-    public static HashMap<String,Object> getColaboraciones(String titulo, String tipoDeColaboracion, String periodo, Integer numeroEstudiantesMax, Integer numeroEstudiantesMin, LocalDate fechaInicio,LocalDate fechaCierre){
+    public static HashMap<String,Object> getColaboraciones(String titulo, String estadoP, String periodo, Integer numeroEstudiantesMax, Integer numeroEstudiantesMin, LocalDate fechaInicio,LocalDate fechaCierre){
         HashMap<String,Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR,true);
         Connection conexionBD = ConexionBD.getConexion();
@@ -30,9 +30,9 @@ public class ColaboracionDAO {
                 queryBuilder.append(" AND Titulo = ?");
                 parametros.add(titulo);
             }
-            if(tipoDeColaboracion != null){
-                queryBuilder.append(" AND TipoDeColab = ?");
-                parametros.add(tipoDeColaboracion);
+            if(estadoP != null){
+                queryBuilder.append(" AND Estado = ?");
+                parametros.add(estadoP);
             }
             if(periodo != null){
                 queryBuilder.append(" AND periodo = ?");

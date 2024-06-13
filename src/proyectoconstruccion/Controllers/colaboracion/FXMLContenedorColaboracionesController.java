@@ -2,12 +2,14 @@ package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,9 +17,28 @@ public class FXMLContenedorColaboracionesController {
 
     public VBox vBoxBucket;
 
-    public void InicializarComponentes(){
 
-        HashMap<String,Object> seleccion =  ColaboracionDAO.getColaboraciones(null, null,null,null,null,null,null);
+    public void InicializarComponentesSolicitudes(){
+
+
+        HashMap<String,Object> seleccion =  ColaboracionDAO.getColaboraciones(null, "Concluida",null,null,null,null,null);
+        if(seleccion==null){
+            System.out.println("da null");
+        }
+
+
+        ArrayList<Colaboracion> colaboraciones= (ArrayList<Colaboracion>) seleccion.get("colaboraciones");
+        for (Colaboracion colaboracion:colaboraciones){
+            System.out.println("colaboracionAñadida");
+            añadirItem(colaboracion);
+        }
+
+    }
+
+    public void InicializarComponentes(String titulo, String estado, String periodo, Integer numMax, Integer numMin, LocalDate fechaInicio, LocalDate fechaFin){
+
+
+        HashMap<String,Object> seleccion =  ColaboracionDAO.getColaboraciones(titulo,estado,periodo,numMax,numMin,fechaInicio,fechaFin);
         if(seleccion==null){
             System.out.println("da null");
         }
