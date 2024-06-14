@@ -18,15 +18,12 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import proyectoconstruccion.Controllers.evidencias.FXMLSubirEvidenciasController;
-import proyectoconstruccion.Controllers.listaEstudiantes.FXMLSubirListaEstudiantesController;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
-import proyectoconstruccion.modelo.POJO.evidencia.Evidencia;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorExterno;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
