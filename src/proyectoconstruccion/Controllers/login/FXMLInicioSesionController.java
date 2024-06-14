@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import proyectoconstruccion.Controllers.dashboard.FXMLDashboardController;
+import proyectoconstruccion.Controllers.panelPrincipal.FXMLPanelPrincipalController;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -57,7 +57,7 @@ public class FXMLInicioSesionController implements Initializable {
                   Utils.mostrarAlertaSimple("Bienvenido","Bienvenido al sistema Profesor "+((ProfesorUV) respuesta.get("profesor")).getNombre(), Alert.AlertType.INFORMATION);
               }
 
-            irADashboard();
+            irAPanelPrincipal();
 
           }else{
                Utils.mostrarAlertaSimple("Error", (String) respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
@@ -67,16 +67,16 @@ public class FXMLInicioSesionController implements Initializable {
        }
     }
 
-    public void irADashboard(){
+    public void irAPanelPrincipal(){
         try{
             Stage stage = (Stage) btIniciarSesion.getScene().getWindow();
-            FXMLLoader loader = Utils.obtenerLoader("Views/dashboard/FXMLDashboard.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("Views/panelPrincipal/FXMLPanelPrincipal.fxml");
             Parent root = loader.load();
-            FXMLDashboardController controller = loader.getController();
+            FXMLPanelPrincipalController controller = loader.getController();
             controller.iniciarComponentes();
 
-            Scene escenaDashboard = new Scene(root);
-            stage.setScene(escenaDashboard);
+            Scene escenaPanelPrincipal = new Scene(root);
+            stage.setScene(escenaPanelPrincipal);
             stage.show();
 
         }catch (IOException e){

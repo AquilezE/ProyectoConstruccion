@@ -1,4 +1,4 @@
-package proyectoconstruccion.Controllers.dashboard;
+package proyectoconstruccion.Controllers.panelPrincipal;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,7 +38,7 @@ import proyectoconstruccion.modelo.POJO.NumeraliaCampus;
 import proyectoconstruccion.modelo.POJO.Periodo;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 
-public class FXMLDashboardController implements Initializable {
+public class FXMLPanelPrincipalController implements Initializable {
 
     private ObservableList<ExperienciaEducativa> experienciasEducativas;
     private ObservableList<Periodo> periodos;
