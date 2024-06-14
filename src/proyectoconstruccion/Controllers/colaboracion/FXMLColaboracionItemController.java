@@ -25,6 +25,7 @@ public class FXMLColaboracionItemController {
     public Label lbFechaCierre;
     public Label lbIdiomaColaboracion;
     public Label lbExperienciaEducativa;
+    public Label lbEstado;
 
     ProfesorUV profesorUV;
     ProfesorExterno profesorExterno;
@@ -44,6 +45,7 @@ public class FXMLColaboracionItemController {
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().toString());
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
+        this.lbEstado.setText(colaboracion.getEstado());
 
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().getNombreExperienciaEducativa());
         lbNombreProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());

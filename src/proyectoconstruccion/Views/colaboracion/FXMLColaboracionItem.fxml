@@ -84,7 +84,13 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Label text="Experiencia Educativa: " />
-                        <Label fx:id="lbExperienciaEducativa" text="NoSeWe" />
+                        <Label fx:id="lbExperienciaEducativa" text="expEdu" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="444.0" layoutY="78.0" prefHeight="74.0" prefWidth="297.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="Estado: " />
+                        <Label fx:id="lbEstado" text="estado" />
                      </children>
                   </HBox>
                </children>

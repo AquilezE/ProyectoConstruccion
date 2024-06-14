@@ -23,7 +23,7 @@ public class NumeraliaDAO {
                     "JOIN experienciaeducativa ON colaboracion.experiencia_educativa_id = experienciaeducativa.experiencia_educativa_id " +
                     "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id " +
                     "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id " +
-                    "WHERE colaboracion.Estado = 'Concluida' " +
+                    "WHERE colaboracion.Estado = 'Clausurada' " +
                     "GROUP BY Campus";
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -53,7 +53,7 @@ public static ArrayList<NumeraliaAreaAcademica> obtenerNumeraliaAreaAcademica() 
             "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id " +
             "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id " +
             "JOIN areaacademica ON dependencia.area_academica_id = areaacademica.area_academica_id " +
-            "WHERE colaboracion.Estado= 'Concluida' " +
+            "WHERE colaboracion.Estado= 'Clausurada' " +
             "GROUP BY NombreAreaAcademica";
         try {
             PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -80,7 +80,7 @@ public static ArrayList<NumeraliaAreaAcademica> obtenerNumeraliaAreaAcademica() 
                     "JOIN experienciaeducativa ON colaboracion.experiencia_educativa_id = experienciaeducativa.experiencia_educativa_id " +
                     "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id " +
                     "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id " +
-                    "WHERE colaboracion.Estado = 'Concluida' AND colaboracion.periodo = ? " +
+                    "WHERE colaboracion.Estado = 'Clausurada' AND colaboracion.periodo = ? " +
                     "GROUP BY Campus";
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
@@ -111,7 +111,7 @@ public static ArrayList<NumeraliaAreaAcademica> obtenerNumeraliaAreaAcademica() 
                     "JOIN programaeducativo ON experienciaeducativa.programa_educativo_id = programaeducativo.programa_educativo_id " +
                     "JOIN dependencia ON programaeducativo.dependencia_id = dependencia.dependencia_id " +
                     "JOIN areaacademica ON dependencia.area_academica_id = areaacademica.area_academica_id " +
-                    "WHERE colaboracion.Estado= 'Concluida' AND colaboracion.periodo = ? " +
+                    "WHERE colaboracion.Estado= 'Clausurada' AND colaboracion.periodo = ? " +
                     "GROUP BY NombreAreaAcademica";
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
