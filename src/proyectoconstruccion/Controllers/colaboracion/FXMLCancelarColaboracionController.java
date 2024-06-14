@@ -39,17 +39,14 @@ public class FXMLCancelarColaboracionController implements Initializable {
         String texto = tfMotivo.getText();
         if (texto != null && !texto.trim().isEmpty()) {
             if (texto.length() > 254) {
-                // Manejo para cuando el texto supera los 254 caracteres
                 Utils.mostrarAlertaSimple("Error", "El texto no puede superar los 254 caracteres", Alert.AlertType.ERROR);
             } else {
-                // Manejo para cuando el texto es válido
                 ColaboracionDAO.aniadirAnotaciones(this.idColaboracion, texto);
                 ColaboracionDAO.actualizarEstadoColaboracion(this.idColaboracion,"Cancelada");
                 Utils.mostrarAlertaSimple("","La colaboración ha sido cancelada",Alert.AlertType.CONFIRMATION);
                 Utils.cerrarVentana(event);
             }
         } else {
-            // Manejo para cuando el texto es nulo o vacío
             Utils.mostrarAlertaSimple("Error", "El campo no puede estar vacío", Alert.AlertType.ERROR);
         }
 

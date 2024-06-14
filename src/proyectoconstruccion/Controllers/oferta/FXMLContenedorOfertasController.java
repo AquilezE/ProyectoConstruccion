@@ -14,11 +14,6 @@ public class FXMLContenedorOfertasController {
 
     public VBox vBoxBucket;
 
-    /*
-    Aqui es lo cabron de las consultas
-    Tienes que hacer un tipo factory de consulta, para que puedas llenar las
-    la cubeta de las ofertas que si son.
-     */
     public void InicializarComponentes(){
         actualizarOfertas();
     }
@@ -44,6 +39,5 @@ public class FXMLContenedorOfertasController {
             e.printStackTrace();
         }
     }
-
 
 }

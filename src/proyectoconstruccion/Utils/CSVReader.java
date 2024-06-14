@@ -19,16 +19,12 @@ public class CSVReader {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
-            // Saltamos la primera línea que contiene los encabezados
             br.readLine();
-            // Lee cada línea del archivo CSV
             while ((line = br.readLine()) != null) {
-                // Divide la línea en campos usando coma como delimitador
                 String[] campos = line.split(",");
-                if (campos.length == 4) { // Se espera que haya cuatro campos: Matrícula, Nombre completo, Calificación, Faltas
+                if (campos.length == 4) {
                     String matricula = campos[0].trim();
                     String nombreCompleto = campos[1].trim();
-                    // Dividimos el nombre completo en nombre y apellidos
                     String[] nombreApellidos = nombreCompleto.split("\\s+");
                     String nombre = nombreApellidos[0];
                     String apellidoPaterno = nombreApellidos[1];
@@ -36,7 +32,6 @@ public class CSVReader {
                     int calificacion = Integer.parseInt(campos[2].trim());
                     int faltas = Integer.parseInt(campos[3].trim());
 
-                    // Crea un objeto Estudiante y agrégalo a la lista
                     Estudiante estudiante = new Estudiante(null, nombre, apellidoMaterno, apellidoPaterno, matricula, calificacion, faltas);
                     estudiantes.add(estudiante);
                 } else {

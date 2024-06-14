@@ -132,7 +132,6 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
         profesores.addAll(ProfesorDAO.obtenerTodosProfesoresExternos());
         cbProfesorExterno.setItems(profesores);
 
-        // Asegurándose de que solo el nombre del profesor se muestre
         cbProfesorExterno.setCellFactory(new Callback<ListView<ProfesorExterno>, ListCell<ProfesorExterno>>() {
             @Override
             public ListCell<ProfesorExterno> call(ListView<ProfesorExterno> l) {
@@ -149,23 +148,20 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
                 };
             }
         });
-        // Establece un listener para cuando un profesor es seleccionado
+
         cbProfesorExterno.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ProfesorExterno>() {
             @Override
             public void changed(ObservableValue<? extends ProfesorExterno> observable, ProfesorExterno oldValue, ProfesorExterno newValue) {
                 if (newValue != null) {
-                    // Actualiza los campos de texto con los detalles del profesor seleccionado
                     lbNombre.setText(newValue.getNombre());
                     lbCorreo.setText(newValue.getCorreoElectronico());
 
-                    //Tienes que usar DAO Universidad
                     Universidad universidadSeleccionada = UniversidadDAO.getUniversidadById(newValue.getUniversidadID());
 
                     lbUniversidad.setText(universidadSeleccionada.getNombre());
                     lbPais.setText(universidadSeleccionada.getPais());
 
                 } else {
-                    // Vacía los campos si no hay profesor seleccionado
                     lbNombre.setText("");
                     lbCorreo.setText("");
                     lbUniversidad.setText("");
@@ -173,7 +169,6 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
                 }
             }
         });
-        // Asegurándose de que solo el nombre del profesor se muestre en el campo de texto del ComboBox
         cbProfesorExterno.setConverter(new StringConverter<ProfesorExterno>() {
             @Override
             public String toString(ProfesorExterno profesor) {
@@ -216,14 +211,12 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     private void btnClicRegistrarOfertaColaboracionExterna(ActionEvent event) {
 
         if (validateFields()) {
-// Fetch selected values from the combo boxes and text fields
             Periodo selectedPeriodo = cbPeriodo.getSelectionModel().getSelectedItem();
             ProfesorExterno selectedProfesorExterno = cbProfesorExterno.getSelectionModel().getSelectedItem();
             String title = tfTitulo.getText();
             String duration = tfDuracion.getText();
             Integer idIdioma = cbIdioma.getValue().getIdiomaID();
 
-// Create Oferta object using those values
             OfertaColaboracionExterna oferta = new OfertaColaboracionExterna();
             oferta.setPeriodo(selectedPeriodo.getDescripcion());
             oferta.setProfesor(selectedProfesorExterno);
@@ -231,8 +224,6 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             oferta.setTitulo(title);
             oferta.setDuracion(duration);
 
-
-// Save the newly created oferta (you would need a method for this in your OfertaDAO)
             OfertaColaboracionDAO.guardarOfertaExterna(oferta);
             Utils.cerrarVentana(event);
         } else {

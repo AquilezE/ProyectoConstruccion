@@ -196,10 +196,8 @@ public class FXMLDashboardController implements Initializable {
     
     public void cargarColaboraciones(){
         try {
-            // Obtener los datos del filtro
             FilterData filterData = getFilterData();
 
-            // Imprimir los valores del filtro
             System.out.println("Datos del filtro:");
             System.out.println("Fecha Cierre: " + filterData.getFechaCierre());
             System.out.println("Fecha Inicio: " + filterData.getFechaInicio());

@@ -26,7 +26,6 @@ import javafx.scene.control.Alert;
 public class FXMLEdicionOfertaColaboracionController implements Initializable {
     private ObservableList<Periodo> periodos;
     private ObservableList<Idioma> idiomas;
-    public Periodo periodo;
 
     public TextField tfTitulo;
     public TextField tfDuracion;
@@ -48,9 +47,6 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
         this.ofertaColaboracion=ofertaColaboracion;
         this.detallesOfertaColaboracion = detallesOfertaColaboracion;
         String descripcionPeriodo = ofertaColaboracion.getPeriodo();
-        if (descripcionPeriodo != null) {
-            this.periodo.setDescripcion(descripcionPeriodo);
-        }
         cargarIdiomas();
         cargarPeriodos();
         if(ofertaColaboracion != null){
@@ -61,22 +57,7 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     public void cargarInformacionOfertaExternaEdicion(){
         this.tfTitulo.setText(ofertaColaboracion.getTitulo());
         this.cbIdioma.getSelectionModel().select(buscarIdIdioma(ofertaColaboracion.getIdiomaId()));
-        String descripcionPeriodo = ofertaColaboracion.getPeriodo();
-        if (periodo != null) {
-            //this.cbPeriodo.getSelectionModel().select(buscarPeriodo(periodo.getDescripcion());
-        } else {
-            System.out.println("No se encontró el período con la descripción proporcionada");
-        }
         this.tfDuracion.setText(ofertaColaboracion.getDuracion());
-    }
-    
-    private Periodo buscarPeriodo(String descripcionPeriodo){
-        for (Periodo periodoBusqueda : periodos) {
-            if(periodoBusqueda.getDescripcion() == descripcionPeriodo){
-                return periodoBusqueda;
-            }
-        }
-        return null;
     }
     
     private int buscarIdIdioma(int idIdioma){
@@ -162,7 +143,6 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     private boolean validateFields () {
         boolean valid = true;
 
-        // Check for selected values in combo boxes
         if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
             valid = false;
         }
@@ -170,7 +150,6 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
             valid = false;
         }
 
-        // Check for empty fields in text fields, disallow spaces and newlines
         if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
             valid = false;
         }

@@ -57,7 +57,6 @@ public class FXMLContenedorColaboracionesController {
             experienciaEducativaId = null;
         }
 
-        // Imprime los valores de los parámetros
         System.out.println("Parametros de búsqueda:");
         System.out.println("Titulo: " + titulo);
         System.out.println("Estado: " + estado);

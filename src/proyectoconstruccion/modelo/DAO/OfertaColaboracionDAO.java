@@ -21,13 +21,13 @@ import java.util.List;
 
 public class OfertaColaboracionDAO {
 
-    public static HashMap<String,Object> getAllOfertasColaboracion() {
-        HashMap<String,Object> resultado = getOfertasColaboracion(null, null);
+    public static HashMap<String, Object> getAllOfertasColaboracion() {
+        HashMap<String, Object> resultado = getOfertasColaboracion(null, null);
         return resultado;
     }
 
-    public static HashMap<String,Object> getOfertasColaboracion(String periodo, Integer idioma) {
-        HashMap <String, Object> respuesta = new LinkedHashMap<>();
+    public static HashMap<String, Object> getOfertasColaboracion(String periodo, Integer idioma) {
+        HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.getConexion();
 
@@ -45,7 +45,7 @@ public class OfertaColaboracionDAO {
                 parameters.add(idioma);
             }
 
-            if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)){
+            if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
                 queryBuilder.append(" AND (profesor_id = ? OR type = 1) ");
                 parameters.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
             }
@@ -76,9 +76,9 @@ public class OfertaColaboracionDAO {
 
                     Profesor profesor = (Profesor) ProfesorDAO.getProfesorById(profesorId, type).get("profesor");
                     if (profesor instanceof ProfesorUV) {
-                        ofertas.add(new OfertaColaboracionUV(ofertaId, idiomaId, period, titulo,type, duracion, (ProfesorUV) profesor));
+                        ofertas.add(new OfertaColaboracionUV(ofertaId, idiomaId, period, titulo, type, duracion, (ProfesorUV) profesor));
                     } else if (profesor instanceof ProfesorExterno) {
-                        ofertas.add(new OfertaColaboracionExterna(ofertaId, idiomaId, period, titulo,type, duracion, (ProfesorExterno) profesor));
+                        ofertas.add(new OfertaColaboracionExterna(ofertaId, idiomaId, period, titulo, type, duracion, (ProfesorExterno) profesor));
                     }
                 }
                 respuesta.put("ofertas", ofertas);
@@ -89,32 +89,32 @@ public class OfertaColaboracionDAO {
             }
         }
         return respuesta;
-        }
+    }
 
 
-        public static boolean guardarOfertaExterna (OfertaColaboracionExterna oferta){
-            boolean inserted = false;
-            Connection conexionBD = ConexionBD.getConexion();
-            if (conexionBD != null) {
-                String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
-                try {
-                    PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
-                    prepararSentencia.setInt(1, oferta.getIdiomaId());
-                    prepararSentencia.setString(2, oferta.getPeriodo());
-                    prepararSentencia.setString(3, oferta.getTitulo());
-                    prepararSentencia.setString(4, oferta.getDuracion());
-                    prepararSentencia.setInt(5, oferta.getProfesor().getProfesorId()); // assuming getProfesorExterno() gets the ProfesorExterno object with id field
-                    prepararSentencia.setInt(6, 1);
+    public static boolean guardarOfertaExterna(OfertaColaboracionExterna oferta) {
+        boolean inserted = false;
+        Connection conexionBD = ConexionBD.getConexion();
+        if (conexionBD != null) {
+            String insertStmt = "INSERT INTO ofertaColaboracion (idioma, periodo, titulo, duracion, profesor_id, type) VALUES (?, ?, ?, ?, ?, ?)";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(insertStmt);
+                prepararSentencia.setInt(1, oferta.getIdiomaId());
+                prepararSentencia.setString(2, oferta.getPeriodo());
+                prepararSentencia.setString(3, oferta.getTitulo());
+                prepararSentencia.setString(4, oferta.getDuracion());
+                prepararSentencia.setInt(5, oferta.getProfesor().getProfesorId());
+                prepararSentencia.setInt(6, 1);
 
-                    int numOfInsertedRows = prepararSentencia.executeUpdate();
-                    inserted = numOfInsertedRows > 0;
+                int numOfInsertedRows = prepararSentencia.executeUpdate();
+                inserted = numOfInsertedRows > 0;
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            return inserted;
         }
+        return inserted;
+    }
 
 
     public static boolean guardarOfertaUV(OfertaColaboracionUV oferta) {
@@ -129,7 +129,7 @@ public class OfertaColaboracionDAO {
                 prepararSentencia.setString(3, oferta.getTitulo());
                 prepararSentencia.setString(4, oferta.getDuracion());
                 prepararSentencia.setInt(5, oferta.getProfesor().getProfesorId());
-                prepararSentencia.setInt(6, 0); // Assuming 0 is the type identification for OfertaColaboracionUV
+                prepararSentencia.setInt(6, 0);
 
                 int numOfInsertedRows = prepararSentencia.executeUpdate();
                 inserted = numOfInsertedRows > 0;
@@ -173,7 +173,7 @@ public class OfertaColaboracionDAO {
         if (conexionBD != null) {
 
             String query = "SELECT * FROM ofertaColaboracion WHERE oferta_colaboracion_id=?";
-           OfertaColaboracion oferta = null;
+            OfertaColaboracion oferta = null;
 
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(query);
@@ -207,6 +207,26 @@ public class OfertaColaboracionDAO {
         return respuesta;
     }
 
+
+    public static boolean cambiarEstadoOfertaColaboracion(Integer ofertaId, Integer newEstado) {
+        boolean updated = false;
+        Connection conexionBD = ConexionBD.getConexion();
+        if (conexionBD != null) {
+            String updateStmt = "UPDATE ofertaColaboracion SET estado = ? WHERE oferta_colaboracion_id = ?";
+            try {
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(updateStmt);
+                prepararSentencia.setInt(1, newEstado);
+                prepararSentencia.setInt(2, ofertaId);
+
+                int numOfUpdatedRows = prepararSentencia.executeUpdate();
+                updated = numOfUpdatedRows > 0;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return updated;
+    }
 
 
     }

@@ -86,7 +86,6 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
                 FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaExterna.fxml");
                 Parent root = loader.load();
                 FXMLRegistrarColaboracionConOfertaExternaController controller = loader.getController();
-                // Puedes pasar datos a la nueva ventana si es necesario
                 controller.inicializarValores((OfertaColaboracionExterna) ofertaColaboracion);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);

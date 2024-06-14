@@ -18,8 +18,6 @@ public class Sesion {
         return instancia;
     }
 
-
-
     public String getRol() {
         return rol;
     }

@@ -13,7 +13,6 @@ public class FilterData {
     private Periodo periodo;
     private ExperienciaEducativa experienciaEducativa;
 
-    // Getters and setters
     public LocalDate getFechaCierre() {
         return fechaCierre;
     }

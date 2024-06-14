@@ -25,6 +25,7 @@ public class FXMLColaboracionItemController {
     public Label lbFechaCierre;
     public Label lbIdiomaColaboracion;
     public Label lbExperienciaEducativa;
+    public Label lbEstado;
 
     ProfesorUV profesorUV;
     ProfesorExterno profesorExterno;
@@ -32,9 +33,6 @@ public class FXMLColaboracionItemController {
 
     Colaboracion colaboracion;
 
-
-
-    //Aqui se van a meter los datos de las colabs que saquemos si es el admin ova el profesor, aparte de todas las consultas putas
     public void InicializarComponentes(Colaboracion colaboracion){
         this.colaboracion=colaboracion;
         lbTitulo.setText(colaboracion.getTitulo());
@@ -44,6 +42,7 @@ public class FXMLColaboracionItemController {
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().toString());
         this.profesorExterno=colaboracion.getProfesorExterno();
         this.profesorUV=colaboracion.getProfesorUv();
+        this.lbEstado.setText(colaboracion.getEstado());
 
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().getNombreExperienciaEducativa());
         lbNombreProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());

@@ -230,7 +230,6 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
         profesores.addAll(ProfesorDAO.obtenerTodosProfesoresExternos());
         cbProfesorExterno.setItems(profesores);
 
-        // Asegurándose de que solo el nombre del profesor se muestre
         cbProfesorExterno.setCellFactory(new Callback<ListView<ProfesorExterno>, ListCell<ProfesorExterno>>() {
             @Override
             public ListCell<ProfesorExterno> call(ListView<ProfesorExterno> l) {
@@ -252,18 +251,15 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
             @Override
             public void changed(ObservableValue<? extends ProfesorExterno> observable, ProfesorExterno oldValue, ProfesorExterno newValue) {
                 if (newValue != null) {
-                    // Actualiza los campos de texto con los detalles del profesor seleccionado
                     lbNombreProfesorExterno.setText(newValue.getNombre());
                     lbCorreoElectronicoProfeExterno.setText(newValue.getCorreoElectronico());
 
-                    //Tienes que usar DAO Universidad
                     Universidad universidadSeleccionada = UniversidadDAO.getUniversidadById(newValue.getUniversidadID());
 
                     lbUniversidad.setText(universidadSeleccionada.getNombre());
                     lbPais.setText(universidadSeleccionada.getPais());
 
                 } else {
-                    // Vacía los campos si no hay profesor seleccionado
                     lbNombreProfesorExterno.setText("");
                     lbCorreoElectronicoProfeExterno.setText("");
                     lbUniversidad.setText("");
@@ -271,7 +267,6 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
                 }
             }
         });
-        // Asegurándose de que solo el nombre del profesor se muestre en el campo de texto del ComboBox
         cbProfesorExterno.setConverter(new StringConverter<ProfesorExterno>() {
             @Override
             public String toString(ProfesorExterno profesor) {
@@ -319,7 +314,7 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
+                            setText(item.getNombreExperienciaEducativa()); 
                         }
                     }
                 };

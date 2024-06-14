@@ -54,9 +54,6 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     @FXML
     private Label lbCelular;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -179,7 +176,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
                 if (item == null || empty) {
                     setText(null);
                 } else {
-                    setText(item.getDescripcion());
+                    setText(item.getNombreExperienciaEducativa());
                 }
             }
         });
@@ -207,7 +204,6 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     private boolean validateFields () {
         boolean valid = true;
 
-        // Check for selected values in combo boxes
         if (cbIdioma.getSelectionModel().getSelectedItem() == null) {
             valid = false;
         }
@@ -218,7 +214,6 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             valid = false;
         }
 
-        // Check for empty fields in text fields, disallow spaces and newlines
         if (tfTitulo.getText().trim().isEmpty() || tfTitulo.getText().trim().isEmpty()) {
             valid = false;
         }

@@ -113,7 +113,6 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
     private void btnClicRegistrar(ActionEvent event) {
 
         if (validarCampos()) {
-            // Assuming ProfesorExterno has a constructor with these arguments
             ProfesorExterno profesorExterno = new ProfesorExterno(
                     tfCorreo.getText(),
                     tfNombre.getText(),
@@ -124,8 +123,6 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
                     cbUniversidad.getValue().getUniversidadId()
                     );
 
-            // Assuming ProfesorExternoDAO has a method to save ProfesorExterno
-            // You will need to catch or throw any exceptions that might occur here
             boolean isRegistered = ProfesorDAO.addProfesorExterno(profesorExterno);
 
             if (isRegistered) {

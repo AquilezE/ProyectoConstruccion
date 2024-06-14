@@ -13,6 +13,7 @@ import proyectoconstruccion.Utils.CSVReader;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.DAO.EvidenciaDAO;
 import proyectoconstruccion.modelo.POJO.Estudiante;
 import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
@@ -51,6 +52,8 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     public TableColumn<Estudiante, String> colNombre;
     public TableColumn<Estudiante, Integer> colCalificacion;
     public TableColumn<Estudiante, Integer> colFaltas;
+
+    public ObservableList<Estudiante> estudiantes;
 
     public Button btnAprobarConstan;
 
@@ -104,27 +107,34 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     }
 
     public void btnAprobarConstancia(ActionEvent actionEvent) {
-        System.out.println("Boton de aprobar constancia");
+
+        Integer numeroEstudiantes = estudiantes.size();
+        System.out.println("numeroEstudiantes: " + numeroEstudiantes);
+        if (numeroEstudiantes > 0) {
+            ColaboracionDAO.actualizarNumeroEstudiantes(this.colaboracion.getColaboracionId(),numeroEstudiantes);
+            ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Clausurada");
+            Utils.mostrarAlertaSimple("", "Constancias aprobadas", Alert.AlertType.INFORMATION);
+            Utils.cerrarVentana(actionEvent);
+        }else {
+            Utils.mostrarAlertaSimple("Error","Error al calcular numero de estudiantes", Alert.AlertType.ERROR);
+        }
+
+
     }
 
     public void btnEvidencia(ActionEvent actionEvent) {
 
         if (!EvidenciaDAO.isEvidenciaZipNull(this.colaboracion.getEvidencia().getEvidenciaId())){
             try {
-                // Retrieve the input stream of the "Evidencia.zip" file from EvidenciaDAO
                 InputStream is = EvidenciaDAO.getEvidencia(this.colaboracion.getEvidencia().getEvidenciaId());
 
-                // Create a FileChooser
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Save Evidencia");
 
-                // Set the initial file name to "evidenciasColaboracion" + this.colaboracion.getColaboracionId()
                 fileChooser.setInitialFileName("evidenciasColaboracion" + this.colaboracion.getColaboracionId() + ".zip");
 
-                // Show the save file dialog
                 File savedFile = fileChooser.showSaveDialog(null);
 
-                // Use the Files.copy() method to copy the content of the InputStream to the selected location
                 if (savedFile != null) {
                     Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
@@ -145,13 +155,11 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             try {
                 File tempFile = EvidenciaDAO.getSyllabus(colaboracion.getEvidencia().getEvidenciaId());
                 if (tempFile != null) {
-                    // Asigning the PDF format to the temp file.
                     File pdfFile = new File(tempFile.getAbsolutePath() + ".pdf");
 
                     if (!pdfFile.exists()) {
                         boolean renameStatus = tempFile.renameTo(pdfFile);
 
-                        // Check status of renaming operation
                         if (!renameStatus) {
                             System.out.println("Error: unable to rename file to PDF");
                             return;
@@ -201,20 +209,15 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
         if(!EvidenciaDAO.isListaEstudiantesNull(this.colaboracion.getEvidencia().getEvidenciaId())){
             try {
-                // Assuming there is a method in a DAO class that retrieves the list of students as an InputStream
                 InputStream is = EvidenciaDAO.getListaDeEstudiantes(this.colaboracion.getEvidencia().getEvidenciaId());
 
-                // Create a FileChooser
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Save Student List");
 
-                // Set the initial file name to "listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId()
                 fileChooser.setInitialFileName("listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId() + ".csv");
 
-                // Show the save file dialog
                 File savedFile = fileChooser.showSaveDialog(null);
 
-                // Use the Files.copy() method to copy the content of the InputStream to the selected location
                 if (savedFile != null) {
                     Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
@@ -252,13 +255,20 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
         InputStream is = EvidenciaDAO.getListaDeEstudiantes(Integer.valueOf(evidenciaId));
         if (is != null) {
             CSVReader csvReader = new CSVReader();
-            List<Estudiante> estudiantes = csvReader.readCSV(is);
+            List<Estudiante> estudiantesList = csvReader.readCSV(is);
             tvEstudiantes.getItems().clear();
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
             colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
             colCalificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
             colFaltas.setCellValueFactory(new PropertyValueFactory<>("faltas"));
+
+            estudiantes = FXCollections.observableArrayList();
+
+            estudiantes.addAll(estudiantesList);
             tvEstudiantes.getItems().addAll(estudiantes);
+
+
+
         } else {
             System.out.println("No se pudo recuperar la lista de estudiantes de la base de datos.");
             tvEstudiantes.setPlaceholder(new Label("Sin lista de Estudiantes"));

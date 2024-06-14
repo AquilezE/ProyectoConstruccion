@@ -142,12 +142,16 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
             colaboracion.setIdioma(idioma);
 
             if(ColaboracionDAO.registrarColaboracion(colaboracion)){
+                OfertaColaboracionDAO.cambiarEstadoOfertaColaboracion(ofertaColaboracionExterna.getOfertaColaboracionId(),1);
                 Utils.cerrarVentana(event);
+
             }
         } else {
             Utils.mostrarAlertaSimple("Error", "Hay campos que no han sido completados", Alert.AlertType.ERROR);
         }
     }
+
+
 
     public boolean validarCampos(){
         if (cbPeriodo.getSelectionModel().getSelectedItem() == null ||
@@ -229,7 +233,7 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
+                            setText(item.getNombreExperienciaEducativa());
                         }
                     }
                 };

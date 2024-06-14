@@ -164,7 +164,6 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
             FXMLLoader loader = Utils.obtenerLoader("Views/profesorExterno/FXMLRegistrarProfesorExterno.fxml");
             Parent root = loader.load();
             FXMLRegistrarProfesorExternoController controlador = loader.getController();
-            //controlador.inicializarValores(this);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar profesor externo");
@@ -217,7 +216,6 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
         profesores.addAll(ProfesorDAO.obtenerTodosProfesoresExternos());
         cbProfesorExterno.setItems(profesores);
 
-        // Asegurándose de que solo el nombre del profesor se muestre
         cbProfesorExterno.setCellFactory(new Callback<ListView<ProfesorExterno>, ListCell<ProfesorExterno>>() {
             @Override
             public ListCell<ProfesorExterno> call(ListView<ProfesorExterno> l) {
@@ -234,29 +232,25 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
                 };
             }
         });
-        // Establece un listener para cuando un profesor es seleccionado
+
         cbProfesorExterno.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ProfesorExterno>() {
             @Override
             public void changed(ObservableValue<? extends ProfesorExterno> observable, ProfesorExterno oldValue, ProfesorExterno newValue) {
                 if (newValue != null) {
-                    // Actualiza los campos de texto con los detalles del profesor seleccionado
                     lbNombreProfesorExterno.setText(newValue.getNombre());
                     lbCorreoElectronicoProfeExterno.setText(newValue.getCorreoElectronico());
 
-                    //Tienes que usar DAO Universidad
                     Universidad universidadSeleccionada = UniversidadDAO.getUniversidadById(newValue.getUniversidadID());
 
                     lbPais.setText(universidadSeleccionada.getPais());
 
                 } else {
-                    // Vacía los campos si no hay profesor seleccionado
                     lbNombreProfesorExterno.setText("");
                     lbCorreoElectronicoProfeExterno.setText("");
                     lbPais.setText("");
                 }
             }
         });
-        // Asegurándose de que solo el nombre del profesor se muestre en el campo de texto del ComboBox
         cbProfesorExterno.setConverter(new StringConverter<ProfesorExterno>() {
             @Override
             public String toString(ProfesorExterno profesor) {
@@ -304,7 +298,7 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getNombreExperienciaEducativa());  // asumiendo que "nombre" es el atributo que quieres mostrar
+                            setText(item.getNombreExperienciaEducativa());
                         }
                     }
                 };

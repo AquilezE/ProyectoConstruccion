@@ -149,19 +149,14 @@ public class ProfesorDAO {
 
     public static String getTipoProfesor(Integer idProfesor){
         String tipoProfesor="No existe este profesor";
-
-        // First try with UV
         HashMap<String,Object> respuesta = getProfesorById(idProfesor, 0);
 
-        // if "profesor" is not null and instance of ProfesorUV
         if(respuesta.get("profesor") != null && respuesta.get("profesor") instanceof ProfesorUV){
             tipoProfesor="uv";
         }
         else {
-            // If not found in UV, try with externo
             respuesta = getProfesorById(idProfesor, 1);
 
-            // if "profesor" is not null and instance of ProfesorExterno
             if(respuesta.get("profesor") != null && respuesta.get("profesor") instanceof ProfesorExterno){
                 tipoProfesor="externo";
             }
@@ -183,7 +178,6 @@ public class ProfesorDAO {
             try {
                 conexionBD.setAutoCommit(false); // start of the transaction block
 
-                // Insertar en la tabla `profesor`
                 PreparedStatement preparedStatement1 = conexionBD.prepareStatement(insertProfesorQuery, Statement.RETURN_GENERATED_KEYS);
                 preparedStatement1.setString(1, profesor.getCorreoElectronico());
                 preparedStatement1.setString(2, profesor.getTelefono());
@@ -194,7 +188,6 @@ public class ProfesorDAO {
                 preparedStatement1.setString(6, profesor.getApellidoMaterno());
                 preparedStatement1.executeUpdate();
 
-                // Obtener el ID generado
                 ResultSet generatedKeys = preparedStatement1.getGeneratedKeys();
                 int generatedId = -1;
                 if (generatedKeys.next()) {
@@ -203,20 +196,18 @@ public class ProfesorDAO {
                     throw new SQLException("No se pudo obtener el ID generado del profesor.");
                 }
 
-                // Insertar en la tabla `profesorexterno`
                 PreparedStatement preparedStatement2 = conexionBD.prepareStatement(insertProfesorExternoQuery);
                 preparedStatement2.setInt(1, generatedId);
                 preparedStatement2.setInt(2, profesor.getUniversidadID());
                 preparedStatement2.executeUpdate();
 
-                // Confirmar la transacción
                 conexionBD.commit();
                 conexionBD.setAutoCommit(true);
                 conexionBD.close();
                 return true;
             } catch (SQLException e) {
                 try {
-                    conexionBD.rollback(); // Revertir la transacción en caso de error
+                    conexionBD.rollback(); 
                 } catch (SQLException revertExc) {
                     System.out.println("Error during rollback: " + revertExc.getMessage());
                 }

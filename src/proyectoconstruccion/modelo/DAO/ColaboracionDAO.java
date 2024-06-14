@@ -247,4 +247,23 @@ public class ColaboracionDAO {
 
     }
 
+    public static void actualizarNumeroEstudiantes(Integer colaboracionId, Integer numeroEstudiantes) {
+
+        Connection connection = ConexionBD.getConexion();
+        if (connection != null) {
+            String query = "UPDATE colaboracion SET NumeroEstudiantes = ? WHERE colaboracion_id = ?";
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, numeroEstudiantes);
+                preparedStatement.setInt(2, colaboracionId);
+
+                int result = preparedStatement.executeUpdate();
+                if (result != 0) {
+                    System.out.println("Numero de estudiantes actualizado: " + colaboracionId);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

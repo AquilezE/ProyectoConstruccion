@@ -17,29 +17,18 @@ public class PeriodoDAO {
 
 
         try (Connection conn = ConexionBD.getConexion()) {
-            // Create a statement
             Statement stmt = conn.createStatement();
-
-            // Execute a query
             ResultSet rs = stmt.executeQuery("SELECT * FROM Periodo");
 
-            // Extract data from result set
-
-
             while (rs.next()) {
-
-                // Retrieve by column name
                 int id = rs.getInt("id");
                 String descripcion = rs.getString("descripcion");
 
-                // Add to the list of periodos
                 periodos.add(new Periodo(id, descripcion));
             }
         } catch (SQLException se) {
-            // Handle errors for JDBC
             se.printStackTrace();
         } catch (Exception e) {
-            // Handle any other exceptions
             e.printStackTrace();
         }
 

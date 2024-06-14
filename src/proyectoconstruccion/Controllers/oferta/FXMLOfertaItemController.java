@@ -29,7 +29,6 @@ public class FXMLOfertaItemController {
     OfertaColaboracion ofertaColaboracion;
     Profesor profesor;
 
-    //Aqui esta chido por que tienes que ver de que instancia es la ofertaColaboracion
     public void InicializarComponentes(OfertaColaboracion ofertaColaboracion){
         this.ofertaColaboracion = ofertaColaboracion;
         profesor = ofertaColaboracion.getProfesor();

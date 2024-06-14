@@ -56,9 +56,6 @@ public class FXMLDetallesColaboracionController implements Initializable {
     @FXML
     private Label lbExperienciaEdcativa;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -110,7 +107,6 @@ public class FXMLDetallesColaboracionController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLCancelarColaboracion.fxml");
             Parent root = loader.load();
             FXMLCancelarColaboracionController controlador = loader.getController();
-            //TODO pasarle como valor una colaboracion
             controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);

@@ -33,7 +33,6 @@ public  class UniversidadDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // close database resources
             try {
                 if (rs != null) rs.close();
                 if (ps != null) ps.close();
@@ -69,7 +68,6 @@ public  class UniversidadDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // close database resources
             try {
                 if (rs != null) rs.close();
                 if (ps != null) ps.close();
