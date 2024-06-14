@@ -100,7 +100,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     }
 
     public void btnRegresar(ActionEvent actionEvent) {
-        System.out.println("Boton de regresar");
+        Utils.cerrarVentana(actionEvent);
     }
 
     public void btnAprobarConstancia(ActionEvent actionEvent) {

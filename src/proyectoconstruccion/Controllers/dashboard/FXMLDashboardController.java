@@ -140,7 +140,7 @@ public class FXMLDashboardController implements Initializable {
         filterData.setFechaCierre(dpFechaCierre.getValue());
         filterData.setFechaInicio(dpFechaInicio.getValue());
         filterData.setEstado(cbEstado.getValue());
-        filterData.setTituloColab(tfTituloColab.getText());
+        filterData.setTituloColab(tfTituloColab.getText().toLowerCase());
         filterData.setPeriodo(cbPeriodo.getValue());
         filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
 
@@ -191,6 +191,10 @@ public class FXMLDashboardController implements Initializable {
 
     @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
+        cargarColaboraciones();
+    }
+    
+    public void cargarColaboraciones(){
         try {
             // Obtener los datos del filtro
             FilterData filterData = getFilterData();
@@ -215,7 +219,6 @@ public class FXMLDashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-
     @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
         try {
@@ -435,6 +438,7 @@ public class FXMLDashboardController implements Initializable {
         cbExperienciaEducativa.getSelectionModel().clearSelection();
         cbPeriodo.getSelectionModel().clearSelection();
         cbEstado.getSelectionModel().clearSelection();
+        cargarColaboraciones();
     }
 }
 
