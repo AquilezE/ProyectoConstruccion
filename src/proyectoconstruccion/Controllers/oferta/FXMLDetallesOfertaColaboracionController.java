@@ -131,7 +131,7 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
     }
 
     public void refreshData() {
-            inicializarDetalles((OfertaColaboracion) OfertaColaboracionDAO.getOfertaColaboracionById(ofertaColaboracion.getOfertaColaboracionId()).get("oferta"));
+        inicializarDetalles((OfertaColaboracion) OfertaColaboracionDAO.getOfertaColaboracionById(ofertaColaboracion.getOfertaColaboracionId()).get("oferta"));
     }
 
 

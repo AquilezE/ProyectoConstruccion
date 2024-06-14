@@ -59,23 +59,15 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
     @FXML
     private Button btnRegistrarProfesorExterno;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
     public void inicializarValores(){
-
-
-
-        //btnRegistrarProfesorExterno.setVisible(false);
         lbNombre.setText("");
         lbCorreo.setText("");
         lbUniversidad.setText("");
         lbPais.setText("");
-        //cargarExperienciasEducativas();
         cargarIdiomas();
         cargarPeriodos();
         cargarProfesExternos();

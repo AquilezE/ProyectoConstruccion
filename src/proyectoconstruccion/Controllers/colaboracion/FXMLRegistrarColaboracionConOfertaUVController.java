@@ -83,8 +83,6 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
     }
 
     public void inicializarValores(OfertaColaboracionUV ofertaColaboracionUV) {
-
-
         ObservableList<String> tipoColabOptions = FXCollections.observableArrayList();
         tipoColabOptions.add("Clase espejo");
         tipoColabOptions.add("Taller COIL-VIC");

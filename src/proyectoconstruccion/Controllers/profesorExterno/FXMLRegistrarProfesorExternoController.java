@@ -131,10 +131,10 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
             if (isRegistered) {
                 System.out.println("Profesor Externo registrado");
                 ofertaExternaController.cargarProfesExternos();
-                Utils.cerrarVentana(event);
             } else {
                 System.out.println("Profesor Externo no registrado");
             }
+            Utils.cerrarVentana(event);
         } else {
             Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
         }

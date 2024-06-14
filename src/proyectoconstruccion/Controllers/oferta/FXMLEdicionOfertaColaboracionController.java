@@ -26,7 +26,7 @@ import javafx.scene.control.Alert;
 public class FXMLEdicionOfertaColaboracionController implements Initializable {
     private ObservableList<Periodo> periodos;
     private ObservableList<Idioma> idiomas;
-
+    public Periodo periodo;
 
     public TextField tfTitulo;
     public TextField tfDuracion;
@@ -47,6 +47,10 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     public void InicializarDatos(FXMLDetallesOfertaColaboracionController detallesOfertaColaboracion, OfertaColaboracion ofertaColaboracion){
         this.ofertaColaboracion=ofertaColaboracion;
         this.detallesOfertaColaboracion = detallesOfertaColaboracion;
+        String descripcionPeriodo = ofertaColaboracion.getPeriodo();
+        if (descripcionPeriodo != null) {
+            this.periodo.setDescripcion(descripcionPeriodo);
+        }
         cargarIdiomas();
         cargarPeriodos();
         if(ofertaColaboracion != null){
@@ -57,22 +61,27 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     public void cargarInformacionOfertaExternaEdicion(){
         this.tfTitulo.setText(ofertaColaboracion.getTitulo());
         this.cbIdioma.getSelectionModel().select(buscarIdIdioma(ofertaColaboracion.getIdiomaId()));
-        //this.cbPeriodo.getSelectionModel().select(buscarIdPeriodo(ofertaColaboracion.getPeriodoId()));
+        String descripcionPeriodo = ofertaColaboracion.getPeriodo();
+        if (periodo != null) {
+            //this.cbPeriodo.getSelectionModel().select(buscarPeriodo(periodo.getDescripcion());
+        } else {
+            System.out.println("No se encontró el período con la descripción proporcionada");
+        }
         this.tfDuracion.setText(ofertaColaboracion.getDuracion());
+    }
+    
+    private Periodo buscarPeriodo(String descripcionPeriodo){
+        for (Periodo periodoBusqueda : periodos) {
+            if(periodoBusqueda.getDescripcion() == descripcionPeriodo){
+                return periodoBusqueda;
+            }
+        }
+        return null;
     }
     
     private int buscarIdIdioma(int idIdioma){
         for (int i = 0; i < idiomas.size(); i++) {
             if(idiomas.get(i).getIdiomaID() == idIdioma){
-                return i;
-            }
-        }
-        return 0;
-    }
-    
-    private int buscarIdPeriodo(int idPeriodo){
-        for (int i = 0; i < periodos.size(); i++) {
-            if(periodos.get(i).getPeriodoId() == idPeriodo){
                 return i;
             }
         }
