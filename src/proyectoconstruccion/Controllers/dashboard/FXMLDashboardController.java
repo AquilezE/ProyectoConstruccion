@@ -2,7 +2,6 @@ package proyectoconstruccion.Controllers.dashboard;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import jdk.nashorn.internal.parser.JSONParser;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
 import proyectoconstruccion.Utils.Constantes;
@@ -32,7 +30,6 @@ import javafx.stage.Stage;
 import proyectoconstruccion.Controllers.colaboracion.FXMLRegistrarColaboracionSinOfertaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaExternaController;
 import proyectoconstruccion.Controllers.oferta.FXMLRegistrarOfertaUVController;
-import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
 import proyectoconstruccion.modelo.DAO.ExperienciaEducativaDAO;
 import proyectoconstruccion.modelo.DAO.NumeraliaDAO;
 import proyectoconstruccion.modelo.DAO.PeriodoDAO;
@@ -40,7 +37,6 @@ import proyectoconstruccion.modelo.POJO.NumeraliaAreaAcademica;
 import proyectoconstruccion.modelo.POJO.NumeraliaCampus;
 import proyectoconstruccion.modelo.POJO.Periodo;
 import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
-import proyectoconstruccion.modelo.POJO.colaboracion.Colaboracion;
 
 public class FXMLDashboardController implements Initializable {
 
@@ -135,7 +131,7 @@ public class FXMLDashboardController implements Initializable {
 
     }
 
-    public FilterData getFilterData() {
+    public FilterData getDatosFiltro() {
         FilterData filterData = new FilterData();
         filterData.setFechaCierre(dpFechaCierre.getValue());
         filterData.setFechaInicio(dpFechaInicio.getValue());
@@ -196,7 +192,7 @@ public class FXMLDashboardController implements Initializable {
     
     public void cargarColaboraciones(){
         try {
-            FilterData filterData = getFilterData();
+            FilterData filterData = getDatosFiltro();
 
             System.out.println("Datos del filtro:");
             System.out.println("Fecha Cierre: " + filterData.getFechaCierre());

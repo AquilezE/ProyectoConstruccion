@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
-import proyectoconstruccion.Utils.CSVReader;
+import proyectoconstruccion.Utils.LectorCSV;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -30,7 +30,6 @@ import java.io.File;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
@@ -254,8 +253,8 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
 
         InputStream is = EvidenciaDAO.getListaDeEstudiantes(Integer.valueOf(evidenciaId));
         if (is != null) {
-            CSVReader csvReader = new CSVReader();
-            List<Estudiante> estudiantesList = csvReader.readCSV(is);
+            LectorCSV csvReader = new LectorCSV();
+            List<Estudiante> estudiantesList = csvReader.leerCSV(is);
             tvEstudiantes.getItems().clear();
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
             colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));

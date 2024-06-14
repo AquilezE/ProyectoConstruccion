@@ -76,7 +76,7 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
             Periodo periodo = cbPeriodo.getSelectionModel().getSelectedItem();
             if (OfertaColaboracionDAO.updateOfertaColaboracion(this.ofertaColaboracion,tfTitulo.getText(),tfDuracion.getText(),idioma.getIdiomaID(),periodo.getDescripcion())){
                 System.out.println("Oferta Editada");
-                detallesOfertaColaboracion.refreshData();
+                detallesOfertaColaboracion.recargarDatos();
             }else {
                 System.out.println("Oferta No Editada");
             }
