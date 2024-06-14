@@ -43,7 +43,6 @@ public class FXMLContenedorColaboracionesController {
         String periodo;
         if (filtros.getPeriodo() != null) {
             periodo = filtros.getPeriodo().getDescripcion();
-            System.out.println("BBADBABDAB: " + periodo);
         } else {
             periodo = null;
         }

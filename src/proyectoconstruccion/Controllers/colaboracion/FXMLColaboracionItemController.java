@@ -58,6 +58,8 @@ public class FXMLColaboracionItemController {
             mostrarDetallesConcluida();
         }else if (this.colaboracion.getEstado().equals("Cancelada")){
             Utils.mostrarAlertaSimple("Error","Esta colaboracion esta cancelada!", Alert.AlertType.ERROR);
+        }else if (this.colaboracion.getEstado().equals("Clausurada")){
+            Utils.mostrarAlertaSimple("Error","Esta colaboracion esta clausurada!", Alert.AlertType.ERROR);
         }
     }
 
