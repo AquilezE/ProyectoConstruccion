@@ -131,28 +131,6 @@ public class FXMLPanelPrincipalController implements Initializable {
 
     }
 
-    public FilterData getDatosFiltro() {
-        FilterData filterData = new FilterData();
-        filterData.setFechaCierre(dpFechaCierre.getValue());
-        filterData.setFechaInicio(dpFechaInicio.getValue());
-        filterData.setEstado(cbEstado.getValue());
-        filterData.setTituloColab(tfTituloColab.getText().toLowerCase());
-        filterData.setPeriodo(cbPeriodo.getValue());
-        filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
-
-        if (cbPeriodo.getValue() == null){
-            System.out.println("No se arreglo");
-        }else{
-            System.out.println(cbPeriodo.getValue().getDescripcion());
-        }
-        if (cbExperienciaEducativa.getValue() == null){
-            System.out.println("No se arreglo");
-        }else{
-            System.out.println(cbExperienciaEducativa.getValue().getExperienciaEducativaId());
-        }
-        return filterData;
-    }
-
     public void cargarEstados() {
         this.estados = FXCollections.observableArrayList("Pendiente", "Activa", "Concluida");
         cbEstado.setItems(this.estados);
@@ -213,6 +191,29 @@ public class FXMLPanelPrincipalController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+        public FilterData getDatosFiltro() {
+        FilterData filterData = new FilterData();
+        filterData.setFechaCierre(dpFechaCierre.getValue());
+        filterData.setFechaInicio(dpFechaInicio.getValue());
+        filterData.setEstado(cbEstado.getValue());
+        filterData.setTituloColab(tfTituloColab.getText().toLowerCase());
+        filterData.setPeriodo(cbPeriodo.getValue());
+        filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
+
+        if (cbPeriodo.getValue() == null){
+            System.out.println("No se arreglo");
+        }else{
+            System.out.println(cbPeriodo.getValue().getDescripcion());
+        }
+        if (cbExperienciaEducativa.getValue() == null){
+            System.out.println("No se arreglo");
+        }else{
+            System.out.println(cbExperienciaEducativa.getValue().getExperienciaEducativaId());
+        }
+        return filterData;
+    }
+        
     @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
         try {
