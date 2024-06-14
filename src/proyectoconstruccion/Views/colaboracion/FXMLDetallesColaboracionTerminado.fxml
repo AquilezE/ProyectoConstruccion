@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminadoController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectoconstruccion.Controllers.colaboracion.FXMLDetallesColaboracionTerminadoController">
     <children>
         <Label layoutX="73.0" layoutY="168.0" text="Nombre profesor">
             <font>
@@ -31,37 +32,37 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbTitulo" layoutX="501.0" layoutY="47.0" text="Materia">
+        <Label fx:id="lbTitulo" layoutX="246.0" layoutY="52.0" prefHeight="53.0" prefWidth="773.0" text="Materia">
             <font>
                 <Font size="36.0" />
             </font>
         </Label>
-        <Label layoutX="512.0" layoutY="180.0" text="Periodo">
+        <Label layoutX="567.0" layoutY="156.0" text="Periodo">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label layoutX="518.0" layoutY="307.0" text="Fechas">
+        <Label layoutX="573.0" layoutY="283.0" text="Fechas">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Button layoutX="859.0" layoutY="73.0" mnemonicParsing="false" onAction="#btnRegresar" text="Regresar">
+        <Button layoutX="1061.0" layoutY="69.0" mnemonicParsing="false" onAction="#btnRegresar" text="Regresar">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button fx:id="btnAprobarConstan" layoutX="861.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnAprobarConstancia" text="Aprobar constancia">
+        <Button fx:id="btnAprobarConstan" layoutX="1063.0" layoutY="159.0" mnemonicParsing="false" onAction="#btnAprobarConstancia" text="Aprobar constancia">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button layoutX="866.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnEvidencia" text="Evidencia">
+        <Button layoutX="1068.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnEvidencia" text="Evidencia">
             <font>
                 <Font size="18.0" />
             </font>
         </Button>
-        <Button layoutX="867.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnSyllabus" text="Syllabus">
+        <Button layoutX="1069.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnSyllabus" text="Syllabus">
             <font>
                 <Font size="18.0" />
             </font>
@@ -81,22 +82,22 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbIdioma" layoutX="259.0" layoutY="308.0" prefHeight="23.0" prefWidth="90.0" text="Label">
+        <Label fx:id="lbIdioma" layoutX="259.0" layoutY="308.0" prefHeight="27.0" prefWidth="178.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbExperienciaEducativa" layoutX="265.0" layoutY="382.0" prefHeight="30.0" prefWidth="154.0" text="Label">
+        <Label fx:id="lbExperienciaEducativa" layoutX="265.0" layoutY="382.0" prefHeight="30.0" prefWidth="372.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbPeriodo" layoutX="658.0" layoutY="180.0" prefHeight="23.0" prefWidth="95.0" text="Label">
+        <Label fx:id="lbPeriodo" layoutX="713.0" layoutY="156.0" prefHeight="27.0" prefWidth="265.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="lbFechas" layoutX="666.0" layoutY="310.0" prefHeight="23.0" prefWidth="88.0" text="Label">
+        <Label fx:id="lbFechas" layoutX="721.0" layoutY="286.0" prefHeight="27.0" prefWidth="265.0" text="Label">
             <font>
                 <Font size="18.0" />
             </font>
