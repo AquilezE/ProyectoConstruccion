@@ -160,7 +160,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
                         boolean renameStatus = tempFile.renameTo(pdfFile);
 
                         if (!renameStatus) {
-                            System.out.println("Error: unable to rename file to PDF");
+                            System.out.println("Error: no se pudo renombrar");
                             return;
                         }
                     }
