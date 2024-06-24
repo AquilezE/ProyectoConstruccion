@@ -1,6 +1,8 @@
 package proyectoconstruccion.Controllers.colaboracion;
 
+
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,40 +32,43 @@ public class FXMLColaboracionItemController {
     ProfesorUV profesorUV;
     ProfesorExterno profesorExterno;
 
-
     Colaboracion colaboracion;
 
-    public void InicializarComponentes(Colaboracion colaboracion){
-        this.colaboracion=colaboracion;
+    // Este método se utiliza para inicializar los componentes de la interfaz y asignarle los valores
+    // de la colaboración que se le pasa como parámetro.
+    public void InicializarComponentes(Colaboracion colaboracion) {
+        this.colaboracion = colaboracion;
         lbTitulo.setText(colaboracion.getTitulo());
         lbFechaInicio.setText(colaboracion.getFechaInicio().toString());
         lbFechaCierre.setText(colaboracion.getFechaCierre().toString());
         lbIdiomaColaboracion.setText(colaboracion.getIdioma().getIdioma());
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().toString());
-        this.profesorExterno=colaboracion.getProfesorExterno();
-        this.profesorUV=colaboracion.getProfesorUv();
+        this.profesorExterno = colaboracion.getProfesorExterno();
+        this.profesorUV = colaboracion.getProfesorUv();
         this.lbEstado.setText(colaboracion.getEstado());
 
         lbExperienciaEducativa.setText(colaboracion.getExperienciaEducativa().getNombreExperienciaEducativa());
-        lbNombreProfesorExt.setText(profesorExterno.getNombre()+" "+profesorExterno.getApellidoPaterno());
-        lbNombreProfesorUV.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno());
+        lbNombreProfesorExt.setText(profesorExterno.getNombre() + " " + profesorExterno.getApellidoPaterno());
+        lbNombreProfesorUV.setText(profesorUV.getNombre() + " " + profesorUV.getApellidoPaterno());
     }
 
+    // Dependiendo del estado de la colaboración, se muestra una ventana de detalles diferente.
     public void btnDetalles(ActionEvent actionEvent) {
-        if (this.colaboracion.getEstado().equals("Pendiente")){
+        if (this.colaboracion.getEstado().equals("Pendiente")) {
             mostrarDetallesPendiente();
         } else if (this.colaboracion.getEstado().equals("Activa")) {
             mostrarDetallesActiva();
-        }else if (this.colaboracion.getEstado().equals("Concluida")){
+        } else if (this.colaboracion.getEstado().equals("Concluida")) {
             mostrarDetallesConcluida();
-        }else if (this.colaboracion.getEstado().equals("Cancelada")){
-            Utils.mostrarAlertaSimple("Error","Esta colaboracion esta cancelada!\n"+this.colaboracion.getAnotaciones(), Alert.AlertType.ERROR);
-        }else if (this.colaboracion.getEstado().equals("Clausurada")){
-            Utils.mostrarAlertaSimple("Error","Esta colaboracion esta clausurada!", Alert.AlertType.ERROR);
+        } else if (this.colaboracion.getEstado().equals("Cancelada")) {
+            Utils.mostrarAlertaSimple("Error", "Esta colaboracion esta cancelada!\n" + this.colaboracion.getAnotaciones(), Alert.AlertType.ERROR);
+        } else if (this.colaboracion.getEstado().equals("Clausurada")) {
+            Utils.mostrarAlertaSimple("Error", "Esta colaboracion esta clausurada!", Alert.AlertType.ERROR);
         }
     }
 
-    public void mostrarDetallesPendiente(){
+    // Este método se utiliza para mostrar los detalles de una colaboración pendiente.
+    public void mostrarDetallesPendiente() {
         try {
             Stage escenario = new Stage();
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionPendiente.fxml");
@@ -81,8 +86,9 @@ public class FXMLColaboracionItemController {
         }
     }
 
-    public void mostrarDetallesActiva(){
-        try{
+    // Este método se utiliza para mostrar los detalles de una colaboración activa.
+    public void mostrarDetallesActiva() {
+        try {
             Stage escenario = new Stage();
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracion.fxml");
             Parent root = loader.load();
@@ -94,13 +100,14 @@ public class FXMLColaboracionItemController {
             escenario.setTitle("Detalles colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void mostrarDetallesConcluida(){
-        try{
+    //Este método se utiliza para mostrar los detalles de una colaboración concluida.
+    public void mostrarDetallesConcluida() {
+        try {
             Stage escenario = new Stage();
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionTerminado.fxml");
             Parent root = loader.load();
@@ -112,7 +119,7 @@ public class FXMLColaboracionItemController {
             escenario.setTitle("Detalles colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }

@@ -11,7 +11,6 @@ public class RefreshserUtils {
     public static FXMLContenedorColaboracionesController colaboracionesController;
     public static DatosFiltroColaboracion colaboracionesBusquedaCache;
 
-    //TODO
     public static FXMLContenedorOfertasController ofertasController;
     public static DatosFiltroOferta ofertasBusquedaCache;
 

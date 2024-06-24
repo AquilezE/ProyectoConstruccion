@@ -228,9 +228,5 @@ public class FXMLDetallesColaboracionController implements Initializable {
             alert.setContentText("Faltan los siguientes documentos:" + documentosFaltantes);
             alert.showAndWait();
         }
-
-
-
-
     }
 }
