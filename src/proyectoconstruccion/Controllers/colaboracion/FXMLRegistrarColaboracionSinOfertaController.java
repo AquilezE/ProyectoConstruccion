@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -148,6 +149,7 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
 
             if (ColaboracionDAO.registrarColaboracion(colaboracion)) {
                 System.out.println("EXITO");
+                RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
                 Utils.cerrarVentana(event);
             } else {
                 System.out.println("NOOOO");
@@ -164,11 +166,13 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
             FXMLLoader loader = Utils.obtenerLoader("Views/profesorExterno/FXMLRegistrarProfesorExterno.fxml");
             Parent root = loader.load();
             FXMLRegistrarProfesorExternoController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar profesor externo");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
+            cargarProfesExternos();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

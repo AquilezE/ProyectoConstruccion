@@ -1,0 +1,175 @@
+.button {
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #b7b7ab;
+}
+
+.combo-box{
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.combo-box:hover{
+    -fx-background-color: #b7b7ab;
+}
+
+.date-picker {
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.date-picker .text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 5px 0 0 5px; /* Rounded corners on the left side */
+    -fx-border-radius: 5px 0 0 5px; /* Rounded corners on the left side */
+    -fx-effect: none; /* Remove shadow effect from text field */
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 0 5px 5px 0; /* Rounded corners on the right side */
+    -fx-border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
+    -fx-effect: none; /* Remove shadow effect from arrow button */
+}
+
+.date-picker-popup {
+    -fx-background-color: #ffffff; /* Background color of the popup */
+    -fx-border-color: #c0c0c0; /* Border color of the popup */
+    -fx-background-radius: 5px; /* Rounded corners */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.date-picker:hover{
+    -fx-background-color: #b7b7ab;
+}
+
+
+
+.calendar {
+    -fx-background-color: #ffffff; /* Background color of the calendar */
+}
+
+.calendar .month-year-pane {
+    -fx-background-color: #d0d0d0; /* Background color of the month-year selector */
+    -fx-padding: 10px;
+}
+
+.calendar .day-cell {
+    -fx-background-color: #ffffff; /* Background color of each day cell */
+    -fx-border-color: #eae7df; /* Border color of each day cell */
+}
+
+
+.root{
+    -fx-background-color: white;
+}
+
+#hbFiltrosColabs,#hbFiltrosOfertas,#hbFiltrosNumeralia,#hbSolicitudesHeader{
+    -fx-background-color: #F9F6ED;
+    -fx-border-color: #eae7df;
+}
+
+.tab-pane .tab{
+    -fx-background-color: #F9F6ED ;
+}
+.tab-pane:hover .tab{
+    -fx-background-color: #eae7df ;
+}
+
+#contenedorColaboraciones,#contenedorOfertas{
+    -fx-background-color: white;
+    -fx-border-color: white;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 5px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #eae7df;
+    -fx-background-radius: 5px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #d3d3d3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: #b0b0b0;
+    -fx-background-radius: 5px;
+}
+
+#headerBackground{
+    -fx-background-color: #eae7df;
+        -fx-background-radius: 5px;
+        -fx-border-radius: 5px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 4, 0, 0, 0);
+}
+
+.table-view {
+    -fx-background-color: #f9f9f9; /* Color de fondo de la tabla */
+    -fx-border-color: #e0e0e0; /* Color del borde */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-background-radius: 5px; /* Bordes redondeados */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f1f1f1; /* Color de fondo de los encabezados */
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #333333; /* Color del texto de los encabezados */
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-alignment: CENTER; /* Alineación centrada */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #ffffff; /* Color de fondo de las filas */
+    -fx-border-color: #e0e0e0; /* Color del borde de las filas */
+    -fx-border-width: 0 0 1 0; /* Borde inferior */
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #dcdcdc; /* Color de fondo de la fila seleccionada */
+    -fx-text-fill: #000000; /* Color del texto de la fila seleccionada */
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent; /* Remover bordes de las celdas */
+    -fx-padding: 8px; /* Relleno dentro de las celdas */
+    -fx-alignment: CENTER; /* Alineación centrada */
+}
+
+.table-view .table-cell:filled:selected {
+    -fx-background-color: #dcdcdc; /* Color de fondo de la celda seleccionada */
+    -fx-text-fill: #000000; /* Color del texto de la celda seleccionada */
+}

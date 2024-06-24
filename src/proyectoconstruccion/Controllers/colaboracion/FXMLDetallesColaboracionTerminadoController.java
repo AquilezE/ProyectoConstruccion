@@ -1,5 +1,6 @@
 package proyectoconstruccion.Controllers.colaboracion;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.LectorCSV;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
@@ -113,6 +115,7 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             ColaboracionDAO.actualizarNumeroEstudiantes(this.colaboracion.getColaboracionId(),numeroEstudiantes);
             ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Clausurada");
             Utils.mostrarAlertaSimple("", "Constancias aprobadas", Alert.AlertType.INFORMATION);
+            RefreshserUtils.getColaboracionesController().InicializarComponentes(RefreshserUtils.getColaboracionesBusquedaCache());
             Utils.cerrarVentana(actionEvent);
         }else {
             Utils.mostrarAlertaSimple("Error","Error al calcular numero de estudiantes", Alert.AlertType.ERROR);
@@ -258,6 +261,15 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             tvEstudiantes.getItems().clear();
             colMatricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
             colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            colNombre.setCellValueFactory(cellData -> {
+                Estudiante estudiante = cellData.getValue();
+
+                String nombreCompleto = estudiante.getNombre() + " "
+                        + estudiante.getApellidoPaterno() + " "
+                        + estudiante.getApellidoMaterno();
+
+                return new SimpleStringProperty(nombreCompleto);
+            });
             colCalificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
             colFaltas.setCellValueFactory(new PropertyValueFactory<>("faltas"));
 

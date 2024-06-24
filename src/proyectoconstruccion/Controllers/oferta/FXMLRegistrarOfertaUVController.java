@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
@@ -66,7 +67,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
         }
         ProfesorUV profesorUV = Sesion.getInstancia().getProfesorUsuario();
         idProfesor = profesorUV.getProfesorId();
-        lbNombre.setText(profesorUV.getNombre());
+        lbNombre.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno()+" "+profesorUV.getApellidoMaterno());
         lbCorreo.setText(profesorUV.getCorreoElectronico());
         lbNumPersonal.setText(profesorUV.getNumeroPersonal());
         lbCelular.setText(profesorUV.getTelefono());
@@ -101,6 +102,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             oferta.setDuracion(duration);
 
             OfertaColaboracionDAO.guardarOfertaUV(oferta);
+            RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
             Utils.cerrarVentana(event);
         }else{
             Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);
@@ -199,7 +201,6 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
             }
         });
     }
-
 
     private boolean validateFields () {
         boolean valid = true;

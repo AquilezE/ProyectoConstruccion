@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -33,6 +34,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
     public Button btnEvidencias;
     public Button btnLista;
     public Button btnFinalizar;
+    public Button btnCancelarColaboracion;
 
 
     private Colaboracion colaboracion;
@@ -104,12 +106,22 @@ public class FXMLDetallesColaboracionController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLCancelarColaboracion.fxml");
             Parent root = loader.load();
             FXMLCancelarColaboracionController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
             controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Cancelar colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
+            System.out.println(this.colaboracion.getEstado());
+            if (this.colaboracion.getEstado().equals("Cancelada")){
+                btnCancelarColaboracion.setDisable(true);
+                btnFinalizar.setDisable(true);
+                btnEvidencias.setDisable(true);
+                btnLista.setDisable(true);
+                btnSyllabus.setDisable(true);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -206,6 +218,7 @@ public class FXMLDetallesColaboracionController implements Initializable {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(), "Concluida");
                 this.colaboracion.setEstado("Concluida");
+                RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
                 Utils.cerrarVentana(actionEvent);
             }
         } else {
@@ -215,9 +228,5 @@ public class FXMLDetallesColaboracionController implements Initializable {
             alert.setContentText("Faltan los siguientes documentos:" + documentosFaltantes);
             alert.showAndWait();
         }
-
-
-
-
     }
 }

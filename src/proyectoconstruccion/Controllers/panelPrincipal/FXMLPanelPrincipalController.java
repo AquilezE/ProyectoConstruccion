@@ -11,12 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Controllers.colaboracion.FXMLContenedorColaboracionesController;
 import proyectoconstruccion.Controllers.oferta.FXMLContenedorOfertasController;
-import proyectoconstruccion.Utils.Constantes;
-import proyectoconstruccion.Utils.FilterData;
-import proyectoconstruccion.Utils.Sesion;
-import proyectoconstruccion.Utils.Utils;
+import proyectoconstruccion.Utils.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,6 +38,7 @@ import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 
 public class FXMLPanelPrincipalController implements Initializable {
 
+
     private ObservableList<ExperienciaEducativa> experienciasEducativas;
     private ObservableList<Periodo> periodos;
     private ObservableList<String> estados;
@@ -48,13 +47,12 @@ public class FXMLPanelPrincipalController implements Initializable {
 
     public DatePicker dpFechaCierre;
     public DatePicker dpFechaInicio;
-
     public TextField tfTituloColab;
-
     public ComboBox<String> cbEstado;
     public ComboBox<Periodo> cbPeriodo;
     public ComboBox<ExperienciaEducativa> cbExperienciaEducativa;
 
+    public ComboBox<String> cbFiltroOfertas;
 
 
     public Button btnRegistrarOfertaExterna;
@@ -62,7 +60,7 @@ public class FXMLPanelPrincipalController implements Initializable {
     public Button btnRegistrarNuevaColab;
 
     public HBox hbSolicitudesHeader;
-    public HBox hbFiltros;
+    public HBox hbFiltrosColabs;
 
     public Tab tabSocilicitudes;
     public Tab tabNumeralia;
@@ -127,12 +125,38 @@ public class FXMLPanelPrincipalController implements Initializable {
             }
 
         });
-
+        cargarOpcionesDeFiltroOferta();
 
     }
 
+    public DatosFiltroColaboracion getDatosFiltro() {
+        DatosFiltroColaboracion filterData = new DatosFiltroColaboracion();
+        filterData.setFechaCierre(dpFechaCierre.getValue());
+        filterData.setFechaInicio(dpFechaInicio.getValue());
+        filterData.setEstado(cbEstado.getValue());
+        filterData.setTituloColab(tfTituloColab.getText().toLowerCase());
+        filterData.setPeriodo(cbPeriodo.getValue());
+        filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
+
+        return filterData;
+    }
+
+    public DatosFiltroOferta getDatosFiltroOferta(){
+        DatosFiltroOferta filterData;
+        filterData= new DatosFiltroOferta();
+        if (cbFiltroOfertas.getValue()!=null){
+            System.out.println(cbFiltroOfertas.getValue());
+            filterData.setOpcionFiltro(cbFiltroOfertas.getValue());
+        }{
+            filterData.setOpcionFiltro("");
+        }
+
+        return filterData;
+    }
+
+
     public void cargarEstados() {
-        this.estados = FXCollections.observableArrayList("Pendiente", "Activa", "Concluida");
+        this.estados = FXCollections.observableArrayList("Pendiente", "Activa", "Concluida","Clausurada","Cancelada");
         cbEstado.setItems(this.estados);
     }
 
@@ -170,7 +194,7 @@ public class FXMLPanelPrincipalController implements Initializable {
     
     public void cargarColaboraciones(){
         try {
-            FilterData filterData = getDatosFiltro();
+            DatosFiltroColaboracion filterData = getDatosFiltro();
 
             System.out.println("Datos del filtro:");
             System.out.println("Fecha Cierre: " + filterData.getFechaCierre());
@@ -183,6 +207,8 @@ public class FXMLPanelPrincipalController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorColaboracionesController controller = loader.getController();
+            RefreshserUtils.setColaboracionesController(controller);
+            RefreshserUtils.setColaboracionesBusquedaCache(filterData);
             controller.InicializarComponentes(filterData);
 
             bdPaneColaboraciones.setCenter(contenedorColaboraciones);
@@ -191,37 +217,26 @@ public class FXMLPanelPrincipalController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-        public FilterData getDatosFiltro() {
-        FilterData filterData = new FilterData();
-        filterData.setFechaCierre(dpFechaCierre.getValue());
-        filterData.setFechaInicio(dpFechaInicio.getValue());
-        filterData.setEstado(cbEstado.getValue());
-        filterData.setTituloColab(tfTituloColab.getText().toLowerCase());
-        filterData.setPeriodo(cbPeriodo.getValue());
-        filterData.setExperienciaEducativa(cbExperienciaEducativa.getValue());
-
-        if (cbPeriodo.getValue() == null){
-            System.out.println("No se arreglo");
-        }else{
-            System.out.println(cbPeriodo.getValue().getDescripcion());
-        }
-        if (cbExperienciaEducativa.getValue() == null){
-            System.out.println("No se arreglo");
-        }else{
-            System.out.println(cbExperienciaEducativa.getValue().getExperienciaEducativaId());
-        }
-        return filterData;
-    }
-        
     @FXML
     public void btnVerOfertas(ActionEvent actionEvent) {
+        cargarOfertas();
+    }
+
+    public void cargarOfertas(){
+        DatosFiltroOferta filterData = getDatosFiltroOferta();
+
+
+
+
         try {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
             FXMLContenedorOfertasController controller = loader.getController();
+            filterData.setOpcionFiltro(cbFiltroOfertas.getValue());
 
-            controller.InicializarComponentes();
+            RefreshserUtils.setOfertasBusquedaCache(filterData);
+            RefreshserUtils.setOfertasController(controller);
+            controller.InicializarComponentes(filterData);
             bdPaneOfertasColab.setCenter(contenedorColaboraciones);
         } catch (IOException e) {
             e.printStackTrace();
@@ -236,12 +251,15 @@ public class FXMLPanelPrincipalController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaExterna.fxml");
             Parent root = loader.load();
             FXMLRegistrarOfertaExternaController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
             controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar oferta de colaboración externa");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -249,9 +267,17 @@ public class FXMLPanelPrincipalController implements Initializable {
 
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
-        Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
-        obtenerDatosTablaCampusPorPeriodo(seleccion.getDescripcion());
-        obtenerDatosTablaAreaAcademicaPorPeriodo(seleccion.getDescripcion());
+        verNumeralia();
+    }
+    
+    public void verNumeralia(){
+        if(cbSeleccionPeriodo.getSelectionModel().getSelectedItem() != null){
+            Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
+            obtenerDatosTablaCampusPorPeriodo(seleccion.getDescripcion());
+            obtenerDatosTablaAreaAcademicaPorPeriodo(seleccion.getDescripcion());
+        }else{
+            Utils.mostrarAlertaSimple("Error", "Debe seleccionar un periodo", Alert.AlertType.ERROR);
+        }
     }
 
     public void obtenerDatosTablaCampusPorPeriodo(String periodo){
@@ -274,6 +300,8 @@ public class FXMLPanelPrincipalController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionSinOferta.fxml");
             Parent root = loader.load();
             FXMLRegistrarColaboracionSinOfertaController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
             controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
@@ -362,6 +390,7 @@ public class FXMLPanelPrincipalController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLRegistrarOfertaUV.fxml");
             Parent root = loader.load();
             FXMLRegistrarOfertaUVController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controlador.inicializarValores();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
@@ -435,7 +464,8 @@ public class FXMLPanelPrincipalController implements Initializable {
         cbEstado.getSelectionModel().clearSelection();
         cargarColaboraciones();
     }
+
+    public void cargarOpcionesDeFiltroOferta(){
+        cbFiltroOfertas.setItems(FXCollections.observableArrayList("Periodo", "Idioma","Tipo"));
+    }
 }
-
-
-

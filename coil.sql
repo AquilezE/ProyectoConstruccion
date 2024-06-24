@@ -82,7 +82,7 @@ CREATE TABLE `colaboracion` (
 
 LOCK TABLES `colaboracion` WRITE;
 /*!40000 ALTER TABLE `colaboracion` DISABLE KEYS */;
-INSERT INTO `colaboracion` VALUES (86,'3 weeks','Activa','2023-02-15','2023-02-01',NULL,'Febrero 2023 - Julio 2023','Clase espejo','Estudio de Interculturalidad',11,16,1,1,2,'No me agrada tu actitud nene'),(87,'4 weeks','Clausurada','2023-01-31','2023-01-01',21,'Agosto 2023 - Enero 2024','Taller COIL-VIC','Conocer Otras Culturas',12,20,2,2,3,NULL),(88,'1 week','Activa','2024-07-05','2024-02-01',NULL,'Febrero 2024 - Julio 2024','Clase espejo','Análisis de Conocimiento del Inglés',13,17,3,4,1,NULL),(90,'2 weeks','Activa','2024-06-12','2024-02-08',NULL,'Febrero 2024 - Julio 2024','Clase espejo','Significancia de Ser Mexicano',11,24,2,8,3,NULL),(91,'3 meses','Activa','2024-06-30','2024-06-05',NULL,'Agosto 2023 - Diciembre 2023','Clase espejo','Degustacion de Pasta',11,25,21,9,5,NULL);
+INSERT INTO `colaboracion` VALUES (86,'3 weeks','Cancelada','2023-02-15','2023-02-01',NULL,'Febrero 2023 - Julio 2023','Clase espejo','Estudio de Interculturalidad',11,16,1,1,2,'Dibuja y pinta feo'),(87,'4 weeks','Clausurada','2023-01-31','2023-01-01',21,'Agosto 2023 - Diciembre 2023','Taller COIL-VIC','Conocer Otras Culturas',12,20,2,2,3,NULL),(88,'1 week','Pendiente','2024-07-05','2024-02-01',NULL,'Febrero 2024 - Julio 2024','Clase espejo','Análisis de Conocimiento del Inglés',13,17,3,4,1,'E'),(90,'2 weeks','Activa','2024-06-12','2024-02-08',NULL,'Febrero 2024 - Julio 2024','Clase espejo','Significancia de Ser Mexicano',11,24,2,8,3,'a'),(91,'3 meses','Activa','2024-06-30','2024-06-05',NULL,'Agosto 2023 - Diciembre 2023','Clase espejo','Degustacion de Pasta',11,25,21,9,5,NULL);
 /*!40000 ALTER TABLE `colaboracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `ofertacolaboracion` (
 
 LOCK TABLES `ofertacolaboracion` WRITE;
 /*!40000 ALTER TABLE `ofertacolaboracion` DISABLE KEYS */;
-INSERT INTO `ofertacolaboracion` VALUES (1,'3 dias',2,'Febrero 2021 - Julio 2021','Aleman Avanzado',11,0,0),(2,'3 months',3,'Agosto 2023 - Diciembre 2023','Advanced French',12,0,0),(3,'1 month',4,'Agosto 2023 - Diciembre 2023','Beginner German',13,0,0),(4,'6 months',5,'Febrero 2024 - Julio 2024','Conversational Italian',14,0,0),(5,'4 months',2,'Febrero 2024 - Julio 2024','Impacto de Little Ceasars en la Economia de Queretaro',15,0,0),(6,'2 months',2,'Agosto 2023 - Diciembre 2023','Intermediate Spanish',16,1,0),(7,'3 months',3,'Febrero 2023 - Julio 2023','French Literature',17,1,0),(8,'1 month',4,'Agosto 2023 - Diciembre 2023','German Grammar',18,1,0),(9,'3 months',5,'Agosto 2024 - Diciembre 2024','Italian Culture',19,1,0),(10,'4 months',2,'Agosto 2023 - Diciembre 2023','Como preparar principio de Fritada',20,1,0),(11,'2 weeks',1,'Agosto 2024 - Diciembre 2024','Significancia de Ser Mexicano',24,1,0),(12,'2 weeks',1,'Agosto 2023 - Diciembre 2023','How to eat Hotdogs',20,1,0),(13,'2 weeks',2,'Agosto 2025 - Diciembre 2025','Secretito',11,0,0);
+INSERT INTO `ofertacolaboracion` VALUES (1,'3 dias',2,'Febrero 2021 - Julio 2021','Aleman Avanzado',11,0,0),(2,'3 months',3,'Agosto 2023 - Diciembre 2023','Advanced French',12,0,0),(3,'1 month',4,'Agosto 2023 - Diciembre 2023','Beginner German',13,0,0),(4,'6 months',5,'Febrero 2024 - Julio 2024','Conversational Italian',14,0,0),(5,'4 months',2,'Febrero 2024 - Julio 2024','Impacto de Little Ceasars en la Economia de Queretaro',15,0,0),(6,'2 months',2,'Agosto 2023 - Diciembre 2023','Intermediate Spanish',16,1,0),(7,'3 months',3,'Febrero 2023 - Julio 2023','French Literature',17,1,0),(8,'1 month',4,'Febrero 2023 - Julio 2023','German Grammar',18,1,0),(9,'3 months',5,'Agosto 2024 - Diciembre 2024','Italian Culture',19,1,0),(10,'4 months',2,'Agosto 2023 - Diciembre 2023','Como preparar principio de Fritada',20,1,0),(11,'2 weeks',1,'Agosto 2024 - Diciembre 2024','Significancia de Ser Mexicano',24,1,0),(12,'2 weeks',1,'Agosto 2023 - Diciembre 2023','How to eat Hotdogs',20,1,0),(13,'2 weeks',2,'Agosto 2025 - Diciembre 2025','Secretito',11,0,0);
 /*!40000 ALTER TABLE `ofertacolaboracion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -498,4 +498,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-14  1:15:20
+-- Dump completed on 2024-06-24  0:17:09

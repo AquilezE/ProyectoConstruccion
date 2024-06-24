@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -152,6 +153,7 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
             colaboracion.setIdioma(idioma);
 
             if(ColaboracionDAO.registrarColaboracion(colaboracion)){
+                RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
                 Utils.cerrarVentana(event);
             }
         } else{
@@ -178,6 +180,8 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
             FXMLLoader loader = Utils.obtenerLoader("Views/profesorExterno/FXMLRegistrarProfesorExterno.fxml");
             Parent root = loader.load();
             FXMLRegistrarProfesorExternoController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
             controlador.inicializarValores(this);
             Scene escena = new Scene(root);
             escenario.setScene(escena);

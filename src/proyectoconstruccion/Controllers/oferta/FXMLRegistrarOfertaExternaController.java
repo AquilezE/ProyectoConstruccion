@@ -19,6 +19,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Controllers.profesorExterno.FXMLRegistrarProfesorExternoController;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.*;
@@ -191,12 +192,14 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/profesorExterno/FXMLRegistrarProfesorExterno.fxml");
             Parent root = loader.load();
             FXMLRegistrarProfesorExternoController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controlador.inicializarValores(this);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Registrar profesor externo");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
+            cargarProfesExternos();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -225,6 +228,7 @@ public class FXMLRegistrarOfertaExternaController implements Initializable {
             oferta.setDuracion(duration);
 
             OfertaColaboracionDAO.guardarOfertaExterna(oferta);
+            RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
             Utils.cerrarVentana(event);
         } else {
             Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);

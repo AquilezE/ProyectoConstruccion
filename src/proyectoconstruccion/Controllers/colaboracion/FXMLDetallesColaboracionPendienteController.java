@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.Constantes;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
@@ -94,6 +95,7 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
         if (result.isPresent() && result.get() == buttonYes) {
             ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Activa");
             this.colaboracion.setEstado("Activa");
+            RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
             Utils.cerrarVentana(actionEvent);
         } else if (result.isPresent() && result.get() == buttonNo) {
             System.out.println("No se cambio de estado");

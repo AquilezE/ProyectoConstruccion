@@ -71,7 +71,7 @@ public class ExperienciaEducativaDAO {
 
                     experienciaEducativaList.add(experienciaEducativa);
                 }
-                System.out.println("Done");
+
                 conexionBD.close();
             } catch (SQLException e) {
                 e.printStackTrace();

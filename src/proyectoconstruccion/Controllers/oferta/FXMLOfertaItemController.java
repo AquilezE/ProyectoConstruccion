@@ -52,6 +52,7 @@ public class FXMLOfertaItemController {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLDetallesOfertaColaboracion.fxml");
             Parent root = loader.load();
             FXMLDetallesOfertaColaboracionController controller = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controller.inicializarDetalles(ofertaColaboracion);
 
             Stage stage = new Stage();

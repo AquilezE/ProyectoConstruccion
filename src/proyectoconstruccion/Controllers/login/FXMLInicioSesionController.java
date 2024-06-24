@@ -73,6 +73,7 @@ public class FXMLInicioSesionController implements Initializable {
             FXMLLoader loader = Utils.obtenerLoader("Views/panelPrincipal/FXMLPanelPrincipal.fxml");
             Parent root = loader.load();
             FXMLPanelPrincipalController controller = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controller.iniciarComponentes();
 
             Scene escenaPanelPrincipal = new Scene(root);

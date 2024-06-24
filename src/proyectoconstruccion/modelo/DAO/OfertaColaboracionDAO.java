@@ -1,6 +1,7 @@
 package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.DatosFiltroOferta;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.modelo.ConexionBD;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
@@ -17,50 +18,74 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class OfertaColaboracionDAO {
 
-    public static HashMap<String, Object> getAllOfertasColaboracion() {
-        HashMap<String, Object> resultado = getOfertasColaboracion(null, null);
-        return resultado;
-    }
+    public static HashMap<String, Object> getOfertasColaboracion(DatosFiltroOferta filtroOferta) {
 
-    public static HashMap<String, Object> getOfertasColaboracion(String periodo, Integer idioma) {
+
+        String opcionFiltro = "";
+        if (filtroOferta!=null){
+             opcionFiltro= filtroOferta.getOpcionFiltro();
+        }else{
+            System.out.println("FiltroOfertaisNULL");
+        }
+
+
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.getConexion();
 
         if (conexionBD != null) {
 
-            StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ofertaColaboracion WHERE 1=1");
-            ArrayList<Object> parameters = new ArrayList<>();
+            StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ofertaColaboracion ");
+            ArrayList<Object> parametros = new ArrayList<>();
 
-            if (periodo != null) {
-                queryBuilder.append(" AND Periodo LIKE ?");
-                parameters.add("%" + periodo + "%");
+
+            if (filtroOferta.getOpcionFiltro()==null ){
+                queryBuilder.append(" WHERE 1=1");
+                if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
+                    queryBuilder.append("AND (profesor_id = ? OR type = 1)");
+                    parametros.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+                }
+                queryBuilder.append(" ORDER BY Type");
+            }else {
+                if (filtroOferta.getOpcionFiltro().equals("Periodo")) {
+                    queryBuilder.append("JOIN periodo ON Periodo.descripcion = ofertacolaboracion.Periodo WHERE 1=1 ");
+                    if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
+                        queryBuilder.append("AND (profesor_id = ? OR type = 1) ");
+                        parametros.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+                    }
+                    queryBuilder.append("ORDER BY Periodo.id");
+                }
+                if (filtroOferta.getOpcionFiltro().equals("Idioma")) {
+                    queryBuilder.append(" JOIN idioma ON ofertacolaboracion.Idioma = idioma.idioma_id\n WHERE 1=1 ");
+                    if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
+                        queryBuilder.append(" AND (profesor_id = ? OR type = 1) ");
+                        parametros.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+                    }
+                    queryBuilder.append(" ORDER BY idioma.idioma ");
+                }
+                if(filtroOferta.getOpcionFiltro().equals("Tipo")){
+                    if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
+                        queryBuilder.append(" WHERE 1=1 AND (profesor_id = ? OR type = 1) ");
+                        parametros.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
+
+                        queryBuilder.append(" ORDER BY Type");
+                    }
+
+                }
             }
-            if (idioma != null) {
-                queryBuilder.append(" AND Idioma = ?");
-                parameters.add(idioma);
-            }
-
-            if (Sesion.getInstancia().getRol().equals(Constantes.PROFESOR)) {
-                queryBuilder.append(" AND (profesor_id = ? OR type = 1) ");
-                parameters.add(Sesion.getInstancia().getProfesorUsuario().getProfesorId());
-            }
-
-
-            queryBuilder.append(" ORDER BY type");
-
             String consulta = queryBuilder.toString();
+            System.out.println(consulta);
             ArrayList<OfertaColaboracion> ofertas = new ArrayList<>();
 
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
 
-                for (int i = 0; i < parameters.size(); i++) {
-                    prepararSentencia.setObject(i + 1, parameters.get(i));
+                for (int i = 0; i < parametros.size(); i++) {
+                    System.out.println(parametros.get(i));
+                    prepararSentencia.setObject(i + 1, parametros.get(i));
                 }
 
                 ResultSet resultado = prepararSentencia.executeQuery();

@@ -3,6 +3,7 @@ package proyectoconstruccion.Controllers.oferta;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import proyectoconstruccion.Utils.DatosFiltroOferta;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
 import proyectoconstruccion.modelo.POJO.ofertacolaboracion.OfertaColaboracion;
@@ -14,12 +15,13 @@ public class FXMLContenedorOfertasController {
 
     public VBox vBoxBucket;
 
-    public void InicializarComponentes(){
-        actualizarOfertas();
+    public void InicializarComponentes(DatosFiltroOferta filtroOferta){
+        actualizarOfertas(filtroOferta);
     }
 
-    public void actualizarOfertas(){
-        ArrayList<OfertaColaboracion> ofertas = (ArrayList<OfertaColaboracion>) OfertaColaboracionDAO.getAllOfertasColaboracion().get("ofertas");
+    public void actualizarOfertas(DatosFiltroOferta filtroOferta){
+        eliminarItems();
+        ArrayList<OfertaColaboracion> ofertas = (ArrayList<OfertaColaboracion>) OfertaColaboracionDAO.getOfertasColaboracion(filtroOferta).get("ofertas");
 
 
         for (OfertaColaboracion oferta: ofertas) {
@@ -40,4 +42,6 @@ public class FXMLContenedorOfertasController {
         }
     }
 
-}
+    private void eliminarItems(){
+        vBoxBucket.getChildren().clear();
+    }}

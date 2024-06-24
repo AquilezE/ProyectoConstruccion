@@ -23,37 +23,61 @@
                <content>
                   <BorderPane fx:id="bdPaneColaboraciones" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <HBox fx:id="hbFiltros" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                        <HBox fx:id="hbFiltrosColabs" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
                            <children>
                               <HBox fx:id="hBoxFiltros" alignment="CENTER">
                                  <children>
                                     <VBox prefHeight="62.0" prefWidth="172.0">
                                        <children>
-                                          <DatePicker fx:id="dpFechaInicio" promptText="Fecha Inicio" />
-                                          <DatePicker fx:id="dpFechaCierre" promptText="Fecha Cierre" />
+                                          <DatePicker fx:id="dpFechaInicio" promptText="Fecha Inicio">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></DatePicker>
+                                          <DatePicker fx:id="dpFechaCierre" promptText="Fecha Cierre">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></DatePicker>
                                        </children>
                                     </VBox>
-                                    <VBox>
+                                    <VBox alignment="CENTER">
                                        <children>
-                                          <TextField fx:id="tfTituloColab" promptText="Titulo Colaboracion" />
-                                          <ComboBox fx:id="cbEstado" maxWidth="150.0" minWidth="150.0" prefHeight="31.0" prefWidth="150.0" promptText="Estado" />
+                                          <TextField fx:id="tfTituloColab" promptText="Titulo Colaboracion">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></TextField>
+                                          <ComboBox fx:id="cbEstado" maxWidth="150.0" minWidth="150.0" prefHeight="31.0" prefWidth="150.0" promptText="Estado">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></ComboBox>
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="62.0" prefWidth="287.0">
                                        <children>
-                                          <ComboBox fx:id="cbPeriodo" prefHeight="31.0" prefWidth="277.0" promptText="Seleccionar Periodo" />
-                                          <ComboBox fx:id="cbExperienciaEducativa" prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia Educativa" />
+                                          <ComboBox fx:id="cbPeriodo" prefHeight="31.0" prefWidth="277.0" promptText="Seleccionar Periodo">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></ComboBox>
+                                          <ComboBox fx:id="cbExperienciaEducativa" prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia Educativa">
+                                             <VBox.margin>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </VBox.margin></ComboBox>
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
-                              <VBox>
+                              <VBox maxWidth="153.0" minWidth="126.0" prefHeight="62.0" prefWidth="153.0">
                                  <HBox.margin>
-                                    <Insets left="10.0" right="10.0" />
+                                    <Insets left="2.0" right="2.0" />
                                  </HBox.margin>
                                  <children>
-                                    <Button fx:id="btnBuscarColaboracion" alignment="CENTER" onAction="#btnVerColabs" prefHeight="26.0" prefWidth="125.0" text="Buscar Colaboracion" />
-                                    <Button alignment="CENTER" onAction="#btnBorrarFiltros" prefHeight="26.0" prefWidth="125.0" text="Borrar Filtros" />
+                                    <Button fx:id="btnBuscarColaboracion" alignment="CENTER" maxHeight="31.0" maxWidth="140.0" minHeight="31.0" minWidth="140.0" onAction="#btnVerColabs" prefHeight="31.0" prefWidth="140.0" text="Buscar Colaboracion">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin></Button>
+                                    <Button alignment="CENTER" maxHeight="31.0" maxWidth="140.0" minHeight="31.0" minWidth="140.0" onAction="#btnBorrarFiltros" prefHeight="31.0" prefWidth="140.0" text="Borrar Filtros">
+                                       <VBox.margin>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </VBox.margin></Button>
                                  </children>
                               </VBox>
                               <Button fx:id="btnRegistrarNuevaColab" mnemonicParsing="false" onAction="#btnClicRegistrarColaboracion" text="Registrar nueva colaboración" visible="false" />
@@ -68,8 +92,14 @@
                <content>
                   <BorderPane fx:id="bdPaneOfertasColab" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <HBox fx:id="hbfiltros" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <HBox fx:id="hbFiltrosOfertas" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="122.0">
+                                 <children>
+
+                                    <ComboBox fx:id="cbFiltroOfertas" prefWidth="150.0" promptText="Ordenar Por" />
+                                 </children>
+                              </VBox>
                               <Button mnemonicParsing="false" onAction="#btnVerOfertas" text="Ver Ofertas">
                                  <HBox.margin>
                                     <Insets left="10.0" right="10.0" />
@@ -95,7 +125,7 @@
                <content>
                   <BorderPane fx:id="bdPaneNumerialia" prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <HBox fx:id="hbFiltrosNumeralia" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button mnemonicParsing="false" onAction="#btnClicVerNumeralia" text="Ver numeralia">
                                  <HBox.margin>
@@ -135,7 +165,7 @@
                               </TableView>
                            </children>
                            <BorderPane.margin>
-                              <Insets bottom="180.0" />
+                              <Insets bottom="80.0" top="100.0" />
                            </BorderPane.margin>
                         </HBox>
                      </center></BorderPane>
