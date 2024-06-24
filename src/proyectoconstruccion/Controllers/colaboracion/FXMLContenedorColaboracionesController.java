@@ -2,9 +2,8 @@ package proyectoconstruccion.Controllers.colaboracion;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import proyectoconstruccion.Utils.FilterData;
+import proyectoconstruccion.Utils.DatosFiltroColaboracion;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.ColaboracionDAO;
@@ -37,7 +36,10 @@ public class FXMLContenedorColaboracionesController {
 
     }
 
-    public void InicializarComponentes(FilterData filtros){
+    public void InicializarComponentes(DatosFiltroColaboracion filtros){
+
+        eliminarItems();
+
         String titulo = (filtros.getTituloColab().trim().isEmpty()) ? null : filtros.getTituloColab();
         String estado = (filtros.getEstado() != null) ? filtros.getEstado() : null;
         String periodo;
@@ -77,8 +79,8 @@ public class FXMLContenedorColaboracionesController {
             System.out.println("colaboracionAñadida");
             añadirItem(colaboracion);
         }
-    }
 
+    }
 
     private void añadirItem(Colaboracion colaboracion) {
         try {
@@ -92,6 +94,10 @@ public class FXMLContenedorColaboracionesController {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void eliminarItems(){
+        vBoxBucket.getChildren().clear();
     }
 
 }

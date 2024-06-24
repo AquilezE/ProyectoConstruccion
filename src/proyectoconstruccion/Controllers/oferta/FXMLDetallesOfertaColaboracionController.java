@@ -49,10 +49,9 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
                 FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLEdicionOfertaColaboracion.fxml");
                 Parent root = loader.load();
                 FXMLEdicionOfertaColaboracionController controller = loader.getController();
+                root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
                 controller.InicializarDatos(this,ofertaColaboracion);
-
-                // Puedes pasar datos a la nueva ventana si es necesario
-
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root));
@@ -72,6 +71,8 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
                 FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaUV.fxml");
                 Parent root = loader.load();
                 FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
+                root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
                 controller.inicializarValores((OfertaColaboracionUV) ofertaColaboracion);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);

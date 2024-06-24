@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.IdiomaDAO;
 import proyectoconstruccion.modelo.DAO.OfertaColaboracionDAO;
@@ -77,9 +78,11 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
             if (OfertaColaboracionDAO.updateOfertaColaboracion(this.ofertaColaboracion,tfTitulo.getText(),tfDuracion.getText(),idioma.getIdiomaID(),periodo.getDescripcion())){
                 System.out.println("Oferta Editada");
                 detallesOfertaColaboracion.recargarDatos();
+                RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
             }else {
                 System.out.println("Oferta No Editada");
             }
+
             Utils.cerrarVentana(actionEvent);
         }else{
             Utils.mostrarAlertaSimple("Error", "No pueden quedar campos vacíos", Alert.AlertType.ERROR);

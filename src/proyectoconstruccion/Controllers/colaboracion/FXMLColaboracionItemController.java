@@ -69,6 +69,7 @@ public class FXMLColaboracionItemController {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionPendiente.fxml");
             Parent root = loader.load();
             FXMLDetallesColaboracionPendienteController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
@@ -86,6 +87,7 @@ public class FXMLColaboracionItemController {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracion.fxml");
             Parent root = loader.load();
             FXMLDetallesColaboracionController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);
@@ -103,6 +105,7 @@ public class FXMLColaboracionItemController {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLDetallesColaboracionTerminado.fxml");
             Parent root = loader.load();
             FXMLDetallesColaboracionTerminadoController controlador = loader.getController();
+            root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
             controlador.inicializarValores(this.colaboracion);
             Scene escena = new Scene(root);
             escenario.setScene(escena);

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
+import proyectoconstruccion.Controllers.RefreshserUtils;
 import proyectoconstruccion.Utils.Sesion;
 import proyectoconstruccion.Utils.Utils;
 import proyectoconstruccion.modelo.DAO.*;
@@ -143,6 +144,7 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
 
             if(ColaboracionDAO.registrarColaboracion(colaboracion)){
                 OfertaColaboracionDAO.cambiarEstadoOfertaColaboracion(ofertaColaboracionExterna.getOfertaColaboracionId(),1);
+                RefreshserUtils.getColaboracionesController().InicializarComponentes(RefreshserUtils.getColaboracionesBusquedaCache());
                 Utils.cerrarVentana(event);
 
             }

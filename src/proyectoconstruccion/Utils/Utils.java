@@ -15,6 +15,7 @@ public class Utils {
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);
         alerta.setContentText(mesnaje);
+        alerta.getDialogPane().getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
         alerta.showAndWait();
     }
 
@@ -23,6 +24,7 @@ public class Utils {
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);
         alerta.setContentText(mesnaje);
+        alerta.getDialogPane().getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
         Optional<ButtonType> botonSeleccionado = alerta.showAndWait();
         return (botonSeleccionado.get()==ButtonType.OK);
     }

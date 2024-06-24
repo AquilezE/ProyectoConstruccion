@@ -118,7 +118,7 @@ public class FXMLRegistrarProfesorExternoController implements Initializable {
                     tfNombre.getText(),
                     tfApellidoMaterno.getText(),
                     tfApellidoPaterno.getText(),
-                    tfTelefono.getText(),  // Assumes phone number is to be stored as Integer
+                    tfTelefono.getText(),
                     cbIdioma.getValue().getIdiomaID(),
                     cbUniversidad.getValue().getUniversidadId()
                     );

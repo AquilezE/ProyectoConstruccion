@@ -11,7 +11,10 @@ public class AppStartup extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Views/login/FXMLInicioSesion.fxml"));
+        root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
+
         Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.show();
     }

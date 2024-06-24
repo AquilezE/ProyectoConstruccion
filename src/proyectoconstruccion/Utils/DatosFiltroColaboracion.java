@@ -5,7 +5,7 @@ import proyectoconstruccion.modelo.POJO.academia.ExperienciaEducativa;
 
 import java.time.LocalDate;
 
-public class FilterData {
+public class DatosFiltroColaboracion {
     private LocalDate fechaCierre;
     private LocalDate fechaInicio;
     private String estado;
@@ -63,7 +63,7 @@ public class FilterData {
 
     @Override
     public String toString() {
-        return "FilterData{" +
+        return "DatosFiltroColaboracion{" +
                 "fechaCierre=" + fechaCierre +
                 ", fechaInicio=" + fechaInicio +
                 ", tituloColab='" + tituloColab + '\'' +
