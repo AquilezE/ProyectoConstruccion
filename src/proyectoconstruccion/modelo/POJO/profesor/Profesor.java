@@ -89,4 +89,8 @@ public abstract class Profesor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public String getNombreEntero(){
+        return nombre+" "+apellidoPaterno+" "+apellidoMaterno;
+    }
 }

@@ -69,6 +69,8 @@ public class FXMLPanelPrincipalController implements Initializable {
     public BorderPane bdPaneOfertasColab;
     public BorderPane bdPaneNumerialia;
     public BorderPane bdPaneSolicitudes;
+    public BorderPane bdPaneUsuario;
+
 
     public Label lbPeriodo;
 
@@ -125,8 +127,21 @@ public class FXMLPanelPrincipalController implements Initializable {
             }
 
         });
-        cargarOpcionesDeFiltroOferta();
 
+
+        cargarOpcionesDeFiltroOferta();
+        cargarTabUsuario();
+    }
+
+    public void cargarTabUsuario(){
+        try {
+            FXMLLoader loader = Utils.obtenerLoader("Views/login/FXMLPanelUsuario.fxml");
+            AnchorPane root = loader.load();
+            bdPaneUsuario.setCenter(root);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public DatosFiltroColaboracion getDatosFiltro() {
@@ -201,9 +216,6 @@ public class FXMLPanelPrincipalController implements Initializable {
 
     public void cargarOfertas(){
         DatosFiltroOferta filterData = getDatosFiltroOferta();
-
-
-
 
         try {
             FXMLLoader loader = Utils.obtenerLoader("Views/oferta/FXMLContenedorOfertas.fxml");
