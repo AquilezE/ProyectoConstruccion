@@ -18,21 +18,16 @@ public class FXMLContenedorColaboracionesController {
 
     public VBox vBoxBucket;
 
-    // Inicializa los componentes de las solicitudes
     public void InicializarComponentesSolicitudes() {
 
-        // Busca las colaboraciones que han sido concluidas
         HashMap<String, Object> seleccion = ColaboracionDAO.getColaboraciones(null, "Concluida", null, null, null, null, Sesion.getInstancia().getRol());
 
-        // Si no hay colaboraciones, devuelve "null" en la consola
         if (seleccion == null) {
             System.out.println("da null");
         }
 
-        // Crea una lista de las colaboraciones obtenidas de la base de datos
         ArrayList<Colaboracion> colaboraciones = (ArrayList<Colaboracion>) seleccion.get("colaboraciones");
 
-        // Añade cada colaboración a la vista
         for (Colaboracion colaboracion : colaboraciones) {
             System.out.println("colaboracionAñadida");
             añadirItem(colaboracion);
@@ -44,7 +39,6 @@ public class FXMLContenedorColaboracionesController {
 
         eliminarItems();
 
-        // Operaciones para filtrar las búsquedas
         String titulo = (filtros.getTituloColab().trim().isEmpty()) ? null : filtros.getTituloColab();
         String estado = (filtros.getEstado() != null) ? filtros.getEstado() : null;
         String periodo;
@@ -63,7 +57,6 @@ public class FXMLContenedorColaboracionesController {
             experienciaEducativaId = null;
         }
 
-        // Recupera y muestra los parámetros de búsqueda
         System.out.println("Parametros de búsqueda:");
         System.out.println("Titulo: " + titulo);
         System.out.println("Estado: " + estado);
@@ -78,29 +71,24 @@ public class FXMLContenedorColaboracionesController {
 
         for (Colaboracion colaboracion : colaboraciones) {
             System.out.println("colaboracionAñadida");
-            // Añade cada colaboración filtrada a la vista
             añadirItem(colaboracion);
         }
     }
 
-    // Método para añadir un item de colaboración a la vista
     private void añadirItem(Colaboracion colaboracion) {
         try {
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLColaboracionItem.fxml");
             AnchorPane colaboracionItem = loader.load();
 
-            // Inicializa los componentes para cada colaboración
             FXMLColaboracionItemController controler = loader.getController();
             controler.InicializarComponentes(colaboracion);
 
-            // Añade el item al contenedor principal
             vBoxBucket.getChildren().add(colaboracionItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Método para eliminar todos los items del contenedor principal
     private void eliminarItems() {
         vBoxBucket.getChildren().clear();
     }

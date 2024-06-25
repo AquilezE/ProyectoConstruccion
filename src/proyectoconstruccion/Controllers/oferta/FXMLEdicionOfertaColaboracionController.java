@@ -58,6 +58,10 @@ public class FXMLEdicionOfertaColaboracionController implements Initializable {
     public void cargarInformacionOfertaExternaEdicion(){
         this.tfTitulo.setText(ofertaColaboracion.getTitulo());
         this.cbIdioma.getSelectionModel().select(buscarIdIdioma(ofertaColaboracion.getIdiomaId()));
+        //TODO PERIODO NO APARECE AL EDITAR
+        Periodo periodoSeleccionado= new Periodo();
+        periodoSeleccionado.setDescripcion(ofertaColaboracion.getPeriodo());
+        this.cbPeriodo.getSelectionModel().select(periodoSeleccionado);
         this.tfDuracion.setText(ofertaColaboracion.getDuracion());
     }
     

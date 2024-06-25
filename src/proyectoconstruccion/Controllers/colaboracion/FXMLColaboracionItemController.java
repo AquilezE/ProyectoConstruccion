@@ -67,7 +67,6 @@ public class FXMLColaboracionItemController {
         }
     }
 
-    // Este método se utiliza para mostrar los detalles de una colaboración pendiente.
     public void mostrarDetallesPendiente() {
         try {
             Stage escenario = new Stage();
@@ -86,7 +85,6 @@ public class FXMLColaboracionItemController {
         }
     }
 
-    // Este método se utiliza para mostrar los detalles de una colaboración activa.
     public void mostrarDetallesActiva() {
         try {
             Stage escenario = new Stage();
@@ -105,7 +103,6 @@ public class FXMLColaboracionItemController {
         }
     }
 
-    //Este método se utiliza para mostrar los detalles de una colaboración concluida.
     public void mostrarDetallesConcluida() {
         try {
             Stage escenario = new Stage();

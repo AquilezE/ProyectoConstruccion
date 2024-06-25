@@ -15,21 +15,19 @@ public class RefreshserUtils {
     public static DatosFiltroOferta ofertasBusquedaCache;
 
 
-    // Instance of Singleton class
-    private static RefreshserUtils singleton_instance = null;
+    private static RefreshserUtils instancia = null;
 
-    // Making the class singleton
     public static RefreshserUtils getInstance() {
-        if (singleton_instance == null)
-            singleton_instance = new RefreshserUtils();
+        if (instancia == null)
+            instancia = new RefreshserUtils();
 
-        return singleton_instance;
+        return instancia;
     }
 
     private RefreshserUtils() {}
 
-
     //Colaboraciones
+
     public static FXMLContenedorColaboracionesController getColaboracionesController() {
         return colaboracionesController;
     }
@@ -46,7 +44,6 @@ public class RefreshserUtils {
     public static void setColaboracionesBusquedaCache(DatosFiltroColaboracion colaboracionesBusquedaCache) {
         RefreshserUtils.colaboracionesBusquedaCache = colaboracionesBusquedaCache;
     }
-
 
     //Ofertas
     public static DatosFiltroOferta getOfertasBusquedaCache() {

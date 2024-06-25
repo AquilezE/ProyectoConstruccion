@@ -212,20 +212,14 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
         if(!EvidenciaDAO.isListaEstudiantesNull(this.colaboracion.getEvidencia().getEvidenciaId())){
             try {
                 InputStream is = EvidenciaDAO.getListaDeEstudiantes(this.colaboracion.getEvidencia().getEvidenciaId());
-
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Save Student List");
-
                 fileChooser.setInitialFileName("listaEstudiantesColaboracion" + this.colaboracion.getColaboracionId() + ".csv");
-
                 File savedFile = fileChooser.showSaveDialog(null);
-
                 if (savedFile != null) {
                     Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
-
                 System.out.println("File downloaded successfully!");
-
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
                 ex.printStackTrace();
@@ -253,7 +247,6 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
         }
 
         System.out.println("EvidenciaId: " + evidenciaId);
-
         InputStream is = EvidenciaDAO.getListaDeEstudiantes(Integer.valueOf(evidenciaId));
         if (is != null) {
             LectorCSV csvReader = new LectorCSV();
@@ -263,7 +256,6 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
             colNombre.setCellValueFactory(cellData -> {
                 Estudiante estudiante = cellData.getValue();
-
                 String nombreCompleto = estudiante.getNombre() + " "
                         + estudiante.getApellidoPaterno() + " "
                         + estudiante.getApellidoMaterno();
@@ -272,24 +264,13 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             });
             colCalificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
             colFaltas.setCellValueFactory(new PropertyValueFactory<>("faltas"));
-
             estudiantes = FXCollections.observableArrayList();
-
             estudiantes.addAll(estudiantesList);
             tvEstudiantes.getItems().addAll(estudiantes);
-
-
 
         } else {
             System.out.println("No se pudo recuperar la lista de estudiantes de la base de datos.");
             tvEstudiantes.setPlaceholder(new Label("Sin lista de Estudiantes"));
         }
     }
-
-
-
-
-
-
-
 }

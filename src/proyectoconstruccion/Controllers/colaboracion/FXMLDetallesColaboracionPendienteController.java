@@ -75,8 +75,6 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
 
         lbPeriodo.setText(colaboracion.getPeriodo());
 
-
-
     }
 
     public void btnAutorizar(ActionEvent actionEvent) {

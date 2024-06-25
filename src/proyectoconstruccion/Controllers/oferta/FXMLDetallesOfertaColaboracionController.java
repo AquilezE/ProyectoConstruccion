@@ -64,7 +64,7 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
 
     public void btnCrearColaboracion(ActionEvent actionEvent) {
 
-
+        //Carga diferentes paneles dependiendo si la oferta es UV o es Externa
         if (ofertaColaboracion instanceof OfertaColaboracionUV){
             try {
                 System.out.println("ES COLABORACION UV");
@@ -72,7 +72,6 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
                 Parent root = loader.load();
                 FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
                 root.getStylesheets().add(proyectoconstruccion.AppStartup.class.getResource("Views/style.css").toExternalForm());
-
                 controller.inicializarValores((OfertaColaboracionUV) ofertaColaboracion);
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
