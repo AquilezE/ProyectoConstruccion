@@ -14,7 +14,8 @@ public class AutenticacionDAO {
     public static HashMap<String,Object> iniciarSesion(String email,String password){
         HashMap<String,Object> respuesta=new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR,true);
-
+        
+        //existen dos maneras de ingresar al sistema, como admin (Coordinador COIL-VIC) y como profesor UV
         if(email.equals("admin") && password.equals("admin")){
             respuesta.put(Constantes.KEY_ERROR,false);
             respuesta.put("profesor",null);

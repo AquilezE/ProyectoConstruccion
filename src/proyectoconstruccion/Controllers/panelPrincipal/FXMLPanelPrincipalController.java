@@ -163,29 +163,6 @@ public class FXMLPanelPrincipalController implements Initializable {
     private boolean verificarTabSeleccionado(Tab tab) {
         return tabPane.getSelectionModel().getSelectedItem().equals(tab);
     }
-    public void configurarTablaCampus(){
-        colCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
-        colNumProfesoresCampus.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
-        colNumAlumnosCampus.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
-    }
-    public void obtenerDatosTablaCampus(){
-        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampus();
-        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
-        tvNumeraliaCampus.setItems(datos);
-
-    }
-    public void configurarTablaAreaAcademica(){
-        colAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("AreaAcademica"));
-        colNumProfesoresAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
-        colNumAlumnosAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
-    }
-    public void obtenerDatosTablaAreaAcademica(){
-        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademica();
-        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
-        tvNumeraliaAreaAcademica.setItems(datos);
-
-    }
-
 
     @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
@@ -264,34 +241,6 @@ public class FXMLPanelPrincipalController implements Initializable {
             ex.printStackTrace();
         }
     }
-
-    @FXML
-    private void btnClicVerNumeralia(ActionEvent event) {
-        verNumeralia();
-    }
-    
-    public void verNumeralia(){
-        if(cbSeleccionPeriodo.getSelectionModel().getSelectedItem() != null){
-            Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
-            obtenerDatosTablaCampusPorPeriodo(seleccion.getDescripcion());
-            obtenerDatosTablaAreaAcademicaPorPeriodo(seleccion.getDescripcion());
-        }else{
-            Utils.mostrarAlertaSimple("Error", "Debe seleccionar un periodo", Alert.AlertType.ERROR);
-        }
-    }
-
-    public void obtenerDatosTablaCampusPorPeriodo(String periodo){
-        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampusPorPeriodo(periodo);
-        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
-        tvNumeraliaCampus.setItems(datos);
-    }
-
-    public void obtenerDatosTablaAreaAcademicaPorPeriodo(String periodo){
-        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademicaPorPeriodo(periodo);
-        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
-        tvNumeraliaAreaAcademica.setItems(datos);
-    }
-
 
     @FXML
     private void btnClicRegistrarColaboracion(ActionEvent event) {
@@ -467,5 +416,55 @@ public class FXMLPanelPrincipalController implements Initializable {
 
     public void cargarOpcionesDeFiltroOferta(){
         cbFiltroOfertas.setItems(FXCollections.observableArrayList("Periodo", "Idioma","Tipo"));
+    }
+    
+    @FXML
+    private void btnClicVerNumeralia(ActionEvent event) {
+        verNumeralia();
+    }
+    
+    public void verNumeralia(){
+        if(cbSeleccionPeriodo.getSelectionModel().getSelectedItem() != null){
+            Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
+            obtenerDatosTablaCampusPorPeriodo(seleccion.getDescripcion());
+            obtenerDatosTablaAreaAcademicaPorPeriodo(seleccion.getDescripcion());
+        }else{
+            Utils.mostrarAlertaSimple("Error", "Debe seleccionar un periodo", Alert.AlertType.ERROR);
+        }
+    }
+    
+    public void configurarTablaCampus(){
+        colCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
+        colNumProfesoresCampus.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
+        colNumAlumnosCampus.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
+    }
+    public void obtenerDatosTablaCampus(){
+        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampus();
+        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaCampus.setItems(datos);
+
+    }
+    public void configurarTablaAreaAcademica(){
+        colAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("AreaAcademica"));
+        colNumProfesoresAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
+        colNumAlumnosAreaAcademica.setCellValueFactory(new PropertyValueFactory<>("numeroEstudiantes"));
+    }
+    public void obtenerDatosTablaAreaAcademica(){
+        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademica();
+        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaAreaAcademica.setItems(datos);
+
+    }
+    
+    public void obtenerDatosTablaCampusPorPeriodo(String periodo){
+        ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampusPorPeriodo(periodo);
+        ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaCampus.setItems(datos);
+    }
+
+    public void obtenerDatosTablaAreaAcademicaPorPeriodo(String periodo){
+        ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademicaPorPeriodo(periodo);
+        ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);
+        tvNumeraliaAreaAcademica.setItems(datos);
     }
 }
