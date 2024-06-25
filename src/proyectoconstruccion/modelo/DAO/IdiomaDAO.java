@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class IdiomaDAO {
+
     public static Idioma obtenerIdioma(Integer idiomaID){
         Connection conexionBD = ConexionBD.getConexion();
         if(conexionBD != null){

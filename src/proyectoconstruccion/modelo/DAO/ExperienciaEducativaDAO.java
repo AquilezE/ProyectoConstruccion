@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class ExperienciaEducativaDAO {
+
+
     public static HashMap<String, Object> obtenerExperienciaEducativa(Integer idExperienciaEducativa){
         HashMap <String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);

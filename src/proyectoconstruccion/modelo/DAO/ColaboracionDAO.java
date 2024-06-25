@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ColaboracionDAO {
+
+
+
     public static HashMap<String,Object> getColaboraciones(String titulo, String estadoP, String periodo, LocalDate fechaInicio,LocalDate fechaCierre, Integer experienciaEducativaId, String tipoUsuario){
         HashMap<String,Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR,true);
@@ -35,7 +38,7 @@ public class ColaboracionDAO {
         System.out.println("ExperienciaEducativa: " + experienciaEducativaId);
 
 
-
+        //A partir de aqui se empiezan a añadir filtros segun los datos ingresados
         if(conexionBD != null){
             StringBuilder queryBuilder = new StringBuilder("SELECT * FROM colaboracion WHERE 1=1 ");
             ArrayList<Object> parametros = new ArrayList<>();
@@ -111,9 +114,7 @@ public class ColaboracionDAO {
 
                     Evidencia evidencia= new Evidencia(evidenciaId);
 
-
                     Idioma idioma1 = IdiomaDAO.obtenerIdioma(idioma);
-
 
                     ProfesorUV profesorUV = (ProfesorUV) ProfesorDAO.getProfesorById(idProfesorUV,0).get("profesor");
                     ProfesorExterno externo = (ProfesorExterno) ProfesorDAO.getProfesorById(idProfesorExterno,1).get("profesor");
@@ -149,15 +150,15 @@ public class ColaboracionDAO {
                 preparedStatement.setString(1, colaboracion.getDuracion());
                 preparedStatement.setString(2, colaboracion.getPeriodo());
                 preparedStatement.setString(3, colaboracion.getTitulo());
-                preparedStatement.setInt(4, colaboracion.getIdioma().getIdiomaID()); // assuming idiomaID is the field required
+                preparedStatement.setInt(4, colaboracion.getIdioma().getIdiomaID());
                 preparedStatement.setDate(5, java.sql.Date.valueOf(colaboracion.getFechaInicio()));
                 preparedStatement.setDate(6, java.sql.Date.valueOf(colaboracion.getFechaCierre()));
                 preparedStatement.setString(7, colaboracion.getTipo());
                 preparedStatement.setString(8, colaboracion.getEstado());
-                preparedStatement.setInt(9, colaboracion.getProfesorUv().getProfesorId()); // assuming getProfesorUvId() gets the appropriate id
-                preparedStatement.setInt(10, colaboracion.getProfesorExterno().getProfesorId()); // assuming getProfesorExternoId() gets the appropriate id
-                preparedStatement.setInt(11, colaboracion.getExperienciaEducativa().getExperienciaEducativaId()); // assuming getExperienciaEducativaId gets the appropriate id
-                preparedStatement.setInt(12, colaboracion.getEvidencia().getEvidenciaId()); // assuming getEvidenciaId() gets the appropriate id
+                preparedStatement.setInt(9, colaboracion.getProfesorUv().getProfesorId());
+                preparedStatement.setInt(10, colaboracion.getProfesorExterno().getProfesorId());
+                preparedStatement.setInt(11, colaboracion.getExperienciaEducativa().getExperienciaEducativaId());
+                preparedStatement.setInt(12, colaboracion.getEvidencia().getEvidenciaId());
 
                 int resultado = preparedStatement.executeUpdate();
                 if (resultado != 0) {
@@ -185,7 +186,7 @@ public class ColaboracionDAO {
 
                 int resultado = preparedStatement.executeUpdate();
                 if (resultado != 0) {
-                    System.out.println("Colaboracion Updated Successfully!");
+                    System.out.println("Colaboracion Actualizada");
                     actualizarExitoso = true;
                 }
             } catch (SQLException e) {
@@ -201,7 +202,7 @@ public class ColaboracionDAO {
         boolean borrarExitoso = false;
         if (conexionBD != null) {
             try {
-                //First delete the evidencias associated with the colaboracion
+                //Primero borra las evidencias y despues la colaboracion
                 if (EvidenciaDAO.borrarEvidencias(colaboracionId)) {
                     String consulta = "DELETE FROM colaboracion WHERE colaboracion_id = ?";
                     PreparedStatement preparedStatement = conexionBD.prepareStatement(consulta);
@@ -209,11 +210,11 @@ public class ColaboracionDAO {
 
                     int resultado = preparedStatement.executeUpdate();
                     if (resultado != 0) {
-                        System.out.println("Colaboracion Deleted Successfully!");
+                        System.out.println("Colaboracion Borrada");
                         borrarExitoso = true;
                     }
                 } else {
-                    System.out.println("Failed to delete associated evidencias.");
+                    System.out.println("Fallo al borrar las evidencias.");
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
