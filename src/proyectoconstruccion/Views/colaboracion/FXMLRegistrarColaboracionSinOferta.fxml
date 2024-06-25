@@ -27,11 +27,11 @@
       <ComboBox fx:id="cbProfesorExterno" layoutX="674.0" layoutY="408.0" prefHeight="31.0" prefWidth="238.0" />
       <Button layoutX="952.0" layoutY="408.0" mnemonicParsing="false" onAction="#btnClicRegistrarProfesorExterno" prefHeight="31.0" prefWidth="238.0" text="Registrar nuevo profesor externo" />
       <Label layoutX="675.0" layoutY="497.0" text="Nombre profesor externo" />
-      <Label fx:id="lbNombreProfesorExterno" layoutX="675.0" layoutY="532.0" text="David Alaba Jr" />
+      <Label fx:id="lbNombreProfesorExterno" layoutX="675.0" layoutY="532.0" text="" />
       <Label layoutX="936.0" layoutY="497.0" text="País" />
-      <Label fx:id="lbPais" layoutX="936.0" layoutY="532.0" text="Austria" />
+      <Label fx:id="lbPais" layoutX="936.0" layoutY="532.0" text="" />
       <Label layoutX="675.0" layoutY="594.0" text="Correo electrónico" />
-      <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="675.0" layoutY="629.0" text="ieifowef@au.com" />
+      <Label fx:id="lbCorreoElectronicoProfeExterno" layoutX="675.0" layoutY="629.0" text="" />
       <TextField fx:id="tfTitulo" layoutX="129.0" layoutY="108.0" prefHeight="31.0" prefWidth="238.0" />
       <ComboBox fx:id="cbExperienciaEducativa" layoutX="129.0" layoutY="311.0" prefHeight="31.0" prefWidth="238.0" />
       <ComboBox fx:id="cbPeriodo" layoutX="129.0" layoutY="411.0" prefHeight="31.0" prefWidth="238.0" />
@@ -53,5 +53,7 @@
       <Label layoutX="955.0" layoutY="278.0" text="Fecha de fin" />
       <Label layoutX="134.0" layoutY="176.0" text="Duracion" />
       <TextField fx:id="tfDuracion" layoutX="129.0" layoutY="206.0" prefHeight="31.0" prefWidth="238.0" />
+      <Label layoutX="915.0" layoutY="594.0" text="Universidad" />
+      <Label fx:id="lbUniversidad" layoutX="942.0" layoutY="620.0" prefHeight="18.0" prefWidth="0.0" text="" />
    </children>
 </AnchorPane>

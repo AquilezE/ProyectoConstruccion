@@ -448,7 +448,7 @@ public class FXMLPanelPrincipalController implements Initializable {
                 if (item == null || empty) {
                     setText(null);
                 } else {
-                    setText(item.getDescripcion());
+                    setText(item.getNombreExperienciaEducativa());
                 }
             }
         });

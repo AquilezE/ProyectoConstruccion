@@ -57,6 +57,8 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
     @FXML
     private Label lbPais;
     @FXML
+    private Label lbUniversidad;
+    @FXML
     private Label lbCorreoElectronicoProfeExterno;
     @FXML
     private TextField tfTitulo;
@@ -86,7 +88,7 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
 
 
         ProfesorUV profesorUV = Sesion.getInstancia().getProfesorUsuario();
-        lbNombreProfesorUV.setText(profesorUV.getNombre());
+        lbNombreProfesorUV.setText(profesorUV.getNombre()+" "+profesorUV.getApellidoPaterno()+" "+profesorUV.getApellidoMaterno());
         lbNumPersonal.setText(profesorUV.getNumeroPersonal());
         lbCorreoElectronicoProfesorUV.setText(profesorUV.getCorreoElectronico());
 
@@ -241,12 +243,13 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
             @Override
             public void changed(ObservableValue<? extends ProfesorExterno> observable, ProfesorExterno oldValue, ProfesorExterno newValue) {
                 if (newValue != null) {
-                    lbNombreProfesorExterno.setText(newValue.getNombre());
+                    lbNombreProfesorExterno.setText(newValue.getNombre()+" "+newValue.getApellidoPaterno()+" "+ newValue.getApellidoMaterno());
                     lbCorreoElectronicoProfeExterno.setText(newValue.getCorreoElectronico());
 
                     Universidad universidadSeleccionada = UniversidadDAO.getUniversidadById(newValue.getUniversidadID());
 
                     lbPais.setText(universidadSeleccionada.getPais());
+                    lbUniversidad.setText(universidadSeleccionada.getNombre());
 
                 } else {
                     lbNombreProfesorExterno.setText("");
@@ -306,6 +309,18 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
                         }
                     }
                 };
+            }
+        });
+
+        cbExperienciaEducativa.setButtonCell(new ListCell<ExperienciaEducativa>() {
+            @Override
+            protected void updateItem(ExperienciaEducativa item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getNombreExperienciaEducativa());
+                }
             }
         });
 
