@@ -128,8 +128,9 @@ public class EvidenciaDAO {
         }
         return listaEstudiantesStream;
     }
-
-    //Esta funcion se usa cuando se crea la colaboracion, para "apartar" el lugar de las evidencias para esa colaboracion
+    
+    
+//Esta funcion se usa cuando se crea la colaboracion, para "apartar" el lugar de las evidencias para esa colaboracion
     public static Evidencia crearRegistroEvidencia() {
         try {
             Connection con = ConexionBD.getConexion();
