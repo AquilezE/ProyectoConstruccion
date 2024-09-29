@@ -67,7 +67,6 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
         //Carga diferentes paneles dependiendo si la oferta es UV o es Externa
         if (ofertaColaboracion instanceof OfertaColaboracionUV){
             try {
-                System.out.println("ES COLABORACION UV");
                 FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaUV.fxml");
                 Parent root = loader.load();
                 FXMLRegistrarColaboracionConOfertaUVController controller = loader.getController();
@@ -82,7 +81,6 @@ public class FXMLDetallesOfertaColaboracionController implements Initializable {
             }
         }else if (ofertaColaboracion instanceof OfertaColaboracionExterna){
             try {
-                System.out.println("ES COLABORACION EXTERNA");
                 FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLRegistrarColaboracionConOfertaExterna.fxml");
                 Parent root = loader.load();
                 FXMLRegistrarColaboracionConOfertaExternaController controller = loader.getController();

@@ -15,9 +15,9 @@ public class ConexionBD {
             Class.forName(Constantes.Driver);
             conexionBD = DriverManager.getConnection(URI_CONEXION,Constantes.USUARIO,Constantes.PASSWORD);
         }catch (ClassNotFoundException ex){
-            System.out.println("No se encontro el driver de conexion");
+
         }catch (SQLException ex){
-            System.out.println("No se puede conectar con la base de datos");
+
         }
         return conexionBD;
     }

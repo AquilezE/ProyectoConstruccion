@@ -57,7 +57,7 @@
                                              <VBox.margin>
                                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                              </VBox.margin></ComboBox>
-                                          <ComboBox fx:id="cbExperienciaEducativa" prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia Educativa">
+                                          <ComboBox fx:id="cbExperienciaEducativa" prefHeight="31.0" prefWidth="276.0" promptText="Seleccionar experiencia educativa">
                                              <VBox.margin>
                                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                              </VBox.margin></ComboBox>

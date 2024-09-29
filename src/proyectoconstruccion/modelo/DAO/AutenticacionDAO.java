@@ -1,6 +1,7 @@
 package proyectoconstruccion.modelo.DAO;
 
 import proyectoconstruccion.Utils.Constantes;
+import proyectoconstruccion.Utils.PasswordUtils;
 import proyectoconstruccion.modelo.ConexionBD;
 import proyectoconstruccion.modelo.POJO.profesor.ProfesorUV;
 
@@ -10,13 +11,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+
 public class AutenticacionDAO {
     public static HashMap<String,Object> iniciarSesion(String email,String password){
         HashMap<String,Object> respuesta=new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR,true);
+
+        String hashedPassword = PasswordUtils.hashPassword(password);
+
+        System.out.println(hashedPassword);
+
         
         //existen dos maneras de ingresar al sistema, como admin (Coordinador COIL-VIC) y como profesor UV
-        if(email.equals("admin") && password.equals("admin")){
+        if(email.equals("admin") && hashedPassword.equals(PasswordUtils.hashPassword("admin"))){
             respuesta.put(Constantes.KEY_ERROR,false);
             respuesta.put("profesor",null);
             respuesta.put(Constantes.KEY_MENSAJE,"El usuario ingresado es un Admin, no necesita credenciales");
@@ -29,7 +36,7 @@ public class AutenticacionDAO {
         try(Connection conexion = ConexionBD.getConexion();
             PreparedStatement prepararSentencia = conexion.prepareStatement(consulta)){
 
-            prepararSentencia.setString(1,password);
+            prepararSentencia.setString(1,hashedPassword);
             prepararSentencia.setString(2,email);
 
             try(ResultSet resultado = prepararSentencia.executeQuery();) {
@@ -50,7 +57,7 @@ public class AutenticacionDAO {
                     respuesta.put(Constantes.KEY_ERROR, false);
                     respuesta.put(Constantes.KEY_MENSAJE, "Profesor " + profesorId + " recuperado con exito");
                 }else{
-                    respuesta.put(Constantes.KEY_MENSAJE, "No existe un profesor con ese correo");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Contraseña o correo incorrecto");
                 }
 
             }

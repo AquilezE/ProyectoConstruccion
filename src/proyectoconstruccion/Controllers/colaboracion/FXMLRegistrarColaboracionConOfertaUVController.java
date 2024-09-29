@@ -303,7 +303,7 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
         });
     }
 
-        private void cargarExperienciasEducativas(){
+    private void cargarExperienciasEducativas(){
         experiencias = FXCollections.observableArrayList();
         experiencias.addAll(ExperienciaEducativaDAO.obtenerTodasExperienciasEducativas());
 
@@ -318,10 +318,34 @@ public class FXMLRegistrarColaboracionConOfertaUVController implements Initializ
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getNombreExperienciaEducativa()); 
+                            setText(item.getNombreExperienciaEducativa());
                         }
                     }
                 };
+            }
+        });
+
+        cbExperienciaEducativa.setButtonCell(new ListCell<ExperienciaEducativa>() {
+            @Override
+            protected void updateItem(ExperienciaEducativa item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getNombreExperienciaEducativa());
+                }
+            }
+        });
+
+        cbExperienciaEducativa.setConverter(new StringConverter<ExperienciaEducativa>() {
+            @Override
+            public String toString(ExperienciaEducativa object) {
+                return object != null ? object.getNombreExperienciaEducativa() : "";
+            }
+
+            @Override
+            public ExperienciaEducativa fromString(String string) {
+                return experiencias.stream().filter(o -> o.getNombreExperienciaEducativa().equals(string)).findFirst().orElse(null);
             }
         });
 

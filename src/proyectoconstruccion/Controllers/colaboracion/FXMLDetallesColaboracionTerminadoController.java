@@ -110,7 +110,6 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
     public void btnAprobarConstancia(ActionEvent actionEvent) {
 
         Integer numeroEstudiantes = estudiantes.size();
-        System.out.println("numeroEstudiantes: " + numeroEstudiantes);
         if (numeroEstudiantes > 0) {
             ColaboracionDAO.actualizarNumeroEstudiantes(this.colaboracion.getColaboracionId(),numeroEstudiantes);
             ColaboracionDAO.actualizarEstadoColaboracion(this.colaboracion.getColaboracionId(),"Clausurada");
@@ -141,7 +140,6 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
                     Files.copy(is, savedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
 
-                System.out.println("File downloaded successfully!");
 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -246,7 +244,6 @@ public class FXMLDetallesColaboracionTerminadoController implements Initializabl
             return;
         }
 
-        System.out.println("EvidenciaId: " + evidenciaId);
         InputStream is = EvidenciaDAO.getListaDeEstudiantes(Integer.valueOf(evidenciaId));
         if (is != null) {
             LectorCSV csvReader = new LectorCSV();

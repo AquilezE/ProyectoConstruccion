@@ -31,7 +31,6 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
 
 
     private ObservableList<Periodo> periodos;
-    private ObservableList<ProfesorExterno> profesores;
     private ObservableList<ExperienciaEducativa> experiencias;
     private ObservableList<Idioma> idiomas;
 
@@ -239,6 +238,30 @@ public class FXMLRegistrarColaboracionConOfertaExternaController implements Init
                         }
                     }
                 };
+            }
+        });
+
+        cbExperienciaEducativa.setButtonCell(new ListCell<ExperienciaEducativa>() {
+            @Override
+            protected void updateItem(ExperienciaEducativa item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.getNombreExperienciaEducativa());
+                }
+            }
+        });
+
+        cbExperienciaEducativa.setConverter(new StringConverter<ExperienciaEducativa>() {
+            @Override
+            public String toString(ExperienciaEducativa object) {
+                return object != null ? object.getNombreExperienciaEducativa() : "";
+            }
+
+            @Override
+            public ExperienciaEducativa fromString(String string) {
+                return experiencias.stream().filter(o -> o.getNombreExperienciaEducativa().equals(string)).findFirst().orElse(null);
             }
         });
 

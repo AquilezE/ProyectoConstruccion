@@ -48,7 +48,6 @@ public class FXMLDetallesColaboracionPendienteController implements Initializabl
         }
 
         this.colaboracion = colaboracion;
-        System.out.println(colaboracion.getPeriodo());
         lbNumeroColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));
         lbTitulo.setText(colaboracion.getTitulo());
 

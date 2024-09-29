@@ -77,14 +77,14 @@ public class OfertaColaboracionDAO {
                 }
             }
             String consulta = queryBuilder.toString();
-            System.out.println(consulta);
+
             ArrayList<OfertaColaboracion> ofertas = new ArrayList<>();
 
             try {
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
 
                 for (int i = 0; i < parametros.size(); i++) {
-                    System.out.println(parametros.get(i));
+
                     prepararSentencia.setObject(i + 1, parametros.get(i));
                 }
 

@@ -150,7 +150,6 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
             colaboracion.setIdioma(idioma);
 
             if (ColaboracionDAO.registrarColaboracion(colaboracion)) {
-                System.out.println("EXITO");
                 RefreshserUtils.getOfertasController().InicializarComponentes(RefreshserUtils.getOfertasBusquedaCache());
                 Utils.cerrarVentana(event);
             } else {
@@ -324,9 +323,20 @@ public class FXMLRegistrarColaboracionSinOfertaController implements Initializab
             }
         });
 
+        cbExperienciaEducativa.setConverter(new StringConverter<ExperienciaEducativa>() {
+            @Override
+            public String toString(ExperienciaEducativa object) {
+                return object != null ? object.getNombreExperienciaEducativa() : "";
+            }
+
+            @Override
+            public ExperienciaEducativa fromString(String string) {
+                return experiencias.stream().filter(o -> o.getNombreExperienciaEducativa().equals(string)).findFirst().orElse(null);
+            }
+        });
+
         cbExperienciaEducativa.setItems(experiencias);
     }
-
 
     private boolean areFieldsValid() {
 

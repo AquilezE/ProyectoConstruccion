@@ -63,8 +63,13 @@ public class FXMLPanelPrincipalController implements Initializable {
     public HBox hbFiltrosColabs;
 
     public Tab tabSocilicitudes;
+
+    //Numeralia
     public Tab tabNumeralia;
+    //Numeralia
+
     public TabPane tabPane;
+
     public BorderPane bdPaneColaboraciones;
     public BorderPane bdPaneOfertasColab;
     public BorderPane bdPaneNumerialia;
@@ -90,6 +95,8 @@ public class FXMLPanelPrincipalController implements Initializable {
     private TableColumn <NumeraliaAreaAcademica,String> colNumAlumnosAreaAcademica;
     @FXML
     private TableColumn <NumeraliaAreaAcademica,String> colNumProfesoresAreaAcademica;
+
+    //Ver que pedo con este y el de arriba
     @FXML
     public ComboBox cbSeleccionPeriodo;
 
@@ -116,7 +123,7 @@ public class FXMLPanelPrincipalController implements Initializable {
                 cargarEstados();
                 cargarPeriodos();
 
-
+        //Numeralia
         tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
             if (verificarTabSeleccionado(tabNumeralia)) {
                 cargarPeriodos();
@@ -127,7 +134,7 @@ public class FXMLPanelPrincipalController implements Initializable {
             }
 
         });
-
+        //Numeralia
 
         cargarOpcionesDeFiltroOferta();
         cargarTabUsuario();
@@ -175,9 +182,11 @@ public class FXMLPanelPrincipalController implements Initializable {
         cbEstado.setItems(this.estados);
     }
 
+    //Numeralia
     private boolean verificarTabSeleccionado(Tab tab) {
         return tabPane.getSelectionModel().getSelectedItem().equals(tab);
     }
+    //Numeralia
 
     @FXML
     public void btnVerColabs(ActionEvent actionEvent) {
@@ -187,14 +196,6 @@ public class FXMLPanelPrincipalController implements Initializable {
     public void cargarColaboraciones(){
         try {
             DatosFiltroColaboracion filterData = getDatosFiltro();
-
-            System.out.println("Datos del filtro:");
-            System.out.println("Fecha Cierre: " + filterData.getFechaCierre());
-            System.out.println("Fecha Inicio: " + filterData.getFechaInicio());
-            System.out.println("Título: " + filterData.getTituloColab());
-            System.out.println("Periodo: " + (filterData.getPeriodo() != null ? filterData.getPeriodo().getDescripcion() : "null"));
-            System.out.println("Estado: " + filterData.getEstado());
-            System.out.println("Experiencia Educativa: " + (filterData.getExperienciaEducativa() != null ? filterData.getExperienciaEducativa().getNombreExperienciaEducativa() : "null"));
 
             FXMLLoader loader = Utils.obtenerLoader("Views/colaboracion/FXMLContenedorColaboraciones.fxml");
             AnchorPane contenedorColaboraciones = loader.load();
@@ -277,6 +278,8 @@ public class FXMLPanelPrincipalController implements Initializable {
     private void cargarPeriodos(){
         periodos = FXCollections.observableArrayList();
         periodos.addAll(PeriodoDAO.getPeriodos());
+
+        //Se usa para numeralia
         cbSeleccionPeriodo.setItems(periodos);
 
         cbSeleccionPeriodo.setCellFactory(new Callback<ListView<Periodo>, ListCell<Periodo>>() {
@@ -309,6 +312,8 @@ public class FXMLPanelPrincipalController implements Initializable {
             }
         });
 
+
+        //Se usa para los filtros
         cbPeriodo.setItems(periodos);
 
         cbPeriodo.setCellFactory(new Callback<ListView<Periodo>, ListCell<Periodo>>() {
@@ -343,6 +348,8 @@ public class FXMLPanelPrincipalController implements Initializable {
 
 
     }
+
+
 
     @FXML
     private void btnClicRegistrarOfertaUV(ActionEvent event) {
@@ -429,12 +436,13 @@ public class FXMLPanelPrincipalController implements Initializable {
     public void cargarOpcionesDeFiltroOferta(){
         cbFiltroOfertas.setItems(FXCollections.observableArrayList("Periodo", "Idioma","Tipo"));
     }
-    
+
+
+    //NUMERALIA
     @FXML
     private void btnClicVerNumeralia(ActionEvent event) {
         verNumeralia();
     }
-    
     public void verNumeralia(){
         if(cbSeleccionPeriodo.getSelectionModel().getSelectedItem() != null){
             Periodo seleccion = (Periodo) cbSeleccionPeriodo.getSelectionModel().getSelectedItem();
@@ -444,7 +452,6 @@ public class FXMLPanelPrincipalController implements Initializable {
             Utils.mostrarAlertaSimple("Error", "Debe seleccionar un periodo", Alert.AlertType.ERROR);
         }
     }
-    
     public void configurarTablaCampus(){
         colCampus.setCellValueFactory(new PropertyValueFactory<>("campus"));
         colNumProfesoresCampus.setCellValueFactory(new PropertyValueFactory<>("numeroProfesores"));
@@ -467,13 +474,11 @@ public class FXMLPanelPrincipalController implements Initializable {
         tvNumeraliaAreaAcademica.setItems(datos);
 
     }
-    
     public void obtenerDatosTablaCampusPorPeriodo(String periodo){
         ArrayList<NumeraliaCampus> listaNumeralia = NumeraliaDAO.obtenerNumeraliaCampusPorPeriodo(periodo);
         ObservableList<NumeraliaCampus> datos = FXCollections.observableArrayList(listaNumeralia);
         tvNumeraliaCampus.setItems(datos);
     }
-
     public void obtenerDatosTablaAreaAcademicaPorPeriodo(String periodo){
         ArrayList<NumeraliaAreaAcademica> listaNumeralia = NumeraliaDAO.obtenerNumeraliaAreaAcademicaPorPeriodo(periodo);
         ObservableList<NumeraliaAreaAcademica> datos = FXCollections.observableArrayList(listaNumeralia);

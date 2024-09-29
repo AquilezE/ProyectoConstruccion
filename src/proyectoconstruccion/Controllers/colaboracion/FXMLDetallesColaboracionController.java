@@ -70,7 +70,6 @@ public class FXMLDetallesColaboracionController implements Initializable {
         }
 
         this.colaboracion = colaboracion;
-        System.out.println(colaboracion.getPeriodo());
         lbIdColaboracion.setText(String.valueOf(colaboracion.getColaboracionId()));
         lbTitulo.setText(colaboracion.getTitulo());
 
@@ -114,7 +113,6 @@ public class FXMLDetallesColaboracionController implements Initializable {
             escenario.setTitle("Cancelar colaboración");
             escenario.initModality(Modality.APPLICATION_MODAL);
             escenario.showAndWait();
-            System.out.println(this.colaboracion.getEstado());
             if (this.colaboracion.getEstado().equals("Cancelada")){
                 btnCancelarColaboracion.setDisable(true);
                 btnFinalizar.setDisable(true);

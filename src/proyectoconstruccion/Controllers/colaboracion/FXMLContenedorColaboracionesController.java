@@ -22,14 +22,9 @@ public class FXMLContenedorColaboracionesController {
 
         HashMap<String, Object> seleccion = ColaboracionDAO.getColaboraciones(null, "Concluida", null, null, null, null, Sesion.getInstancia().getRol());
 
-        if (seleccion == null) {
-            System.out.println("da null");
-        }
-
         ArrayList<Colaboracion> colaboraciones = (ArrayList<Colaboracion>) seleccion.get("colaboraciones");
 
         for (Colaboracion colaboracion : colaboraciones) {
-            System.out.println("colaboracionAñadida");
             añadirItem(colaboracion);
         }
     }
@@ -57,20 +52,12 @@ public class FXMLContenedorColaboracionesController {
             experienciaEducativaId = null;
         }
 
-        System.out.println("Parametros de búsqueda:");
-        System.out.println("Titulo: " + titulo);
-        System.out.println("Estado: " + estado);
-        System.out.println("Periodo: " + periodo);
-        System.out.println("FechaInicio: " + fechaInicio);
-        System.out.println("FechaFin: " + fechaFin);
-        System.out.println("ExperienciaEducativa: " + experienciaEducativaId);
 
         HashMap<String, Object> seleccion = ColaboracionDAO.getColaboraciones(titulo, estado, periodo, fechaInicio, fechaFin, experienciaEducativaId, Sesion.getInstancia().getRol());
 
         ArrayList<Colaboracion> colaboraciones = (ArrayList<Colaboracion>) seleccion.get("colaboraciones");
 
         for (Colaboracion colaboracion : colaboraciones) {
-            System.out.println("colaboracionAñadida");
             añadirItem(colaboracion);
         }
     }

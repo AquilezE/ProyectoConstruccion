@@ -63,7 +63,7 @@ public class FXMLRegistrarOfertaUVController implements Initializable {
     public void inicializarValores(){
 
         if(Sesion.getInstancia().getProfesorUsuario() == null){
-            System.out.println("profesor es null");
+
         }
         ProfesorUV profesorUV = Sesion.getInstancia().getProfesorUsuario();
         idProfesor = profesorUV.getProfesorId();

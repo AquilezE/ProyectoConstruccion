@@ -15,6 +15,5 @@
       <Label fx:id="lbTelefono" layoutX="178.0" layoutY="270.0" maxHeight="18.0" maxWidth="292.0" minHeight="18.0" minWidth="292.0" prefHeight="18.0" prefWidth="292.0" text="2288183552" />
       <Label layoutX="117.0" layoutY="310.0" maxHeight="36.0" maxWidth="65.0" minHeight="36.0" minWidth="65.0" prefHeight="36.0" prefWidth="65.0" text="Numero Personal:" wrapText="true" />
       <Label fx:id="lbNumeroPersonal" layoutX="178.0" layoutY="319.0" prefHeight="18.0" prefWidth="292.0" text="N/A" />
-      <Button layoutX="117.0" layoutY="359.0" maxHeight="36.0" maxWidth="234.0" minHeight="36.0" minWidth="153.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="234.0" text="Cambiar Contraseña" />
    </children>
 </AnchorPane>

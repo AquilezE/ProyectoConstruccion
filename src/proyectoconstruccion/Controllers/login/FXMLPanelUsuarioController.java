@@ -52,9 +52,6 @@ public class FXMLPanelUsuarioController implements Initializable {
         RefreshserUtils.setColaboracionesBusquedaCache(null);
     }
 
-    public void btnCambiarContrasenia(ActionEvent actionEvent) {
-    }
-
     public void btnCerrarSesion(ActionEvent actionEvent) {
 
         cerrarSesion();

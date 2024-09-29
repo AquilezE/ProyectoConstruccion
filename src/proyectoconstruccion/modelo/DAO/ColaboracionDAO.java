@@ -28,16 +28,6 @@ public class ColaboracionDAO {
         Connection conexionBD = ConexionBD.getConexion();
 
 
-        System.out.println("PARAM VALUES");
-        System.out.println("Parametros de búsqueda:");
-        System.out.println("Titulo: " + titulo);
-        System.out.println("Estado: " + estadoP);
-        System.out.println("Periodo: " + periodo);
-        System.out.println("FechaInicio: " + fechaInicio);
-        System.out.println("FechaFin: " + fechaCierre);
-        System.out.println("ExperienciaEducativa: " + experienciaEducativaId);
-
-
         //A partir de aqui se empiezan a añadir filtros segun los datos ingresados
         if(conexionBD != null){
             StringBuilder queryBuilder = new StringBuilder("SELECT * FROM colaboracion WHERE 1=1 ");
@@ -85,13 +75,13 @@ public class ColaboracionDAO {
             ArrayList<Colaboracion> colaboraciones = new ArrayList<>();
 
 
-            System.out.println(consulta);
+
             try{
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
 
                 for (int i = 0; i < parametros.size(); i++) {
                     prepararSentencia.setObject(i+1, parametros.get(i));
-                    System.out.println(prepararSentencia);
+
                 }
 
                 ResultSet resultado = prepararSentencia.executeQuery();
@@ -124,7 +114,7 @@ public class ColaboracionDAO {
                     Colaboracion colaboracionResultado = new Colaboracion(id,duracion,periodoResultado,tituloResultado,idioma1,inicio,cierre,tipo,estado,numeroEstudiantes,profesorUV,externo,experienciaEducativa,evidencia,anotaciones);
 
                     colaboraciones.add(colaboracionResultado);
-                    System.out.println("Colaboracion añadida");
+
                 }
 
             }catch(SQLException e){
@@ -162,11 +152,11 @@ public class ColaboracionDAO {
 
                 int resultado = preparedStatement.executeUpdate();
                 if (resultado != 0) {
-                    System.out.println("Colaboracion Inserted Successfully!");
+
                     registroExitoso = true;
                 }
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+
                 e.printStackTrace();
             }
         }
@@ -186,11 +176,11 @@ public class ColaboracionDAO {
 
                 int resultado = preparedStatement.executeUpdate();
                 if (resultado != 0) {
-                    System.out.println("Colaboracion Actualizada");
+
                     actualizarExitoso = true;
                 }
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+
                 e.printStackTrace();
             }
         }
@@ -210,11 +200,11 @@ public class ColaboracionDAO {
 
                     int resultado = preparedStatement.executeUpdate();
                     if (resultado != 0) {
-                        System.out.println("Colaboracion Borrada");
+
                         borrarExitoso = true;
                     }
                 } else {
-                    System.out.println("Fallo al borrar las evidencias.");
+
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
